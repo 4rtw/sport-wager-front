@@ -1,0 +1,135 @@
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ajouterBtn {
+    align-self: flex-end;
+  }
+  
+  .tp-toolbar {
+    min-height: 50px;
+  }
+  
+  .tp-toolbar-row {
+    height: 50px;
+    box-shadow: 0 0 3px 0 #c3c3c3;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    padding-left: 0;
+  }
+  
+  .tp-side-nav {
+    /* width: 200px; */
+    position: absolute;
+  }
+  
+  
+  body {
+    margin: 0;
+  }
+  
+  .item-row{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  .mat-nav-list{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  span{
+    font-family: Roboto, "Tahoma", sans-serif;
+  }
+  
+  
+  .mat-list-item {
+    color: black;
+  }
+  
+  .mat-list-item:hover, .mat-list-item.active {
+    color: #ED9B40;
+  }
+  
+  .progression-container {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .background-progression-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* padding: 0 20px; */
+  }
+  
+  .background-progression-container button {
+    display: none;
+  }
+  
+  .background-progression-container .mat-card {
+    width: 99vw;
+    border-radius: 0;
+    height: 100px;
+    box-shadow: 5px -1px 2px #ccc;
+  }
+  
+
+  
+  .mat-raised-button{
+    background-color: #f78f8f;
+    border: 2px;
+    color : white;
+  }
+  
+  
+  .sidebar-toggle {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    /* padding-bottom: 8px; */
+    align-items: center;
+    width: 200px;
+    /* border-bottom: 1px solid #c3c3c3; */
+  }
+  
+  .logo img {
+    height: 46px; 
+    /* width: 65px; */
+    width: auto;
+  }
+  
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 15px 30px 15px 30px;;
+    padding: 0;
+  }
+
+  .space-search{
+    margin-left: 10px
+  }
+  

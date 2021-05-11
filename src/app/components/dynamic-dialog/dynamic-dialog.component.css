@@ -1,0 +1,13 @@
+.modal-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.modal-action button {
+    margin-left: 10px;
+}
+
+:host /deep/ .modal .mat-dialog-container {
+    padding: 0;
+}
