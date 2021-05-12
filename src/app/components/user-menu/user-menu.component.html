@@ -1,11 +1,13 @@
 <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
 <div [matMenuTriggerFor]="menu" class="user-menu">
-    <!--<div class="user-image">-->
-        <!--<img *ngIf="user.user_info" src="{{ user.user_info.image }}"/>
-        <span *ngIf="!user.user_info">{{ defaultImage }}</span>-->
-    <!--</div>-->
-    <p-avatar icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
-    <!--<span>{{ user.user_info ? user.user_info.prenom : user.name }}</span>-->
+    <div class="user-image">
+        <img *ngIf="user.user_info" src="{{ user.user_info.image }}"/>
+        <span *ngIf="!user.user_info" >{{ defaultImage }}</span>
+    </div>
+
+
+    <!--<p-avatar icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>-->
+    <span>{{ user.user_info ? user.user_info.prenom : user.name }}</span>
     <mat-icon>
         arrow_drop_down
     </mat-icon>
@@ -16,7 +18,7 @@
         <mat-icon>how_to_reg</mat-icon>
         <span>S'inscrire</span>
     </button>
-    <button mat-menu-item (click)="logout()">
+    <button mat-menu-item (click)="login()">
         <mat-icon>login</mat-icon>
         <span>Se connecter</span>
     </button>

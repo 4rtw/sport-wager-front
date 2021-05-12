@@ -16,14 +16,18 @@ export class UserMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    /*this.user = AuthService.getUserFromLS();
+    this.user = AuthService.getUserFromLS();
     const tmp = this.user.name.split(' ');
     this.user.name = tmp[0];
-    this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`*/
+    this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`
   }
 
   logout(){
     localStorage.removeItem("user");
+    this.router.navigate(["/login"]);
+  }
+
+  login(){
     this.router.navigate(["/login"]);
   }
 }

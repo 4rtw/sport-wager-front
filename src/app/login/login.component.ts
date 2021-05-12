@@ -14,6 +14,11 @@ export class CheckUser {
 })
 export class LoginComponent implements OnInit {
 
+
+  value4: string;
+
+
+  
   checkUser: CheckUser = new CheckUser();
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -61,7 +66,7 @@ export class LoginComponent implements OnInit {
         if(data.auth)
         {
           localStorage.setItem("user",JSON.stringify(data.user));
-          this.router.navigate([this.authService.getHomePage()]);
+          this.router.navigate(["/sport-wager"]);
           this.showLoader = false;
         } 
       }, (error) => {

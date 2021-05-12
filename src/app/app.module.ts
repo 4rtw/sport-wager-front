@@ -86,11 +86,16 @@ import {BadgeModule} from 'primeng/badge';
 import {DividerModule} from 'primeng/divider';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {CardModule} from 'primeng/card';
+import {PasswordModule} from 'primeng/password';
 const routes: Routes = [
   { 
     path: "", 
     redirectTo: "sport-wager", 
     pathMatch: "full"
+  },
+  { 
+    path: "login", 
+    component: LoginComponent,
   },
   { 
     path: "sport-wager", 
@@ -210,6 +215,7 @@ const routes: Routes = [
       InputTextModule,
       CarouselModule,
       InputNumberModule,
+      PasswordModule,
       SelectButtonModule,
       TabViewModule,
       ScrollPanelModule,
