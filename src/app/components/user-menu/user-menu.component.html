@@ -2,7 +2,7 @@
 <div [matMenuTriggerFor]="menu" class="user-menu">
     <div class="user-image">
         <img *ngIf="user.user_info" src="{{ user.user_info.image }}"/>
-        <span *ngIf="!user.user_info" >{{ defaultImage }}</span>
+        <span  style="color:white" *ngIf="!user.user_info" >{{ defaultImage }}</span>
     </div>
 
 
@@ -14,15 +14,15 @@
 </div>
 <!-- </button> -->
 <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="logout()">
+    <button *ngIf="user.user_info" mat-menu-item (click)="logout()">
         <mat-icon>how_to_reg</mat-icon>
         <span>S'inscrire</span>
     </button>
-    <button mat-menu-item (click)="login()">
+    <button *ngIf="user.user_info" mat-menu-item (click)="login()">
         <mat-icon>login</mat-icon>
         <span>Se connecter</span>
     </button>
-    <button mat-menu-item (click)="logout()">
+    <button *ngIf="!user.user_info" mat-menu-item (click)="logout()">
         <mat-icon>power_settings_new</mat-icon>
         <span>Déconnexion</span>
     </button>
