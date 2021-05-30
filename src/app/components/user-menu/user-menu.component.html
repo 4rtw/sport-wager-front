@@ -1,28 +1,28 @@
 <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
 <div [matMenuTriggerFor]="menu" class="user-menu">
-    <div class="user-image">
-        <img *ngIf="user.user_info" src="{{ user.user_info.image }}"/>
-        <span  style="color:white" *ngIf="!user.user_info" >{{ defaultImage }}</span>
+    <div *ngIf="user?.user_info" class="user-image">
+        <img *ngIf="user?.user_info.image" src="{{ user.user_info.image }}"/>
+        <span  style="color:white" *ngIf="!user?.user_info.image" >{{ defaultImage }}</span>
     </div>
 
 
-    <!--<p-avatar icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>-->
-    <span>{{ user.user_info ? user.user_info.prenom : user.name }}</span>
+    <p-avatar *ngIf="!user?.user_info" icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+    <span>{{ user?.user_info ? user?.user_info?.prenom : user?.name }}</span>
     <mat-icon>
         arrow_drop_down
     </mat-icon>
 </div>
 <!-- </button> -->
-<mat-menu #menu="matMenu">
-    <button *ngIf="user.user_info" mat-menu-item (click)="logout()">
+<mat-menu  #menu="matMenu">
+    <button *ngIf="!user" mat-menu-item (click)="logout()">
         <mat-icon>how_to_reg</mat-icon>
         <span>S'inscrire</span>
     </button>
-    <button *ngIf="user.user_info" mat-menu-item (click)="login()">
+    <button *ngIf="!user" mat-menu-item (click)="login()">
         <mat-icon>login</mat-icon>
         <span>Se connecter</span>
     </button>
-    <button *ngIf="!user.user_info" mat-menu-item (click)="logout()">
+    <button *ngIf="user" mat-menu-item (click)="logout()">
         <mat-icon>power_settings_new</mat-icon>
         <span>Déconnexion</span>
     </button>

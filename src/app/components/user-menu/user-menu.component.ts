@@ -17,9 +17,14 @@ export class UserMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = AuthService.getUserFromLS();
-    const tmp = this.user.name.split(' ');
-    this.user.name = tmp[0];
-    this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`
+    console.log(this.user);
+    if(this.user!=null){
+      const tmp = this.user.name.split(' ');
+      this.user.name = tmp[0];
+      this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`
+    }
+    
+    
   }
 
   logout(){
