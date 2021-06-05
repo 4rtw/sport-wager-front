@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AssignmentsService } from './shared/services/assignments.service';
-import { AuthService } from './shared/services/auth.service';
-import { ElevesService } from './shared/services/eleves.service';
-import { ProfesseurService } from './shared/services/professeur.service';
-import { UrlService } from './shared/services/url.service';
+import { AssignmentsService } from './shared/services/assignements/assignments.service';
+import { AuthService } from './shared/services/assignements/auth.service';
+import { ElevesService } from './shared/services/assignements/eleves.service';
+import { ProfesseurService } from './shared/services/assignements/professeur.service';
+import { UrlService } from './shared/services/assignements/url.service';
 
 @Component({
   selector: 'app-root',

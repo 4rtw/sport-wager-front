@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
+import {Subscription} from "rxjs";
 
 export class CheckUser {
   loginError = "Login Failed: Your email or password is incorrect"
@@ -12,13 +13,9 @@ export class CheckUser {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
-
-  value4: string;
-
-
-  
+export class LoginComponent implements OnInit, OnDestroy {
+  //#region old
+  /*value4: string;
   checkUser: CheckUser = new CheckUser();
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -76,6 +73,58 @@ export class LoginComponent implements OnInit {
   }
 
 
+*/
+ //endregion
 
- 
+  hide = true;
+  login_sub: Subscription;
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+  showLoader = false;
+  checkUser: CheckUser = new CheckUser();
+
+  constructor(
+      private authService: AuthService,
+      private router: Router,
+  ) {
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.login_sub?.unsubscribe();
+  }
+
+  login(email, pass): void{
+    this.login_sub = this.authService
+        .login(email, pass)
+        .subscribe(response=>{
+          if(response.data.access_token){
+            this.router.navigate(["/sport-wager"]);
+            this.showLoader = false;
+          }
+          else{
+            this.router.navigate(["/login"]);
+          }
+        },
+        error => {
+          this.showLoader = false;
+          this.checkUser.state = true;
+          console.log(error);
+        },
+            ()=>{});
+  }
+
+  onSubmit($event:Event): void{
+    this.login(this.email.value,this.password.value)
+  }
+
+  //#region frontend
+  getPasswordErrorMessage() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+  }
+  //#endregion
 }

@@ -66,6 +66,7 @@
             <input type="text" pInputText placeholder="Search" [(ngModel)]="value3" />
             <p-button class="p-ml-2" icon="pi pi-search" (onClick)="load(2)" ></p-button>
          </span>
+
           <div style="display: flex; flex-direction: row;">
             <app-user-menu></app-user-menu>
           </div>
@@ -73,7 +74,7 @@
       </mat-toolbar>
       
       <router-outlet></router-outlet>
-      <router-outlet name="eleves"></router-outlet>
+      <!-- <router-outlet name="eleves"></router-outlet> -->
   
     </mat-sidenav-content>
   </mat-sidenav-container>
@@ -83,4 +84,3 @@
   
   
   
-   

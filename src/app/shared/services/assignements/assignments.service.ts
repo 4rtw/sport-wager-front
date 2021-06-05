@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
-import { Assignment } from '../model/assignment.model';
+import { Assignment } from '../../model/assignements/assignment.model';
 import { LoggingService } from './login.service';
-import { assignmentsGeneres } from '../../../dummy-data/assignments.data';
-import { Eleve } from '../model/eleve.model';
-import { Matiere } from '../model/matiere.model';
+import { assignmentsGeneres } from '../../../../dummy-data/assignments.data';
+import { Eleve } from '../../model/assignements/eleve.model';
+import { Matiere } from '../../model/assignements/matiere.model';
 import { ProfesseurService } from './professeur.service';
 import { ElevesService } from './eleves.service';
-import { Professeur } from '../model/professeur.model';
+import { Professeur } from '../../model/assignements/professeur.model';
 
 @Injectable({
   providedIn: 'root'

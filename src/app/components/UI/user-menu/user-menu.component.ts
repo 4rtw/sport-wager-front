@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, User } from 'src/app/shared/services/auth.service';
+import { JwtService } from 'src/app/shared/services/jwt.service';
+import {User} from "../../../shared/model/user.model";
 
 @Component({
   selector: 'app-user-menu',
@@ -13,20 +14,21 @@ export class UserMenuComponent implements OnInit {
 
   defaultImage;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private jwtService: JwtService) { }
 
   ngOnInit(): void {
-    this.user = AuthService.getUserFromLS();
+    this.user=this.jwtService.getDecodedUser();
     console.log(this.user);
-    if(this.user!=null){
-      const tmp = this.user.name.split(' ');
-      this.user.name = tmp[0];
-      this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`
-    }
+    //if(this.user!=null){
+      //const tmp = this.user.name.split(' ');
+      //this.user.name = tmp[0];
+      //this.defaultImage = `${tmp[0][0]}${tmp[1][0]}`
+    //}
     
     
   }
 
+  //TODO logout
   logout(){
     localStorage.removeItem("user");
     this.router.navigate(["/login"]);

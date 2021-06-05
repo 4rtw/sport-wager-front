@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { UrlService } from 'src/app/shared/services/url.service';
+import { UrlService } from 'src/app/shared/services/assignements/url.service';
 
 @Component({
   selector: 'app-tool-bar',

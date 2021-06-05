@@ -4,7 +4,7 @@ import { forkJoin, Observable } from "rxjs";
 import { BasicService } from "./basic.service";
 import { LoggingService } from "./login.service";
 import { matieres as matieresData } from 'src/dummy-data/matieres.data';
-import { Matiere } from "../model/matiere.model";
+import { Matiere } from "../../model/assignements/matiere.model";
 
 @Injectable({
     providedIn: 'root'

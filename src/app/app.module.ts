@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import {AppRoutingModule} from "./shared/routing/routes";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,8 +32,8 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
-import { RenduDirective } from './shared/rendu.directive';
-import { NonRenduDirective } from './shared/non-rendu.directive';
+import { RenduDirective } from './shared/services/assignements/rendu.directive';
+import { NonRenduDirective } from './shared/services/assignements/non-rendu.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Routes, RouterModule } from '@angular/router';
@@ -40,33 +41,33 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { LoginComponent } from "./login/login.component";
-import { AuthService } from "./shared/services/auth.service";
+import { LoginComponent } from "./components/authentications/login/login.component";
+import { AuthService } from "./shared/services/assignements/auth.service";
 import { ChildGuard } from "./shared/guard/child.guard";
 import {MatTableModule} from '@angular/material/table';
 
 import {PanelModule} from 'primeng/panel';
 import {ChartModule} from 'primeng/chart';
 import {CalendarModule} from 'primeng/calendar';
-import { AuthInterceptor } from "./interceptor/auth.interceptor";
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { DynamicDialogComponent } from './components/dynamic-dialog/dynamic-dialog.component';
+import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
+import { ConfirmDialogComponent } from './components/idk-mdrrrrr/confirm-dialog/confirm-dialog.component';
+import { DynamicDialogComponent } from './components/idk-mdrrrrr/dynamic-dialog/dynamic-dialog.component';
 
 import { FileUploadModule } from "ng2-file-upload";
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
-import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
+import { ToolBarComponent } from './components/idk-mdrrrrr/tool-bar/tool-bar.component';
 
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './components/idk-mdrrrrr/modal/modal.component';
 
 
 
 
-import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { ForbiddenComponent } from './components/idk-mdrrrrr/forbidden/forbidden.component';
+import { UserMenuComponent } from './components/UI/user-menu/user-menu.component';
 import { SportWagerComponent } from './sport-wager/sport-wager.component';
 import { WagerComponent } from './sport-wager/wager/wager.component';
 
@@ -87,111 +88,8 @@ import {DividerModule} from 'primeng/divider';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {CardModule} from 'primeng/card';
 import {PasswordModule} from 'primeng/password';
-const routes: Routes = [
-  { 
-    path: "", 
-    redirectTo: "sport-wager", 
-    pathMatch: "full"
-  },
-  { 
-    path: "login", 
-    component: LoginComponent,
-  },
-  { 
-    path: "sport-wager", 
-    component: SportWagerComponent,
-    children: [
-      {
-        path: "",
-        component: WagerComponent
-      },
-    ]
-  },
-  /*{
-    path: "assignments",
-    component: AssignmentsComponent,
-    children: [
-      {
-        path: "",
-        component: AssignmentListComponent
-      },
-      {
-        path: "add",
-        component: AddAssignmentComponent
-      },
-      { 
-        path: "eleves", 
-        component: EleveOutletComponent,
-        children: [
-          { 
-            path: "", 
-            component: EleveListComponent
-          },    
-          { 
-            path: "add", 
-            component: AddElevesComponent,
-          },
-          {
-            path: "assignments",
-            component: EleveAssignmentsComponent
-          },
-        ]
-      },
-      { 
-        path: "professeurs", 
-        component: ProfesseurOutletComponent,
-        children: [
-          { 
-            path: "", 
-            component: ProfesseursComponent
-          },
-          {
-            path: "assignments",
-            component: ProfesseurAssignmentComponent
-          }
-        ]
-      },
-      { 
-        path: "matieres", 
-        component: MatiereComponent,
-        children: [
-          { 
-            path: "", 
-            component: MatiereListComponent,
-          },  
-          { 
-            path: "cours/:id", 
-            component: CoursComponent,
-          },
-        ]
-      },
-      { 
-        path: "dashboard", 
-        component: DashboardComponent,
-        data: { roles: [ AuthService.ADMIN, AuthService.PROFESSEUR ] }
-      },
-      {
-        path: "detail/:id",
-        component: AssignmentDetailComponent
-      },
-      {
-        path: "edit/:id",
-        component: EditAssigmentComponent
-      }
-    ],    
-    //canActivateChild: [ChildGuard],
-    //data: { roles: [ AuthService.ADMIN, AuthService.PROFESSEUR, AuthService.ELEVE ] }
-  },
-  {
-    // idem avec  http://localhost:4200/home
-    path: "home",
-    redirectTo: "/assignments"
-  },
-  {
-    path: '403',
-    component: ForbiddenComponent
-  }*/
-];
+import { RegisterComponent } from './components/authentications/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -204,9 +102,11 @@ const routes: Routes = [
     ForbiddenComponent,
     UserMenuComponent,
     WagerComponent,
-    SportWagerComponent
+    SportWagerComponent,
+    RegisterComponent
   ],
   imports: [
+      AppRoutingModule,
       BrowserModule,
       BrowserAnimationsModule,
       FormsModule,
@@ -262,7 +162,7 @@ const routes: Routes = [
       MatGridListModule,
       MatSnackBarModule,
       CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dy528ddbe' } as CloudinaryConfiguration),
-      RouterModule.forRoot(routes), HttpClientModule
+      HttpClientModule
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

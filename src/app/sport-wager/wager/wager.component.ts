@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../../produit-service';
 import { Product, ProductS } from '../../product';
@@ -129,7 +128,7 @@ export class WagerComponent implements OnInit {
   ]
 },
 {
-  equipe: 'Manchester United - Leicester City',
+  equipe: 'Manchester United - Leicester Citys',
   cat: ' Angleterre - Premier League',
   heure: '15:20',
   date:'Aujourdhui',

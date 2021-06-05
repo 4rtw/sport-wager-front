@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { forkJoin, Observable, of } from "rxjs";
-import { Professeur } from "../model/professeur.model";
+import { Professeur } from "../../model/assignements/professeur.model";
 import { BasicService } from "./basic.service";
 import { LoggingService } from "./login.service";
 import { professeurs as professeursData } from 'src/dummy-data/professeurs.data';

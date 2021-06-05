@@ -1,46 +1,55 @@
 <div class="card">
     <div class="p-grid">
+        <!-- #region listParis -->
         <div class="p-col-7">
             <div class="box">
-                <p-virtualScroller [value]="responsiveOptions" scrollHeight="800px" [itemSize]="100">
-                    <ng-template pTemplate="header">
-                        <div class="p-d-flex p-ai-center p-jc-between">
-                            Football
-                            <!--<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange()" [style]="{'min-width':'10em'}"></p-dropdown>-->
+                <div class="p-grid p-flex-column">
+                    <div class="p-col">
+                        <div class="box">
+                            <p-panel header="Football">
+                                <ng-template pTemplate="icons">
+                                    <i class="pi pi-bell p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
+                                       value="45"></i>
+                                </ng-template>
+                                <p-virtualScroller [value]="responsiveOptions" scrollHeight="800px">
+                                        <ng-template let-product pTemplate="item" let-i="index">
+                                            <div class="product-item">
+                                                <div class="image-container">
+                                                    <img src="../../assets/images/bracelet.jpg" class="product-image" />
+                                                </div>
+                                                <div class="product-list-detail">
+                                                    <h5 class="p-mb-2">{{product.equipe}}</h5>
+                                                    <i class="pi pi-tag product-category-icon"></i>
+                                                    <span class="product-category">{{product.cat}}</span>
+                                                </div>
+                                                <div class="center">
+                                                    <p-selectButton [options]="product.cote" name="index" id="index" [(ngModel)]="value2"
+                                                                    multiple="multiple" optionLabel="cote" optionValue="value"></p-selectButton>
+                                                </div>
+                                                <div class="product-list-action">
+                                                    <h6 class="p-mb-2">{{product.heure}}</h6>
+                                                    <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product}}</span> -->
+                                                    <span [class]="'product-badge '">{{product.date}}</span>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+
+                                </p-virtualScroller>
+                            </p-panel>
                         </div>
-                    </ng-template>
-                    <ng-template let-product pTemplate="item" let-i="index">
-                        <div class="product-item">
-                            <div class="image-container">
-                                <img src="../../assets/images/bracelet.jpg" class="product-image" />
-                            </div>
-                            <div class="product-list-detail">
-                                <h5 class="p-mb-2">{{product.equipe}}</h5>
-                                <i class="pi pi-tag product-category-icon"></i>
-                                <span class="product-category">{{product.cat}}</span>
-                            </div>
-                            <div class="center">
-                                <p-selectButton [options]="product.cote" name="index" id="index" [(ngModel)]="value2"
-                                    multiple="multiple" optionLabel="cote" optionValue="value"></p-selectButton>
-                            </div>
-                            <div class="product-list-action">
-                                <h6 class="p-mb-2">{{product.heure}}</h6>
-                                <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product}}</span>-->
-                                <span [class]="'product-badge '">{{product.date}}</span>
-                            </div>
-                        </div>
-                    </ng-template>
-                </p-virtualScroller>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- #endergion -->
+
+        <!-- #region panier -->
         <div class="p-col-5" >
             <div class="box">
                 <div class="p-grid p-flex-column">
                     <div class="p-col">
                         <div class="box">
-                            
-
-                                <p-panel header="Panier">
+                            <p-panel header="Panier">
                                     <ng-template pTemplate="icons">
                                         <i class="pi pi-bell p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
                                             value="2"></i>
@@ -54,8 +63,6 @@
                                                         <img src="../../assets/images/bracelet.jpg"
                                                             class="product-image" />
                                                     </div>
-
-
                                                     <div class="product-list-detail">
                                                         <h5 class="p-mb-2">Manchester United - Leicester City</h5>
                                                         <i class="pi pi-tag product-category-icon"></i>
@@ -77,7 +84,7 @@
                                                     <div class="p-col">
                                                         <div class="box">
                                                             <p-inputNumber [(ngModel)]="value18" [showButtons]="true"
-                                                                buttonLayout="horizontal" inputId="horizontal"
+                                                                buttonLayout="horizontal"
                                                                 spinnerMode="horizontal" [step]="0.25"
                                                                 decrementButtonClass="p-button-danger"
                                                                 incrementButtonClass="p-button-success"
@@ -122,7 +129,7 @@
                                                     <div class="p-col">
                                                         <div class="box">
                                                             <p-inputNumber [(ngModel)]="value18" [showButtons]="true"
-                                                                buttonLayout="horizontal" inputId="horizontal"
+                                                                buttonLayout="horizontal"
                                                                 spinnerMode="horizontal" [step]="0.25"
                                                                 decrementButtonClass="p-button-danger"
                                                                 incrementButtonClass="p-button-success"
@@ -167,7 +174,7 @@
                                                     <div class="p-col">
                                                         <div class="box">
                                                             <p-inputNumber [(ngModel)]="value18" [showButtons]="true"
-                                                                buttonLayout="horizontal" inputId="horizontal"
+                                                                buttonLayout="horizontal"
                                                                 spinnerMode="horizontal" [step]="0.25"
                                                                 decrementButtonClass="p-button-danger"
                                                                 incrementButtonClass="p-button-success"
@@ -220,12 +227,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
+        <!-- #endregion -->
     </div>
-
 </div>

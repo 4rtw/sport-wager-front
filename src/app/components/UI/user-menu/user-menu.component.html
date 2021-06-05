@@ -1,13 +1,13 @@
 <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
 <div [matMenuTriggerFor]="menu" class="user-menu">
-    <div *ngIf="user?.user_info" class="user-image">
-        <img *ngIf="user?.user_info.image" src="{{ user.user_info.image }}"/>
-        <span  style="color:white" *ngIf="!user?.user_info.image" >{{ defaultImage }}</span>
+    <div *ngIf="user" class="user-image">
+        <img *ngIf="user?.image" src="{{ user.image }}"/>
+        <span  style="color:white" *ngIf="!user?.image" >{{ defaultImage }}</span>
     </div>
 
 
-    <p-avatar *ngIf="!user?.user_info" icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
-    <span>{{ user?.user_info ? user?.user_info?.prenom : user?.name }}</span>
+    <p-avatar *ngIf="!user" icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"></p-avatar>
+    <span>{{ user ? user?.firstname : user?.lastname }}</span>
     <mat-icon>
         arrow_drop_down
     </mat-icon>
