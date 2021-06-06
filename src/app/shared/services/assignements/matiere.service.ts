@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
 import { BasicService } from "./basic.service";
 import { LoggingService } from "./login.service";
-import { matieres as matieresData } from 'src/dummy-data/matieres.data';
+//import { matieres as matieresData } from 'src/dummy-data/matieres.data';
 import { Matiere } from "../../model/assignements/matiere.model";
 
 @Injectable({
@@ -37,7 +37,7 @@ export class MatiereService extends BasicService {
         return forkJoin(professeursPromise);
     }
 
-    importMatieres(): Observable<any> {
+    /*importMatieres(): Observable<any> {
         const matieres: Matiere[] = []
         for(var i in matieresData) {
             const matiere = new Matiere();
@@ -47,6 +47,6 @@ export class MatiereService extends BasicService {
             matieres.push(matiere);
         }
         return this.addMatieres(matieres);
-    }
+    }*/
 
 }

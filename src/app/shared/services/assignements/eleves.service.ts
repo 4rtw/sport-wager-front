@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { LoggingService } from './login.service';
-import { elevesData } from '../../../../dummy-data/eleves.data';
+//import { elevesData } from '../../../../dummy-data/eleves.data';
 import { Eleve } from '../../model/assignements/eleve.model';
 import { BasicService } from './basic.service';
 
@@ -75,7 +75,7 @@ export class ElevesService extends BasicService {
     };
   }
 
-  importEleve():Observable<any> {
+  /*importEleve():Observable<any> {
     const ajoutElevePromises = [];
     elevesData.forEach((e) => {
       const eleve = new Eleve();
@@ -87,7 +87,7 @@ export class ElevesService extends BasicService {
       ajoutElevePromises.push(this.http.post(this.getUri(this.PATH), eleve))
     })
     return forkJoin(ajoutElevePromises);
-  }
+  }*/
 
 
 }

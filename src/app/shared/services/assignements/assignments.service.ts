@@ -4,7 +4,6 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { Assignment } from '../../model/assignements/assignment.model';
 import { LoggingService } from './login.service';
-import { assignmentsGeneres } from '../../../../dummy-data/assignments.data';
 import { Eleve } from '../../model/assignements/eleve.model';
 import { Matiere } from '../../model/assignements/matiere.model';
 import { ProfesseurService } from './professeur.service';
@@ -133,7 +132,7 @@ export class AssignmentsService {
 
   }
 
-  peuplerBD() {
+  /*peuplerBD() {
     assignmentsGeneres.forEach(a => {
       let nouvelAssignment = new Assignment();
       nouvelAssignment.nom = a.nom;
@@ -181,5 +180,5 @@ export class AssignmentsService {
   //     ajoutElevePromises.push(this.http.post(this.base_uri+'eleves', eleve))
   //   })
   //   return forkJoin(ajoutElevePromises);
-  // }
+  // }*/
 }

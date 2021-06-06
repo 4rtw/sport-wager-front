@@ -5,10 +5,14 @@ Confirm account         ok
 Mot de passe oublié     ok
 
 Improve code
+    fix-tslint          ok
     Subscriptions
     Handle errors
     Validation forms
     Pass email betwen reset password
     Design UI
+    Clean appmodule     ok
+    remove unused dir
 
+Interceptor
 

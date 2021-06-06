@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AssignmentsService } from './shared/services/assignements/assignments.service';
-import { AuthService } from './shared/services/assignements/auth.service';
-import { ElevesService } from './shared/services/assignements/eleves.service';
-import { ProfesseurService } from './shared/services/assignements/professeur.service';
 import { UrlService } from './shared/services/assignements/url.service';
 
 @Component({
@@ -17,22 +13,19 @@ export class AppComponent {
   title = 'Application de gestion des assignments';
   previousUrl: string = null;
   currentUrl: string = null;
-  constructor(private router:Router,
-              private assignmentsService:AssignmentsService,
-              private professeurService: ProfesseurService,
-              private eleveService: ElevesService) {
+  constructor(private router: Router) {
                 this.router.events.pipe(
                   filter((event) => event instanceof NavigationEnd)
                 ).subscribe((event: NavigationEnd) => {
                   this.previousUrl = this.currentUrl;
                   UrlService.setPreviousUrl(this.previousUrl);
                   this.currentUrl = event.url;
-                }); 
+                });
               }
 
-  
-  
-  peuplerBD() {
+
+
+  /*peuplerBD() {
     // version naive et simple
     //this.assignmentsService.peuplerBD();
 
@@ -50,13 +43,13 @@ export class AppComponent {
     });
   }
 
-  
+
 
   importerEleve() {
-    this.eleveService.importEleve() 
+    this.eleveService.importEleve()
     .subscribe(() => {
       console.log("Ajout eleve");
       this.router.navigate(["/home"], {replaceUrl:true});
     })
-  }
+  }*/
 }

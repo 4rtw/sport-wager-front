@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs'
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LocalStorageService {
     this.localStorage = window.localStorage;
   }
 
-  get(key: string):any{
+  get(key: string): any{
     if (this.isLocalStorageSupported) {
       return JSON.parse(this.localStorage.getItem(key));
     }

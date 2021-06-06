@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtService } from 'src/app/shared/services/jwt.service';
-import {User} from "../../../shared/model/user.model";
-import {AuthService} from "../../../shared/services/auth.service";
-import {MenuItem} from "primeng/api";
-import {Menu} from "primeng/menu";
+import {User} from '../../../shared/model/user.model';
+import {AuthService} from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -14,7 +12,7 @@ import {Menu} from "primeng/menu";
 export class UserMenuComponent implements OnInit {
 
   user: User;
-  hasImage: boolean = true;
+  hasImage = true;
   firstLetter: string;
 
   defaultImage;
@@ -26,35 +24,35 @@ export class UserMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user=this.jwtService.getDecodedUser();
-    if (this.user.image===''){
+    this.user = this.jwtService.getDecodedUser();
+    if (this.user.image === ''){
         this.hasImage = false;
     }
-    this.firstLetter = this.user.id ? this.user.firstname.charAt(0) : "";
+    this.firstLetter = this.user.id ? this.user.firstname.charAt(0) : '';
   }
 
-  logout(){
+  logout(): void{
     this.authService.logout().subscribe(
-        response=>{
-            //if successfull login
+        response => {
+            // if successfull login
             this.router.navigate(['/'])
                 .then(() => {
                     window.location.reload();
                 });
         },
-        error=>{
-            //if not successfull login
+        error => {
+            // if not successfull login
             console.log(error.message);
-            //TODO snackbar or else
+            // TODO snackbar or else
         }
     );
   }
 
-  navigateToLogin(){
-    this.router.navigate(["/login"]);
+  navigateToLogin(): void{
+    this.router.navigate(['/login']);
   }
 
-  navigateToSubscribe(){
+  navigateToSubscribe(): void{
     this.router.navigate(['/register']);
   }
 }

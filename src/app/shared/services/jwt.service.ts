@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import {LocalStorageService} from "./local-storage.service";
-import {User} from "../model/user.model";
+import {LocalStorageService} from './local-storage.service';
+import {User} from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class JwtService {
     }
   }
 
-  setToken(token: string):void{
+  setToken(token: string): void{
     if (token) {
       this.jwtToken = token;
       this.isLoggedIn = true;
@@ -42,7 +42,7 @@ export class JwtService {
   }
 
   isTokenExpired(): boolean{
-    const exp: number = this.decoded ? parseInt(this.decoded.exp) : null;
+    const exp: number = this.decoded ? parseInt(this.decoded.exp, 10) : null;
 
     if (exp) {
       return ((exp * 1000) - Date.now() < 5000);
@@ -57,15 +57,15 @@ export class JwtService {
   }
 
   getDecodedUser(): User{
-    var logedUser = new User();
+    const logedUser = new User();
     if (this.decoded){
       logedUser.email = this.decoded.email;
-      logedUser.id = parseInt(this.decoded.id);
+      logedUser.id = parseInt(this.decoded.id, 10);
       logedUser.firstname = this.decoded.firstname;
       logedUser.lastname = this.decoded.lastname;
       logedUser.phone = this.decoded.phone;
-      logedUser.image = "";
+      logedUser.image = '';
     }
-    return logedUser
+    return logedUser;
   }
 }

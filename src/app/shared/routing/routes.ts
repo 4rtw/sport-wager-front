@@ -3,11 +3,11 @@ import {LoginComponent} from "../../components/authentications/login/login.compo
 import {SportWagerComponent} from "../../sport-wager/sport-wager.component";
 import {WagerComponent} from "../../sport-wager/wager/wager.component";
 import {NgModule} from "@angular/core";
-import {RegisterComponent} from "../../components/authentications/register/register.component";
-import {ConfirmAccountComponent} from "../../components/authentications/confirm-account/confirm-account.component";
-import {ResetPasswordComponent} from "../../components/authentications/reset-password/reset-password.component";
-import {VerifyResetCodeComponent} from "../../components/authentications/verify-reset-code/verify-reset-code.component";
-import {ResetPasswordFinalStepComponent} from "../../components/authentications/reset-password-final-step/reset-password-final-step.component";
+import {RegisterComponent} from "../../components/authentications/RegisterComponents/register/register.component";
+import {ConfirmAccountComponent} from "../../components/authentications/RegisterComponents/confirm-account/confirm-account.component";
+import {ResetPasswordComponent} from "../../components/authentications/Password/reset-password/reset-password.component";
+import {VerifyResetCodeComponent} from "../../components/authentications/Password/verify-reset-code/verify-reset-code.component";
+import {ResetPasswordFinalStepComponent} from "../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component";
 
 const routes: Routes = [
     {

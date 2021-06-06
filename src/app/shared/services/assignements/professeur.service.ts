@@ -4,7 +4,7 @@ import { forkJoin, Observable, of } from "rxjs";
 import { Professeur } from "../../model/assignements/professeur.model";
 import { BasicService } from "./basic.service";
 import { LoggingService } from "./login.service";
-import { professeurs as professeursData } from 'src/dummy-data/professeurs.data';
+//import { professeurs as professeursData } from 'src/dummy-data/professeurs.data';
 import { MatiereService } from "./matiere.service";
 
 @Injectable({
@@ -34,7 +34,7 @@ export class ProfesseurService extends BasicService {
         return forkJoin(professeursPromise);
     }
 
-    importProfesseurs(): Observable<any> {
+    /*importProfesseurs(): Observable<any> {
         return of(this.matiereService.getMatiere().subscribe((matieres) => {
             var i=0;
             const professeurs: Professeur[] = []
@@ -52,7 +52,7 @@ export class ProfesseurService extends BasicService {
 
             });
         }));
-    }
+    }*/
 
     getProfesseursPagine(page:number, limit:number):Observable<any> {
         return this.http.get<Professeur[]>(this.getUri(ProfesseurService.PATH)+"?page="+page + "&limit="+limit);

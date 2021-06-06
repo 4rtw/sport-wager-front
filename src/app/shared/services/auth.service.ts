@@ -3,9 +3,9 @@ import {Router} from '@angular/router';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {JwtService} from './jwt.service';
-import {HttpClient} from "@angular/common/http";
-import {LocalStorageService} from "./local-storage.service";
-import {User} from "../model/user.model";
+import {HttpClient} from '@angular/common/http';
+import {LocalStorageService} from './local-storage.service';
+import {User} from '../model/user.model';
 
 
 @Injectable({
@@ -25,9 +25,9 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any>{
     const statusMessage = [];
-    return this.http.post(this.uri+'login', {email: email, password: password})
+    return this.http.post(this.uri + 'login', {email, password})
         .pipe(
-            map(x=>{
+            map(x => {
               // @ts-ignore
               statusMessage.push(x.status);
               // @ts-ignore
@@ -35,7 +35,7 @@ export class AuthService {
               // @ts-ignore
               return {message: statusMessage, data: x.data[0]};
             }),
-            tap(x=>{
+            tap(x => {
               const succed = this.persistenceManager.set('payload', x.data);
               if (succed) {
                 this.jwtService.setToken(x.data.access_token);
@@ -45,18 +45,18 @@ export class AuthService {
         );
   }
 
-  logout() : Observable<any>{
+  logout(): Observable<any>{
     const decoded = this.jwtService.decoded;
     const statusMessage = [];
 
     if (decoded){
-      return this.http.post<any>(this.uri+'logout',{email: decoded.email}).pipe(
-          map(x=>{
+      return this.http.post<any>(this.uri + 'logout', {email: decoded.email}).pipe(
+          map(x => {
             statusMessage.push(x.status);
             statusMessage.push(x.message);
             return {message: statusMessage};
           }),
-          tap(_=>{
+          tap(_ => {
             const succed = this.persistenceManager.remove('payload');
             if (succed) {
               this.jwtService.reset();
@@ -68,14 +68,13 @@ export class AuthService {
   }
 
   generateID(): number{
-      return parseInt(Date.now() + ( (Math.random()*100000).toFixed()));
+      return parseInt(Date.now() + ( (Math.random() * 100000).toFixed()), 10);
   }
 
-  //TODO register user
-  register(user:User): Observable<any>{
-      user.id = this.generateID()
+  register(user: User): Observable<any>{
+      user.id = this.generateID();
       const statusMessage = [];
-      return this.http.post(this.uri+'register', {
+      return this.http.post(this.uri + 'register', {
           id: user.id,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -83,69 +82,68 @@ export class AuthService {
           phone: user.phone,
           password: user.password
       }).pipe(
-          map(x=>{
-
+          map(x => {
+              // TODO register user
           }),
-          tap(_=>{
-              console.log("User registered");
+          tap(_ => {
+              console.log('User registered');
           }),
           catchError(this.handleError<any>())
       );
   }
 
   confirmAccount(email: string, code: string): Observable<any>{
-      return this.http.post(this.uri+'activate',{
-          email: email,
+      return this.http.post(this.uri + 'activate', {
+          email,
           activation_code: code
       }).pipe(
-          map(x=>{
-
+          map(x => {
+              // TODO register user
           }),
-          tap(_=>{
-              console.log("User confirmed");
+          tap(_ => {
+              console.log('User confirmed');
           }),
           catchError(this.handleError<any>())
       );
   }
 
-  //GET
   resetPassword(email: string): Observable<any>{
-      return this.http.get(this.uri+'forget-password/'+email).pipe(
-          map(x=>{
-                //TODO handle if no account
+      return this.http.get(this.uri + 'forget-password/' + email).pipe(
+          map(x => {
+                // TODO handle if no account
           }),
-          tap(_=>{
-              console.log("User confirmed");
-          }),
-          catchError(this.handleError<any>())
-      )
-  }
-
-  verifyResetCode(email: string, code:string):Observable<any>{
-      return this.http.post(this.uri+'verify-reset-code',{
-          email:email,
-          reset_code:code
-      }).pipe(
-          map(x=>{
-              //TODO handle if invalid code
-          }),
-          tap(_=>{
-              console.log("Code reçu");
+          tap(_ => {
+              console.log('User confirmed');
           }),
           catchError(this.handleError<any>())
       );
   }
 
-  setResetedPassword(email:string, password:string):Observable<any>{
-      return this.http.post(this.uri+'change-password',{
-          email:email,
-          new_password:password
+  verifyResetCode(email: string, code: string): Observable<any>{
+      return this.http.post(this.uri + 'verify-reset-code', {
+          email,
+          reset_code: code
       }).pipe(
-          map(x=>{
-              //TODO handle if invalid code
+          map(x => {
+              // TODO handle if invalid code
           }),
-          tap(_=>{
-              console.log("Mot de passe reçu");
+          tap(_ => {
+              console.log('Code reçu');
+          }),
+          catchError(this.handleError<any>())
+      );
+  }
+
+  setResetedPassword(email: string, password: string): Observable<any>{
+      return this.http.post(this.uri + 'change-password', {
+          email,
+          new_password: password
+      }).pipe(
+          map(x => {
+              // TODO handle if invalid code
+          }),
+          tap(_ => {
+              console.log('Mot de passe reçu');
           }),
           catchError(this.handleError<any>())
       );
@@ -156,8 +154,8 @@ export class AuthService {
       const payload = this.persistenceManager.get('payload');
       if (payload) {
         const email: string = this.jwtService.decoded.email;
-        const refresh_orb: string = payload.refresh_token;
-        return this.http.post<any>(this.tokenUri + 'refresh', {email, refresh_token: refresh_orb})
+        const refreshOrb: string = payload.refresh_token;
+        return this.http.post<any>(this.tokenUri + 'refresh', {email, refresh_token: refreshOrb})
             .pipe(
                 map(x => {
                   return {message: x.message, data: x.data[0]};
@@ -177,9 +175,9 @@ export class AuthService {
     return throwError(false);
   }
 
-  private handleError<T>() {
+      private handleError<T>(): any {
     return (e: any): Observable<T> => {
-      let result = e.error as T;
+      const result = e.error as T;
       console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));
       return of(result);
     };

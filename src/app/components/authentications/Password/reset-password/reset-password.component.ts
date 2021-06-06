@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
-import {AuthService} from "../../../shared/services/auth.service";
-import {Router} from "@angular/router";
+import {FormControl, Validators} from '@angular/forms';
+import {AuthService} from '../../../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class ResetPasswordComponent implements OnInit {
 
-  email=new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(
       private authService: AuthService,
@@ -20,14 +20,14 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  onSubmit(): void{
     this.authService.resetPassword(this.email.value)
         .subscribe(
-            response=>{
-              //TODO handle error
-              this.router.navigate(['verify-reset-code']).then(()=>location.reload());
+            response => {
+              // TODO handle error
+              this.router.navigate(['verify-reset-code']).then(() => location.reload());
 
-              //TODO pass email to next page -> verify-reset-code
+              // TODO pass email to next page -> verify-reset-code
             },
             error => {}
         );

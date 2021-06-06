@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
-import { Subscription, throwError} from "rxjs";
+import { Subscription, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { Subscription, throwError} from "rxjs";
 export class LoginComponent implements OnInit, OnDestroy {
 
   hide = true;
-  login_sub: Subscription;
+  loginSub: Subscription;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   showLoader = false;
@@ -27,48 +27,48 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.login_sub?.unsubscribe();
+    this.loginSub?.unsubscribe();
   }
 
   login(email, pass): void{
-    this.login_sub = this.authService
+    this.loginSub = this.authService
         .login(email, pass)
         .subscribe(
-        response=>{
-          if(response.data.access_token){
+        response => {
+          if (response.data.access_token){
 
-            this.router.navigate(["/sport-wager"])
-                .then(()=>{window.location.reload()});
+            this.router.navigate(['/sport-wager'])
+                .then(() => {window.location.reload(); });
             this.showLoader = false;
 
           }
 
           else
           {
-            //TODO handle Login error
-            throwError("Erreur d'authentification");
+            // TODO handle Login error
+            throwError('Erreur d\'authentification');
           }
         },
 
         error => {
           this.showLoader = false;
-          console.log("ato "+error.message);
+          console.log('ato ' + error.message);
         },
         );
   }
 
   onSubmit(): void{
-    this.login(this.email.value,this.password.value)
+    this.login(this.email.value, this.password.value);
   }
 
   //#region frontend
-  getPasswordErrorMessage() {
+  getPasswordErrorMessage(): string {
     if (this.password.hasError('required')) {
       return 'You must enter a value';
     }
   }
 
-  getErrorMessage() {
+  getErrorMessage(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
