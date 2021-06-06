@@ -4,6 +4,7 @@ import {SportWagerComponent} from "../../sport-wager/sport-wager.component";
 import {WagerComponent} from "../../sport-wager/wager/wager.component";
 import {NgModule} from "@angular/core";
 import {RegisterComponent} from "../../components/authentications/register/register.component";
+import {ConfirmAccountComponent} from "../../components/authentications/confirm-account/confirm-account.component";
 
 const routes: Routes = [
     {
@@ -18,6 +19,10 @@ const routes: Routes = [
     {
         path:"register",
         component: RegisterComponent,
+    },
+    {
+        path:"confirm-account",
+        component: ConfirmAccountComponent,
     },
     {
         path: "sport-wager",

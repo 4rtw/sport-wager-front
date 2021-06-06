@@ -93,6 +93,21 @@ export class AuthService {
       );
   }
 
+  confirmAccount(email: string, code: string): Observable<any>{
+      return this.http.post(this.uri+'activate',{
+          email: email,
+          activation_code: code
+      }).pipe(
+          map(x=>{
+
+          }),
+          tap(_=>{
+              console.log("User confirmed");
+          }),
+          catchError(this.handleError<any>())
+      );
+  }
+
   refreshToken(): Observable<any> {
     if (this.jwtService.isTokenExpired && this.jwtService.jwtToken) {
       const payload = this.persistenceManager.get('payload');

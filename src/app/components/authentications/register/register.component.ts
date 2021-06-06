@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
           }
 
           //when successfull
-          this.router.navigate(['/']).then(()=>location.reload());
+          this.router.navigate(['/confirm-account']).then(()=>location.reload());
         },
         error => {}
     );
