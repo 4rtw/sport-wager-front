@@ -31,19 +31,24 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+//#region Ando
+import {MenuModule} from 'primeng/menu';
+import {MenuItem} from 'primeng/api';
+//endregion
 
+
+/*
 import { RenduDirective } from './shared/services/assignements/rendu.directive';
 import { NonRenduDirective } from './shared/services/assignements/non-rendu.directive';
+import { AuthService } from "./shared/services/assignements/auth.service";
+import { ChildGuard } from "./shared/guard/child.guard";
+ */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { Routes, RouterModule } from '@angular/router';
-
-import { AuthGuard } from './shared/guard/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LoginComponent } from "./components/authentications/login/login.component";
-import { AuthService } from "./shared/services/assignements/auth.service";
-import { ChildGuard } from "./shared/guard/child.guard";
+
 import {MatTableModule} from '@angular/material/table';
 
 import {PanelModule} from 'primeng/panel';
@@ -62,8 +67,6 @@ import { ToolBarComponent } from './components/idk-mdrrrrr/tool-bar/tool-bar.com
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ModalComponent } from './components/idk-mdrrrrr/modal/modal.component';
-
-
 
 
 import { ForbiddenComponent } from './components/idk-mdrrrrr/forbidden/forbidden.component';
@@ -89,12 +92,21 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {CardModule} from 'primeng/card';
 import {PasswordModule} from 'primeng/password';
 import { RegisterComponent } from './components/authentications/register/register.component';
+import {MenubarModule} from "primeng/menubar";
+import {TieredMenuModule} from "primeng/tieredmenu";
+
+
+import {CheckboxModule} from 'primeng/checkbox';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {RippleModule} from "primeng/ripple";
+import { ConfirmAccountComponent } from './components/authentications/confirm-account/confirm-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NonRenduDirective,
     ConfirmDialogComponent,
     DynamicDialogComponent,
     ToolBarComponent,
@@ -103,67 +115,79 @@ import { RegisterComponent } from './components/authentications/register/registe
     UserMenuComponent,
     WagerComponent,
     SportWagerComponent,
-    RegisterComponent
+    RegisterComponent,
+    ConfirmAccountComponent
   ],
-  imports: [
-      AppRoutingModule,
-      BrowserModule,
-      BrowserAnimationsModule,
-      FormsModule,
-      ButtonModule,
-      SplitterModule,
-      InputTextModule,
-      CarouselModule,
-      InputNumberModule,
-      PasswordModule,
-      SelectButtonModule,
-      TabViewModule,
-      ScrollPanelModule,
-      BadgeModule,
-      CardModule,
-      PanelModule,
-      DividerModule,
-      VirtualScrollerModule,
-      AvatarModule,
-      AvatarGroupModule,
-      ReactiveFormsModule,
-      ScrollingModule,
-      MatButtonModule,
-      MatDividerModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      MatListModule,
-      MatCardModule,
-      MatCheckboxModule,
-      MatSlideToggleModule,
-      MatStepperModule,
-      MatSelectModule,
-      MatMenuModule,
-      MatTabsModule,
-      MatPaginatorModule,
-      MatSidenavModule,
-      MatToolbarModule,
-      MatButtonToggleModule,
-      DragDropModule,
-      MatDialogModule,
-      MatTableModule,
-      MatProgressSpinnerModule,
-      MatProgressBarModule,
-      MatRippleModule,
-      PanelModule,
-      ChartModule,
-      CalendarModule,
-      FileUploadModule,
-      MaterialFileInputModule,
-      BrowserModule,
-      MatGridListModule,
-      MatSnackBarModule,
-      CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dy528ddbe' } as CloudinaryConfiguration),
-      HttpClientModule
-  ],
+    imports: [
+        CheckboxModule,
+        RadioButtonModule,
+        InputTextareaModule,
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ButtonModule,
+        SplitterModule,
+        InputTextModule,
+        CarouselModule,
+        InputNumberModule,
+        PasswordModule,
+        SelectButtonModule,
+        TabViewModule,
+        ScrollPanelModule,
+        BadgeModule,
+        CardModule,
+        PanelModule,
+        DividerModule,
+        VirtualScrollerModule,
+        AvatarModule,
+        AvatarGroupModule,
+        ReactiveFormsModule,
+        ScrollingModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatListModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        MatStepperModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatTabsModule,
+        MatPaginatorModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatButtonToggleModule,
+        DragDropModule,
+        MatDialogModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+        MatProgressBarModule,
+        MatRippleModule,
+        PanelModule,
+        ChartModule,
+        CalendarModule,
+        FileUploadModule,
+        MaterialFileInputModule,
+        BrowserModule,
+        MatGridListModule,
+        MatSnackBarModule,
+        CloudinaryModule.forRoot({Cloudinary}, {cloud_name: 'dy528ddbe'} as CloudinaryConfiguration),
+        HttpClientModule,
+
+        //#region ando
+        MenuModule,
+        MenubarModule,
+        TieredMenuModule,
+        DropdownModule,
+        RippleModule,
+        //endregion
+    ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

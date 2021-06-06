@@ -5,6 +5,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {JwtService} from './jwt.service';
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageService} from "./local-storage.service";
+import {User} from "../model/user.model";
 
 
 @Injectable({
@@ -47,6 +48,7 @@ export class AuthService {
   logout() : Observable<any>{
     const decoded = this.jwtService.decoded;
     const statusMessage = [];
+
     if (decoded){
       return this.http.post<any>(this.uri+'logout',{email: decoded.email}).pipe(
           map(x=>{
@@ -63,7 +65,32 @@ export class AuthService {
           catchError(this.handleError<any>())
       );
     }
-    return throwError('Vous ne pouvez plus appelez logOut() car vous êtes déjà déconnectés');
+  }
+
+  generateID(): number{
+      return parseInt(Date.now() + ( (Math.random()*100000).toFixed()));
+  }
+
+  //TODO register user
+  register(user:User): Observable<any>{
+      user.id = this.generateID()
+      const statusMessage = [];
+      return this.http.post(this.uri+'register', {
+          id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          phone: user.phone,
+          password: user.password
+      }).pipe(
+          map(x=>{
+
+          }),
+          tap(_=>{
+              console.log("User registered");
+          }),
+          catchError(this.handleError<any>())
+      );
   }
 
   refreshToken(): Observable<any> {

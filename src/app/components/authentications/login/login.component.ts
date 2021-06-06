@@ -2,86 +2,20 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
-import {Subscription} from "rxjs";
+import { Subscription, throwError} from "rxjs";
 
-export class CheckUser {
-  loginError = "Login Failed: Your email or password is incorrect"
-  state = false;
-}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  //#region old
-  /*value4: string;
-  checkUser: CheckUser = new CheckUser();
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
-
-  showLoader = false;
-  //  email = new FormControl('vetsorakotobe@gmail.com', [Validators.required, Validators.email]);
-  // email = new FormControl('catleeslowan@gmail.com', [Validators.required, Validators.email]);
-    //  password = new FormControl('password', [Validators.required]);
-  
-
-  constructor(private authService:AuthService, private router:Router) {
-    const message = this.router.getCurrentNavigation()?.extras.state?.message;
-    if(message) {
-
-    }
-  }
-
-  ngOnInit(): void {
-
-  }
-
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getPasswordErrorMessage() {
-    if (this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-  }
-
-
-  doLogin() {
-    // si je suis pas loggé, je me loggue, sinon, si je suis
-    // loggé je me déloggue et j'affiche la page d'accueil
-    if((!this.email.value) || (!this.password.value)) return;
-      this.showLoader = true;
-      this.authService.logIn(this.email.value, this.password.value).subscribe((data) => {
-        if(data.auth)
-        {
-          localStorage.setItem("user",JSON.stringify(data.user));
-          this.router.navigate(["/sport-wager"]);
-          this.showLoader = false;
-        } 
-      }, (error) => {
-        this.showLoader = false;
-        this.checkUser.state = true;
-      });
-  }
-
-
-*/
- //endregion
 
   hide = true;
   login_sub: Subscription;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   showLoader = false;
-  checkUser: CheckUser = new CheckUser();
 
   constructor(
       private authService: AuthService,
@@ -99,24 +33,31 @@ export class LoginComponent implements OnInit, OnDestroy {
   login(email, pass): void{
     this.login_sub = this.authService
         .login(email, pass)
-        .subscribe(response=>{
+        .subscribe(
+        response=>{
           if(response.data.access_token){
-            this.router.navigate(["/sport-wager"]);
+
+            this.router.navigate(["/sport-wager"])
+                .then(()=>{window.location.reload()});
             this.showLoader = false;
+
           }
-          else{
-            this.router.navigate(["/login"]);
+
+          else
+          {
+            //TODO handle Login error
+            throwError("Erreur d'authentification");
           }
         },
+
         error => {
           this.showLoader = false;
-          this.checkUser.state = true;
-          console.log(error);
+          console.log("ato "+error.message);
         },
-            ()=>{});
+        );
   }
 
-  onSubmit($event:Event): void{
+  onSubmit(): void{
     this.login(this.email.value,this.password.value)
   }
 
@@ -125,6 +66,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.password.hasError('required')) {
       return 'You must enter a value';
     }
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   //#endregion
 }

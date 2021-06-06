@@ -1,1 +1,47 @@
-<p>register works!</p>
+<div class="p-m-6">
+    <p-card class="p-m-4">
+        <h5>Inscription</h5>
+        <div class="p-fluid p-formgrid p-grid">
+
+            <div class="p-field p-col-12 p-md-6">
+                <label for="nom">Nom</label>
+                <input id="nom" type="text" pInputText [formControl]="nom"/>
+            </div>
+
+            <div class="p-field p-col-12 p-md-6">
+                <label for="prenom">Prénom</label>
+                <input id="prenom" type="text" pInputText [formControl]="prenom"/>
+            </div>
+
+            <div class="p-field p-col-12">
+                <label for="email">Email</label>
+                <input id="email" type="text" pInputText [formControl]="email"/>
+            </div>
+
+            <div class="p-field p-col-6">
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" pInputText [formControl]="password" />
+            </div>
+
+            <div class="p-field p-col-6">
+                <label for="confirmPassword">Confirmer le mot de passe</label>
+                <input id="confirmPassword" type="password" pInputText [formControl]="confirmPassword"/>
+            </div>
+
+            <div class="p-field p-col-12 p-md-6">
+                <label for="phone">Téléphone</label>
+                <input id="phone" type="text" pInputText [formControl]="phone"/>
+            </div>
+
+            <div class="p-col-12 p-grid">
+                <div class="p-col-6">
+                    <button pButton pRipple type="button" label="Retourner à l'accueil" class="p-button-rounded"></button>
+                </div>
+                <div class="p-col-6">
+                    <button pButton pRipple type="submit" label="Inscription" class="p-button-rounded" (click)="onSubmit()"></button>
+                </div>
+            </div>
+
+        </div>
+    </p-card>
+</div>

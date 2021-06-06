@@ -3,6 +3,7 @@ import {LoginComponent} from "../../components/authentications/login/login.compo
 import {SportWagerComponent} from "../../sport-wager/sport-wager.component";
 import {WagerComponent} from "../../sport-wager/wager/wager.component";
 import {NgModule} from "@angular/core";
+import {RegisterComponent} from "../../components/authentications/register/register.component";
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: "login",
         component: LoginComponent,
+    },
+    {
+        path:"register",
+        component: RegisterComponent,
     },
     {
         path: "sport-wager",
