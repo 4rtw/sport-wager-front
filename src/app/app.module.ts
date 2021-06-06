@@ -40,7 +40,7 @@ import { ResetPasswordFinalStepComponent } from './components/authentications/Pa
 import { VerifyResetCodeComponent } from './components/authentications/Password/verify-reset-code/verify-reset-code.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
