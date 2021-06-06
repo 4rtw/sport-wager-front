@@ -4,4 +4,11 @@ Register                ok
 Confirm account         ok
 Mot de passe oublié     ok
 
+Improve code
+    Subscriptions
+    Handle errors
+    Validation forms
+    Pass email betwen reset password
+    Design UI
+
 
