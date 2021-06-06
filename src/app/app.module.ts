@@ -38,6 +38,9 @@ import { ConfirmAccountComponent } from './components/authentications/RegisterCo
 import { ResetPasswordComponent } from './components/authentications/Password/reset-password/reset-password.component';
 import { ResetPasswordFinalStepComponent } from './components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
 import { VerifyResetCodeComponent } from './components/authentications/Password/verify-reset-code/verify-reset-code.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -83,6 +86,9 @@ import { VerifyResetCodeComponent } from './components/authentications/Password/
         TieredMenuModule,
         DropdownModule,
         RippleModule,
+        InputTextModule,
+        MatButtonModule,
+        MatInputModule
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
