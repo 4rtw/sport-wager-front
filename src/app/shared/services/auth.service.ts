@@ -108,6 +108,49 @@ export class AuthService {
       );
   }
 
+  //GET
+  resetPassword(email: string): Observable<any>{
+      return this.http.get(this.uri+'forget-password/'+email).pipe(
+          map(x=>{
+                //TODO handle if no account
+          }),
+          tap(_=>{
+              console.log("User confirmed");
+          }),
+          catchError(this.handleError<any>())
+      )
+  }
+
+  verifyResetCode(email: string, code:string):Observable<any>{
+      return this.http.post(this.uri+'verify-reset-code',{
+          email:email,
+          reset_code:code
+      }).pipe(
+          map(x=>{
+              //TODO handle if invalid code
+          }),
+          tap(_=>{
+              console.log("Code reçu");
+          }),
+          catchError(this.handleError<any>())
+      );
+  }
+
+  setResetedPassword(email:string, password:string):Observable<any>{
+      return this.http.post(this.uri+'change-password',{
+          email:email,
+          new_password:password
+      }).pipe(
+          map(x=>{
+              //TODO handle if invalid code
+          }),
+          tap(_=>{
+              console.log("Mot de passe reçu");
+          }),
+          catchError(this.handleError<any>())
+      );
+  }
+
   refreshToken(): Observable<any> {
     if (this.jwtService.isTokenExpired && this.jwtService.jwtToken) {
       const payload = this.persistenceManager.get('payload');

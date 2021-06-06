@@ -35,10 +35,11 @@
                 <div class="submit-btn">
                     <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> 
                     <span>CONNEXION</span>
-                </div> 
+                </div>
             </button>
 
             <!-- TODO lien mot de passe oublié-->
+            <p-button label="Mot de passe oublié" styleClass="p-button-link" routerLink="/reset-password"></p-button>
 
         </mat-card>
     </form>

@@ -102,6 +102,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {RippleModule} from "primeng/ripple";
 import { ConfirmAccountComponent } from './components/authentications/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from './components/authentications/reset-password/reset-password.component';
+import { ResetPasswordFinalStepComponent } from './components/authentications/reset-password-final-step/reset-password-final-step.component';
+import { VerifyResetCodeComponent } from './components/authentications/verify-reset-code/verify-reset-code.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +119,10 @@ import { ConfirmAccountComponent } from './components/authentications/confirm-ac
     WagerComponent,
     SportWagerComponent,
     RegisterComponent,
-    ConfirmAccountComponent
+    ConfirmAccountComponent,
+    ResetPasswordComponent,
+    ResetPasswordFinalStepComponent,
+    VerifyResetCodeComponent
   ],
     imports: [
         CheckboxModule,

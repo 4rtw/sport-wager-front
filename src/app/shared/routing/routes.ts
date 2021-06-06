@@ -5,6 +5,9 @@ import {WagerComponent} from "../../sport-wager/wager/wager.component";
 import {NgModule} from "@angular/core";
 import {RegisterComponent} from "../../components/authentications/register/register.component";
 import {ConfirmAccountComponent} from "../../components/authentications/confirm-account/confirm-account.component";
+import {ResetPasswordComponent} from "../../components/authentications/reset-password/reset-password.component";
+import {VerifyResetCodeComponent} from "../../components/authentications/verify-reset-code/verify-reset-code.component";
+import {ResetPasswordFinalStepComponent} from "../../components/authentications/reset-password-final-step/reset-password-final-step.component";
 
 const routes: Routes = [
     {
@@ -23,6 +26,19 @@ const routes: Routes = [
     {
         path:"confirm-account",
         component: ConfirmAccountComponent,
+    },
+
+    {
+        path:"verify-reset-code",
+        component: VerifyResetCodeComponent,
+    },
+    {
+        path:"reset-password",
+        component: ResetPasswordComponent,
+    },
+    {
+        path:"set-password",
+        component: ResetPasswordFinalStepComponent,
     },
     {
         path: "sport-wager",
