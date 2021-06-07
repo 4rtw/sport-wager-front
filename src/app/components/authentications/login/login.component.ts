@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, throwError} from 'rxjs';
 
 @Component({
@@ -17,13 +17,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   password = new FormControl('', [Validators.required]);
   showLoader = false;
 
+  sub: Subscription;
+
   constructor(
       private authService: AuthService,
       private router: Router,
+      private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
+    this.sub = this.activatedRoute
+        .queryParams
+        .subscribe(params => {
+          // Defaults to 0 if no query param provided.
+          this.email.setValue(params['email']);
+        });
   }
 
   ngOnDestroy(): void {

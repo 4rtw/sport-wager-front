@@ -25,7 +25,7 @@ export class ResetPasswordComponent implements OnInit {
         .subscribe(
             response => {
               // TODO handle error
-              this.router.navigate(['verify-reset-code']).then(() => location.reload());
+              this.router.navigate(['verify-reset-code'], {queryParams: {email: this.email.value}}).then(() => location.reload());
 
               // TODO pass email to next page -> verify-reset-code
             },

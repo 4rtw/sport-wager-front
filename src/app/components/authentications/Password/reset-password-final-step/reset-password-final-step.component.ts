@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-reset-password-final-step',
@@ -15,13 +16,21 @@ export class ResetPasswordFinalStepComponent implements OnInit {
   confirmPassword = new FormControl('', [Validators.required]);
   hide = true;
   hideConfirm = true;
+  sub: Subscription;
 
   constructor(
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.sub = this.activatedRoute
+        .queryParams
+        .subscribe(params => {
+          // Defaults to 0 if no query param provided.
+          this.email.setValue(params['email']);
+        });
   }
 
   onSubmit(): void{
