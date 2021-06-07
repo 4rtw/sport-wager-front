@@ -3,7 +3,7 @@ import {Form, FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, throwError} from 'rxjs';
-import {Validator} from "../../../shared/Utils/Validator";
+import {Validator} from '../../../shared/Utils/Validator';
 
 @Component({
   selector: 'app-login',
