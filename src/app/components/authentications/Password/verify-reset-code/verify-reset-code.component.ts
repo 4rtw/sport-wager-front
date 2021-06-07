@@ -13,7 +13,7 @@ import {Validator} from "../../../../shared/Utils/Validator";
 export class VerifyResetCodeComponent implements OnInit {
 
     email = new FormControl('', [Validators.required, Validators.email]);
-    code = new FormControl('', [Validators.required, Validators.email]);
+    code = new FormControl('', [Validators.required]);
     sub: Subscription;
     validator = new Validator();
 

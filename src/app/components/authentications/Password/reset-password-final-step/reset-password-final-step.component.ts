@@ -40,7 +40,7 @@ export class ResetPasswordFinalStepComponent implements OnInit {
         .subscribe(
             response => {
               // TODO handle errors
-              this.router.navigate(['/login']).then(() => location.reload());
+              this.router.navigate(['/login'], {queryParams: {email: this.email.value}}).then(() => location.reload());
               },
             error => {}
         );

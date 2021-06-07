@@ -1,5 +1,5 @@
 <div class="flex-container" [ngClass]="{'loading': showLoader}">
-    <form ngForm #formLogin (submit)="onSubmit();">
+    <form ngForm #loginForm="ngForm" (submit)="onSubmit();">
         <mat-card class="example-card">
             <div #logo class="logo" >
                 <img src="../../../../assets/images/logo.png">
@@ -9,7 +9,7 @@
             <mat-form-field appearance="fill">
                 <mat-label style="color: #AA8F66">Entrer votre adresse email</mat-label>
                 <input matInput value="john@gmail.com" placeholder="pat@example.com" [formControl]="email" required autocomplete="" />
-                <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
             </mat-form-field>
 
             <!-- Field password-->
@@ -24,9 +24,7 @@
                 </button>
                 <!-- end password visible -->
 
-                <mat-error style="color: #CF021B" *ngIf="password.invalid">{{
-                    getPasswordErrorMessage()
-                    }}</mat-error>
+                <mat-error style="color: #CF021B" *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
             </mat-form-field>
 
             <!-- Button login-->
@@ -37,7 +35,6 @@
                 </div>
             </button>
 
-            <!-- TODO lien mot de passe oublié-->
             <p-button label="Mot de passe oublié" styleClass="p-button-link" routerLink="/reset-password"></p-button>
 
         </mat-card>

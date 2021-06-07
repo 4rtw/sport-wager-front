@@ -42,6 +42,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {SelectButtonModule} from "primeng/selectbutton";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
         InputTextModule,
         MatButtonModule,
         MatInputModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        SelectButtonModule
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
