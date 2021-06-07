@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {Validator} from '../../../../shared/Utils/Validator';
 
 @Component({
   selector: 'app-confirm-account',
@@ -13,6 +14,7 @@ export class ConfirmAccountComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
   code = new FormControl('', [Validators.required]);
+  validator = new Validator();
 
   sub: Subscription;
 
@@ -26,7 +28,6 @@ export class ConfirmAccountComponent implements OnInit {
     this.sub = this.activateRouter
         .queryParams
         .subscribe(params => {
-          // Defaults to 0 if no query param provided.
           this.email.setValue(params['email']);
         });
   }
@@ -42,6 +43,8 @@ export class ConfirmAccountComponent implements OnInit {
         );
   }
 
-  getErrorMessage(): void{}
+  getErrorMessage(form: FormControl): string{
+      return this.validator.getErrorMessage(form);
+  }
 
 }

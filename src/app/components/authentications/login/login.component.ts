@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Form, FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, throwError} from 'rxjs';
+import {Validator} from "../../../shared/Utils/Validator";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   showLoader = false;
+  validator = new Validator();
 
   sub: Subscription;
 
@@ -71,18 +73,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   //#region frontend
-  getPasswordErrorMessage(): string {
-    if (this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-  }
-
-  getErrorMessage(): string {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  getErrorMessage(form: FormControl): string {
+    return this.validator.getErrorMessage(form);
   }
   //#endregion
 }

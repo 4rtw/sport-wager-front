@@ -8,7 +8,7 @@ Improve code
     fix-tslint          ok
     Subscriptions
     Handle errors
-    Validation forms
+    Validation forms    ok
     Pass email between reset password        ok
     Design UI           ok
     Clean appmodule     ok

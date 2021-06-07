@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../../../shared/model/user.model';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {Router} from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Validator} from '../../../../shared/Utils/Validator';
 
 @Component({
   selector: 'app-register',
@@ -11,21 +12,23 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  // TODO field validation
+  // TODO validation password match
 
   hide = true;
   hideConfirm = true;
-  nom = new FormControl('', [Validators.required]);
-  prenom = new FormControl('', [Validators.required]);
+  nom = new FormControl('', [Validators.required, Validators.pattern('[A-Z ]*')]);
+  prenom = new FormControl('', [Validators.required, Validators.pattern('[A-Z ]*')]);
   password = new FormControl('', [Validators.required, Validators.minLength(5)]);
   phone = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  confirmPassword = new FormControl('', [Validators.required, Validators.pattern(this.password.value)]);
+  confirmPassword = new FormControl('', [Validators.required]);
+  validator = new Validator();
 
   constructor(
       private authService: AuthService,
-      private router: Router
-  ) { }
+      private router: Router,
+  ) {
+  }
 
   ngOnInit(): void {
 
@@ -66,7 +69,7 @@ export class RegisterComponent implements OnInit {
     this.registerUser(this.defineUser());
   }
 
-  getErrorMessage(): void{
-
+  getErrorMessage(form: FormControl): string{
+    return this.validator.getErrorMessage(form);
   }
 }

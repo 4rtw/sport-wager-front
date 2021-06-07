@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {Validator} from "../../../../shared/Utils/Validator";
 
 @Component({
   selector: 'app-verify-reset-code',
@@ -11,16 +12,17 @@ import {Subscription} from 'rxjs';
 })
 export class VerifyResetCodeComponent implements OnInit {
 
+    email = new FormControl('', [Validators.required, Validators.email]);
+    code = new FormControl('', [Validators.required, Validators.email]);
+    sub: Subscription;
+    validator = new Validator();
+
   // TODO add verify password
   constructor(
       private authService: AuthService,
       private router: Router,
       private activatedRoute: ActivatedRoute
   ) { }
-
-  email = new FormControl('', [Validators.required, Validators.email]);
-  code = new FormControl('', [Validators.required, Validators.email]);
-  sub: Subscription;
 
   ngOnInit(): void {
       this.sub = this.activatedRoute
@@ -46,6 +48,8 @@ export class VerifyResetCodeComponent implements OnInit {
           );
   }
 
-  getErrorMessage(): void{}
+  getErrorMessage(form: FormControl): string{
+      return this.validator.getErrorMessage(form);
+  }
 
 }

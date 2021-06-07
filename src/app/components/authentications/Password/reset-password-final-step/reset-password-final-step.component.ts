@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {Validator} from '../../../../shared/Utils/Validator';
 
 @Component({
   selector: 'app-reset-password-final-step',
@@ -17,6 +18,7 @@ export class ResetPasswordFinalStepComponent implements OnInit {
   hide = true;
   hideConfirm = true;
   sub: Subscription;
+  validator = new Validator();
 
   constructor(
       private authService: AuthService,
@@ -44,6 +46,8 @@ export class ResetPasswordFinalStepComponent implements OnInit {
         );
   }
 
-  getErrorMessage(): void{}
+  getErrorMessage(form: FormControl): string{
+      return this.validator.getErrorMessage(form);
+  }
 
 }

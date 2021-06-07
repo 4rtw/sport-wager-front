@@ -11,20 +11,20 @@
                 <mat-form-field appearance="fill" class="p-col-6">
                     <mat-label style="color: #AA8F66">Entrer votre nom</mat-label>
                     <input matInput placeholder="Doe" [formControl]="nom" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="nom.invalid">{{ getErrorMessage(nom) }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="p-col-6">
                     <mat-label style="color: #AA8F66">Entrer votre prénom</mat-label>
                     <input matInput placeholder="Pat" [formControl]="prenom" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="prenom.invalid">{{ getErrorMessage(prenom) }}</mat-error>
                 </mat-form-field>
 
 
                 <mat-form-field appearance="fill" class="p-col-12">
                     <mat-label style="color: #AA8F66">Entrer votre email</mat-label>
                     <input matInput placeholder="pat@example.com" [formControl]="email" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="p-col-6">
@@ -38,7 +38,7 @@
                     </button>
                     <!-- end password visible -->
 
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="password.invalid">{{ getErrorMessage(password) }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="p-col-6">
@@ -52,13 +52,13 @@
                     </button>
                     <!-- end password visible -->
 
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="confirmPassword.invalid">{{ getErrorMessage(confirmPassword) }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="p-col-12">
                     <mat-label style="color: #AA8F66">Entrer votre téléphone</mat-label>
                     <input matInput placeholder="+261xxxxxxx" [formControl]="phone" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="phone.invalid">{{ getErrorMessage(phone) }}</mat-error>
                 </mat-form-field>
 
                 <div class="p-col-12 p-grid p-d-flex p-jc-evenly p-mt-2">

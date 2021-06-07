@@ -11,13 +11,13 @@
                 <mat-form-field appearance="fill" class="p-col-12">
                     <mat-label style="color: #AA8F66">Confirmer pour</mat-label>
                     <input matInput placeholder="pat@exemple.com" [formControl]="email" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="p-col-12">
                     <mat-label style="color: #AA8F66">Votre code de confirmation</mat-label>
                     <input matInput [formControl]="code" required autocomplete="" />
-                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error style="color: #CF021B" *ngIf="code.invalid">{{ getErrorMessage(code) }}</mat-error>
                 </mat-form-field>
 
                 <div class="p-col-12 p-grid p-d-flex p-jc-evenly p-mt-2">
