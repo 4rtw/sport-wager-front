@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css', '../style-password.css']
 })
 export class ResetPasswordComponent implements OnInit {
 
@@ -32,5 +32,7 @@ export class ResetPasswordComponent implements OnInit {
             error => {}
         );
   }
+
+  getErrorMessage(): void{}
 
 }

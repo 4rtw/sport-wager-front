@@ -6,12 +6,9 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-verify-reset-code',
   templateUrl: './verify-reset-code.component.html',
-  styleUrls: ['./verify-reset-code.component.css']
+  styleUrls: ['./verify-reset-code.component.css', './../style-password.css']
 })
 export class VerifyResetCodeComponent implements OnInit {
-
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.email]);
 
   // TODO add verify password
   constructor(
@@ -19,11 +16,14 @@ export class VerifyResetCodeComponent implements OnInit {
       private router: Router
   ) { }
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  code = new FormControl('', [Validators.required, Validators.email]);
+
   ngOnInit(): void {
   }
 
   onSubmit(): void{
-      this.authService.verifyResetCode(this.email.value, this.password.value)
+      this.authService.verifyResetCode(this.email.value, this.code.value)
           .subscribe(
               response => {
                 // TODO handle errors
@@ -36,5 +36,7 @@ export class VerifyResetCodeComponent implements OnInit {
               }
           );
   }
+
+  getErrorMessage(): void{}
 
 }

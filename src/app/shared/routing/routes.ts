@@ -1,56 +1,56 @@
-import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "../../components/authentications/login/login.component";
-import {SportWagerComponent} from "../../sport-wager/sport-wager.component";
-import {WagerComponent} from "../../sport-wager/wager/wager.component";
-import {NgModule} from "@angular/core";
-import {RegisterComponent} from "../../components/authentications/RegisterComponents/register/register.component";
-import {ConfirmAccountComponent} from "../../components/authentications/RegisterComponents/confirm-account/confirm-account.component";
-import {ResetPasswordComponent} from "../../components/authentications/Password/reset-password/reset-password.component";
-import {VerifyResetCodeComponent} from "../../components/authentications/Password/verify-reset-code/verify-reset-code.component";
-import {ResetPasswordFinalStepComponent} from "../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component";
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from '../../components/authentications/login/login.component';
+import {SportWagerComponent} from '../../sport-wager/sport-wager.component';
+import {WagerComponent} from '../../sport-wager/wager/wager.component';
+import {NgModule} from '@angular/core';
+import {RegisterComponent} from '../../components/authentications/RegisterComponents/register/register.component';
+import {ConfirmAccountComponent} from '../../components/authentications/RegisterComponents/confirm-account/confirm-account.component';
+import {ResetPasswordComponent} from '../../components/authentications/Password/reset-password/reset-password.component';
+import {VerifyResetCodeComponent} from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
+import {ResetPasswordFinalStepComponent} from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
 
 const routes: Routes = [
     {
-        path: "",
-        redirectTo: "sport-wager",
-        pathMatch: "full"
+        path: '',
+        redirectTo: 'sport-wager',
+        pathMatch: 'full'
     },
     {
-        path: "login",
+        path: 'login',
         component: LoginComponent,
     },
     {
-        path:"register",
+        path: 'register',
         component: RegisterComponent,
     },
     {
-        path:"confirm-account",
+        path: 'confirm-account',
         component: ConfirmAccountComponent,
     },
 
     {
-        path:"verify-reset-code",
+        path: 'verify-reset-code',
         component: VerifyResetCodeComponent,
     },
     {
-        path:"reset-password",
+        path: 'reset-password',
         component: ResetPasswordComponent,
     },
     {
-        path:"set-password",
+        path: 'set-password',
         component: ResetPasswordFinalStepComponent,
     },
     {
-        path: "sport-wager",
+        path: 'sport-wager',
         component: SportWagerComponent,
         children: [
             {
-                path: "",
+                path: '',
                 component: WagerComponent
             },
         ]
     },
-    //region assignments
+    //#region assignments
     /*{
       path: "assignments",
       component: AssignmentsComponent,

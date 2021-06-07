@@ -7,12 +7,14 @@ import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css', './../../Password/style-password.css']
 })
 export class RegisterComponent implements OnInit {
 
   // TODO field validation
 
+  hide = true;
+  hideConfirm = true;
   nom = new FormControl('', [Validators.required]);
   prenom = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required, Validators.minLength(5)]);
@@ -62,5 +64,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void{
     this.registerUser(this.defineUser());
+  }
+
+  getErrorMessage(): void{
+
   }
 }

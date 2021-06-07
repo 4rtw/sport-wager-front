@@ -41,6 +41,7 @@ import { VerifyResetCodeComponent } from './components/authentications/Password/
 import { InputTextModule } from 'primeng/inputtext';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { MatInputModule } from '@angular/material/input';
         RippleModule,
         InputTextModule,
         MatButtonModule,
-        MatInputModule
+        MatInputModule,
+        MatProgressSpinnerModule
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

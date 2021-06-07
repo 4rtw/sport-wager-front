@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-confirm-account',
   templateUrl: './confirm-account.component.html',
-  styleUrls: ['./confirm-account.component.css']
+  styleUrls: ['./confirm-account.component.css', './../../Password/style-password.css']
 })
 export class ConfirmAccountComponent implements OnInit {
 
@@ -31,5 +31,7 @@ export class ConfirmAccountComponent implements OnInit {
             errors => {}
         );
   }
+
+  getErrorMessage(): void{}
 
 }

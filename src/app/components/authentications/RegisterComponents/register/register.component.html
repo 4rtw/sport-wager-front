@@ -1,47 +1,82 @@
-<div class="p-m-6">
-    <p-card class="p-m-4">
-        <h5>Inscription</h5>
-        <div class="p-fluid p-formgrid p-grid">
+<div class="page p-d-flex p-jc-center p-ai-center">
+    <div class="container">
+        <p-card class="content">
 
-            <div class="p-field p-col-12 p-md-6">
-                <label for="nom">Nom</label>
-                <input id="nom" type="text" pInputText [formControl]="nom"/>
+            <div #logo class="logo p-mb-3" >
+                <img src="../../../../assets/images/logo.png">
             </div>
 
-            <div class="p-field p-col-12 p-md-6">
-                <label for="prenom">Prénom</label>
-                <input id="prenom" type="text" pInputText [formControl]="prenom"/>
-            </div>
+            <div class="p-fluid p-formgrid p-grid">
 
-            <div class="p-field p-col-12">
-                <label for="email">Email</label>
-                <input id="email" type="text" pInputText [formControl]="email"/>
-            </div>
+                <mat-form-field appearance="fill" class="p-col-6">
+                    <mat-label style="color: #AA8F66">Entrer votre nom</mat-label>
+                    <input matInput placeholder="Doe" [formControl]="nom" required autocomplete="" />
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
 
-            <div class="p-field p-col-6">
-                <label for="password">Mot de passe</label>
-                <input id="password" type="password" pInputText [formControl]="password" />
-            </div>
+                <mat-form-field appearance="fill" class="p-col-6">
+                    <mat-label style="color: #AA8F66">Entrer votre prénom</mat-label>
+                    <input matInput placeholder="Pat" [formControl]="prenom" required autocomplete="" />
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
 
-            <div class="p-field p-col-6">
-                <label for="confirmPassword">Confirmer le mot de passe</label>
-                <input id="confirmPassword" type="password" pInputText [formControl]="confirmPassword"/>
-            </div>
 
-            <div class="p-field p-col-12 p-md-6">
-                <label for="phone">Téléphone</label>
-                <input id="phone" type="text" pInputText [formControl]="phone"/>
-            </div>
+                <mat-form-field appearance="fill" class="p-col-12">
+                    <mat-label style="color: #AA8F66">Entrer votre email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required autocomplete="" />
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
 
-            <div class="p-col-12 p-grid">
-                <div class="p-col-6">
-                    <button pButton pRipple type="button" label="Retourner à l'accueil" class="p-button-rounded"></button>
+                <mat-form-field appearance="fill" class="p-col-6">
+                    <mat-label style="color: #AA8F66">Entrer votre mot de passe</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required autocomplete="" />
+
+                    <!-- Password visible-->
+                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                    <!-- end password visible -->
+
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="p-col-6">
+                    <mat-label style="color: #AA8F66">Confirmez votre mot de passe</mat-label>
+                    <input matInput [type]="hideConfirm ? 'password' : 'text'" placeholder="" [formControl]="confirmPassword" required autocomplete="" />
+
+                    <!-- Password visible-->
+                    <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hideConfirm">
+                        <mat-icon>{{ hideConfirm ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                    <!-- end password visible -->
+
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="p-col-12">
+                    <mat-label style="color: #AA8F66">Entrer votre téléphone</mat-label>
+                    <input matInput placeholder="+261xxxxxxx" [formControl]="phone" required autocomplete="" />
+                    <mat-error style="color: #CF021B" *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+
+                <div class="p-col-12 p-grid p-d-flex p-jc-evenly p-mt-2">
+                    <button mat-raised-button class="p-col-5" type="button" routerLink="/">
+                        <div class="submit-btn">
+                            <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
+                            <span>RETOUR</span>
+                        </div>
+                    </button>
+                    <button mat-raised-button class="p-col-5" type="submit" (click)="onSubmit()">
+                        <div class="submit-btn">
+                            <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
+                            <span>INSCRIPTION</span>
+                        </div>
+                    </button>
                 </div>
-                <div class="p-col-6">
-                    <button pButton pRipple type="submit" label="Inscription" class="p-button-rounded" (click)="onSubmit()"></button>
-                </div>
-            </div>
 
-        </div>
-    </p-card>
+            </div>
+        </p-card>
+    </div>
 </div>
