@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import { Router} from '@angular/router';
 import { JwtService } from 'src/app/shared/services/jwt.service';
 import {User} from '../../../shared/model/user.model';
 import {AuthService} from '../../../shared/services/auth.service';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -11,7 +12,7 @@ import {AuthService} from '../../../shared/services/auth.service';
 })
 export class UserMenuComponent implements OnInit {
 
-  user: User;
+  user = new User();
   hasImage = true;
   firstLetter: string;
 
@@ -20,15 +21,15 @@ export class UserMenuComponent implements OnInit {
   constructor(
       private router: Router,
       private jwtService: JwtService,
-      private authService: AuthService
+      private authService: AuthService,
+      private userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    this.user = this.jwtService.getDecodedUser();
-    if (this.user.image === ''){
-        this.hasImage = false;
-    }
-    this.firstLetter = this.user.id ? this.user.firstname.charAt(0) : '';
+      this.userService.getUserLoggedIn().subscribe(
+          (data) => {
+              this.user = data;
+          });
   }
 
   logout(): void{

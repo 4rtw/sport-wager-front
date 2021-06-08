@@ -7,6 +7,7 @@
       <div #logo class="logo" >
         <img src="../../assets/images/logo.png">
       </div>
+
       <mat-nav-list>
         <hr/>
         <a  mat-list-item routerLinkActive #rlat="routerLinkActive" [routerLinkActiveOptions]="{exact: true}" [class]="rlat.isActive ? 'active' : ''" [routerLink]="'/assignments/dashboard'">
@@ -53,7 +54,9 @@
       </mat-nav-list>
 
     </mat-sidenav>
+
     <mat-sidenav-content>
+
       <mat-toolbar class="tp-toolbar">
         <mat-toolbar-row class="tp-toolbar-row">
           <div class="sidebar-toggle">
@@ -63,18 +66,23 @@
           </div>
 
           <span>
-            <input type="text" pInputText placeholder="Search" [(ngModel)]="value3" />
+            <input type="text" pInputText placeholder="Search" [(ngModel)]="searchString" />
             <p-button class="p-ml-2" icon="pi pi-search" (onClick)="load(2)" ></p-button>
-         </span>
+          </span>
+
+          <div *ngIf="logedUser.id != 0" class="p-grid p-flex-md-row p-ai-center">
+            <div class="p-text-light p-col">Crédit:</div>
+            <div class="p-text-right p-col">{{this.logedUser.betcredit}} MGA</div>
+          </div>
 
           <div style="display: flex; flex-direction: row;">
             <app-user-menu></app-user-menu>
           </div>
         </mat-toolbar-row>
+
       </mat-toolbar>
 
       <router-outlet></router-outlet>
-      <!-- <router-outlet name="eleves"></router-outlet> -->
 
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -1,17 +1,11 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import {LocalStorageService} from './local-storage.service';
-import {User} from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
-
-  isLoggedIn = false;
-  jwtToken: string;
-  userID = 0;
-  decoded: { [key: string]: string };
 
   constructor(private localStorageService: LocalStorageService) {
     const payload = this.localStorageService.get('payload');
@@ -22,6 +16,11 @@ export class JwtService {
     }
   }
 
+  isLoggedIn = false;
+  jwtToken: string;
+  userID = 0;
+  decoded: { [key: string]: string };
+
   setToken(token: string): void{
     if (token) {
       this.jwtToken = token;
@@ -30,7 +29,7 @@ export class JwtService {
   }
 
   decodeToken(): void{
-    const payload = this.localStorageService.get('payload');
+    this.localStorageService.get('payload');
     if (this.jwtToken) {
       this.decoded = jwt_decode<any>(this.jwtToken);
     }
@@ -54,18 +53,5 @@ export class JwtService {
     this.decoded = null;
     this.jwtToken = null;
     this.isLoggedIn = false;
-  }
-
-  getDecodedUser(): User{
-    const logedUser = new User();
-    if (this.decoded){
-      logedUser.email = this.decoded.email;
-      logedUser.id = parseInt(this.decoded.id, 10);
-      logedUser.firstname = this.decoded.firstname;
-      logedUser.lastname = this.decoded.lastname;
-      logedUser.phone = this.decoded.phone;
-      logedUser.image = '';
-    }
-    return logedUser;
   }
 }

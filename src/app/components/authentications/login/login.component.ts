@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Form, FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Subscription, throwError} from 'rxjs';
 import {Validator} from '../../../shared/Utils/Validator';
+import {JwtService} from '../../../shared/services/jwt.service';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +25,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
       private authService: AuthService,
+      private jwtService: JwtService,
       private router: Router,
-      private activatedRoute: ActivatedRoute
+      private activatedRoute: ActivatedRoute,
+      private userService: UserService,
   ) {
   }
 
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .queryParams
         .subscribe(params => {
           // Defaults to 0 if no query param provided.
-          this.email.setValue(params['email']);
+          this.email.setValue(params.email);
         });
   }
 
@@ -46,12 +50,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         .login(email, pass)
         .subscribe(
         response => {
+
           if (response.data.access_token){
-
-            this.router.navigate(['/sport-wager'])
+              this.router.navigate(['/sport-wager'])
                 .then(() => {window.location.reload(); });
-            this.showLoader = false;
-
+              this.showLoader = false;
           }
 
           else

@@ -14,7 +14,5 @@ export class Validator{
         if (formControl.hasError('pattern')){
             return 'Ce champ doit commencer par une lettre majuscule';
         }
-
-        return formControl.hasError('Saisie invalide') ? 'Vérifiez votre saisie' : '';
     }
 }

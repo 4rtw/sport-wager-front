@@ -29,18 +29,24 @@ export class AuthService {
         .pipe(
             map(x => {
               // @ts-ignore
-              statusMessage.push(x.status);
+                statusMessage.push(x.data[0]);
               // @ts-ignore
-              statusMessage.push(x.message);
+                statusMessage.push(x.errors);
+
+                console.log('Auth service' + '/login ');
+                console.log(statusMessage);
               // @ts-ignore
-              return {message: statusMessage, data: x.data[0]};
+                return {message: statusMessage, data: x.data[0]};
             }),
+
             tap(x => {
+
               const succed = this.persistenceManager.set('payload', x.data);
               if (succed) {
                 this.jwtService.setToken(x.data.access_token);
               }
             }),
+
             catchError(this.handleError<any>())
         );
   }
@@ -175,7 +181,7 @@ export class AuthService {
     return throwError(false);
   }
 
-      private handleError<T>(): any {
+  private handleError<T>(): any {
     return (e: any): Observable<T> => {
       const result = e.error as T;
       console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));

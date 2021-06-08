@@ -1,17 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import {JwtService} from '../shared/services/jwt.service';
-//region unused
-/*import { MatSidenav } from '@angular/material/sidenav';
-import { assignmentsGeneres } from 'src/dummy-data/assignments.data';
-import { Assignment, EtatAssignment } from '../shared/model/assignements/assignment.model';
-import { AssignmentsService } from '../shared/services/assignements/assignments.service';
-import { MatiereService } from '../shared/services/assignements/matiere.service';
-import { ProfesseurService } from '../shared/services/assignements/professeur.service';
-import { AuthService } from '../shared/services/assignements/auth.service';
-import { ElevesService } from '../shared/services/assignements/eleves.service';
-import {InputTextModule} from 'primeng/inputtext';*/
-//endregion
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../shared/model/user.model';
+import {UserService} from '../shared/services/user.service';
+
 @Component({
   selector: 'app-sport-wager',
   templateUrl: './sport-wager.component.html',
@@ -19,21 +10,17 @@ import {InputTextModule} from 'primeng/inputtext';*/
 })
 export class SportWagerComponent implements OnInit {
 
- /* @ViewChild("sidenav") sidenav: MatSidenav;
-  @ViewChild("logo") headerLogo: ElementRef;*/
-
+  logedUser = new User();
+  searchString: string;
 
   constructor(
       private router: Router,
-      private jwtService: JwtService
+      private route: ActivatedRoute,
+      private userService: UserService
   ) {}
-
-  value3: string;
 
   loading = [false, false, false, false];
 
-
-  showProgression = false;
   openedSidenav = true;
 
   load(index): void{
@@ -42,12 +29,17 @@ export class SportWagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.jwtService.decoded);
+      this.userService.getUserLoggedIn().subscribe(
+          data => {
+              this.logedUser = data;
+          });
+      setTimeout(() => {
+          console.warn(this.logedUser);
+      }, 2000);
   }
 
   logout(): void{
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
-
 }

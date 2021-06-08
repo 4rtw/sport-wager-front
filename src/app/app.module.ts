@@ -16,7 +16,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/authentications/login/login.component';
 import { PanelModule } from 'primeng/panel';
-import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { UserMenuComponent } from './components/UI/user-menu/user-menu.component';
 import { SportWagerComponent } from './sport-wager/sport-wager.component';
 import { WagerComponent } from './sport-wager/wager/wager.component';
@@ -41,8 +40,9 @@ import { VerifyResetCodeComponent } from './components/authentications/Password/
 import { InputTextModule } from 'primeng/inputtext';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {SelectButtonModule} from "primeng/selectbutton";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {TokenInterceptor} from './shared/interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -96,7 +96,7 @@ import {SelectButtonModule} from "primeng/selectbutton";
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: TokenInterceptor,
       multi: true
   }],
   bootstrap: [AppComponent],

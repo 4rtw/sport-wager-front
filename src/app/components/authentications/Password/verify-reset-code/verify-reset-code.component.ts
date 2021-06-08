@@ -3,7 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {Validator} from "../../../../shared/Utils/Validator";
+import {Validator} from '../../../../shared/Utils/Validator';
 
 @Component({
   selector: 'app-verify-reset-code',
