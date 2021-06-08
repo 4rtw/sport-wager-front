@@ -46,7 +46,6 @@ export class AuthService {
                 this.jwtService.setToken(x.data.access_token);
               }
             }),
-
             catchError(this.handleError<any>())
         );
   }
@@ -57,11 +56,6 @@ export class AuthService {
 
     if (decoded){
       return this.http.post<any>(this.uri + 'logout', {email: decoded.email}).pipe(
-          map(x => {
-            statusMessage.push(x.status);
-            statusMessage.push(x.message);
-            return {message: statusMessage};
-          }),
           tap(_ => {
             const succed = this.persistenceManager.remove('payload');
             if (succed) {
@@ -71,6 +65,11 @@ export class AuthService {
           catchError(this.handleError<any>())
       );
     }
+    else{
+        this.router.navigate(['/']).then(() => {location.reload(); });
+    }
+
+    return throwError('Vous ne pouvez plus appelez logOut() car vous êtes déjà déconnectés');
   }
 
   generateID(): number{
@@ -184,7 +183,7 @@ export class AuthService {
   private handleError<T>(): any {
     return (e: any): Observable<T> => {
       const result = e.error as T;
-      console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));
+      // console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));
       return of(result);
     };
   }

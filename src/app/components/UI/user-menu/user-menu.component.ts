@@ -28,7 +28,9 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
       this.userService.getUserLoggedIn().subscribe(
           (data) => {
-              this.user = data;
+              if (data instanceof User){
+                  this.user = data;
+              }
           });
   }
 
@@ -43,7 +45,7 @@ export class UserMenuComponent implements OnInit {
         },
         error => {
             // if not successfull login
-            console.log(error.message);
+            console.log(error);
             // TODO snackbar or else
         }
     );

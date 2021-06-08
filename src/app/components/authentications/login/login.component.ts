@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         error => {
           this.showLoader = false;
-          console.log('ato ' + error.message);
         },
         );
   }

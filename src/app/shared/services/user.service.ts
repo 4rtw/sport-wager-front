@@ -22,27 +22,35 @@ export class UserService {
       if (this.jwtService.decoded !== undefined){
           id = parseInt(this.jwtService.decoded.id, 10);
       }
-      console.log(id);
-      return this.http.get(this.uri + id).pipe(
-          map((x) => {
-              if (x.errors === []){
-                console.log(x);
-                return this.mapUser(x);
-            }
-            else {
-                return new User();
-            }
-        }),
-        catchError(this.handleError<any>())
-    );
+      if (id === 0){
+          return new Observable<any>().pipe(
+              map( x => {
+                  return new User();
+              })
+          );
+      }
+      else{
+          return this.http.get(this.uri + id).pipe(
+              map((x) => {
+                  if (x.errors.length === 0){
+                      return this.mapUser(x);
+                  }
+                  else {
+                      return new User();
+                  }
+              }),
+              catchError(this.handleError<any>())
+          );
+      }
+
   }
 
   private handleError<T>(): any {
       return (e: any): Observable<T> => {
           const result = e.error as T;
-          if (result){
+          /*if (result){
               console.error(result);
-          }
+          }*/
           return of(result);
       };
     }

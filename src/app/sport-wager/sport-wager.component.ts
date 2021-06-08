@@ -31,11 +31,12 @@ export class SportWagerComponent implements OnInit {
   ngOnInit(): void {
       this.userService.getUserLoggedIn().subscribe(
           data => {
-              this.logedUser = data;
+              if (data instanceof User){
+                  this.logedUser = data;
+              }else {
+                  this.logedUser = new User();
+              }
           });
-      setTimeout(() => {
-          console.warn(this.logedUser);
-      }, 2000);
   }
 
   logout(): void{
