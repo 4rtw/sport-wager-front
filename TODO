@@ -12,7 +12,7 @@ Improve code
     Pass email between reset password        ok
     Design UI           ok
     Clean appmodule     ok
-    remove unused dir
+    remove unused dir   ok
 
 Update model
 Interceptor
