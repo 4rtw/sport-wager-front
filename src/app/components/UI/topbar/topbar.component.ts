@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {User} from '../../../shared/model/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../shared/services/user.service';
@@ -14,6 +14,9 @@ export class TopbarComponent implements OnInit {
   openedSidenav = true;
   loading = [false, false, false, false];
   searchString: string;
+
+  state = true;
+  @Output() sidenavState = new EventEmitter<boolean>();
 
   constructor(
       private router: Router,
@@ -36,7 +39,10 @@ export class TopbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  toogleSidenav(): void{}
+  toogleSidenav(): void{
+    this.state = !this.state;
+    this.sidenavState.emit(this.state);
+  }
 
   load(index): void{
     this.loading[index] = true;

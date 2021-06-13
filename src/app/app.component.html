@@ -3,13 +3,13 @@
     <mat-sidenav #sidenav
                  mode="side"
                  class="tp-side-nav"
-                 opened="true"
+                 opened="{{state}}"
                  style="z-index: 1;">
         <app-sidenav></app-sidenav>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <app-topbar></app-topbar>
+        <app-topbar (sidenavState)="toogleSidenav($event)"></app-topbar>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

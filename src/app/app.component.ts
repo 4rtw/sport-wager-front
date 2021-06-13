@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy{
   searchString: string;
   routeSub: Subscription;
   authSub: Subscription;
+  state: boolean;
 
   constructor(
       private userIdle: UserIdleService,
@@ -65,5 +66,9 @@ export class AppComponent implements OnInit, OnDestroy{
   logout(): void{
         localStorage.removeItem('user');
         this.router.navigate(['/']).then(() => {location.reload(); });
+  }
+
+  toogleSidenav(data: boolean): void{
+      this.state = data;
   }
 }
