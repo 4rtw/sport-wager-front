@@ -1,29 +1,8 @@
-<div [matMenuTriggerFor]="menu" class="user-menu">
-
-    <div *ngIf="(user.id != 0)">
-        <p-avatar *ngIf="!hasImage" label="{{this.firstLetter}}" styleClass="p-mr-2" shape="circle"></p-avatar>
-        <p-avatar *ngIf="hasImage" image="https://image.shutterstock.com/image-photo/close-portrait-young-smiling-handsome-260nw-1180874596.jpg" styleClass="p-mr-2" shape="circle"></p-avatar>
-    </div>
-
-    <span>{{ (user.id != 0) ? user?.firstname + " " + user?.lastname + " " : "Connexion "}}</span>
-
-    <i class="pi pi-angle-down"></i>
-
+<div [matMenuTriggerFor]="menu" class="user-menu p-ai-center">
+    <button pButton pRipple  type="button" label='{{ (user.id != 0) ? user?.firstname + " " : "Connexion "}}' class="p-button-rounded p-button-info p-button-text"></button>
 </div>
 <!-- </button> -->
-<mat-menu  #menu="matMenu">
-    <button *ngIf="(user.id == 0)" mat-menu-item (click)="navigateToSubscribe()">
-        <mat-icon>how_to_reg</mat-icon>
-        <span>S'inscrire</span>
-    </button>
-    <button *ngIf="(user.id == 0)" mat-menu-item (click)="navigateToLogin()">
-        <mat-icon>login</mat-icon>
-        <span>Se connecter</span>
-    </button>
-    <button *ngIf="(user.id != 0)" mat-menu-item (click)="logout()">
-        <mat-icon>power_settings_new</mat-icon>
-        <span>Déconnexion</span>
-    </button>
-
-
+<mat-menu  #menu="matMenu" overlapTrigger="false" (click)="$event.stopPropagation()" style="width: 500px; border: black solid">
+    <app-anonymous-user-menu *ngIf="user.id === 0" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"></app-anonymous-user-menu>
+    <app-account-menu *ngIf="user.id !== 0" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"></app-account-menu>
 </mat-menu>

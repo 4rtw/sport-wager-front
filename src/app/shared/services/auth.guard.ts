@@ -8,7 +8,11 @@ import {JwtService} from './jwt.service';
     providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router, private jwtService: JwtService) {
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private jwtService: JwtService
+    ) {
     }
 
     canActivate(
@@ -22,7 +26,7 @@ export class AuthGuard implements CanActivate {
                 return true;
             }
         } else {
-            return this.router.navigate(['/login']);
+            return this.router.navigate(['/']);
         }
     }
 }

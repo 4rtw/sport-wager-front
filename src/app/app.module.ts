@@ -14,11 +14,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { MenuModule } from 'primeng/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoginComponent } from './components/authentications/login/login.component';
 import { PanelModule } from 'primeng/panel';
 import { UserMenuComponent } from './components/UI/user-menu/user-menu.component';
-import { SportWagerComponent } from './sport-wager/sport-wager.component';
-import { WagerComponent } from './sport-wager/wager/wager.component';
+import { WagerComponent } from './components/application/wager/wager.component';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
@@ -43,19 +41,29 @@ import { MatInputModule } from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TokenInterceptor} from './shared/interceptor/token.interceptor';
+import { TopbarComponent } from './components/UI/topbar/topbar.component';
+import { SidenavComponent } from './components/UI/sidenav/sidenav.component';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import { AccountMenuComponent } from './components/UI/user-menu/account-menu/account-menu.component';
+import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-user-menu/anonymous-user-menu.component';
+import {ToastModule} from 'primeng/toast';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     UserMenuComponent,
     WagerComponent,
-    SportWagerComponent,
     RegisterComponent,
     ConfirmAccountComponent,
     ResetPasswordComponent,
     ResetPasswordFinalStepComponent,
-    VerifyResetCodeComponent
+    VerifyResetCodeComponent,
+    TopbarComponent,
+    SidenavComponent,
+    AccountMenuComponent,
+    AnonymousUserMenuComponent
   ],
     imports: [
         AppRoutingModule,
@@ -92,7 +100,11 @@ import {TokenInterceptor} from './shared/interceptor/token.interceptor';
         MatButtonModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        SelectButtonModule
+        SelectButtonModule,
+        SplitButtonModule,
+        ToastModule,
+        ProgressSpinnerModule,
+        MatDialogModule,
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

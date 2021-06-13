@@ -13,6 +13,7 @@ Improve code
     Design UI           ok
     Clean appmodule     ok
     remove unused dir   ok
+    rework app structure
 
 Update model
 Interceptor

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from '../model/user.model';
 import {JwtService} from './jwt.service';
 import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -32,6 +32,7 @@ export class UserService {
       else{
           return this.http.get(this.uri + id).pipe(
               map((x) => {
+                  // @ts-ignore
                   if (x.errors.length === 0){
                       return this.mapUser(x);
                   }
@@ -39,6 +40,11 @@ export class UserService {
                       return new User();
                   }
               }),
+              tap(
+                  x => {
+                      localStorage.setItem('loggedUser', JSON.stringify(x));
+                  }
+              ),
               catchError(this.handleError<any>())
           );
       }

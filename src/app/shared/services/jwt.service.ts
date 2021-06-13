@@ -11,12 +11,10 @@ export class JwtService {
     const payload = this.localStorageService.get('payload');
     if (payload) {
       this.jwtToken = payload.access_token;
-      this.isLoggedIn = true;
       this.decodeToken();
     }
   }
 
-  isLoggedIn = false;
   jwtToken: string;
   userID = 0;
   decoded: { [key: string]: string };
@@ -24,7 +22,6 @@ export class JwtService {
   setToken(token: string): void{
     if (token) {
       this.jwtToken = token;
-      this.isLoggedIn = true;
     }
   }
 
@@ -42,7 +39,6 @@ export class JwtService {
 
   isTokenExpired(): boolean{
     const exp: number = this.decoded ? parseInt(this.decoded.exp, 10) : null;
-
     if (exp) {
       return ((exp * 1000) - Date.now() < 5000);
     }
@@ -52,6 +48,5 @@ export class JwtService {
   reset(): void{
     this.decoded = null;
     this.jwtToken = null;
-    this.isLoggedIn = false;
   }
 }

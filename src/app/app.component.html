@@ -1,2 +1,15 @@
-<router-outlet></router-outlet>
+<p-toast position="bottom-left"></p-toast>
+<mat-sidenav-container style="min-height: 95vh;">
+    <mat-sidenav #sidenav
+                 mode="side"
+                 class="tp-side-nav"
+                 opened="true"
+                 style="z-index: 1;">
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
 
+    <mat-sidenav-content>
+        <app-topbar></app-topbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

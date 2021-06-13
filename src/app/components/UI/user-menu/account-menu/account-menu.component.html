@@ -1,0 +1,20 @@
+<div style="width: 270px; margin: auto">
+    <p-card header="{{user.lastname}}" subheader="{{user.firstname}}" [style]="{margin: 'auto', width: '260px'}" styleClass="p-card-shadow">
+        <div class="p-d-flex p-jc-center p-grid">
+            <img alt="Card" src="assets/images/default-avatar.png" class="custom-avatar">
+        </div>
+        <ng-template pTemplate="body">
+            <div class="p-d-flex p-mt-2 p-flex-column">
+                <button pButton pRipple type="button" label="Voir le profile" icon="pi pi-user" class="p-button-rounded p-button-info p-mb-2"></button>
+                <button *ngIf="showButtonLogoutAndNoLoader" (click)="logout()" pButton pRipple type="button" label="Déconnexion" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined"></button>
+
+                <div *ngIf="!showButtonLogoutAndNoLoader" class="p-fluid p-jc-center">
+                    <div style="width: fit-content; margin: auto">
+                        <p-progressSpinner [style]="{width: '30px', height: '30px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+

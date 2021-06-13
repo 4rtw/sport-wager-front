@@ -1,9 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router} from '@angular/router';
 import { JwtService } from 'src/app/shared/services/jwt.service';
 import {User} from '../../../shared/model/user.model';
-import {AuthService} from '../../../shared/services/auth.service';
-import {UserService} from '../../../shared/services/user.service';
+import {MenuItem} from 'primeng/api';
+import {UserService} from "../../../shared/services/user.service";
 
 @Component({
   selector: 'app-user-menu',
@@ -14,48 +14,23 @@ export class UserMenuComponent implements OnInit {
 
   user = new User();
   hasImage = true;
-  firstLetter: string;
+  items: MenuItem[];
 
   defaultImage;
 
   constructor(
       private router: Router,
       private jwtService: JwtService,
-      private authService: AuthService,
-      private userService: UserService,
+      private userService: UserService
   ) { }
 
-  ngOnInit(): void {
-      this.userService.getUserLoggedIn().subscribe(
-          (data) => {
-              if (data instanceof User){
-                  this.user = data;
-              }
-          });
-  }
-
-  logout(): void{
-    this.authService.logout().subscribe(
-        response => {
-            // if successfull login
-            this.router.navigate(['/'])
-                .then(() => {
-                    window.location.reload();
-                });
-        },
-        error => {
-            // if not successfull login
-            console.log(error);
-            // TODO snackbar or else
+    ngOnInit(): void {
+    this.userService.getUserLoggedIn().subscribe(
+        data => {
+          if (data instanceof User){
+            this.user = data;
+          }
         }
     );
-  }
-
-  navigateToLogin(): void{
-    this.router.navigate(['/login']);
-  }
-
-  navigateToSubscribe(): void{
-    this.router.navigate(['/register']);
   }
 }
