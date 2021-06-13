@@ -6,6 +6,7 @@ import {UserIdleService} from 'angular-user-idle';
 import {JwtService} from './shared/services/jwt.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from './shared/services/auth.service';
+import {NbaService} from "./shared/services/nba.service";
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,6 @@ export class AppComponent implements OnInit, OnDestroy{
       private primengConfig: PrimeNGConfig,
       private jwtService: JwtService,
       private authService: AuthService,
-      public dialog: MatDialog,
   ) {}
 
   openedSidenav = true;

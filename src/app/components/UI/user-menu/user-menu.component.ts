@@ -3,7 +3,7 @@ import { Router} from '@angular/router';
 import { JwtService } from 'src/app/shared/services/jwt.service';
 import {User} from '../../../shared/model/user.model';
 import {MenuItem} from 'primeng/api';
-import {UserService} from "../../../shared/services/user.service";
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-user-menu',

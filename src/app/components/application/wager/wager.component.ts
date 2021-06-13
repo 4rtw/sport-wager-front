@@ -140,8 +140,5 @@ export class WagerComponent implements OnInit {
 }
 
     ngOnInit(): void {
-      /*this.productService.getProductsSmall().then(products => {
-			this.products = products;
-		});*/
   }
 }

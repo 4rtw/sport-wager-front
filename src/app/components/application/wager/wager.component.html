@@ -3,44 +3,7 @@
 
         <!-- #region listParis -->
         <div class="p-col-7">
-            <div class="box">
-                <div class="p-grid p-flex-column">
-                    <div class="p-col">
-                        <div class="box">
-                            <p-panel header="Football">
-                                <ng-template pTemplate="icons">
-                                    <i class="pi pi-bell p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
-                                       value="45"></i>
-                                </ng-template>
-                                <p-virtualScroller [value]="responsiveOptions" scrollHeight="800px">
-                                        <ng-template let-product pTemplate="item" let-i="index">
-                                            <div class="product-item">
-                                                <div class="image-container">
-                                                    <img src="../../assets/images/bracelet.jpg" class="product-image" />
-                                                </div>
-                                                <div class="product-list-detail">
-                                                    <h5 class="p-mb-2">{{product.equipe}}</h5>
-                                                    <i class="pi pi-tag product-category-icon"></i>
-                                                    <span class="product-category">{{product.cat}}</span>
-                                                </div>
-                                                <div class="center">
-                                                    <p-selectButton [options]="product.cote" name="index" id="index" [(ngModel)]="value2"
-                                                                    multiple="multiple" optionLabel="cote" optionValue="value"></p-selectButton>
-                                                </div>
-                                                <div class="product-list-action">
-                                                    <h6 class="p-mb-2">{{product.heure}}</h6>
-                                                    <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product}}</span> -->
-                                                    <span [class]="'product-badge '">{{product.date}}</span>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-
-                                </p-virtualScroller>
-                            </p-panel>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <router-outlet></router-outlet>
         </div>
         <!-- #endergion -->
 

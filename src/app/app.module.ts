@@ -49,6 +49,9 @@ import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-
 import {ToastModule} from 'primeng/toast';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NbaMatchesComponent } from './components/application/nba/nba-matches/nba-matches.component';
+import {TagModule} from "primeng/tag";
+import {SkeletonModule} from "primeng/skeleton";
 
 @NgModule({
   declarations: [
@@ -63,7 +66,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TopbarComponent,
     SidenavComponent,
     AccountMenuComponent,
-    AnonymousUserMenuComponent
+    AnonymousUserMenuComponent,
+    NbaMatchesComponent
   ],
     imports: [
         AppRoutingModule,
@@ -105,6 +109,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         ToastModule,
         ProgressSpinnerModule,
         MatDialogModule,
+        TagModule,
+        SkeletonModule,
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
