@@ -39,13 +39,13 @@ export class AppComponent implements OnInit, OnDestroy{
           params => {
                 if (params.connection === 'success'){
                     this.messageService.add({severity: 'success', summary: 'Authentification', detail: 'Vous êtes maintenant connéctés' });
+                    setTimeout(() => this.router.navigate(['/']), 1000);
                 }
 
                 if (params.logout === 'success'){
                     this.messageService.add({severity: 'success', summary: 'Déconnection', detail: 'Vous êtes maintenant déconnéctés' });
+                    setTimeout(() => this.router.navigate(['/']), 1000);
                 }
-
-                setTimeout(() => this.router.navigate(['/']), 1000);
 
                 this.handleUserIdle();
           });
