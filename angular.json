@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "assignment-app": {
+    "sport-wager": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/assignment-app",
+            "outputPath": "dist/sport-wager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "assignment-app:build"
+            "browserTarget": "sport-wager:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "assignment-app:build:production"
+              "browserTarget": "sport-wager:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "assignment-app:build"
+            "browserTarget": "sport-wager:build"
           }
         },
         "test": {
@@ -119,16 +119,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "assignment-app:serve"
+            "devServerTarget": "sport-wager:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "assignment-app:serve:production"
+              "devServerTarget": "sport-wager:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "assignment-app"
+  "defaultProject": "sport-wager"
 }
