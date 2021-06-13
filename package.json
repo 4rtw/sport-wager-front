@@ -2,7 +2,7 @@
   "name": "sport-wager",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "node app.js",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
