@@ -34,19 +34,9 @@ export class TopbarComponent implements OnInit {
     );
   }
 
-  logout(): void{
-    localStorage.removeItem('user');
-    this.router.navigate(['/login']);
-  }
-
   toogleSidenav(): void{
     this.state = !this.state;
     this.sidenavState.emit(this.state);
-  }
-
-  load(index): void{
-    this.loading[index] = true;
-    setTimeout(() => this.loading[index] = false, 1000);
   }
 
 }

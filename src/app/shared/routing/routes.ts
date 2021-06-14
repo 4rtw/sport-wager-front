@@ -6,7 +6,7 @@ import {ConfirmAccountComponent} from '../../components/authentications/Register
 import {ResetPasswordComponent} from '../../components/authentications/Password/reset-password/reset-password.component';
 import {VerifyResetCodeComponent} from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
 import {ResetPasswordFinalStepComponent} from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
-import {NbaMatchesComponent} from "../../components/application/nba/nba-matches/nba-matches.component";
+import {NbaMatchesComponent} from '../../components/application/nba/nba-matches/nba-matches.component';
 
 const routes: Routes = [
     {

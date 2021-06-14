@@ -1,3 +1,11 @@
 .status-final{
     color: #0a4438;
 }
+.example-viewport {
+    height: 800px;
+    width: 100%;
+}
+
+.example-item {
+    height: 50px;
+}

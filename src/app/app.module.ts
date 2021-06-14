@@ -50,8 +50,9 @@ import {ToastModule} from 'primeng/toast';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NbaMatchesComponent } from './components/application/nba/nba-matches/nba-matches.component';
-import {TagModule} from "primeng/tag";
-import {SkeletonModule} from "primeng/skeleton";
+import {TagModule} from 'primeng/tag';
+import {SkeletonModule} from 'primeng/skeleton';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import {SkeletonModule} from "primeng/skeleton";
         MatDialogModule,
         TagModule,
         SkeletonModule,
+        CalendarModule,
     ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
