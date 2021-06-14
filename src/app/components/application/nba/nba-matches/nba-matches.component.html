@@ -6,10 +6,12 @@
                 <p-panel header="Basketball">
 
                     <ng-template pTemplate="header">
-                            <p-calendar [showIcon]="true" [(ngModel)]="date" (onSelect)="onSelectedDate($event)" inputId="basic"></p-calendar>
+                        <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')" class="p-button-rounded"></button>
+                            <p-calendar #calendar [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date" (onSelect)="onSelectedDate($event)" inputId="basic"></p-calendar>
+                        <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')" class="p-button-rounded"></button>
                     </ng-template>
                     <ng-template pTemplate="icons">
-                        <i class="pi pi-bell p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
+                        <i class="pi pi-table p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
                            value="{{matches.length}}"></i>
                     </ng-template>
 
@@ -17,6 +19,16 @@
 
                         <div>
                             <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
+
+                                <div *ngIf="loading">
+                                    <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                                </div>
+
                                 <div *cdkVirtualFor="let match of matches;">
 
                                     <!-- eto -->

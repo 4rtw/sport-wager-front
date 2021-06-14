@@ -4,9 +4,7 @@ import {ConfirmationService, MessageService, PrimeNGConfig} from 'primeng/api';
 import {Subscription} from 'rxjs';
 import {UserIdleService} from 'angular-user-idle';
 import {JwtService} from './shared/services/jwt.service';
-import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from './shared/services/auth.service';
-import {NbaService} from "./shared/services/nba.service";
 
 @Component({
   selector: 'app-root',

@@ -70,4 +70,8 @@ export class AnonymousUserMenuComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.loginSub.unsubscribe();
     }
+
+    navigateToRegister(): void{
+      this.router.navigate(['/register']).then(() => {location.reload(); });
+    }
 }

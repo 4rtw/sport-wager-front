@@ -1,7 +1,8 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NbaService} from '../../../../shared/services/nba.service';
 import {NbaGame} from '../../../../shared/model/nba-game';
 import {Subscription} from 'rxjs';
+import {Calendar} from 'primeng/calendar';
 @Component({
   selector: 'app-nba-matches',
   templateUrl: './nba-matches.component.html',
@@ -14,6 +15,9 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
   cote = 0;
   date = new Date();
   value1;
+  loading: boolean;
+
+  @ViewChild('calendar') calendar: Calendar;
 
   constructor(
       private nbaService: NbaService,
@@ -21,6 +25,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.getMatches(this.date);
   }
 
@@ -72,23 +77,27 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
   }
 
   getMatches(date: Date): void {
+    this.matches = [];
+    this.loading = true;
     this.matchesSub = this.nbaService.getMatches(this.formatDate(date)).subscribe(
         data => {
           this.matches = data;
-          console.log(data);
+          this.calendar.updateInputfield();
           this.changeDetector.detectChanges();
-
-          this.nbaService.getRefreshNeeded$().subscribe(
-              next => {
-              }
-          );
-        },
-        error => {},
+          this.loading = false;
+        }
     );
   }
 
   onSelectedDate($event: any): void{
     this.getMatches($event);
+  }
+
+  clickPreviousOrNext(sens: string): void{
+    let sign = 1;
+    sens === 'next' ? sign = 1 : sign = -1;
+    this.date.setDate(this.date.getDate() + sign);
+    this.getMatches(this.date);
   }
 
 }
