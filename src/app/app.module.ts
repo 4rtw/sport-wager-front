@@ -68,7 +68,7 @@ import {CalendarModule} from 'primeng/calendar';
     SidenavComponent,
     AccountMenuComponent,
     AnonymousUserMenuComponent,
-    NbaMatchesComponent
+    NbaMatchesComponent,
   ],
     imports: [
         AppRoutingModule,

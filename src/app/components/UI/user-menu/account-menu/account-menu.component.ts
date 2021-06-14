@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../../../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {User} from '../../../../shared/model/user.model';
 import {JwtService} from '../../../../shared/services/jwt.service';
 import {UserService} from '../../../../shared/services/user.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-account-menu',
   templateUrl: './account-menu.component.html',
   styleUrls: ['./account-menu.component.css']
 })
-export class AccountMenuComponent implements OnInit {
+export class AccountMenuComponent implements OnInit, OnDestroy {
 
     showButtonLogoutAndNoLoader = true;
     user = new User();
+    userSub: Subscription;
 
   constructor(
       private authService: AuthService,
@@ -23,7 +25,7 @@ export class AccountMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.userService.getUserLoggedIn().subscribe(
+      this.userSub = this.userService.getUserLoggedIn().subscribe(
           data => {
               if (data instanceof User){
                   this.user = data;
@@ -35,15 +37,19 @@ export class AccountMenuComponent implements OnInit {
   logout(): void{
       this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
       this.authService.logout().subscribe(
-        response => {
+        _ => {
           // if successfull logout
             this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
             this.router.navigate(['/'], { queryParams: { logout: 'success'}})
               .then(() => {
-                window.location.reload();
+                location.reload();
               });
         }
     );
   }
+
+    ngOnDestroy(): void {
+      this.userSub.unsubscribe();
+    }
 
 }

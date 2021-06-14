@@ -36,11 +36,11 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: NbaMatchesComponent
+                component: NbaMatchesComponent,
             },
             {
                 path: 'nba',
-                component: NbaMatchesComponent
+                component: NbaMatchesComponent,
             }
         ]
     },

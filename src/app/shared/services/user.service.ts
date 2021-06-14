@@ -19,12 +19,14 @@ export class UserService {
   // GET
   getUserLoggedIn(): Observable<any>{
       let id = 0;
-      if (this.jwtService.decoded !== undefined){
+
+      if (!(this.jwtService.decoded === undefined || this.jwtService.decoded === null)){
           id = parseInt(this.jwtService.decoded.id, 10);
       }
+
       if (id === 0){
           return new Observable<any>().pipe(
-              map( x => {
+              map( _ => {
                   return new User();
               })
           );
@@ -61,7 +63,7 @@ export class UserService {
       };
     }
 
-  private mapUser(x: any): User{
+  protected mapUser(x: any): User{
       const user = new User();
       user.betcredit = x.data[0].betcredit;
       user.email = x.data[0].email;

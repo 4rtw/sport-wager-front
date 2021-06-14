@@ -7,6 +7,10 @@ import {LocalStorageService} from './local-storage.service';
 })
 export class JwtService {
 
+  jwtToken: string;
+  userID = 0;
+  decoded: { [key: string]: string };
+
   constructor(private localStorageService: LocalStorageService) {
     const payload = this.localStorageService.get('payload');
     if (payload) {
@@ -14,10 +18,6 @@ export class JwtService {
       this.decodeToken();
     }
   }
-
-  jwtToken: string;
-  userID = 0;
-  decoded: { [key: string]: string };
 
   setToken(token: string): void{
     if (token) {
@@ -39,9 +39,11 @@ export class JwtService {
 
   isTokenExpired(): boolean{
     const exp: number = this.decoded ? parseInt(this.decoded.exp, 10) : null;
+
     if (exp) {
       return ((exp * 1000) - Date.now() < 5000);
     }
+
     return true;
   }
 

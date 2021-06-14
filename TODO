@@ -6,15 +6,14 @@ Mot de passe oublié     ok
 
 Improve code
     fix-tslint          ok
-    Subscriptions
-    Handle errors
+    Subscriptions       ok
+    Handle errors       ok
     Validation forms    ok
     Pass email between reset password        ok
     Design UI           ok
     Clean appmodule     ok
     remove unused dir   ok
-    rework app structure
+    rework app structure    ok
 
-Update model
-Interceptor
+Improve UI auth
 

@@ -11,9 +11,9 @@
             <p-button class="p-ml-2" icon="pi pi-search" ></p-button>
           </span>
 
-        <div *ngIf="logedUser.id != 0" class="p-grid p-flex-md-row p-ai-center">
+        <div *ngIf="user?.id != 0" class="p-grid p-flex-md-row p-ai-center">
             <div class="p-text-light p-col">Crédit:</div>
-            <div class="p-text-right p-col">{{this.logedUser.betcredit}} MGA</div>
+            <div class="p-text-right p-col">{{this.user?.betcredit}} MGA</div>
         </div>
 
         <div style="display: flex; flex-direction: row;">

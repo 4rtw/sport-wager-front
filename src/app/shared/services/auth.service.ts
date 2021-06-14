@@ -47,7 +47,6 @@ export class AuthService {
 
   logout(): Observable<any>{
     const decoded = this.jwtService.decoded;
-    const statusMessage = [];
 
     if (decoded){
       return this.http.post<any>(this.uri + 'logout', {email: decoded.email}).pipe(
@@ -81,7 +80,7 @@ export class AuthService {
           phone: user.phone,
           password: user.password
       }).pipe(
-          map(x => {
+          map(_ => {
               // TODO register user
           }),
           tap(_ => {
@@ -96,7 +95,7 @@ export class AuthService {
           email,
           activation_code: code
       }).pipe(
-          map(x => {
+          map(_ => {
               // TODO register user
           }),
           tap(_ => {
@@ -108,7 +107,7 @@ export class AuthService {
 
   resetPassword(email: string): Observable<any>{
       return this.http.get(this.uri + 'forget-password/' + email).pipe(
-          map(x => {
+          map(_ => {
                 // TODO handle if no account
           }),
           tap(_ => {
@@ -123,7 +122,7 @@ export class AuthService {
           email,
           reset_code: code
       }).pipe(
-          map(x => {
+          map(_ => {
               // TODO handle if invalid code
           }),
           tap(_ => {
@@ -138,7 +137,7 @@ export class AuthService {
           email,
           new_password: password
       }).pipe(
-          map(x => {
+          map(_ => {
               // TODO handle if invalid code
           }),
           tap(_ => {
@@ -151,19 +150,22 @@ export class AuthService {
   refreshToken(): Observable<any> {
       if (this.jwtService.isTokenExpired && this.jwtService.jwtToken) {
           const payload = this.persistenceManager.get('payload');
+          console.log(payload);
           if (payload) {
-            const storedEmail: string = this.jwtService.decoded.email;
-            const refreshOrb: string = payload.refresh_token;
-            return this.http.post<any>(this.tokenUri + 'refresh', {email: storedEmail , refresh_token: refreshOrb})
+              const storedEmail: string = this.jwtService.decoded.email;
+              const refreshOrb: string = payload.refresh_token;
+              return this.http.post<any>(this.tokenUri + 'refresh', {email: storedEmail , refresh_token: refreshOrb})
                 .pipe(
                     map(x => {
                       return {message: x.message, data: x.data[0]};
                     }),
                     tap(x => {
-                      payload.access_token = x.data.access_token;
-                      const succed = this.persistenceManager.set('payload', payload);
-                      if (succed) {
+                        console.log('Refresh');
+                        payload.access_token = x.data.access_token;
+                        const succed = this.persistenceManager.set('payload', payload);
+                        if (succed) {
                         this.jwtService.setToken(x.data.access_token);
+                        location.reload();
                       }
                     }),
                     map(_ => true),

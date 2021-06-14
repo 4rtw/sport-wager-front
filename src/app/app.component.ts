@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationService, MessageService, PrimeNGConfig} from 'primeng/api';
-import {Subscription} from 'rxjs';
-import {UserIdleService} from 'angular-user-idle';
+import { Subscription} from 'rxjs';
 import {JwtService} from './shared/services/jwt.service';
 import {AuthService} from './shared/services/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -18,9 +18,10 @@ export class AppComponent implements OnInit, OnDestroy{
   routeSub: Subscription;
   authSub: Subscription;
   state: boolean;
+  tokenSub: Subscription;
+  logoutSub: Subscription;
 
   constructor(
-      private userIdle: UserIdleService,
       private router: Router,
       private route: ActivatedRoute,
       private messageService: MessageService,
@@ -32,7 +33,9 @@ export class AppComponent implements OnInit, OnDestroy{
   openedSidenav = true;
 
   ngOnInit(): void {
+      // ripple true
       this.primengConfig.ripple = true;
+
       this.routeSub = this.route.queryParams.subscribe(
           params => {
                 if (params.connection === 'success'){
@@ -52,18 +55,25 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void{
       this.routeSub.unsubscribe();
       this.authSub.unsubscribe();
+      this.tokenSub.unsubscribe();
+      this.logoutSub.unsubscribe();
   }
 
   handleUserIdle(): void{
-      setTimeout(() => {
-          this.authSub = this.authService.refreshToken().subscribe();
-      }, 2500);
+      if (this.jwtService.isTokenExpired()){
+          if (!(
+              this.jwtService.decoded === undefined ||
+              this.jwtService.jwtToken === undefined ||
+              this.jwtService.jwtToken === null
+          )){
+              this.tokenSub = this.authService.refreshToken().subscribe();
+          }
+      }
   }
 
 
   logout(): void{
-        localStorage.removeItem('user');
-        this.router.navigate(['/']).then(() => {location.reload(); });
+        this.logoutSub = this.authService.logout().subscribe();
   }
 
   toogleSidenav(data: boolean): void{

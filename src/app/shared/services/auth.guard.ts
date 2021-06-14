@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+        console.log('Guard');
         if (this.jwtService.getPayload()) {
             if (this.jwtService.isTokenExpired()) {
                 return this.authService.refreshToken();
@@ -26,7 +27,7 @@ export class AuthGuard implements CanActivate {
                 return true;
             }
         } else {
-            return this.router.navigate(['/']);
+            return this.router.navigate(['/login']);
         }
     }
 }
