@@ -1,4 +1,4 @@
-export class NbaGame{
+export class NbaGame {
     GameID: number;
     AwayTeam: string;
     AwayTeamID: number;

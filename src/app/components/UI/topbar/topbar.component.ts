@@ -12,7 +12,6 @@ import {Subscription} from 'rxjs';
 export class TopbarComponent implements OnInit, OnDestroy {
 
   openedSidenav = true;
-  searchString: string;
   user = new User();
   userSub: Subscription;
 

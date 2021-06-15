@@ -1,8 +1,12 @@
 <div [matMenuTriggerFor]="menu" class="user-menu p-ai-center">
-    <button pButton pRipple  type="button" label='{{ (user?.id != 0) ? user?.firstname + " " : "Connexion "}}' class="p-button-rounded p-button-info p-button-text"></button>
+    <button class="p-button-rounded p-button-info p-button-text" label='{{ (user?.id != 0) ? user?.firstname + " " : "Connexion "}}' pButton pRipple
+            type="button"></button>
 </div>
 <!-- </button> -->
-<mat-menu  #menu="matMenu" overlapTrigger="false" (click)="$event.stopPropagation()" style="width: 500px; border: black solid">
-    <app-anonymous-user-menu *ngIf="user?.id === 0" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"></app-anonymous-user-menu>
-    <app-account-menu *ngIf="user?.id !== 0" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"></app-account-menu>
+<mat-menu #menu="matMenu" (click)="$event.stopPropagation()" overlapTrigger="false"
+          style="width: 500px; border: black solid">
+    <app-anonymous-user-menu (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
+                             *ngIf="user?.id === 0"></app-anonymous-user-menu>
+    <app-account-menu (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
+                      *ngIf="user?.id !== 0"></app-account-menu>
 </mat-menu>

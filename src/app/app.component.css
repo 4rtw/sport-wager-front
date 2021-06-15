@@ -28,22 +28,22 @@
 }
 
 
-.page{
+.page {
     height: 100%;
 }
 
-.item-row{
+.item-row {
     display: flex;
     flex-direction: row;
 }
 
 
-.mat-nav-list{
+.mat-nav-list {
     display: flex;
     flex-direction: column;
 }
 
-span{
+span {
     font-family: Roboto, "Tahoma", sans-serif;
 }
 
@@ -91,11 +91,10 @@ span{
 }
 
 
-
-.mat-raised-button{
+.mat-raised-button {
     background-color: #f78f8f;
     border: 2px;
-    color : white;
+    color: white;
 }
 
 
@@ -129,6 +128,6 @@ hr {
     padding: 0;
 }
 
-.space-search{
+.space-search {
     margin-left: 10px
 }

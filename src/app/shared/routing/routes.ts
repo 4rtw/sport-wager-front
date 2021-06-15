@@ -7,6 +7,7 @@ import {ResetPasswordComponent} from '../../components/authentications/Password/
 import {VerifyResetCodeComponent} from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
 import {ResetPasswordFinalStepComponent} from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
 import {NbaMatchesComponent} from '../../components/application/nba/nba-matches/nba-matches.component';
+import {ProfileComponent} from '../../components/user/profile/profile.component';
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
             {
                 path: 'nba',
                 component: NbaMatchesComponent,
+            },
+            {
+                path: 'profile',
+                component: ProfileComponent,
             }
         ]
     },
@@ -51,4 +56,5 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

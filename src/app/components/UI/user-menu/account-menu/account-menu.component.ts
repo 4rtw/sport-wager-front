@@ -7,9 +7,9 @@ import {UserService} from '../../../../shared/services/user.service';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-account-menu',
-  templateUrl: './account-menu.component.html',
-  styleUrls: ['./account-menu.component.css']
+    selector: 'app-account-menu',
+    templateUrl: './account-menu.component.html',
+    styleUrls: ['./account-menu.component.css']
 })
 export class AccountMenuComponent implements OnInit, OnDestroy {
 
@@ -17,39 +17,45 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
     user = new User();
     userSub: Subscription;
 
-  constructor(
-      private authService: AuthService,
-      private router: Router,
-      private jwtService: JwtService,
-      private userService: UserService
-  ) { }
-
-  ngOnInit(): void {
-      this.userSub = this.userService.getUserLoggedIn().subscribe(
-          data => {
-              if (data instanceof User){
-                  this.user = data;
-              }
-          }
-      );
-  }
-
-  logout(): void{
-      this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
-      this.authService.logout().subscribe(
-        _ => {
-          // if successfull logout
-            this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
-            this.router.navigate(['/'], { queryParams: { logout: 'success'}})
-              .then(() => {
-                location.reload();
-              });
-        }
-    );
-  }
-
-    ngOnDestroy(): void {
-      this.userSub.unsubscribe();
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private jwtService: JwtService,
+        private userService: UserService
+    ) {
     }
 
+    ngOnInit(): void {
+        this.userSub = this.userService.getUserLoggedIn().subscribe(
+            data => {
+                if (data instanceof User) {
+                    this.user = data;
+                }
+            }
+        );
+    }
+
+    logout(): void {
+        this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
+        this.authService.logout().subscribe(
+            _ => {
+                // if successfull logout
+                this.showButtonLogoutAndNoLoader = !this.showButtonLogoutAndNoLoader;
+                this.router.navigate(['/'], {queryParams: {logout: 'success'}})
+                    .then(() => {
+                        location.reload();
+                    });
+            }
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.userSub.unsubscribe();
+    }
+
+    goToProfile(): void {
+        this.router.navigate(['/profile']).then(() => {
+            location.reload();
+        });
+    }
 }
