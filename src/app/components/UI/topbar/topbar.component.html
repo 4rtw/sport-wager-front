@@ -1,24 +1,25 @@
 <mat-toolbar class="tp-toolbar">
-    <mat-toolbar-row class="tp-toolbar-row">
-        <div class="sidebar-toggle">
-            <button mat-button (click)="toogleSidenav();">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" >reorder</mat-icon>
-            </button>
-        </div>
+  <mat-toolbar-row class="tp-toolbar-row">
+    <div class="sidebar-toggle">
+      <button mat-button (click)="toogleSidenav()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >reorder</mat-icon
+        >
+      </button>
+    </div>
 
-        <span>
-            <!-- input type="text" pInputText placeholder="Search" [(ngModel)]="searchString" />
+    <span>
+      <!-- input type="text" pInputText placeholder="Search" [(ngModel)]="searchString" />
             <p-button class="p-ml-2" icon="pi pi-search" ></p-button -->
-        </span>
+    </span>
 
-        <div *ngIf="user?.id != 0" class="p-grid p-flex-md-row p-ai-center">
-            <div class="p-text-light p-col">Crédit:</div>
-            <div class="p-text-right p-col">{{this.user?.betcredit}} MGA</div>
-        </div>
+    <div *ngIf="user?.id != 0" class="p-grid p-flex-md-row p-ai-center">
+      <div class="p-text-light p-col">Crédit:</div>
+      <div class="p-text-right p-col">{{ this.user?.betcredit }} MGA</div>
+    </div>
 
-        <div style="display: flex; flex-direction: row;">
-            <app-user-menu></app-user-menu>
-        </div>
-    </mat-toolbar-row>
-
+    <div style="display: flex; flex-direction: row">
+      <app-user-menu></app-user-menu>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

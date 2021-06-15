@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { NbaGame } from '../model/nba-game';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +8,6 @@ import { map, tap } from 'rxjs/operators';
 })
 export class NbaService {
   uri = 'https://wager-tpt.herokuapp.com/api/nba/';
-  nbaGames: NbaGame[] = [];
   // tslint:disable-next-line:variable-name
   private _refreshNeeded$ = new Subject<void>();
 

@@ -1,60 +1,58 @@
-import {RouterModule, Routes} from '@angular/router';
-import {WagerComponent} from '../../components/application/wager/wager.component';
-import {NgModule} from '@angular/core';
-import {RegisterComponent} from '../../components/authentications/RegisterComponents/register/register.component';
-import {ConfirmAccountComponent} from '../../components/authentications/RegisterComponents/confirm-account/confirm-account.component';
-import {ResetPasswordComponent} from '../../components/authentications/Password/reset-password/reset-password.component';
-import {VerifyResetCodeComponent} from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
-import {ResetPasswordFinalStepComponent} from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
-import {NbaMatchesComponent} from '../../components/application/nba/nba-matches/nba-matches.component';
-import {ProfileComponent} from '../../components/user/profile/profile.component';
+import { RouterModule, Routes } from '@angular/router';
+import { WagerComponent } from '../../components/application/wager/wager.component';
+import { NgModule } from '@angular/core';
+import { RegisterComponent } from '../../components/authentications/RegisterComponents/register/register.component';
+import { ConfirmAccountComponent } from '../../components/authentications/RegisterComponents/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from '../../components/authentications/Password/reset-password/reset-password.component';
+import { VerifyResetCodeComponent } from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
+import { ResetPasswordFinalStepComponent } from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
+import { NbaMatchesComponent } from '../../components/application/nba/nba-matches/nba-matches.component';
+import { ProfileComponent } from '../../components/user/profile/profile.component';
 
 const routes: Routes = [
-    {
-        path: 'register',
-        component: RegisterComponent,
-    },
-    {
-        path: 'confirm-account',
-        component: ConfirmAccountComponent,
-    },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'confirm-account',
+    component: ConfirmAccountComponent,
+  },
 
-    {
-        path: 'verify-reset-code',
-        component: VerifyResetCodeComponent,
-    },
-    {
-        path: 'reset-password',
-        component: ResetPasswordComponent,
-    },
-    {
-        path: 'set-password',
-        component: ResetPasswordFinalStepComponent,
-    },
-    {
+  {
+    path: 'verify-reset-code',
+    component: VerifyResetCodeComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'set-password',
+    component: ResetPasswordFinalStepComponent,
+  },
+  {
+    path: '',
+    component: WagerComponent,
+    children: [
+      {
         path: '',
-        component: WagerComponent,
-        children: [
-            {
-                path: '',
-                component: NbaMatchesComponent,
-            },
-            {
-                path: 'nba',
-                component: NbaMatchesComponent,
-            },
-            {
-                path: 'profile',
-                component: ProfileComponent,
-            }
-        ]
-    },
+        component: NbaMatchesComponent,
+      },
+      {
+        path: 'nba',
+        component: NbaMatchesComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ],
+  },
 ];
 
-
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

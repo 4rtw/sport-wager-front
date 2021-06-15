@@ -1,15 +1,17 @@
 <p-toast position="bottom-left"></p-toast>
-<mat-sidenav-container style="min-height: 95vh;">
-    <mat-sidenav #sidenav
-                 class="tp-side-nav"
-                 mode="side"
-                 opened="{{state}}"
-                 style="z-index: 1;">
-        <app-sidenav></app-sidenav>
-    </mat-sidenav>
+<mat-sidenav-container style="min-height: 95vh">
+  <mat-sidenav
+    #sidenav
+    class="tp-side-nav"
+    mode="side"
+    opened="{{ state }}"
+    style="z-index: 1"
+  >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
 
-    <mat-sidenav-content>
-        <app-topbar (sidenavState)="toogleSidenav($event)"></app-topbar>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav-content>
+    <app-topbar (sidenavState)="toogleSidenav($event)"></app-topbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

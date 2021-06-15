@@ -1,39 +1,39 @@
 .user-image {
-    width: 45px;
-    height: 48px;
-    background-color: #61C9A8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    justify-content: center;
+  width: 45px;
+  height: 48px;
+  background-color: #61c9a8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: center;
 }
 
 .user-image img {
-    height: 35px;
-    width: 35px;
+  height: 35px;
+  width: 35px;
 }
 
 .user-image span {
-    font-weight: 600;
-    margin-top: 5px;
+  font-weight: 600;
+  margin-top: 5px;
 }
 
 .mat-icon {
-    font-size: 20px;
-    margin-top: 8px;
-    margin-left: 2px;
+  font-size: 20px;
+  margin-top: 8px;
+  margin-left: 2px;
 }
 
 .user-menu {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .user-menu span {
-    /* padding-left: 10px; */
-    margin-top: 0;
-    font-size: 14px;
+  /* padding-left: 10px; */
+  margin-top: 0;
+  font-size: 14px;
 }

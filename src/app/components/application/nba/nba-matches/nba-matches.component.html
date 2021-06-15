@@ -89,7 +89,7 @@
 
                     <div class="product-list-detail">
                       <h5 class="p-mb-2">
-                        {{ match.HomeTeam + " - " + match.AwayTeam }}
+                        {{ match.HomeTeam + ' - ' + match.AwayTeam }}
                       </h5>
                       <span
                         *ngIf="
@@ -98,7 +98,7 @@
                         class="product-category"
                         >{{
                           (match.HomeTeamScore || 0) +
-                            "-" +
+                            '-' +
                             (match.AwayTeamScore || 0)
                         }}</span
                       >
@@ -123,9 +123,9 @@
                         match.Status.toLowerCase()
                       }}</p-tag>
                       <span [class]="'product-badge'">{{
-                        getDateTime(match.DateTime, "time") +
-                          "-" +
-                          getDateTime(match.Day, "date")
+                        getDateTime(match.DateTime, 'time') +
+                          '-' +
+                          getDateTime(match.Day, 'date')
                       }}</span>
                     </div>
                   </div>

@@ -1,48 +1,107 @@
-    <div #logo class="logo" >
-        <a routerLink="/">
-            <img src="../../assets/images/logo.png">
-        </a>
+<div #logo class="logo">
+  <a routerLink="/">
+    <img alt="Logo" src="/assets/images/logo.png" />
+  </a>
+</div>
+
+<mat-nav-list>
+  <hr />
+  <a
+    mat-list-item
+    routerLinkActive
+    #rlat="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [class]="rlat.isActive ? 'active' : ''"
+    [routerLink]="'/soccer'"
+  >
+    <div class="item-row">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        style="margin-right: 5px; line-height: 20px"
+      >
+        sports_soccer</mat-icon
+      >
+      <span class="title">Football</span>
     </div>
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive
+    #rla="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [class]="rla.isActive ? 'active' : ''"
+    [routerLink]="'/nba'"
+  >
+    <div class="item-row">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        style="margin-right: 5px; line-height: 20px"
+      >
+        sports_basketball
+      </mat-icon>
+      <span>Basketball</span>
+    </div>
+  </a>
 
-    <mat-nav-list>
-        <hr/>
-        <a  mat-list-item routerLinkActive #rlat="routerLinkActive" [routerLinkActiveOptions]="{exact: true}" [class]="rlat.isActive ? 'active' : ''" [routerLink]="'/soccer'">
-            <div class="item-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;
-            line-height: 20px;"> sports_soccer</mat-icon>
-                <span class="title">Football</span>
-            </div>
-        </a>
-        <a mat-list-item  routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{exact: true}" [class]="rla.isActive ? 'active' : ''" [routerLink]="'/nba'">
+  <a
+    mat-list-item
+    routerLinkActive
+    #rlab="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [class]="rlab.isActive ? 'active' : ''"
+    [routerLink]="'/assignments/eleves'"
+  >
+    <div class="item-row">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        style="margin-right: 5px; line-height: 20px"
+      >
+        sports_tennis
+      </mat-icon>
+      <span>Tennis</span>
+    </div>
+  </a>
 
-            <div class="item-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;
-            line-height: 20px;"> sports_basketball </mat-icon>
-                <span>Basketball</span>
-            </div>
-        </a>
+  <a
+    mat-list-item
+    routerLinkActive
+    #rlac="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [class]="rlac.isActive ? 'active' : ''"
+    [routerLink]="'/assignments/professeurs'"
+  >
+    <div class="item-row">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        style="margin-right: 5px; line-height: 20px"
+      >
+        sports_rugby
+      </mat-icon>
+      <span>Rugby</span>
+    </div>
+  </a>
 
-        <a mat-list-item routerLinkActive #rlab="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"  [class]="rlab.isActive ? 'active' : ''"  [routerLink]="'/assignments/eleves'">
-            <div class="item-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;
-            line-height: 20px;"> sports_tennis </mat-icon>
-                <span>Tennis</span>
-            </div>
-        </a>
-
-        <a mat-list-item routerLinkActive #rlac="routerLinkActive" [routerLinkActiveOptions]="{exact: true}" [class]="rlac.isActive ? 'active' : ''" [routerLink]="'/assignments/professeurs'">
-            <div class="item-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;
-            line-height: 20px;"> sports_rugby </mat-icon>
-                <span>Rugby</span>
-            </div>
-        </a>
-
-        <a mat-list-item routerLinkActive #rlam="routerLinkActive" [routerLinkActiveOptions]="{exact: true}" [class]="rlam.isActive ? 'active' : ''" [routerLink]="'/assignments/matieres'">
-            <div class="item-row">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;
-            line-height: 20px;"> sports_volleyball </mat-icon>
-                <span>Volleyball</span>
-            </div>
-        </a>
-    </mat-nav-list>
+  <a
+    mat-list-item
+    routerLinkActive
+    #rlam="routerLinkActive"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [class]="rlam.isActive ? 'active' : ''"
+    [routerLink]="'/assignments/matieres'"
+  >
+    <div class="item-row">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        style="margin-right: 5px; line-height: 20px"
+      >
+        sports_volleyball
+      </mat-icon>
+      <span>Volleyball</span>
+    </div>
+  </a>
+</mat-nav-list>
