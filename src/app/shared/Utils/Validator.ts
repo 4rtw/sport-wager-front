@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 export class Validator {
   getErrorMessage(formControl: FormControl): string {
     if (formControl.hasError('email')) {
-      return 'L\' email est invalide';
+      return "L' email est invalide";
     }
 
     if (formControl.hasError('required')) {

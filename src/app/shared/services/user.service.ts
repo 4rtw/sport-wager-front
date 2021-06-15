@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  uri = 'https://wager-tpt.herokuapp.com/api/users/';
+  uri = 'https://wager-tpt.herokuapp.com/api/';
 
   constructor(private http: HttpClient, private jwtService: JwtService) {}
 
@@ -33,7 +33,7 @@ export class UserService {
         })
       );
     } else {
-      return this.http.get(this.uri + id).pipe(
+      return this.http.get(this.uri + 'users/' + id).pipe(
         map((x) => {
           // @ts-ignore
           if (x.errors.length === 0) {
@@ -69,5 +69,15 @@ export class UserService {
             }*/
       return of(result);
     };
+  }
+
+  updateUser(user: User): Observable<any> {
+    return this.http.put(this.uri + 'users', {
+      id: user.id,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      phone: user.phone,
+    });
   }
 }

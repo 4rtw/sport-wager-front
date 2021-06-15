@@ -53,9 +53,13 @@ import { NbaMatchesComponent } from './components/application/nba/nba-matches/nb
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { CalendarModule } from 'primeng/calendar';
-import { ProfileComponent } from './components/user/profile/profile.component';
+import { ProfileComponent } from './components/user/user-container/profile/profile.component';
 import { PanierComponent } from './components/application/panier/panier.component';
 import { VideoComponent } from './components/application/panier/video/video.component';
+import { UserContainerComponent } from './components/user/user-container/user-container.component';
+import { ImageComponent } from './components/user/user-container/image/image.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,8 @@ import { VideoComponent } from './components/application/panier/video/video.comp
     ProfileComponent,
     PanierComponent,
     VideoComponent,
+    UserContainerComponent,
+    ImageComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -119,6 +125,8 @@ import { VideoComponent } from './components/application/panier/video/video.comp
     TagModule,
     SkeletonModule,
     CalendarModule,
+    FileUploadModule,
+    AccordionModule,
   ],
   providers: [
     {

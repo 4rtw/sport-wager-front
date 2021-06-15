@@ -1,0 +1,140 @@
+<div class="container">
+  <p-card
+    class="p-d-flex p-jc-center p-ai-center"
+    header="Votre profile"
+    [style]="{ width: '100%', 'margin-bottom': '2em' }"
+  >
+    <p-accordion>
+      <p-accordionTab
+        header="Profile de {{ user.firstname }}"
+        [selected]="true"
+      >
+        <form (ngSubmit)="submitProfile()">
+          <div class="p-fluid p-grid p-jc-center p-mt-2">
+            <p-messages [enableService]="false"></p-messages>
+            <div class="p-field p-col-6">
+              <span class="p-float-label p-input-icon-left">
+                <i class="pi pi-caret-right"></i>
+                <input
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  [formControl]="firstname"
+                />
+                <label for="inputtext">Nom</label>
+              </span>
+            </div>
+
+            <div class="p-field p-col-6">
+              <span class="p-float-label p-input-icon-left">
+                <i class="pi pi-caret-right"></i>
+                <input
+                  type="text"
+                  id="inputtext-left"
+                  pInputText
+                  [formControl]="lastname"
+                />
+                <label for="inputtext-left">Prénom</label>
+              </span>
+            </div>
+
+            <div class="p-field p-col-12">
+              <span class="p-float-label p-input-icon-left">
+                <i class="pi pi-caret-right"></i>
+                <input
+                  disabled
+                  type="text"
+                  id="email"
+                  pInputText
+                  [value]="user.email"
+                />
+                <label for="inputtext-left">Adresse e-mail</label>
+              </span>
+            </div>
+
+            <div class="p-field p-col-12">
+              <span class="p-float-label p-input-icon-left">
+                <i class="pi pi-caret-right"></i>
+                <input
+                  type="text"
+                  id="phone"
+                  pInputText
+                  [formControl]="phone"
+                />
+                <label for="inputtext-left">Téléphone</label>
+              </span>
+            </div>
+          </div>
+
+          <div class="p-d-flex p-jc-center">
+            <p-button
+              type="submit"
+              label="Enregistrer mon profile"
+              icon="pi pi-check"
+            ></p-button>
+            <p-button
+              label="Supprimer mon compte"
+              icon="pi pi-times"
+              styleClass="p-button-danger"
+              [style]="{ 'margin-left': '.5em' }"
+            ></p-button>
+          </div>
+        </form>
+      </p-accordionTab>
+      <p-accordionTab header="Modifier le mot de passe">
+        <form (ngSubmit)="submitPassword()"></form>
+
+        <div class="p-fluid p-grid p-jc-center p-mt-2">
+          <div class="p-field p-col-12">
+            <p-button
+                    label="Récupérer"
+                    icon="pi pi-check"
+            ></p-button>
+          </div>
+
+          <div class="p-field p-col-4">
+            <span class="p-float-label">
+              <p-password
+                [feedback]="false"
+                [toggleMask]="true"
+                placeholder="Code de reinitialisation"
+              ></p-password>
+            </span>
+          </div>
+
+          <div class="p-field p-col-4">
+            <p-button
+                    label="Récupérer"
+                    icon="pi pi-check"
+            ></p-button>
+          </div>
+
+          <div class="p-field p-col-6">
+            <span class="p-float-label">
+              <p-password
+                [toggleMask]="true"
+                placeholder="Nouveau mot de passe"
+              ></p-password>
+            </span>
+          </div>
+
+          <div class="p-field p-col-6">
+            <span class="p-float-label">
+              <p-password
+                placeholder="Confirmez le mot de passe"
+                [toggleMask]="true"
+              ></p-password>
+            </span>
+          </div>
+        </div>
+
+        <div class="p-d-flex p-jc-center">
+          <p-button
+            label="Modifier mon mot de passe"
+            icon="pi pi-check"
+          ></p-button>
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </p-card>
+</div>

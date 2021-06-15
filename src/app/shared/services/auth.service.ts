@@ -42,6 +42,15 @@ export class AuthService {
     );
   }
 
+  checkPassword(email: string, password: string): Observable<any> {
+    return this.http.post(this.uri + 'login', { email, password }).pipe(
+      map((data) => {
+        console.log(data);
+        return data;
+      })
+    );
+  }
+
   logout(): Observable<any> {
     const decoded = this.jwtService.decoded;
 

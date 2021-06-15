@@ -49,7 +49,7 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
   }
 
   goToProfile(): void {
-    this.router.navigate(['/profile']).then(() => {
+    this.router.navigate(['/account/profile']).then(() => {
       location.reload();
     });
   }

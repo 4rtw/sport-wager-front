@@ -77,7 +77,7 @@ export class AnonymousUserMenuComponent implements OnInit, OnDestroy {
   }
 
   navigateToRegister(): void {
-    this.router.navigate(['/register']).then(() => {
+    this.router.navigate(['/account/register']).then(() => {
       location.reload();
     });
   }

@@ -7,32 +7,46 @@ import { ResetPasswordComponent } from '../../components/authentications/Passwor
 import { VerifyResetCodeComponent } from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
 import { ResetPasswordFinalStepComponent } from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
 import { NbaMatchesComponent } from '../../components/application/nba/nba-matches/nba-matches.component';
-import { ProfileComponent } from '../../components/user/profile/profile.component';
+import { ProfileComponent } from '../../components/user/user-container/profile/profile.component';
+import { UserContainerComponent } from '../../components/user/user-container/user-container.component';
 
 const routes: Routes = [
   {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'confirm-account',
-    component: ConfirmAccountComponent,
-  },
-
-  {
-    path: 'verify-reset-code',
-    component: VerifyResetCodeComponent,
-  },
-  {
-    path: 'reset-password',
-    component: ResetPasswordComponent,
-  },
-  {
-    path: 'set-password',
-    component: ResetPasswordFinalStepComponent,
+    path: 'account',
+    children: [
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
+        path: 'confirm-account',
+        component: ConfirmAccountComponent,
+      },
+      {
+        path: 'verify-reset-code',
+        component: VerifyResetCodeComponent,
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent,
+      },
+      {
+        path: 'set-password',
+        component: ResetPasswordFinalStepComponent,
+      },
+      {
+        path: 'profile',
+        component: UserContainerComponent,
+      },
+    ],
   },
   {
     path: '',
+    pathMatch: 'prefix',
+    redirectTo: '/wager',
+  },
+  {
+    path: 'wager',
     component: WagerComponent,
     children: [
       {
@@ -42,10 +56,6 @@ const routes: Routes = [
       {
         path: 'nba',
         component: NbaMatchesComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
       },
     ],
   },
