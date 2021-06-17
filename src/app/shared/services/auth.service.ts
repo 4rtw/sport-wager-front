@@ -21,25 +21,33 @@ export class AuthService {
     private router: Router
   ) {}
 
-  login(email: string, password: string): Observable<any> {
-    const statusMessage = [];
-    return this.http.post(this.uri + 'login', { email, password }).pipe(
-      map((x) => {
-        // @ts-ignore
-        statusMessage.push(x.data[0]);
-        // @ts-ignore
-        statusMessage.push(x.errors);
-        // @ts-ignore
-        return { message: statusMessage, data: x.data[0] };
-      }),
-      tap((x) => {
-        const succed = this.persistenceManager.set('payload', x.data);
-        if (succed) {
-          this.jwtService.setToken(x.data.access_token);
-        }
-      }),
-      catchError(this.handleError<any>())
-    );
+  login(email: string, password: string): Observable<{ access_token: string; refresh_token: string }> {
+    let statusMessage: { access_token: string; refresh_token: string };
+    return this.http
+      .post<{
+        data: { access_token: string; refresh_token: string }[];
+        errors: { content: string }[];
+      }>(this.uri + 'login', {
+        email,
+        password,
+      })
+      .pipe(
+        map((x) => {
+          statusMessage = {
+            access_token: x.data[0].access_token,
+            refresh_token: x.data[0].refresh_token,
+          };
+          return statusMessage;
+        }),
+        tap((x) => {
+          const succed = this.persistenceManager.set('payload', x.access_token);
+          if (succed) {
+            console.log('set token');
+            this.jwtService.setToken(x.access_token);
+          }
+        }),
+        catchError(this.handleError<any>())
+      );
   }
 
   checkPassword(email: string, password: string): Observable<any> {
