@@ -38,26 +38,19 @@ export class AnonymousUserMenuComponent implements OnInit, OnDestroy {
     if (!this.loginForm.invalid) {
       this.loginSub = this.authService.login(email, password).subscribe(
         (next) => {
-          if (next.data.access_token) {
+          if (next.access_token) {
             this.router
               .navigate(['/'], { queryParams: { connection: 'success' } })
               .then(() => {
-                // location.reload();
+                location.reload();
               });
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Authentification',
-              detail: next.errors[0],
-            });
-            this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
           }
         },
-        (error) => {
+        (_) => {
           this.messageService.add({
             severity: 'error',
-            summary: 'Une erreur est survenue',
-            detail: error,
+            summary: 'Authentification',
+            detail: "Erreur d'authentification",
           });
           this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
         }

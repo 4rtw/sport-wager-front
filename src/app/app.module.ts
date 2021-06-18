@@ -40,7 +40,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { TopbarComponent } from './components/UI/topbar/topbar.component';
 import { SidenavComponent } from './components/UI/sidenav/sidenav.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
@@ -60,6 +59,9 @@ import { UserContainerComponent } from './components/user/user-container/user-co
 import { ImageComponent } from './components/user/user-container/image/image.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AccordionModule } from 'primeng/accordion';
+import { JwtModule } from '@auth0/angular-jwt';
+import { TokenInterceptor } from './shared/interceptor/token.interceptor';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -127,6 +129,14 @@ import { AccordionModule } from 'primeng/accordion';
     CalendarModule,
     FileUploadModule,
     AccordionModule,
+    CookieModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: localStorage.getItem('token')?.toString || null,
+        allowedDomains: ['*'],
+        disallowedRoutes: [''],
+      },
+    }),
   ],
   providers: [
     {

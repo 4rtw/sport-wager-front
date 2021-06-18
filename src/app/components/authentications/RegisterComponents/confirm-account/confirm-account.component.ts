@@ -34,7 +34,10 @@ export class ConfirmAccountComponent implements OnInit {
 
   onSubmit(): void {
     this.authService
-      .confirmAccount(this.email.value, this.code.value)
+      .confirmAccount({
+        email: this.email.value,
+        activationCode: this.code.value,
+      })
       .subscribe(
         (_) => {
           // TODO handle error

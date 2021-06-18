@@ -3,7 +3,6 @@ import { AuthService } from '../../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../../shared/model/user.model';
 import { JwtService } from '../../../../shared/services/jwt.service';
-import { UserService } from '../../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -19,16 +18,11 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private jwtService: JwtService,
-    private userService: UserService
+    private jwtService: JwtService
   ) {}
 
   ngOnInit(): void {
-    this.userSub = this.userService.getUserLoggedIn().subscribe((data) => {
-      if (data instanceof User) {
-        this.user = data;
-      }
-    });
+    this.user = this.jwtService.getUser().user;
   }
 
   logout(): void {

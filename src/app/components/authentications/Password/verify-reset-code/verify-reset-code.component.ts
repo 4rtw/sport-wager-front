@@ -32,7 +32,7 @@ export class VerifyResetCodeComponent implements OnInit {
 
   onSubmit(): void {
     this.authService
-      .verifyResetCode(this.email.value, this.code.value)
+      .verifyResetCode({ email: this.email.value, code: this.code.value })
       .subscribe(
         (_) => {
           // TODO handle errors

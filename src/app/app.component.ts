@@ -24,6 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
   logoutSub: Subscription;
   openedSidenav = true;
 
+  silentRefresh: Subscription;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -37,6 +39,9 @@ export class AppComponent implements OnInit, OnDestroy {
     // ripple true
     this.primengConfig.ripple = true;
 
+    // silent refresh token every 30 sec
+    this.refreshToken();
+
     this.routeSub = this.route.queryParams.subscribe((params) => {
       if (params.connection === 'success') {
         this.messageService.add({
@@ -44,7 +49,6 @@ export class AppComponent implements OnInit, OnDestroy {
           summary: 'Authentification',
           detail: 'Vous êtes maintenant connéctés',
         });
-        setTimeout(() => this.router.navigate(['/']), 1000);
       }
 
       if (params.logout === 'success') {
@@ -53,10 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
           summary: 'Déconnection',
           detail: 'Vous êtes maintenant déconnéctés',
         });
-        setTimeout(() => this.router.navigate(['/']), 1000);
       }
-
-      this.handleUserIdle();
     });
   }
 
@@ -65,21 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authSub.unsubscribe();
     this.tokenSub.unsubscribe();
     this.logoutSub.unsubscribe();
-  }
-
-  handleUserIdle(): void {
-    if (this.jwtService.isTokenExpired()) {
-      if (
-        !(
-          this.jwtService.decoded === undefined ||
-          this.jwtService.jwtToken === undefined ||
-          this.jwtService.jwtToken === null
-        )
-      ) {
-        console.log(this.jwtService.decoded);
-        this.tokenSub = this.authService.refreshToken().subscribe();
-      }
-    }
+    this.silentRefresh.unsubscribe();
   }
 
   logout(): void {
@@ -88,5 +75,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   toogleSidenav(data: boolean): void {
     this.state = data;
+  }
+
+  /*
+   * met à jour le token chaque fois que la page est rendu
+   * puis attend un délai de 60 avant de se réexecuter
+   * */
+  refreshToken(): void {
+    if (this.jwtService.getUser().user.id !== 0) {
+      this.silentRefresh = this.jwtService.refreshToken().subscribe();
+    }
+    setTimeout(() => {
+      this.refreshToken();
+    }, 60000);
   }
 }

@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = this.jwtService.jwtToken;
+    const token = this.jwtService.token;
     request = request.clone({
       url: request.url,
       setHeaders: {

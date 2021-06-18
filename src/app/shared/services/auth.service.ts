@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { JwtService } from './jwt.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,11 +16,13 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private persistenceManager: LocalStorageService,
-    private jwtService: JwtService,
-    private router: Router
+    private jwtService: JwtService
   ) {}
 
-  login(email: string, password: string): Observable<{ access_token: string; refresh_token: string }> {
+  login(
+    email: string,
+    password: string
+  ): Observable<{ access_token: string; refresh_token: string }> {
     let statusMessage: { access_token: string; refresh_token: string };
     return this.http
       .post<{
@@ -40,54 +41,31 @@ export class AuthService {
           return statusMessage;
         }),
         tap((x) => {
-          const succed = this.persistenceManager.set('payload', x.access_token);
+          this.jwtService.setToken({
+            access_token: x.access_token,
+            refresh_token: x.refresh_token,
+          });
+        }),
+        catchError(this.handleError<any>())
+      );
+  }
+
+  logout(): Observable<any> {
+    return this.http
+      .post<any>(this.uri + 'logout', { email: 'ando.l.andria@gmail.com' })
+      .pipe(
+        tap((_) => {
+          const succed = this.persistenceManager.remove('payload');
           if (succed) {
-            console.log('set token');
-            this.jwtService.setToken(x.access_token);
+            this.jwtService.removeToken();
           }
         }),
         catchError(this.handleError<any>())
       );
   }
 
-  checkPassword(email: string, password: string): Observable<any> {
-    return this.http.post(this.uri + 'login', { email, password }).pipe(
-      map((data) => {
-        console.log(data);
-        return data;
-      })
-    );
-  }
-
-  logout(): Observable<any> {
-    const decoded = this.jwtService.decoded;
-
-    if (decoded) {
-      return this.http
-        .post<any>(this.uri + 'logout', { email: decoded.email })
-        .pipe(
-          tap((_) => {
-            const succed = this.persistenceManager.remove('payload');
-            if (succed) {
-              this.jwtService.reset();
-            }
-          }),
-          catchError(this.handleError<any>())
-        );
-    } else {
-      this.router.navigate(['/']).then(() => {
-        location.reload();
-      });
-    }
-
-    return throwError(
-      'Vous ne pouvez plus appelez logOut() car vous êtes déjà déconnectés'
-    );
-  }
-
-  generateID(): number {
-    return parseInt(Date.now() + (Math.random() * 100000).toFixed(), 10);
-  }
+  private generateID = (): number =>
+    parseInt(Date.now() + (Math.random() * 100000).toFixed(), 10);
 
   register(user: User): Observable<any> {
     user.id = this.generateID();
@@ -101,9 +79,6 @@ export class AuthService {
         password: user.password,
       })
       .pipe(
-        map((_) => {
-          // TODO register user
-        }),
         tap((_) => {
           console.log('User registered');
         }),
@@ -111,101 +86,75 @@ export class AuthService {
       );
   }
 
-  confirmAccount(email: string, code: string): Observable<any> {
+  confirmAccount(confirmContent: {
+    email: string;
+    activationCode: string;
+  }): Observable<any> {
     return this.http
       .post(this.uri + 'activate', {
-        email,
-        activation_code: code,
+        email: confirmContent.email,
+        activation_code: confirmContent.activationCode,
       })
-      .pipe(
-        map((_) => {
-          // TODO register user
-        }),
-        tap((_) => {
-          console.log('User confirmed');
-        }),
-        catchError(this.handleError<any>())
-      );
+      .pipe(catchError(this.handleError<any>()));
   }
 
   resetPassword(email: string): Observable<any> {
-    return this.http.get(this.uri + 'forget-password/' + email).pipe(
-      map((_) => {
-        // TODO handle if no account
-      }),
-      tap((_) => {
-        console.log('User confirmed');
-      }),
-      catchError(this.handleError<any>())
-    );
+    return this.http
+      .get(this.uri + 'forget-password/' + email)
+      .pipe(catchError(this.handleError<any>()));
   }
 
-  verifyResetCode(email: string, code: string): Observable<any> {
+  verifyResetCode(verifyContent: {
+    email: string;
+    code: string;
+  }): Observable<any> {
     return this.http
       .post(this.uri + 'verify-reset-code', {
-        email,
-        reset_code: code,
+        email: verifyContent.email,
+        reset_code: verifyContent.code,
       })
-      .pipe(
-        map((_) => {
-          // TODO handle if invalid code
-        }),
-        tap((_) => {
-          console.log('Code reçu');
-        }),
-        catchError(this.handleError<any>())
-      );
+      .pipe(catchError(this.handleError<any>()));
   }
 
-  setResetedPassword(email: string, password: string): Observable<any> {
+  setResetedPassword(setPassword: {
+    email: string;
+    password: string;
+  }): Observable<any> {
     return this.http
       .post(this.uri + 'change-password', {
-        email,
-        new_password: password,
+        email: setPassword.email,
+        new_password: setPassword.password,
       })
-      .pipe(
-        map((_) => {
-          // TODO handle if invalid code
-        }),
-        tap((_) => {
-          console.log('Mot de passe reçu');
-        }),
-        catchError(this.handleError<any>())
-      );
+      .pipe(catchError(this.handleError<any>()));
   }
 
-  refreshToken(): Observable<any> {
-    if (this.jwtService.isTokenExpired && this.jwtService.jwtToken) {
-      const payload = this.persistenceManager.get('payload');
-      console.log(payload);
-      if (payload) {
-        const storedEmail: string = this.jwtService.decoded.email;
-        const refreshOrb: string = payload.refresh_token;
+  /*refreshToken(): Observable<any> {
+    if (this.jwtService.isTokenExpired()) {
+      const user = this.jwtService.getUser();
+      if (user) {
+        const storedEmail: string = this.jwtService.getUser().user.email;
+        const refreshOrb: string = this.jwtService.refreshOrb;
         return this.http
-          .post<any>(this.tokenUri + 'refresh', {
-            email: storedEmail,
-            refresh_token: refreshOrb,
-          })
+          .post<{ data: { access_token: string }[]; error: string[] }>(
+            this.tokenUri + 'refresh',
+            {
+              email: storedEmail,
+              refresh_token: refreshOrb,
+            }
+          )
           .pipe(
-            map((x) => {
-              return { message: x.message, data: x.data[0] };
+            map((response) => {
+              return response;
             }),
             tap((x) => {
-              console.log('Refresh');
-              payload.access_token = x.data.access_token;
-              const succed = this.persistenceManager.set('payload', payload);
-              if (succed) {
-                this.jwtService.setToken(x.data.access_token);
-                location.reload();
-              }
+              this.jwtService.updateToken(x.data[0].access_token);
             }),
-            map((_) => true),
             catchError((_) => of(this.router.navigate(['/'])))
           );
       }
     }
     return throwError(false);
-  }
+  }*/
 
   private handleError<T>(): any {
     return (e: any): Observable<T> => {

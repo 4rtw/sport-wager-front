@@ -9,6 +9,7 @@ import { User } from '../../../shared/model/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../shared/services/user.service';
 import { Subscription } from 'rxjs';
+import { JwtService } from '../../../shared/services/jwt.service';
 
 @Component({
   selector: 'app-topbar',
@@ -26,15 +27,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit(): void {
-    this.userSub = this.userService.getUserLoggedIn().subscribe((next) => {
-      if (next instanceof User) {
-        this.user = next;
-      }
-    });
+    this.user = this.jwtService.getUser().user;
   }
 
   toogleSidenav(): void {

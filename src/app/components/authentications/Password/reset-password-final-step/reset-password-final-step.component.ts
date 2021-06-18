@@ -37,7 +37,10 @@ export class ResetPasswordFinalStepComponent implements OnInit {
 
   onSubmit(): void {
     this.authService
-      .setResetedPassword(this.email.value, this.password.value)
+      .setResetedPassword({
+        email: this.email.value,
+        password: this.password.value,
+      })
       .subscribe(
         (_) => {
           // TODO handle errors
