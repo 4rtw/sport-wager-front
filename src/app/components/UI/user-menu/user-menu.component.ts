@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtService } from 'src/app/shared/services/jwt.service';
-import { User } from '../../../shared/model/user.model';
+import { JwtService } from 'src/app/shared/services/Auth/jwt.service';
+import { User } from '../../../shared/model/Users/user.model';
 import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../../shared/services/Users/user.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -18,10 +19,21 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   defaultImage;
 
-  constructor(private router: Router, private jwtService: JwtService) {}
+  constructor(
+    private router: Router,
+    private jwtService: JwtService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.user = this.jwtService.getUser().user;
+    this.userSub = this.userService.getUserLoggedIn().subscribe(
+      (data) => {
+        this.user = data;
+      },
+      (_) => {
+        this.user = new User();
+      }
+    );
   }
 
   ngOnDestroy(): void {

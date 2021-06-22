@@ -26,15 +26,15 @@ import { DividerModule } from 'primeng/divider';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
-import { RegisterComponent } from './components/authentications/RegisterComponents/register/register.component';
+import { RegisterComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/register/register.component';
 import { MenubarModule } from 'primeng/menubar';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { RippleModule } from 'primeng/ripple';
-import { ConfirmAccountComponent } from './components/authentications/RegisterComponents/confirm-account/confirm-account.component';
-import { ResetPasswordComponent } from './components/authentications/Password/reset-password/reset-password.component';
-import { ResetPasswordFinalStepComponent } from './components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
-import { VerifyResetCodeComponent } from './components/authentications/Password/verify-reset-code/verify-reset-code.component';
+import { ConfirmAccountComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
+import { ResetPasswordFinalStepComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
+import { VerifyResetCodeComponent } from './components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -48,20 +48,27 @@ import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NbaMatchesComponent } from './components/application/nba/nba-matches/nba-matches.component';
+import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches/nba-matches.component';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { CalendarModule } from 'primeng/calendar';
-import { ProfileComponent } from './components/user/user-container/profile/profile.component';
-import { PanierComponent } from './components/application/panier/panier.component';
-import { VideoComponent } from './components/application/panier/video/video.component';
-import { UserContainerComponent } from './components/user/user-container/user-container.component';
-import { ImageComponent } from './components/user/user-container/image/image.component';
+import { ProfileComponent } from './components/application/userSpace/LoggedUser/user-container/profile/profile.component';
+import { PanierComponent } from './components/application/wager/panier/panier.component';
+import { VideoComponent } from './components/application/wager/panier/video/video.component';
+import { UserContainerComponent } from './components/application/userSpace/LoggedUser/user-container/user-container.component';
+import { ImageComponent } from './components/application/userSpace/LoggedUser/user-container/image/image.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AccordionModule } from 'primeng/accordion';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
+import { FootballComponent } from './components/application/wager/Paris/football/football/football.component';
+import { CompetitionComponent } from './components/application/wager/Paris/football/football/competition/competition.component';
+import { FootballMatchesComponent } from './components/application/wager/Paris/football/football/football-matches/football-matches.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TableModule } from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -83,6 +90,9 @@ import { CookieModule } from 'ngx-cookie';
     VideoComponent,
     UserContainerComponent,
     ImageComponent,
+    FootballComponent,
+    CompetitionComponent,
+    FootballMatchesComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -137,6 +147,10 @@ import { CookieModule } from 'ngx-cookie';
         disallowedRoutes: [''],
       },
     }),
+    ToolbarModule,
+    OverlayPanelModule,
+    TableModule,
+    CarouselModule,
   ],
   providers: [
     {

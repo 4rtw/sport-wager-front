@@ -1,0 +1,114 @@
+<div class="box">
+    <div class="p-grid p-flex-column">
+        <div class="p-col">
+            <div class="box p-grid">
+                <p-panel *ngIf="competitions?.length>0" header="Compétitions" [toggleable]="true" class="p-col-12">
+
+                    <p-carousel [value]="competitions" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+                        <ng-template let-competition pTemplate="item">
+                            <div class="product-item">
+                                <div class="product-item-content">
+                                    <div class="p-mb-3">
+                                        <img src="https://www.lsa-conso.fr/mediatheque/6/6/7/000279766_5.jpg" [alt]="competition.id" class="product-image" />
+                                    </div>
+                                    <div>
+                                        <h4 class="p-mb-1">{{competition.name}}</h4>
+                                        <div class="p-mt-5">
+                                            <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-arrow-down" (onClick)="changeCompetition(competition)"></p-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </p-panel>
+                <p-panel class="p-col-12" header="{{activeCompetition?.name || ''}}">
+                    <ng-template pTemplate="header">
+                        <button
+                                pButton
+                                pRipple
+                                type="button"
+                                icon="pi pi-angle-left"
+                                (click)="clickPreviousOrNext('previous')"
+                                class="p-button-rounded"
+                        ></button>
+                        <p-calendar
+                                #calendar
+                            [dateFormat]="'dd M yy'"
+                            [showIcon]="true"
+                            [(ngModel)]="date"
+                            (onSelect)="onSelectedDate($event)"
+                            inputId="basic"
+                        ></p-calendar>
+                        <button
+                                pButton
+                                pRipple
+                                type="button"
+                                icon="pi pi-angle-right"
+                                (click)="clickPreviousOrNext('next')"
+                                class="p-button-rounded"
+                        ></button>
+                    </ng-template>
+                    <ng-template pTemplate="icons">
+                        <i
+                                class="pi pi-table p-mr-4 p-text-secondary"
+                                pBadge
+                                style="font-size: 2rem"
+                                value="{{ matches?.length || 0 }}"
+                        ></i>
+                    </ng-template>
+                    <ng-template pTemplate="list">
+                        <div>
+                            <cdk-virtual-scroll-viewport
+                                    [itemSize]="100"
+                                    class="example-viewport-matches"
+                            >
+                                <div *ngIf="loading">
+                                    <p-skeleton
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                    <p-skeleton
+                                            width="10rem"
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                    <p-skeleton
+                                            width="5rem"
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                    <p-skeleton
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                    <p-skeleton
+                                            width="10rem"
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                    <p-skeleton
+                                            width="5rem"
+                                            styleClass="p-mb-2"
+                                            borderRadius="16px"
+                                    ></p-skeleton>
+                                </div>
+
+                                <div *cdkVirtualFor="let matche of matches">
+                                    <!-- eto -->
+
+                                    <div class="product-item">
+                                        {{matche.id}}
+                                    </div>
+
+                                    <!-- fin eto -->
+                                </div>
+                            </cdk-virtual-scroll-viewport>
+                        </div>
+                    </ng-template>
+                </p-panel>
+            </div>
+        </div>
+    </div>
+</div>
+

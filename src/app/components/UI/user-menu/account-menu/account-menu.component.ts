@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../shared/services/Auth/auth.service';
 import { Router } from '@angular/router';
-import { User } from '../../../../shared/model/user.model';
-import { JwtService } from '../../../../shared/services/jwt.service';
+import { User } from '../../../../shared/model/Users/user.model';
+import { JwtService } from '../../../../shared/services/Auth/jwt.service';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../../../shared/services/Users/user.service';
 
 @Component({
   selector: 'app-account-menu',
@@ -18,11 +19,18 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private jwtService: JwtService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.user = this.jwtService.getUser().user;
+    this.userSub = this.userService.getUserLoggedIn().subscribe(
+      (data) => {
+        this.user = data;
+      },
+      (_) => {
+        this.user = new User();
+      }
+    );
   }
 
   logout(): void {

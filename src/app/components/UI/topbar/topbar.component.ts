@@ -5,11 +5,11 @@ import {
   Output,
   OnDestroy,
 } from '@angular/core';
-import { User } from '../../../shared/model/user.model';
+import { User } from '../../../shared/model/Users/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../shared/services/user.service';
+import { UserService } from '../../../shared/services/Users/user.service';
 import { Subscription } from 'rxjs';
-import { JwtService } from '../../../shared/services/jwt.service';
+import { JwtService } from '../../../shared/services/Auth/jwt.service';
 
 @Component({
   selector: 'app-topbar',

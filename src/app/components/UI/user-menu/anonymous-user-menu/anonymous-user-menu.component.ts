@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../../../shared/services/auth.service';
+import { AuthService } from '../../../../shared/services/Auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -50,7 +50,7 @@ export class AnonymousUserMenuComponent implements OnInit, OnDestroy {
           this.messageService.add({
             severity: 'error',
             summary: 'Authentification',
-            detail: "Erreur d'authentification",
+            detail: 'Authentication error',
           });
           this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
         }

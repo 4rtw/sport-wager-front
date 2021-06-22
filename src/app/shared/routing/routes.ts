@@ -1,13 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { WagerComponent } from '../../components/application/wager/wager.component';
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from '../../components/authentications/RegisterComponents/register/register.component';
-import { ConfirmAccountComponent } from '../../components/authentications/RegisterComponents/confirm-account/confirm-account.component';
-import { ResetPasswordComponent } from '../../components/authentications/Password/reset-password/reset-password.component';
-import { VerifyResetCodeComponent } from '../../components/authentications/Password/verify-reset-code/verify-reset-code.component';
-import { ResetPasswordFinalStepComponent } from '../../components/authentications/Password/reset-password-final-step/reset-password-final-step.component';
-import { NbaMatchesComponent } from '../../components/application/nba/nba-matches/nba-matches.component';
-import { UserContainerComponent } from '../../components/user/user-container/user-container.component';
+import { RegisterComponent } from '../../components/application/userSpace/AnonymousUser/RegisterComponents/register/register.component';
+import { ConfirmAccountComponent } from '../../components/application/userSpace/AnonymousUser/RegisterComponents/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
+import { VerifyResetCodeComponent } from '../../components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
+import { ResetPasswordFinalStepComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
+import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches/nba-matches.component';
+import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
+import { FootballComponent } from '../../components/application/wager/Paris/football/football/football.component';
 
 const routes: Routes = [
   {
@@ -41,11 +42,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'prefix',
-    redirectTo: '/wager',
-  },
-  {
-    path: 'wager',
     component: WagerComponent,
     children: [
       {
@@ -55,6 +51,10 @@ const routes: Routes = [
       {
         path: 'nba',
         component: NbaMatchesComponent,
+      },
+      {
+        path: 'foot',
+        component: FootballComponent,
       },
     ],
   },

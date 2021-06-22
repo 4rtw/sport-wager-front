@@ -6,8 +6,8 @@ import {
   PrimeNGConfig,
 } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { JwtService } from './shared/services/jwt.service';
-import { AuthService } from './shared/services/auth.service';
+import { JwtService } from './shared/services/Auth/jwt.service';
+import { AuthService } from './shared/services/Auth/auth.service';
 
 @Component({
   selector: 'app-root',
