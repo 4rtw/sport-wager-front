@@ -182,12 +182,10 @@
                     </div>
                     <div class="p-d-block p-text-bold">
                       <!-- TODO fulltime and penalties-->
-                      <span *ngIf="match.score.winner==='HOME_TEAM'">*</span>
                       <span *ngIf="match.score.extraTime.homeTeam">({{ match.score.extraTime.homeTeam }})</span>
                       {{ match.score.fulltime.homeTeam }} -
                       {{ match.score.fulltime.awayTeam }}
                       <span *ngIf="match.score.extraTime.awayTeam">({{ match.score.extraTime.awayTeam }})</span>
-                      <span *ngIf="match.score.winner==='AWAY_TEAM'">*</span>
                     </div>
                   </div>
                   <div class="team-item p-d-block">
