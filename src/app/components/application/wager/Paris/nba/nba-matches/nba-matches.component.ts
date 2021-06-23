@@ -15,6 +15,7 @@ import { CustomDate } from '../../../../../../shared/services/Utils/DateOperator
   selector: 'app-nba-matches',
   templateUrl: './nba-matches.component.html',
   styleUrls: ['../../../wager.component.css', 'nba-matches.component.css'],
+  providers: [CustomDate],
 })
 export class NbaMatchesComponent implements OnInit, OnDestroy {
   matches: NbaGame[] = [];
@@ -28,22 +29,13 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
 
   constructor(
     private nbaService: NbaService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
+    public customDate: CustomDate
   ) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.getMatches(this.date);
-  }
-
-  getDateTime(d, type): string {
-    const date = new Date(d);
-    if (type === 'date') {
-      return date.toLocaleDateString();
-    }
-    if (type === 'time') {
-      return date.toLocaleTimeString().substr(0, 5);
-    }
   }
 
   getMatchCotes(match: NbaGame): any {
@@ -94,7 +86,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
     this.matches = [];
     this.loading = true;
     this.matchesSub = this.nbaService
-      .getMatches(CustomDate.formatDate(date))
+      .getMatches(this.customDate.formatDate(date))
       .subscribe((data) => {
         this.matches = data;
         this.calendar.updateInputfield();

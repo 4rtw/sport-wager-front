@@ -37,13 +37,12 @@
               value="{{ matches.length }}"
             ></i>
           </ng-template>
-
           <ng-template pTemplate="list">
-            <div>
               <cdk-virtual-scroll-viewport
                 [itemSize]="100"
                 class="example-viewport"
               >
+                <!-- Skeleton -->
                 <div *ngIf="loading">
                   <p-skeleton
                     styleClass="p-mb-2"
@@ -77,71 +76,64 @@
 
                 <div *cdkVirtualFor="let match of matches">
                   <!-- eto -->
-
-                  <div class="product-item">
-                    <div class="image-container">
-                      <img
-                        alt="Image"
-                        src="assets/images/bracelet.jpg"
-                        class="product-image"
-                      />
+                    <div class="p-d-flex p-jc-between">
+                      <div class="p-fluid">
+                        <div class="team-item p-d-block">
+                          <img
+                                  alt="Image"
+                                  src="assets/images/bracelet.jpg"
+                                  class="team-img"
+                          />
+                        </div>
+                        <div class="p-d-block p-text-center p-mt-2">{{match.HomeTeam}}</div>
+                      </div>
+                      <div class="p-text-center" style="width:300px">
+                        <div class="p-d-block p-text-bold">
+                        <span [class]="'product-badge'">{{customDate.getDateTime(match.DateTime, 'time')}} - <p-tag
+                                [rounded]="true"
+                                [severity]="getSeverity(match)"
+                        >{{ match.Status.toLowerCase() }}</p-tag
+                        ></span>
+                        </div>
+                        <div class="p-d-block">
+                          <span [class]="'product-badge'">{{customDate.getDateTime(match.Day, 'date')}}</span>
+                        </div>
+                        <div class="p-d-block p-m-2">
+                          <p-selectButton
+                                  [disabled]="
+                              ['Final', 'Canceled', 'F/OT'].includes(
+                                match.Status
+                              )
+                            "
+                                  (onOptionClick)="onClick()"
+                                  [options]="getMatchCotes(match)"
+                                  [(ngModel)]="value1"
+                                  multiple="multiple"
+                                  optionLabel="name"
+                                  optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                        <div class="p-d-block">
+                          {{match.HomeTeamScore}} -
+                          {{match.AwayTeamScore}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="team-item p-d-block">
+                          <img
+                                  alt="Image"
+                                  src="assets/images/bracelet.jpg"
+                                  class="team-img"
+                          />
+                        </div>
+                        <div class="p-d-block p-text-center p-mt-2">{{match.AwayTeam}}</div>
+                      </div>
                     </div>
-
-                    <div class="product-list-detail">
-                      <h5 class="p-mb-2">
-                        {{ match.HomeTeam + ' - ' + match.AwayTeam }}
-                      </h5>
-                      <span
-                        *ngIf="
-                          ['Final', 'Canceled', 'F/OT'].includes(match.Status)
-                        "
-                        class="product-category"
-                        >{{
-                          (match.HomeTeamScore || 0) +
-                            '-' +
-                            (match.AwayTeamScore || 0)
-                        }}</span
-                      >
-                    </div>
-
-                    <div class="center">
-                      <p-selectButton
-                        [disabled]="
-                          ['Final', 'Canceled', 'F/OT'].includes(match.Status)
-                        "
-                        (onOptionClick)="onClick()"
-                        [options]="getMatchCotes(match)"
-                        [(ngModel)]="value1"
-                        multiple="multiple"
-                        optionLabel="name"
-                        optionValue="value"
-                      ></p-selectButton>
-                    </div>
-
-                    <div class="product-list-action">
-                      <p-tag [rounded]="true" [severity]="getSeverity(match)">{{
-                        match.Status.toLowerCase()
-                      }}</p-tag>
-                      <span [class]="'product-badge'">{{
-                        getDateTime(match.DateTime, 'time') +
-                          '-' +
-                          getDateTime(match.Day, 'date')
-                      }}</span>
-                    </div>
-
-                    <div class="image-container">
-                      <img
-                              alt="Image"
-                              src="assets/images/bracelet.jpg"
-                              class="product-image"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- fin eto -->
+                    <p-divider></p-divider>
                 </div>
+
+                <!-- fin eto -->
               </cdk-virtual-scroll-viewport>
-            </div>
           </ng-template>
         </p-panel>
       </div>

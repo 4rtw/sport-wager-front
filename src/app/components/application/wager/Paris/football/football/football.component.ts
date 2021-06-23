@@ -4,11 +4,13 @@ import { Competitions } from '../../../../../../shared/model/Foot/competitions';
 import { FootballGames } from '../../../../../../shared/model/Foot/foot';
 import { MatchService } from '../../../../../../shared/services/Football/match.service';
 import { Calendar } from 'primeng/calendar';
+import { CustomDate } from '../../../../../../shared/services/Utils/DateOperator';
 
 @Component({
   selector: 'app-football',
   templateUrl: './football.component.html',
   styleUrls: ['./football.component.css'],
+  providers: [CustomDate],
 })
 export class FootballComponent implements OnInit {
   activeCompetition: Competitions;
@@ -23,7 +25,8 @@ export class FootballComponent implements OnInit {
   constructor(
     private competitionService: CompetitionService,
     private changeDetector: ChangeDetectorRef,
-    private footballService: MatchService
+    private footballService: MatchService,
+    public customDate: CustomDate
   ) {
     this.responsiveOptions = [
       {
@@ -66,6 +69,7 @@ export class FootballComponent implements OnInit {
       .subscribe((x) => {
         this.matches = [];
         this.matches = x;
+        this.loadingMatches = false;
         console.log(x);
         this.calendar.updateInputfield();
         this.changeDetector.detectChanges();
@@ -89,4 +93,6 @@ export class FootballComponent implements OnInit {
     this.activeCompetition = competition;
     this.getMatches();
   }
+
+  getMatchCotes(match: FootballGames) {}
 }

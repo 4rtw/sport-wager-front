@@ -2,8 +2,37 @@
     <div class="p-grid p-flex-column">
         <div class="p-col">
             <div class="box p-grid">
-                <p-panel *ngIf="competitions?.length>0" header="Compétitions" [toggleable]="true" class="p-col-12">
-
+                <p-panel header="Compétitions" [toggleable]="true" class="p-col-12">
+                    <div *ngIf="loading">
+                        <p-skeleton
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                        <p-skeleton
+                                width="10rem"
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                        <p-skeleton
+                                width="5rem"
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                        <p-skeleton
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                        <p-skeleton
+                                width="10rem"
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                        <p-skeleton
+                                width="5rem"
+                                styleClass="p-mb-2"
+                                borderRadius="16px"
+                        ></p-skeleton>
+                    </div>
                     <p-carousel [value]="competitions" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
                         <ng-template let-competition pTemplate="item">
                             <div class="product-item">
@@ -58,12 +87,11 @@
                         ></i>
                     </ng-template>
                     <ng-template pTemplate="list">
-                        <div>
                             <cdk-virtual-scroll-viewport
                                     [itemSize]="100"
                                     class="example-viewport-matches"
                             >
-                                <div *ngIf="loading">
+                                <div *ngIf="loadingMatches">
                                     <p-skeleton
                                             styleClass="p-mb-2"
                                             borderRadius="16px"
@@ -94,17 +122,11 @@
                                     ></p-skeleton>
                                 </div>
 
-                                <div *cdkVirtualFor="let matche of matches">
-                                    <!-- eto -->
-
-                                    <div class="product-item">
-                                        {{matche.id}}
-                                    </div>
-
-                                    <!-- fin eto -->
+                                <div *cdkVirtualFor="let match of matches">
+                                    {{match.homeTeam.name}} vs {{match.awayTeam.name}}
                                 </div>
+
                             </cdk-virtual-scroll-viewport>
-                        </div>
                     </ng-template>
                 </p-panel>
             </div>
