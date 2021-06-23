@@ -22,12 +22,20 @@ export class CompetitionService {
       .pipe(
         map((x: { data: Competitions[]; errors: string[] }) => {
           let competitions: Competitions[];
+          const activeCompetitions: Competitions[] = [];
           // @ts-ignore
           competitions = x.data.data;
-          console.log('competitions');
-          console.log(competitions);
-          console.log('competitions');
-          return competitions;
+          for (const competition of competitions) {
+            if (
+              new Date(competition.currentSeason.startDate).getTime() <
+                new Date(new Date().toUTCString()).getTime() &&
+              new Date(competition.currentSeason.endDate).getTime() >
+                new Date(new Date().toUTCString()).getTime()
+            ) {
+              activeCompetitions.push(competition);
+            }
+          }
+          return activeCompetitions;
         })
       );
   }

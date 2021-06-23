@@ -1,136 +1,212 @@
 <div class="box">
-    <div class="p-grid p-flex-column">
-        <div class="p-col">
-            <div class="box p-grid">
-                <p-panel header="Compétitions" [toggleable]="true" class="p-col-12">
-                    <div *ngIf="loading">
-                        <p-skeleton
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
-                        <p-skeleton
-                                width="10rem"
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
-                        <p-skeleton
-                                width="5rem"
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
-                        <p-skeleton
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
-                        <p-skeleton
-                                width="10rem"
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
-                        <p-skeleton
-                                width="5rem"
-                                styleClass="p-mb-2"
-                                borderRadius="16px"
-                        ></p-skeleton>
+  <div class="p-grid p-flex-column">
+    <div class="p-col">
+      <div class="box p-grid">
+        <p-panel
+          header="Compétitions actives"
+          [toggleable]="true"
+          class="p-col-12"
+        >
+          <div *ngIf="loading">
+            <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+            <p-skeleton
+              width="10rem"
+              styleClass="p-mb-2"
+              borderRadius="16px"
+            ></p-skeleton>
+            <p-skeleton
+              width="5rem"
+              styleClass="p-mb-2"
+              borderRadius="16px"
+            ></p-skeleton>
+            <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+            <p-skeleton
+              width="10rem"
+              styleClass="p-mb-2"
+              borderRadius="16px"
+            ></p-skeleton>
+            <p-skeleton
+              width="5rem"
+              styleClass="p-mb-2"
+              borderRadius="16px"
+            ></p-skeleton>
+          </div>
+          <p-carousel
+            [value]="competitions"
+            [numVisible]="3"
+            [numScroll]="3"
+            [circular]="false"
+            [responsiveOptions]="responsiveOptions"
+          >
+            <ng-template let-competition pTemplate="item">
+              <div class="product-item">
+                <div class="product-item-content">
+                  <div class="p-mb-3">
+                    <img
+                      src="https://www.lsa-conso.fr/mediatheque/6/6/7/000279766_5.jpg"
+                      [alt]="competition.id"
+                      class="product-image"
+                    />
+                  </div>
+                  <div>
+                    <h4 class="p-mb-1">{{ competition.name }}</h4>
+                    <div class="p-mt-5">
+                      <p-button
+                        type="button"
+                        styleClass="p-button-success p-button-rounded p-mr-2"
+                        icon="pi pi-arrow-down"
+                        (onClick)="changeCompetition(competition)"
+                      ></p-button>
                     </div>
-                    <p-carousel [value]="competitions" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
-                        <ng-template let-competition pTemplate="item">
-                            <div class="product-item">
-                                <div class="product-item-content">
-                                    <div class="p-mb-3">
-                                        <img src="https://www.lsa-conso.fr/mediatheque/6/6/7/000279766_5.jpg" [alt]="competition.id" class="product-image" />
-                                    </div>
-                                    <div>
-                                        <h4 class="p-mb-1">{{competition.name}}</h4>
-                                        <div class="p-mt-5">
-                                            <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-arrow-down" (onClick)="changeCompetition(competition)"></p-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </p-carousel>
-                </p-panel>
-                <p-panel class="p-col-12" header="{{activeCompetition?.name || ''}}">
-                    <ng-template pTemplate="header">
-                        <button
-                                pButton
-                                pRipple
-                                type="button"
-                                icon="pi pi-angle-left"
-                                (click)="clickPreviousOrNext('previous')"
-                                class="p-button-rounded"
-                        ></button>
-                        <p-calendar
-                                #calendar
-                            [dateFormat]="'dd M yy'"
-                            [showIcon]="true"
-                            [(ngModel)]="date"
-                            (onSelect)="onSelectedDate($event)"
-                            inputId="basic"
-                        ></p-calendar>
-                        <button
-                                pButton
-                                pRipple
-                                type="button"
-                                icon="pi pi-angle-right"
-                                (click)="clickPreviousOrNext('next')"
-                                class="p-button-rounded"
-                        ></button>
-                    </ng-template>
-                    <ng-template pTemplate="icons">
-                        <i
-                                class="pi pi-table p-mr-4 p-text-secondary"
-                                pBadge
-                                style="font-size: 2rem"
-                                value="{{ matches?.length || 0 }}"
-                        ></i>
-                    </ng-template>
-                    <ng-template pTemplate="list">
-                            <cdk-virtual-scroll-viewport
-                                    [itemSize]="100"
-                                    class="example-viewport-matches"
-                            >
-                                <div *ngIf="loadingMatches">
-                                    <p-skeleton
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                    <p-skeleton
-                                            width="10rem"
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                    <p-skeleton
-                                            width="5rem"
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                    <p-skeleton
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                    <p-skeleton
-                                            width="10rem"
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                    <p-skeleton
-                                            width="5rem"
-                                            styleClass="p-mb-2"
-                                            borderRadius="16px"
-                                    ></p-skeleton>
-                                </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </p-panel>
+        <p-panel class="p-col-12" header="{{ activeCompetition?.name || '' }}">
+          <ng-template pTemplate="header">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-angle-left"
+              (click)="clickPreviousOrNext('previous')"
+              class="p-button-rounded"
+            ></button>
+            <p-calendar
+              #calendar
+              [dateFormat]="'dd M yy'"
+              [showIcon]="true"
+              [(ngModel)]="date"
+              (onSelect)="onSelectedDate($event)"
+              inputId="basic"
+            ></p-calendar>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-angle-right"
+              (click)="clickPreviousOrNext('next')"
+              class="p-button-rounded"
+            ></button>
+          </ng-template>
+          <ng-template pTemplate="icons">
+            <i
+              class="pi pi-table p-mr-4 p-text-secondary"
+              pBadge
+              style="font-size: 2rem"
+              value="{{ matches?.length || 0 }}"
+            ></i>
+          </ng-template>
+          <ng-template pTemplate="list">
+            <cdk-virtual-scroll-viewport
+              [itemSize]="100"
+              class="example-viewport-matches"
+            >
+              <!-- Skeleton -->
+              <div *ngIf="loadingMatches">
+                <p-skeleton
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+                <p-skeleton
+                  width="10rem"
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+                <p-skeleton
+                  width="5rem"
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+                <p-skeleton
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+                <p-skeleton
+                  width="10rem"
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+                <p-skeleton
+                  width="5rem"
+                  styleClass="p-mb-2"
+                  borderRadius="16px"
+                ></p-skeleton>
+              </div>
 
-                                <div *cdkVirtualFor="let match of matches">
-                                    {{match.homeTeam.name}} vs {{match.awayTeam.name}}
-                                </div>
-
-                            </cdk-virtual-scroll-viewport>
-                    </ng-template>
-                </p-panel>
-            </div>
-        </div>
+              <div *cdkVirtualFor="let match of matches">
+                <!-- eto -->
+                <div class="p-d-flex p-jc-between">
+                  <div class="p-fluid">
+                    <div class="team-item p-d-block">
+                      <img
+                        alt="Image"
+                        src="assets/images/bracelet.jpg"
+                        class="team-img"
+                      />
+                    </div>
+                    <div class="p-d-block p-text-center p-mt-2">
+                      {{ match.homeTeam.name }}
+                    </div>
+                  </div>
+                  <div class="p-text-center">
+                    <div class="p-d-block p-text-bold">
+                      <span [class]="'product-badge'"
+                        >{{ customDate.getDateTime(match.utcDate, 'time') }} -
+                        <p-tag
+                          [rounded]="true"
+                          [severity]="getSeverity(match)"
+                          >{{ match.status.toLowerCase() }}</p-tag
+                        ></span
+                      >
+                    </div>
+                    <div class="p-d-block">
+                      <span [class]="'product-badge'">{{
+                        customDate.getDateTime(match.utcDate, 'date')
+                      }}</span>
+                    </div>
+                    <div class="p-d-block p-m-2">
+                      <p-selectButton
+                        [disabled]="
+                          ['Final', 'Canceled', 'F/OT'].includes(match.status)
+                        "
+                        (onOptionClick)="onClick()"
+                        [options]="getMatchCotes(match)"
+                        [(ngModel)]="value1"
+                        multiple="multiple"
+                        optionLabel="name"
+                        optionValue="value"
+                      ></p-selectButton>
+                    </div>
+                    <div class="p-d-block p-text-bold">
+                      <!-- TODO fulltime and penalties-->
+                      <span *ngIf="match.score.winner==='HOME_TEAM'">*</span>
+                      <span *ngIf="match.score.extraTime.homeTeam">({{ match.score.extraTime.homeTeam }})</span>
+                      {{ match.score.fulltime.homeTeam }} -
+                      {{ match.score.fulltime.awayTeam }}
+                      <span *ngIf="match.score.extraTime.awayTeam">({{ match.score.extraTime.awayTeam }})</span>
+                      <span *ngIf="match.score.winner==='AWAY_TEAM'">*</span>
+                    </div>
+                  </div>
+                  <div class="team-item p-d-block">
+                    <img
+                      alt="Image"
+                      src="assets/images/bracelet.jpg"
+                      class="team-img"
+                    />
+                    <div class="p-d-block p-text-center p-mt-2">
+                      {{ match.awayTeam.name }}
+                    </div>
+                  </div>
+                </div>
+                <p-divider></p-divider>
+              </div>
+            </cdk-virtual-scroll-viewport>
+          </ng-template>
+        </p-panel>
+      </div>
     </div>
+  </div>
 </div>
-

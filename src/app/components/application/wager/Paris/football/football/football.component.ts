@@ -20,6 +20,7 @@ export class FootballComponent implements OnInit {
   loading: boolean;
   loadingMatches: boolean;
   responsiveOptions;
+  value1;
   @ViewChild('calendar') calendar: Calendar;
 
   constructor(
@@ -64,16 +65,32 @@ export class FootballComponent implements OnInit {
   }
 
   getMatches(): void {
+    this.loadingMatches = true;
+    this.matches = [];
     this.footballService
       .getMatches(this.activeCompetition.id, this.date)
       .subscribe((x) => {
-        this.matches = [];
         this.matches = x;
         this.loadingMatches = false;
         console.log(x);
         this.calendar.updateInputfield();
         this.changeDetector.detectChanges();
       });
+  }
+
+  getSeverity(match: FootballGames): string {
+    switch (match.status) {
+      case 'FINISHED':
+        return 'primary';
+      case 'Canceled':
+        return 'danger';
+      case 'F/OT':
+        return 'info';
+      case 'SCHEDULED':
+        return 'success';
+      default:
+        return '';
+    }
   }
 
   clickPreviousOrNext(sens: string): void {
@@ -94,5 +111,27 @@ export class FootballComponent implements OnInit {
     this.getMatches();
   }
 
-  getMatchCotes(match: FootballGames) {}
+  onClick(): void {
+    console.log('click');
+  }
+
+  /*
+   * TODO change to real value
+   * */
+  getMatchCotes(match: FootballGames): any {
+    return [
+      {
+        name: '2.30',
+        value: match.homeTeam.id,
+      },
+      {
+        name: '2.30',
+        value: match.awayTeam.id,
+      },
+      {
+        name: '2.30',
+        value: match.awayTeam.name,
+      },
+    ];
+  }
 }
