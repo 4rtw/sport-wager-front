@@ -13,5 +13,8 @@ export class Validator {
     if (formControl.hasError('pattern')) {
       return 'Ce champ doit commencer par une lettre majuscule';
     }
+    if (formControl.hasError('mustMatch')) {
+      return 'Passwords must match';
+    }
   }
 }

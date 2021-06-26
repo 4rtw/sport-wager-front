@@ -17,7 +17,7 @@ export class AuthService {
     private http: HttpClient,
     private persistenceManager: LocalStorageService,
     private jwtService: JwtService
-  ) {}
+  ) { }
 
   login(
     email: string,
@@ -77,6 +77,7 @@ export class AuthService {
         email: user.email,
         phone: user.phone,
         password: user.password,
+        image: "https://res.cloudinary.com/dy528ddbe/image/upload/v1624706965/o07qvrf7bfuljol0vbbg.png",
       })
       .pipe(
         tap((_) => {
@@ -131,7 +132,7 @@ export class AuthService {
   private handleError<T>(): any {
     return (e: any): Observable<T> => {
       const result = e.error as T;
-      // console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));
+      console.log('ERREURS: ' + (result['errors'] as Array<string>).join(', '));
       return of(result);
     };
   }

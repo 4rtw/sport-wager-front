@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../../../../shared/model/Users/user.model';
 import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
 import { Router } from '@angular/router';
-import { FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Validator } from '../../../../../../shared/services/Utils/Validator';
-
+import { MustMatch } from '../../../../../../shared/services/Utils/must-match.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,64 +12,55 @@ import { Validator } from '../../../../../../shared/services/Utils/Validator';
 })
 export class RegisterComponent implements OnInit {
   // TODO validation password match
-
   hide = true;
   hideConfirm = true;
-  nom = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[A-Z ]*'),
-  ]);
-  prenom = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[A-Z ]*'),
-  ]);
-  password = new FormControl('', [
-    Validators.required,
-    Validators.minLength(5),
-  ]);
-  phone = new FormControl('', [Validators.required]);
-  email = new FormControl('', [Validators.required, Validators.email]);
-  confirmPassword = new FormControl('', [Validators.required]);
+  registerForm: FormGroup;
   validator = new Validator();
 
-  constructor(private authService: AuthService, private router: Router) {}
+  display = "Complete the form to enable inscription button";
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
+    }, {
+        validator: MustMatch('password', 'confirmPassword')
+      });
+  }
 
   defineUser(): User {
-    const user = new User();
-
-    user.firstname = this.nom.value;
-    user.lastname = this.prenom.value;
-    user.email = this.email.value;
-    user.password = this.password.value;
-    user.phone = this.phone.value;
-
-    console.log('User=' + user.email);
-
+    let user = new User();
+    user = this.registerForm.value;
+    console.log(user);
     return user;
   }
 
   registerUser(user): void {
     this.authService.register(user).subscribe(
       (response) => {
-        // TODO handle duplication errors
-        if (response.errors) {
-          console.log(response.errors);
+        if (response.errors.length == 1) {
+          this.display = "This account is already exists on your sport wager";
+        } else {
+          console.log("res");
+          // when successfull
+          this.router
+            .navigate(['/account/confirm-account'], {
+              queryParams: { email: user.email },
+            })
+            .then(() => location.reload());
         }
-
-        // when successfull
-        this.router
-          .navigate(['/confirm-account'], {
-            queryParams: { email: this.email.value },
-          })
-          .then(() => location.reload());
-      },
-      (_) => {}
+      }
     );
   }
 
   onSubmit(): void {
+    this.display = "";
     this.registerUser(this.defineUser());
   }
 
