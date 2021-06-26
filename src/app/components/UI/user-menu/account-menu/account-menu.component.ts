@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../../shared/services/Auth/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../../shared/model/Users/user.model';
-import { JwtService } from '../../../../shared/services/Auth/jwt.service';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../../../shared/services/Users/user.service';
 

@@ -32,7 +32,13 @@ export class TopbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.jwtService.getUser().user;
+    this.getUser();
+  }
+
+  getUser(): void {
+    this.userSub = this.userService.getUserLoggedIn().subscribe((data) => {
+      this.user = data;
+    });
   }
 
   toogleSidenav(): void {

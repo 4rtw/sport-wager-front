@@ -9,6 +9,7 @@ import { ResetPasswordFinalStepComponent } from '../../components/application/us
 import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches/nba-matches.component';
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { FootballComponent } from '../../components/application/wager/Paris/football/football/football.component';
+import { RootContainerComponent } from '../../components/root-container/root-container.component';
 
 const routes: Routes = [
   {
@@ -42,19 +43,25 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: WagerComponent,
+    component: RootContainerComponent,
     children: [
       {
         path: '',
-        component: NbaMatchesComponent,
-      },
-      {
-        path: 'nba',
-        component: NbaMatchesComponent,
-      },
-      {
-        path: 'foot',
-        component: FootballComponent,
+        component: WagerComponent,
+        children: [
+          {
+            path: '',
+            component: NbaMatchesComponent,
+          },
+          {
+            path: 'nba',
+            component: NbaMatchesComponent,
+          },
+          {
+            path: 'foot',
+            component: FootballComponent,
+          },
+        ],
       },
     ],
   },

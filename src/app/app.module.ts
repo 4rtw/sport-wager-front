@@ -69,6 +69,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
+import { RootContainerComponent } from './components/root-container/root-container.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { CarouselModule } from 'primeng/carousel';
     FootballComponent,
     CompetitionComponent,
     FootballMatchesComponent,
+    RootContainerComponent,
   ],
   imports: [
     AppRoutingModule,
