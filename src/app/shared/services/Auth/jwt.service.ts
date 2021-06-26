@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie';
 import * as CryptoJS from 'crypto-js';
+import { config } from 'src/app/shared/config/variables';
 
 @Injectable({
   providedIn: 'root',
@@ -104,7 +105,7 @@ export class JwtService {
   refreshToken(): Observable<any> {
     if (this.getUser().user.id !== 0) {
       // define variables
-      const uri = 'https://wager-tpt.herokuapp.com/api/token/refresh';
+      const uri = config.herokuurl + 'token/refresh';
 
       return this.http
         .post<{

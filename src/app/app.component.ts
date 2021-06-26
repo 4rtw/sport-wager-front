@@ -82,6 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * puis attend un délai de 60 avant de se réexecuter
    * */
   refreshToken(): void {
+    console.log('userID = ' + this.jwtService.getUser().user.id);
     if (this.jwtService.getUser().user.id !== 0) {
       this.silentRefresh = this.jwtService.refreshToken().subscribe();
     }
