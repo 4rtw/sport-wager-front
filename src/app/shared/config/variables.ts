@@ -1,3 +1,3 @@
 export const config = {
-  herokuurl: 'https://wager-tpt.herokuapp.com/api/',
+  herokuurl: 'https://wager-tpt-2.herokuapp.com/api/',
 };
