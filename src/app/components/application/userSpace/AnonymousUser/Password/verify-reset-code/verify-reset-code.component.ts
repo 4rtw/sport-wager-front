@@ -38,7 +38,7 @@ export class VerifyResetCodeComponent implements OnInit {
           // TODO handle errors
 
           this.router
-            .navigate(['/set-password'], {
+            .navigate(['/account/set-password'], {
               queryParams: { email: this.email.value },
             })
             .then(() => {
