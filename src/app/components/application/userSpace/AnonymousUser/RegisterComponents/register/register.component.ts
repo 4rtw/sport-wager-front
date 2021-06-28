@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
     }, {
-        validator: MustMatch('password', 'confirmPassword')
-      });
+      validator: MustMatch('password', 'confirmPassword')
+    });
   }
 
   defineUser(): User {
@@ -43,19 +43,19 @@ export class RegisterComponent implements OnInit {
 
   registerUser(user): void {
     this.authService.register(user).subscribe(
-      (response) => {
-        if (response.errors.length == 1) {
-          this.display = "This account is already exists on your sport wager";
-        } else {
-          console.log("res");
-          // when successfull
-          this.router
-            .navigate(['/account/confirm-account'], {
-              queryParams: { email: user.email },
-            })
-            .then(() => location.reload());
+        (response) => {
+          if (response.errors.length == 1) {
+            this.display = "This account is already exists on your sport wager";
+          } else {
+            console.log("res");
+            // when successfull
+            this.router
+                .navigate(['/account/confirm-account'], {
+                  queryParams: { email: user.email },
+                })
+                .then(() => location.reload());
+          }
         }
-      }
     );
   }
 
