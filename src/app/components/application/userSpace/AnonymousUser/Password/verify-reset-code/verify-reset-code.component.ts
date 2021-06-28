@@ -15,6 +15,7 @@ export class VerifyResetCodeComponent implements OnInit {
   code = new FormControl('', [Validators.required]);
   sub: Subscription;
   validator = new Validator();
+  error = '';
 
   // TODO add verify password
   constructor(
@@ -27,6 +28,12 @@ export class VerifyResetCodeComponent implements OnInit {
     this.sub = this.activatedRoute.queryParams.subscribe((params) => {
       // Defaults to 0 if no query param provided.
       this.email.setValue(params.email);
+      if (params.error === 'true') {
+        this.error = 'Votre code est éronné ou votre compte est introuvable';
+        setTimeout(() => {
+          this.error = '';
+        }, 5000);
+      }
     });
   }
 
@@ -35,8 +42,6 @@ export class VerifyResetCodeComponent implements OnInit {
       .verifyResetCode({ email: this.email.value, code: this.code.value })
       .subscribe(
         (_) => {
-          // TODO handle errors
-
           this.router
             .navigate(['/account/set-password'], {
               queryParams: { email: this.email.value },
@@ -44,10 +49,16 @@ export class VerifyResetCodeComponent implements OnInit {
             .then(() => {
               location.reload();
             });
-
-          // TODO pass email to next component -> set password final step
         },
-        (_) => {}
+        (_) => {
+          this.router
+            .navigate(['/account/verify-reset-code'], {
+              queryParams: { error: 'true', email: this.email.value },
+            })
+            .then(() => {
+              location.reload();
+            });
+        }
       );
   }
 

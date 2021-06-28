@@ -100,9 +100,7 @@ export class AuthService {
   }
 
   resetPassword(email: string): Observable<any> {
-    return this.http
-      .get(this.uri + 'forget-password/' + email)
-      .pipe(catchError(this.handleError<any>()));
+    return this.http.get(this.uri + 'forget-password/' + email).pipe();
   }
 
   verifyResetCode(verifyContent: {
@@ -114,7 +112,7 @@ export class AuthService {
         email: verifyContent.email,
         reset_code: verifyContent.code,
       })
-      .pipe(catchError(this.handleError<any>()));
+      .pipe();
   }
 
   setResetedPassword(setPassword: {
