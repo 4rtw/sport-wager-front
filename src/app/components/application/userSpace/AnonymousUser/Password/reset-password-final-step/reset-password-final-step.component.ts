@@ -23,9 +23,9 @@ export class ResetPasswordFinalStepComponent implements OnInit {
   validator = new Validator();
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
+      private authService: AuthService,
+      private router: Router,
+      private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -37,19 +37,19 @@ export class ResetPasswordFinalStepComponent implements OnInit {
 
   onSubmit(): void {
     this.authService
-      .setResetedPassword({
-        email: this.email.value,
-        password: this.password.value,
-      })
-      .subscribe(
-        (_) => {
-          // TODO handle errors
-          this.router
-            .navigate(['/'], { queryParams: { email: this.email.value } })
-            .then(() => location.reload());
-        },
-        (_) => {}
-      );
+        .setResetedPassword({
+          email: this.email.value,
+          password: this.password.value,
+        })
+        .subscribe(
+            (_) => {
+              // TODO handle errors
+              this.router
+                  .navigate(['/'], { queryParams: { email: this.email.value } })
+                  .then(() => location.reload());
+            },
+            (_) => {}
+        );
   }
 
   getErrorMessage(form: FormControl): string {
