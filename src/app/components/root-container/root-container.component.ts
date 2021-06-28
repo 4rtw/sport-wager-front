@@ -52,6 +52,15 @@ export class RootContainerComponent implements OnInit, OnDestroy {
             detail: 'Vous êtes maintenant déconnéctés',
           });
         }
+
+        if (params.activated === 'true') {
+          // Todo Message service doesn't work
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Activation',
+            detail: 'Votre compte a été activé avec succès',
+          });
+        }
       })
     );
   }

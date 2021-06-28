@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  FormGroup,
+  FormBuilder,
+} from '@angular/forms';
 import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -17,6 +22,8 @@ export class ConfirmAccountComponent implements OnInit {
   confirmationForm: FormGroup;
 
   validator = new Validator();
+  error = '';
+  email = '';
 
   sub: Subscription;
 
@@ -25,18 +32,24 @@ export class ConfirmAccountComponent implements OnInit {
     private router: Router,
     private activateRouter: ActivatedRoute,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-
     this.confirmationForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      code: ['', [Validators.required]]
+      code: ['', [Validators.required]],
     });
 
     this.sub = this.activateRouter.queryParams.subscribe((params) => {
       console.log(params);
       this.confirmationForm.controls.email.setValue(params.email);
+      this.email = params.email;
+      if (params.error === 'true') {
+        this.error = 'votre code est invalide ou votre compte est introuvable';
+      }
+      setTimeout(() => {
+        this.error = '';
+      }, 5000);
     });
   }
 
@@ -51,13 +64,20 @@ export class ConfirmAccountComponent implements OnInit {
           // TODO handle error
           console.log(res);
           console.log(this.confirmationForm.controls.email.value);
-          //{ queryParams: { email: this.confirmationForm.controls.email.value } }
           this.router
-            .navigate(['/'])
+            .navigate(['/'], { queryParams: { activated: 'true' } })
             .then(() => {
               location.reload();
             });
         },
+        (error) => {
+          console.log(error);
+          this.router
+            .navigate(['/account/confirm-account'], {
+              queryParams: { error: 'true', email: this.email },
+            })
+            .then(() => location.reload());
+        }
       );
   }
 
