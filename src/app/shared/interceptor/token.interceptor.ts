@@ -12,19 +12,24 @@ import { JwtService } from '../services/Auth/jwt.service';
   providedIn: 'root',
 })
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private jwtService: JwtService) {}
+  constructor(private jwtService: JwtService) { }
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.jwtService.token;
-    request = request.clone({
-      url: request.url,
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return next.handle(request);
+    //const user = this.jwtService.getUser().user;
+    console.log("TokenInterceptor");
+    console.log(request.url);
+    if (request.url === "https://api.cloudinary.com/v1_1/dy528ddbe/delete_by_token") {
+      console.log("-------------");
+      return next.handle(request);
+    } else {
+      const cloned = request.clone({
+        url: request.url,
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return next.handle(cloned);
+    }
   }
 }
