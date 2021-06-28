@@ -17,7 +17,7 @@ export class AuthService {
     private http: HttpClient,
     private persistenceManager: LocalStorageService,
     private jwtService: JwtService
-  ) { }
+  ) {}
 
   login(
     email: string,
@@ -77,13 +77,13 @@ export class AuthService {
         email: user.email,
         phone: user.phone,
         password: user.password,
-        image: "https://res.cloudinary.com/dy528ddbe/image/upload/v1624706965/o07qvrf7bfuljol0vbbg.png",
+        image:
+          'https://res.cloudinary.com/dy528ddbe/image/upload/v1624706965/o07qvrf7bfuljol0vbbg.png',
       })
       .pipe(
         tap((_) => {
           console.log('User registered');
-        }),
-        catchError(this.handleError<any>())
+        })
       );
   }
 
@@ -96,7 +96,7 @@ export class AuthService {
         email: confirmContent.email,
         activation_code: confirmContent.activationCode,
       })
-      .pipe(catchError(this.handleError<any>()));
+      .pipe();
   }
 
   resetPassword(email: string): Observable<any> {
