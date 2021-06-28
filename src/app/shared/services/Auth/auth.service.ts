@@ -65,7 +65,7 @@ export class AuthService {
   }
 
   private generateID = (): number =>
-    parseInt(Date.now() + (Math.random() * 100000).toFixed(), 10);
+    parseInt(Date.now() + (Math.random() * 5000).toFixed(), 10)
 
   register(user: User): Observable<any> {
     user.id = this.generateID();
@@ -100,7 +100,15 @@ export class AuthService {
   }
 
   resetPassword(email: string): Observable<any> {
-    return this.http.get(this.uri + 'forget-password/' + email).pipe();
+    return this.http
+      .get<{ data: []; errors: string[] }>(
+        this.uri + 'forget-password/' + email
+      )
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
   }
 
   verifyResetCode(verifyContent: {
