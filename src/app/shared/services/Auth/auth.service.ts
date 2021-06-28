@@ -65,7 +65,7 @@ export class AuthService {
   }
 
   private generateID = (): number =>
-    parseInt(Date.now() + (Math.random() * 5000).toFixed(), 10)
+    parseInt(Date.now() + (Math.random() * 5000).toFixed(), 10);
 
   register(user: User): Observable<any> {
     user.id = this.generateID();
