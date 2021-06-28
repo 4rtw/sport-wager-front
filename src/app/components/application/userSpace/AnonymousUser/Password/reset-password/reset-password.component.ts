@@ -22,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
       (_) => {
         // TODO handle error
         this.router
-          .navigate(['verify-reset-code'], {
+          .navigate(['/account/verify-reset-code'], {
             queryParams: { email: this.email.value },
           })
           .then(() => location.reload());
