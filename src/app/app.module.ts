@@ -57,23 +57,26 @@ import { PanierComponent } from './components/application/wager/panier/panier.co
 import { VideoComponent } from './components/application/wager/panier/video/video.component';
 import { UserContainerComponent } from './components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { ImageComponent } from './components/application/userSpace/LoggedUser/user-container/image/image.component';
-import { FileUploadModule } from "ng2-file-upload";
+import { FileUploadModule } from 'ng2-file-upload';
 import { AccordionModule } from 'primeng/accordion';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
-import { FootballComponent } from './components/application/wager/Paris/football/football/football.component';
-import { CompetitionComponent } from './components/application/wager/Paris/football/football/competition/competition.component';
-import { FootballMatchesComponent } from './components/application/wager/Paris/football/football/football-matches/football-matches.component';
+import { FootballComponent } from './components/application/wager/Paris/football/football.component';
+import { CompetitionComponent } from './components/application/wager/Paris/football/competition/competition.component';
+import { FootballMatchesComponent } from './components/application/wager/Paris/football/football-matches/football-matches.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
 import { RootContainerComponent } from './components/root-container/root-container.component';
-import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import {
+  CloudinaryModule,
+  CloudinaryConfiguration,
+} from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -147,11 +150,13 @@ import {MessageModule} from 'primeng/message';
     MessageModule,
     MessagesModule,
     AccordionModule,
-    CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'dy528ddbe' } as CloudinaryConfiguration),
+    CloudinaryModule.forRoot({ Cloudinary }, {
+      cloud_name: 'dy528ddbe',
+    } as CloudinaryConfiguration),
     CookieModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: localStorage.getItem('token') ?.toString || null,
+        tokenGetter: localStorage.getItem('token')?.toString || null,
         allowedDomains: ['*'],
         disallowedRoutes: [''],
       },
@@ -170,4 +175,4 @@ import {MessageModule} from 'primeng/message';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

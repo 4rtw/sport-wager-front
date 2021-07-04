@@ -8,7 +8,7 @@ import { VerifyResetCodeComponent } from '../../components/application/userSpace
 import { ResetPasswordFinalStepComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
 import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches/nba-matches.component';
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
-import { FootballComponent } from '../../components/application/wager/Paris/football/football/football.component';
+import { FootballComponent } from '../../components/application/wager/Paris/football/football.component';
 import { RootContainerComponent } from '../../components/root-container/root-container.component';
 
 const routes: Routes = [

@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { CompetitionService } from '../../../../../../shared/services/Football/competition.service';
-import { Competitions } from '../../../../../../shared/model/Foot/competitions';
-import { FootballGames } from '../../../../../../shared/model/Foot/foot';
-import { MatchService } from '../../../../../../shared/services/Football/match.service';
+import { CompetitionService } from '../../../../../shared/services/Football/competition.service';
+import { Competitions } from '../../../../../shared/model/Foot/competitions';
+import { FootballGames } from '../../../../../shared/model/Foot/foot';
+import { MatchService } from '../../../../../shared/services/Football/match.service';
 import { Calendar } from 'primeng/calendar';
-import { CustomDate } from '../../../../../../shared/services/Utils/DateOperator';
+import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
 
 @Component({
   selector: 'app-football',
@@ -72,7 +72,7 @@ export class FootballComponent implements OnInit {
       .subscribe((x) => {
         this.matches = x;
         this.loadingMatches = false;
-        console.log(x);
+        //console.log(x);
         this.calendar.updateInputfield();
         this.changeDetector.detectChanges();
       });
