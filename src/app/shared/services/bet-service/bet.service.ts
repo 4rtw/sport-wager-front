@@ -10,14 +10,14 @@ import { BetType } from '../../model/Bet/BetType';
   providedIn: 'root',
 })
 export class BetService {
-  uriRoot = 'bet/';
+  url = config.herokuurl + 'bet/';
 
   constructor(private http: HttpClient) {}
 
   getSportCategory() {
     return this.http
       .get<{ data: SportCategory[]; errors: string[] }>(
-        config.herokuurl + this.uriRoot + 'sport-categories'
+        this.url + 'sport-categories'
       )
       .pipe(
         map((response) => {
@@ -28,9 +28,7 @@ export class BetService {
 
   getBetTypes() {
     return this.http
-      .get<{ data: BetType[]; errors: string[] }>(
-        config.herokuurl + this.uriRoot + 'bet-types'
-      )
+      .get<{ data: BetType[]; errors: string[] }>(this.url + 'bet-types')
       .pipe(
         map((response) => {
           return response.data;
@@ -40,9 +38,7 @@ export class BetService {
 
   getMyBetList() {
     return this.http
-      .get<{ data: Bet[]; errors: string[] }>(
-        config.herokuurl + this.uriRoot + 'my-bets'
-      )
+      .get<{ data: Bet[]; errors: string[] }>(this.url + 'my-bets')
       .pipe(
         map((response) => {
           return response.data;
@@ -51,6 +47,6 @@ export class BetService {
   }
 
   postNewBet(bet: Bet) {
-    return this.http.post(config.herokuurl + this.uriRoot, bet).pipe();
+    return this.http.post(this.url, bet).pipe();
   }
 }

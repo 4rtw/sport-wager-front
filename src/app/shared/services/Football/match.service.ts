@@ -25,7 +25,7 @@ export class MatchService {
       )
       .pipe(
         map((x) => {
-          console.log(x);
+          //console.log(x);
           return x.data;
         })
       );
