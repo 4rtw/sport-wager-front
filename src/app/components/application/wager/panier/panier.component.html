@@ -14,7 +14,7 @@
           <p-scrollPanel [style]="{ width: '100%', height: '450px' }">
             <div class="p-grid p-flex-column">
               <!-- averina -->
-              <div *ngFor="let i of [1, 2, 3]" class="p-col">
+              <div *ngFor="let bet of myBet" class="p-col">
                 <div class="box">
                   <div class="product-item">
                     <div class="image-container">
@@ -34,19 +34,14 @@
 
                     <div class="product-list-action">
                       <h6 class="p-mb-2">15h:26</h6>
-                      <!--<span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product}}</span>-->
-                      <span [class]="'product-badge '">Demain</span>
                     </div>
                   </div>
                   <p-divider></p-divider>
                   <div class="p-grid">
-                    <div class="p-col">
-                      <div class="box">Cote - 4,96</div>
-                    </div>
-                    <div class="p-col">
+                    <div class="p-col-8">
                       <div class="box">
                         <p-inputNumber
-                          [(ngModel)]="value18"
+                          [(ngModel)]="bet.amount_of_bets"
                           [showButtons]="true"
                           [step]="0.25"
                           buttonLayout="horizontal"
@@ -60,9 +55,18 @@
                         </p-inputNumber>
                       </div>
                     </div>
-                    <div class="p-col">
-                      <div class="box">Gains - 992 euro</div>
+
+                    <div class="p-col-4">
+                      <div class="box">Cote - {{ bet.multiplicator }}</div>
                     </div>
+
+                    <div class="p-col-12">
+                      <div class="box">
+                        Gains potentiels =
+                        {{ bet.amount_of_bets * bet.multiplicator }}
+                      </div>
+                    </div>
+            
                   </div>
                 </div>
               </div>
@@ -75,44 +79,32 @@
               <p-card [style]="{ background: '#FFEEDB' }">
                 <div class="p-grid">
                   <div class="p-col-6">
-                    <h4
-                            class="nomargin nopadding"
-                            style="text-align: center"
-                    >
+                    <h4 class="nomargin nopadding" style="text-align: center">
                       Mise totale
                     </h4>
                   </div>
                   <div class="p-col-6">
-                    <h4
-                            class="nomargin nopadding"
-                            style="text-align: center"
-                    >
+                    <h4 class="nomargin nopadding" style="text-align: center">
                       600 euro
                     </h4>
                   </div>
                   <div class="p-col-6">
-                    <h4
-                            class="nomargin nopadding"
-                            style="text-align: center"
-                    >
+                    <h4 class="nomargin nopadding" style="text-align: center">
                       Gains potentiels
                     </h4>
                   </div>
                   <div class="p-col-6">
-                    <h4
-                            class="nomargin nopadding"
-                            style="text-align: center"
-                    >
+                    <h4 class="nomargin nopadding" style="text-align: center">
                       3 068 euro
                     </h4>
                   </div>
                 </div>
                 <p-button
-                        [style]="{ width: '100%' }"
-                        icon="pi pi-check"
-                        iconPos="right"
-                        label="Placer mon pari"
-                        styleClass="p-mt-6"
+                  [style]="{ width: '100%' }"
+                  icon="pi pi-check"
+                  iconPos="right"
+                  label="Placer mon pari"
+                  styleClass="p-mt-6"
                 ></p-button>
               </p-card>
             </div>

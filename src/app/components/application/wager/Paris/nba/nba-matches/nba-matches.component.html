@@ -100,14 +100,14 @@
                         </div>
                         <div class="p-d-block p-m-2">
                           <p-selectButton
+                                  #match
                                   [disabled]="
                               ['Final', 'Canceled', 'F/OT'].includes(
                                 match.Status
                               )
                             "
-                                  (onOptionClick)="onClick()"
+                                  (onOptionClick)="onClick(match)"
                                   [options]="getMatchCotes(match)"
-                                  [(ngModel)]="value1"
                                   multiple="multiple"
                                   optionLabel="name"
                                   optionValue="value"

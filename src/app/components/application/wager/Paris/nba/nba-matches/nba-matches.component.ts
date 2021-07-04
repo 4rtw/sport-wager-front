@@ -74,8 +74,13 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
     }
   }
 
-  onClick(): void {
-    console.log('click');
+  onClick(match): void {
+    console.log('clicked');
+    console.log(match);
+    // TODO make panier and disable button
+    
+    //Disable button
+    
   }
 
   ngOnDestroy(): void {
