@@ -18,6 +18,7 @@ export class MatchService {
     const customDate = new CustomDate();
     const id: string = competitionID.toString(10);
     const formatedDate: string = customDate.formatDate(date);
+
     return this.http
       .get<{ data: FootballGames[]; errors: string[] }>(
         this.uri + 'foot/date/' + id + '/' + formatedDate
