@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/shared/model/Users/user.model';
+import { UserService } from 'src/app/shared/services/Users/user.service';
 
 @Component({
   selector: 'app-wager',
@@ -6,8 +15,27 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./wager.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WagerComponent implements OnInit {
-  constructor() {}
+export class WagerComponent implements OnInit, OnDestroy {
+  user: User = new User();
+  sub: Subscription[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private userService: UserService,
+    private cd: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.sub.push(
+      this.userService.getUserLoggedIn().subscribe((response) => {
+        this.user = response;
+        this.cd.detectChanges();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    for (let item of this.sub) {
+      item.unsubscribe();
+    }
+  }
 }

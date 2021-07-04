@@ -5,6 +5,8 @@ import { FootballGames } from '../../../../../shared/model/Foot/foot';
 import { MatchService } from '../../../../../shared/services/Football/match.service';
 import { Calendar } from 'primeng/calendar';
 import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
+import { BetService } from 'src/app/shared/services/bet-service/bet.service';
+import { Bet } from 'src/app/shared/model/Bet/Bet';
 
 @Component({
   selector: 'app-football',
@@ -20,14 +22,17 @@ export class FootballComponent implements OnInit {
   loading: boolean;
   loadingMatches: boolean;
   responsiveOptions;
-  value1;
   @ViewChild('calendar') calendar: Calendar;
+  bet: Bet = new Bet();
+  showAmount = false;
+  amount = 0;
 
   constructor(
     private competitionService: CompetitionService,
     private changeDetector: ChangeDetectorRef,
     private footballService: MatchService,
-    public customDate: CustomDate
+    public customDate: CustomDate,
+    private betService: BetService
   ) {
     this.responsiveOptions = [
       {
@@ -111,8 +116,12 @@ export class FootballComponent implements OnInit {
     this.getMatches();
   }
 
-  onClick(): void {
-    console.log('click');
+  onClick(match: FootballGames): void {
+    let bet: Bet = new Bet();
+    bet.match_id = match.id;
+    bet.sport_category = 'nba';
+    bet.amount_of_bets = 0;
+    this.showAmount = !this.showAmount;
   }
 
   /*

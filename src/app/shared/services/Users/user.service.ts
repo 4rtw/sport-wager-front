@@ -12,19 +12,26 @@ import { config } from 'src/app/shared/config/variables';
 export class UserService {
   uri = config.herokuurl;
 
-  constructor(private http: HttpClient, private jwtService: JwtService) { }
+  constructor(private http: HttpClient, private jwtService: JwtService) {}
 
   getUserLoggedIn(): Observable<User> {
     const id = this.jwtService.getUser().user.id;
-    return this.http
-      .get<{ data: User[]; errors: string[] }>(this.uri + 'users/' + id)
-      .pipe(
-        map((userData) => {
-          if (userData.errors.length > 0) {
-            return new User();
-          } else {
-            return userData.data[0];
-          }
+    if (id !== 0) {
+      return this.http
+        .get<{ data: User[]; errors: string[] }>(this.uri + 'users/' + id)
+        .pipe(
+          map((userData) => {
+            if (userData.errors.length > 0) {
+              return new User();
+            } else {
+              return userData.data[0];
+            }
+          })
+        );
+    } else
+      return new Observable<User>().pipe(
+        map((_) => {
+          return new User();
         })
       );
   }
@@ -41,17 +48,14 @@ export class UserService {
   updateImage(user: User): Observable<any> {
     return this.http.put(this.uri + 'users', {
       id: user.id,
-      image: user.image
+      image: user.image,
     });
   }
-
 
   deleteUserImage(body): Observable<any> {
     const url = `https://api.cloudinary.com/v1_1/dy528ddbe/delete_by_token`;
     return this.http.post(url, body);
   }
 
-
   // TODO delete user
-
 }

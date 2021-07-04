@@ -48,7 +48,7 @@ import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches/nba-matches.component';
+import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches.component';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { CalendarModule } from 'primeng/calendar';
@@ -63,8 +63,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
 import { FootballComponent } from './components/application/wager/Paris/football/football.component';
-import { CompetitionComponent } from './components/application/wager/Paris/football/competition/competition.component';
-import { FootballMatchesComponent } from './components/application/wager/Paris/football/football-matches/football-matches.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
@@ -77,6 +75,8 @@ import {
 import { Cloudinary } from 'cloudinary-core';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { BetPostComponent } from './components/application/wager/Paris/bet-post/bet-post.component';
 
 @NgModule({
   declarations: [
@@ -99,9 +99,8 @@ import { MessageModule } from 'primeng/message';
     UserContainerComponent,
     ImageComponent,
     FootballComponent,
-    CompetitionComponent,
-    FootballMatchesComponent,
     RootContainerComponent,
+    BetPostComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -150,6 +149,7 @@ import { MessageModule } from 'primeng/message';
     MessageModule,
     MessagesModule,
     AccordionModule,
+    DynamicDialogModule,
     CloudinaryModule.forRoot({ Cloudinary }, {
       cloud_name: 'dy528ddbe',
     } as CloudinaryConfiguration),

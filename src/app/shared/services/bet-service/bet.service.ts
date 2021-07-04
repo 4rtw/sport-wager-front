@@ -5,6 +5,8 @@ import { Bet } from '../../model/Bet/Bet';
 import { map } from 'rxjs/operators';
 import { SportCategory } from '../../model/Bet/SportCategory';
 import { BetType } from '../../model/Bet/BetType';
+import { UserService } from '../Users/user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +14,7 @@ import { BetType } from '../../model/Bet/BetType';
 export class BetService {
   url = config.herokuurl + 'bet/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getSportCategory() {
     return this.http
@@ -36,7 +38,7 @@ export class BetService {
       );
   }
 
-  getMyBetList() {
+  getMyBetList(): any {
     return this.http
       .get<{ data: Bet[]; errors: string[] }>(this.url + 'my-bets')
       .pipe(

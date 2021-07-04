@@ -17,26 +17,21 @@
               <div *ngFor="let bet of myBet" class="p-col">
                 <div class="box">
                   <div class="product-item">
-                    <div class="image-container">
-                      <img
-                        alt="Match Image"
-                        class="product-image"
-                        src="assets/images/bracelet.jpg"
-                      />
-                    </div>
                     <div class="product-list-detail">
-                      <h5 class="p-mb-2">Manchester United - Leicester City</h5>
-                      <i class="pi pi-tag product-category-icon"></i>
-                      <span class="product-category"
-                        >Angleterre - Premier League</span
+                      <div
+                        class="product-category"
+                        *ngFor="let item of matches"
                       >
+                        <div *ngIf="item.GameID === bet.match_id">
+                          {{ item.HomeTeam }} - {{ item.AwayTeam }}
+                        </div>
+                      </div>
                     </div>
 
                     <div class="product-list-action">
                       <h6 class="p-mb-2">15h:26</h6>
                     </div>
                   </div>
-                  <p-divider></p-divider>
                   <div class="p-grid">
                     <div class="p-col-8">
                       <div class="box">
@@ -66,9 +61,10 @@
                         {{ bet.amount_of_bets * bet.multiplicator }}
                       </div>
                     </div>
-            
                   </div>
                 </div>
+
+                <p-divider></p-divider>
               </div>
               <!-- fin averina -->
             </div>
@@ -85,19 +81,10 @@
                   </div>
                   <div class="p-col-6">
                     <h4 class="nomargin nopadding" style="text-align: center">
-                      600 euro
+                      {{ total }}
                     </h4>
                   </div>
-                  <div class="p-col-6">
-                    <h4 class="nomargin nopadding" style="text-align: center">
-                      Gains potentiels
-                    </h4>
-                  </div>
-                  <div class="p-col-6">
-                    <h4 class="nomargin nopadding" style="text-align: center">
-                      3 068 euro
-                    </h4>
-                  </div>
+                  <div class="p-col-6"></div>
                 </div>
                 <p-button
                   [style]="{ width: '100%' }"

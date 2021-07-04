@@ -6,7 +6,7 @@ import { ConfirmAccountComponent } from '../../components/application/userSpace/
 import { ResetPasswordComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
 import { VerifyResetCodeComponent } from '../../components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
 import { ResetPasswordFinalStepComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
-import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches/nba-matches.component';
+import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches.component';
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { FootballComponent } from '../../components/application/wager/Paris/football/football.component';
 import { RootContainerComponent } from '../../components/root-container/root-container.component';
@@ -71,4 +71,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

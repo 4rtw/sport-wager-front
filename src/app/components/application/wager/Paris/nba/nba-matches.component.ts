@@ -5,32 +5,39 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { NbaService } from '../../../../../../shared/services/Basketball/nba.service';
-import { NbaGame } from '../../../../../../shared/model/Basket/nba-game';
+import { NbaService } from '../../../../../shared/services/Basketball/nba.service';
+import { NbaGame } from '../../../../../shared/model/Basket/nba-game';
 import { Subscription } from 'rxjs';
 import { Calendar } from 'primeng/calendar';
-import { CustomDate } from '../../../../../../shared/services/Utils/DateOperator';
+import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { FootballComponent } from '../football/football.component';
+import { BetPostComponent } from '../bet-post/bet-post.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nba-matches',
   templateUrl: './nba-matches.component.html',
-  styleUrls: ['../../../wager.component.css', 'nba-matches.component.css'],
-  providers: [CustomDate],
+  styleUrls: ['../../wager.component.css', 'nba-matches.component.css'],
+  providers: [CustomDate, DialogService],
 })
 export class NbaMatchesComponent implements OnInit, OnDestroy {
   matches: NbaGame[] = [];
   matchesSub: Subscription;
   cote = 0;
   date = new Date();
-  value1;
   loading: boolean;
+  //showAmount = false;
+  //amount = 0;
+  ref: DynamicDialogRef;
 
   @ViewChild('calendar') calendar: Calendar;
 
   constructor(
     private nbaService: NbaService,
     private changeDetector: ChangeDetectorRef,
-    public customDate: CustomDate
+    public customDate: CustomDate,
+    public dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +52,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
         value: {
           cote: match.HomeTeamMoneyLine,
           id: match.GameID,
-          side: match.HomeTeamID,
+          type: 1,
         },
       },
       {
@@ -53,7 +60,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
         value: {
           cote: match.AwayTeamMoneyLine,
           id: match.GameID,
-          side: match.AwayTeamID,
+          type: 2,
         },
       },
     ];
@@ -74,13 +81,29 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
     }
   }
 
-  onClick(match): void {
-    console.log('clicked');
-    console.log(match);
-    // TODO make panier and disable button
-    
-    //Disable button
-    
+  onClick($event): void {
+    let betData = $event.option.value;
+    //this.bet.match_id = betData.GameID;
+    //this.bet.multiplicator = betData.cote;
+    //this.bet.sport_category = 'nba';
+    //this.showAmount = true;
+    this.showDialog(betData);
+  }
+
+  showDialog(betData): void {
+    this.ref = this.dialogService.open(BetPostComponent, {
+      header: 'Vous allez parier',
+      width: '70%',
+      contentStyle: { 'max-height': '500px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: { bet: betData },
+    });
+
+    this.ref.onClose.subscribe((_) => {});
+  }
+
+  changeTest() {
+    console.log('ttt');
   }
 
   ngOnDestroy(): void {

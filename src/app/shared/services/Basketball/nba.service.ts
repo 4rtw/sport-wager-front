@@ -8,7 +8,7 @@ import { config } from 'src/app/shared/config/variables';
   providedIn: 'root',
 })
 export class NbaService {
-  uri = config.herokuurl + 'nba/';
+  uri = config.herokuurl + 'nba/' + 'schedules/';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,16 @@ export class NbaService {
     if (date === undefined) {
       date = '';
     }
-    return this.http.get(this.uri + 'schedules/' + date).pipe(
+    return this.http.get(this.uri + date).pipe(
+      map((x) => {
+        // @ts-ignore
+        return x.data.data;
+      })
+    );
+  }
+
+  getAllMatches(): Observable<any> {
+    return this.http.get(this.uri).pipe(
       map((x) => {
         // @ts-ignore
         return x.data.data;

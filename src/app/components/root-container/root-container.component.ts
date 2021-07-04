@@ -20,7 +20,6 @@ export class RootContainerComponent implements OnInit, OnDestroy {
   silentRefresh: Subscription;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,

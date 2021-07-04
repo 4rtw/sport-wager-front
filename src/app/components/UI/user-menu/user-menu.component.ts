@@ -19,11 +19,7 @@ export class UserMenuComponent implements OnInit, OnDestroy {
 
   defaultImage;
 
-  constructor(
-    private router: Router,
-    private jwtService: JwtService,
-    private userService: UserService
-  ) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userSub = this.userService.getUserLoggedIn().subscribe(
