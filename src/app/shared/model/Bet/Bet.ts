@@ -10,8 +10,8 @@ export class Bet {
   collected: boolean;
   bet_type: {
     _id: string;
-    id: Number;
-    description: string;
-    bet_type: string;
+    id: String;
+    description: String;
+    bet_type: String;
   };
 }

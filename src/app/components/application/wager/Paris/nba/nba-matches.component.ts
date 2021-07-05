@@ -11,9 +11,7 @@ import { Subscription } from 'rxjs';
 import { Calendar } from 'primeng/calendar';
 import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { FootballComponent } from '../football/football.component';
 import { BetPostComponent } from '../bet-post/bet-post.component';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nba-matches',
@@ -27,8 +25,6 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
   cote = 0;
   date = new Date();
   loading: boolean;
-  //showAmount = false;
-  //amount = 0;
   ref: DynamicDialogRef;
 
   @ViewChild('calendar') calendar: Calendar;
@@ -83,10 +79,6 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
 
   onClick($event): void {
     let betData = $event.option.value;
-    //this.bet.match_id = betData.GameID;
-    //this.bet.multiplicator = betData.cote;
-    //this.bet.sport_category = 'nba';
-    //this.showAmount = true;
     this.showDialog(betData);
   }
 
@@ -96,10 +88,12 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
       width: '70%',
       contentStyle: { 'max-height': '500px', overflow: 'auto' },
       baseZIndex: 10000,
-      data: { bet: betData },
+      data: { bet: betData, type: 'nba' },
     });
 
-    this.ref.onClose.subscribe((_) => {});
+    this.ref.onClose.subscribe((_) => {
+      location.reload();
+    });
   }
 
   changeTest() {

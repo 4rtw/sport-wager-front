@@ -20,7 +20,6 @@ export class PanierComponent implements OnInit, OnDestroy {
 
   constructor(
     private betService: BetService,
-    private footService: MatchService,
     private nbaService: NbaService,
     private cd: ChangeDetectorRef,
     private userService: UserService
@@ -74,6 +73,16 @@ export class PanierComponent implements OnInit, OnDestroy {
         this.sub.push();
       }
     }
+  }
+
+  getTeams(bet: Bet) {
+    let match: NbaGame = new NbaGame();
+    for (let i of this.matches) {
+      if (bet.match_id === i.GameID) {
+        match = i;
+      }
+    }
+    return match;
   }
 
   setTotalValue(): void {

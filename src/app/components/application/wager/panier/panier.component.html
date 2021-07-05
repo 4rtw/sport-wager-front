@@ -18,14 +18,19 @@
                 <div class="box">
                   <div class="product-item">
                     <div class="product-list-detail">
-                      <div
-                        class="product-category"
-                        *ngFor="let item of matches"
+                      <span
+                        class="{{
+                          bet.bet_type?.id == '1' ? 'p-text-bold' : ''
+                        }}"
+                        >{{ getTeams(bet)?.HomeTeam }}</span
                       >
-                        <div *ngIf="item.GameID === bet.match_id">
-                          {{ item.HomeTeam }} - {{ item.AwayTeam }}
-                        </div>
-                      </div>
+                      -
+                      <span
+                        class="{{
+                          bet.bet_type?.id == '2' ? 'p-text-bold' : ''
+                        }}"
+                        >{{ getTeams(bet)?.AwayTeam }}</span
+                      >
                     </div>
 
                     <div class="product-list-action">
@@ -36,15 +41,10 @@
                     <div class="p-col-8">
                       <div class="box">
                         <p-inputNumber
+                          [disabled]="true"
                           [(ngModel)]="bet.amount_of_bets"
-                          [showButtons]="true"
-                          [step]="0.25"
                           buttonLayout="horizontal"
-                          currency="EUR"
-                          decrementButtonClass="p-button-danger"
-                          decrementButtonIcon="pi pi-minus"
-                          incrementButtonClass="p-button-success"
-                          incrementButtonIcon="pi pi-plus"
+                          currency="BET"
                           mode="currency"
                         >
                         </p-inputNumber>
@@ -86,13 +86,6 @@
                   </div>
                   <div class="p-col-6"></div>
                 </div>
-                <p-button
-                  [style]="{ width: '100%' }"
-                  icon="pi pi-check"
-                  iconPos="right"
-                  label="Placer mon pari"
-                  styleClass="p-mt-6"
-                ></p-button>
               </p-card>
             </div>
           </div>
