@@ -78,6 +78,7 @@ import { MessageModule } from 'primeng/message';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BetPostComponent } from './components/application/wager/Paris/bet-post/bet-post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -156,7 +157,7 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
     CookieModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: localStorage.getItem('token')?.toString || null,
+        tokenGetter: localStorage.getItem('token') ?.toString || null,
         allowedDomains: ['*'],
         disallowedRoutes: [''],
       },
@@ -175,4 +176,4 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
