@@ -34,7 +34,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     public customDate: CustomDate,
     public dialogService: DialogService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -84,8 +84,8 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
 
   showDialog(betData): void {
     this.ref = this.dialogService.open(BetPostComponent, {
-      header: 'Vous allez parier',
-      width: '70%',
+      header: 'Placez votre pari',
+      width: '30%',
       contentStyle: { 'max-height': '500px', overflow: 'auto' },
       baseZIndex: 10000,
       data: { bet: betData, type: 'nba' },

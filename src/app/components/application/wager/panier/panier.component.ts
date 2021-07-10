@@ -6,11 +6,13 @@ import { NbaService } from 'src/app/shared/services/Basketball/nba.service';
 import { BetService } from 'src/app/shared/services/bet-service/bet.service';
 import { MatchService } from 'src/app/shared/services/Football/match.service';
 import { UserService } from 'src/app/shared/services/Users/user.service';
+import { CustomDate } from '../../../../shared/services/Utils/DateOperator';
 
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css'],
+  providers: [CustomDate],
 })
 export class PanierComponent implements OnInit, OnDestroy {
   myBet: Bet[] = [];
@@ -22,8 +24,9 @@ export class PanierComponent implements OnInit, OnDestroy {
     private betService: BetService,
     private nbaService: NbaService,
     private cd: ChangeDetectorRef,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    public customDate: CustomDate
+  ) { }
 
   ngOnInit(): void {
     this.getMyBets();
