@@ -2,6 +2,7 @@
   <div class="p-grid p-flex-column">
     <div class="p-col">
       <div class="box">
+
         <p-panel header="Basketball">
           <ng-template pTemplate="header">
             <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
@@ -42,7 +43,7 @@
                     <div class="p-d-block p-text-bold">
                       <span [class]="'product-badge'">{{ customDate.getDateTime(match.DateTime, 'time') }} -
                         <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
-                        </span>
+                      </span>
                     </div>
                     <div class="p-d-block">
                       <span [class]="'product-badge'">{{
@@ -80,6 +81,8 @@
             </cdk-virtual-scroll-viewport>
           </ng-template>
         </p-panel>
+
+        
       </div>
     </div>
   </div>
