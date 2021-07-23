@@ -4,55 +4,82 @@
       <div class="box">
         <p-panel header="Panier">
           <ng-template pTemplate="icons">
-            <i class="pi pi-bell p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" value="{{myBet.length}}"></i>
+            <i
+              class="pi pi-bell p-mr-4 p-text-secondary"
+              pBadge
+              style="font-size: 2rem"
+              value="{{ myBet.length }}"
+            ></i>
           </ng-template>
           <p-scrollPanel [style]="{ width: '100%', height: '450px' }">
             <!-- averina -->
             <div *ngFor="let bet of myBet" class="product-item">
-
               <div class="p-d-flex p-jc-between">
                 <div class="p-d-flex p-flex-column">
                   <div class="p-mb-2">
-                    <img src="assets/images/bracelet.jpg" [alt]="" class="product-image" />
+                    <img
+                      src="assets/images/bracelet.jpg"
+                      [alt]=""
+                      class="product-image"
+                    />
                   </div>
                   <div class="p-mb-2">
-                    <div class="box" style="text-align: 'center'"> <span class="{{
-                            bet.bet_type?.id == '1' ? 'p-text-bold' : ''
-                          }}">{{ getTeams(bet)?.HomeTeam }}</span></div>
+                    <div class="box" style="text-align: 'center'">
+                      <span
+                        class="{{
+                          bet.bet_type?.id == '1' ? 'p-text-bold' : ''
+                        }}"
+                        >{{ getTeams(bet)?.HomeTeam }}</span
+                      >
+                    </div>
                   </div>
                 </div>
 
                 <div class="p-text-center">
                   <div class="p-d-block p-text-bold">
                     <span [class]="'product-badge'">
-                      <p-tag [rounded]="true">{{ customDate.getDateTime(bet.creation_date, 'time') }} - {{
+                      <p-tag [rounded]="true"
+                        >{{ customDate.getDateTime(bet.creation_date, 'time') }}
+                        -
+                        {{
                           customDate.getDateTime(bet.creation_date, 'date')
-                        }}</p-tag>
+                        }}</p-tag
+                      >
                     </span>
                   </div>
 
                   <div class="p-d-block">
-                    Bet : {{bet.amount_of_bets}} -
-                    Cote : {{ bet.multiplicator }}
+                    Bet : {{ bet.amount_of_bets }} - Cote :
+                    {{ bet.multiplicator }}
                   </div>
 
-                  <div class="p-d-block  p-text-bold">
+                  <div class="p-d-block p-text-bold">
                     <span [class]="'product-badge'">
-                      Gain potentiel: <p-tag [rounded]="true" [severity]="'success'">
-                        {{ bet.amount_of_bets * bet.multiplicator }}</p-tag>
+                      Gain potentiel:
+                      <p-tag [rounded]="true" [severity]="'success'">
+                        {{ bet.amount_of_bets * bet.multiplicator }}</p-tag
+                      >
                     </span>
                   </div>
                 </div>
 
-
                 <div class="p-d-flex p-flex-column">
                   <div class="p-mb-2">
-                    <img src="assets/images/bracelet.jpg" [alt]="" class="product-image" />
+                    <img
+                      src="assets/images/bracelet.jpg"
+                      [alt]=""
+                      class="product-image"
+                    />
                   </div>
                   <div class="p-mb-2">
-                    <div class="box" style="text-align: 'center'"> <span class="{{
+                    <div class="box" style="text-align: 'center'">
+                      <span
+                        class="{{
                           bet.bet_type?.id == '2' ? 'p-text-bold' : ''
-                        }}">{{ getTeams(bet)?.AwayTeam }}</span></div>
+                        }}"
+                        >{{ getTeams(bet)?.AwayTeam }}</span
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,15 +88,12 @@
             </div>
           </p-scrollPanel>
 
-          <p-card [style]="{ background: '#FFEEDB'}">
+          <p-card [style]="{ background: '#FFEEDB' }">
             <div class="p-d-flex p-jc-evenly">
-              <h4>
-                Mise totale
-              </h4>
-              <h4> {{ total }}</h4>
+              <h4>Mise totale</h4>
+              <h4>{{ total }}</h4>
             </div>
           </p-card>
-
         </p-panel>
         <app-video></app-video>
       </div>

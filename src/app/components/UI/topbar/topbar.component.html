@@ -1,25 +1,12 @@
-<mat-toolbar class="tp-toolbar">
-  <mat-toolbar-row class="tp-toolbar-row">
-    <div class="sidebar-toggle">
-      <button mat-button (click)="toogleSidenav()">
-        <mat-icon aria-hidden="false" aria-label="Example home icon"
-          >reorder</mat-icon
-        >
-      </button>
-    </div>
-
-    <span>
-      <!-- input type="text" pInputText placeholder="Search" [(ngModel)]="searchString" />
-            <p-button class="p-ml-2" icon="pi pi-search" ></p-button -->
-    </span>
-
-    <div *ngIf="user?.id != 0" class="p-grid p-flex-md-row p-ai-center">
-      <div class="p-text-light p-col">Crédit:</div>
-      <div class="p-text-right p-col">{{ this.user?.betcredit }} MGA</div>
-    </div>
-
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <a routerLink="/">
+      <img src="assets/images/logo.png" height="75" class="p-mr-2">
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
     <div style="display: flex; flex-direction: row">
       <app-user-menu></app-user-menu>
     </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+  </ng-template>
+</p-menubar>

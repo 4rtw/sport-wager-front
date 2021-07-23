@@ -34,7 +34,7 @@ export class NbaMatchesComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     public customDate: CustomDate,
     public dialogService: DialogService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;

@@ -26,7 +26,7 @@ export class PanierComponent implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private userService: UserService,
     public customDate: CustomDate
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getMyBets();

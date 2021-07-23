@@ -9,7 +9,13 @@
     <div class="p-mb-2">{{ match[0].HomeTeam }} - {{ match[0].AwayTeam }}</div>
     <div class="p-mb-2">
       Vous allez parier
-      <p-inputNumber [(ngModel)]="betAmount" mode="currency" [step]="0.25" currency="BET" [showButtons]="true">
+      <p-inputNumber
+        [(ngModel)]="betAmount"
+        mode="currency"
+        [step]="0.25"
+        currency="BET"
+        [showButtons]="true"
+      >
       </p-inputNumber>
       pour
       {{ config.data.bet.type === 1 ? match[0].HomeTeam : match[0].AwayTeam }}
@@ -27,10 +33,15 @@
       }}
     </div>
     <div class="p-mb-2">
-      <button style="width:100%" pButton pRipple type="button" label="VALIDER" class="p-button-raised p-button-warning"
-        (onClick)="postBet()"></button>
+      <button
+        style="width: 100%"
+        pButton
+        pRipple
+        type="button"
+        label="VALIDER"
+        class="p-button-raised p-button-warning"
+        (onClick)="postBet()"
+      ></button>
     </div>
-
   </div>
-
 </div>

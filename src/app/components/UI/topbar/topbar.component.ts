@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../shared/services/Users/user.service';
 import { Subscription } from 'rxjs';
 import { JwtService } from '../../../shared/services/Auth/jwt.service';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-topbar',
@@ -17,6 +18,7 @@ import { JwtService } from '../../../shared/services/Auth/jwt.service';
   styleUrls: ['./topbar.component.css'],
 })
 export class TopbarComponent implements OnInit, OnDestroy {
+  items: MenuItem[];
   openedSidenav = true;
   user = new User();
   userSub: Subscription;
@@ -28,8 +30,44 @@ export class TopbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private jwtService: JwtService
-  ) {}
+  ) {
+    this.items = [
+      {
+        label:'Accueil',
+        icon:'pi pi-fw pi-home',
+      },
+      {
+        label:'Mes paris',
+        icon:'pi pi-fw pi-money-bill',
+      },
+      {
+        label:'Catégories',
+        icon:'pi pi-fw pi-th-large',
+        items:[
+          {
+            label:'JO',
+            icon:'pi pi-fw pi-user-plus',
+          },
+          {
+            label:'Basketball',
+            icon:'pi pi-fw pi-user-minus',
+          },
+          {
+            label:'Football',
+            icon:'pi pi-fw pi-users',
+          }
+        ]
+      },
+      {
+        label:'Statistiques',
+        icon:'pi pi-fw pi-percentage',
+      },
+      {
+        label:'Résultats',
+        icon:'pi pi-fw pi-list'
+      }
+    ];
+  }
 
   ngOnInit(): void {
     this.getUser();
