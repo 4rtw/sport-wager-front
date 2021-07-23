@@ -1,77 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~primeng/resources/primeng.min.css';
-html, body { height: 100%;}
+html,
+body {
+  height: 100%;
+}
 
 body {
-    margin: 0px; 
+  margin: 0;
 }
-::ng-deep div, h4, h2, h3, span, h2, p {
-    font-family: system-ui, serif;
+::ng-deep div,
+h4,
+h2,
+h3,
+span,
+h2,
+p {
+  font-family: system-ui, serif;
 }
 body .dashboardDateFilter {
-    width: 100%;
-    margin-top: 15px;
+  width: 100%;
+  margin-top: 15px;
 }
 
-body .dashboardDateFilter>input{
-    width: 100%;
+body .dashboardDateFilter > input {
+  width: 100%;
 }
-
 
 body .filterButton {
-    margin : 250px 0px 20px 0px ;
-    background-color:#689F38;
+  margin: 250px 0px 20px 0px;
+  background-color: #689f38;
 }
 
 body .filterButton.ui-button.ui-widget {
-    width: 100%;
+  width: 100%;
 }
 
-body .deleteFilterButton{
-    margin : 20px 0px 20px 0px ;
-    background-color:#D32F2F;
+body .deleteFilterButton {
+  margin: 20px 0px 20px 0px;
+  background-color: #d32f2f;
 }
 
 body .deleteFilterButton.ui-button.ui-widget {
-    width: 100%;
+  width: 100%;
 }
 
-div[_primary-color], h3[_primary-color], a[_primary-color] {
-    color: var(--peach-puff);
+div[_primary-color],
+h3[_primary-color],
+a[_primary-color] {
+  color: var(--peach-puff);
 }
 
 a[_primary-color]:hover {
-    color: var(--peach-puff);
+  color: var(--peach-puff);
 }
-
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 10px;
+  width: 8px;
+  height: 10px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f2f2f2; 
-    border-radius: 4px;
+  background: #f2f2f2;
+  border-radius: 4px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(199, 199, 199); 
-    border-radius: 4px;
+  background: rgb(199, 199, 199);
+  border-radius: 4px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(146, 146, 146); 
-    border-radius: 4px;
+  background: rgb(146, 146, 146);
+  border-radius: 4px;
 }
 
 :root {
-    --peach-puff: #fed9b7;
-    --bitter-sweet: #f17d74;
-    --cg-blue: #0081a7;
-    --verdi-gris: 00afb9;
+  --peach-puff: #fed9b7;
+  --bitter-sweet: #f17d74;
+  --cg-blue: #0081a7;
+  --verdi-gris: 00afb9;
+}
+
+/* p-menubar */
+.p-menubar{
+  height: 150px;
+  background: linear-gradient( 135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;
+  background-size: cover;
+  margin: 0;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover,
+list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled),
+list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover{
+  background: transparent;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):after{
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover:after{
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.p-menubar .p-submenu-list {
+  padding: 0.25rem 0;
+  background: linear-gradient( 135deg, rgba(255, 225, 69, 0.95) 10%, rgba(245, 191, 75, 0.95) 100%);
+}
+
+.p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link{
+  background: transparent;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link{
+  font-size: larger;
 }

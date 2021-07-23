@@ -41,7 +41,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TopbarComponent } from './components/UI/topbar/topbar.component';
-import { SidenavComponent } from './components/UI/sidenav/sidenav.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AccountMenuComponent } from './components/UI/user-menu/account-menu/account-menu.component';
 import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-user-menu/anonymous-user-menu.component';
@@ -77,7 +76,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BetPostComponent } from './components/application/wager/Paris/bet-post/bet-post.component';
-
+import { FooterComponent } from './components/UI/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +89,6 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
     ResetPasswordFinalStepComponent,
     VerifyResetCodeComponent,
     TopbarComponent,
-    SidenavComponent,
     AccountMenuComponent,
     AnonymousUserMenuComponent,
     NbaMatchesComponent,
@@ -102,6 +100,7 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
     FootballComponent,
     RootContainerComponent,
     BetPostComponent,
+    FooterComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -157,7 +156,7 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
     CookieModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: localStorage.getItem('token') ?.toString || null,
+        tokenGetter: localStorage.getItem('token')?.toString || null,
         allowedDomains: ['*'],
         disallowedRoutes: [''],
       },
@@ -176,4 +175,4 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

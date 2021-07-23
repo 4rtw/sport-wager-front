@@ -3,14 +3,14 @@ import {
   FileUploader,
   FileUploaderOptions,
   ParsedResponseHeaders,
-} from "ng2-file-upload";
+} from 'ng2-file-upload';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from '../../../../../../shared/model/Users/user.model';
 import { UserService } from '../../../../../../shared/services/Users/user.service';
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.css']
+  styleUrls: ['./image.component.css'],
 })
 export class ImageComponent implements OnInit {
   @Input()
@@ -26,14 +26,11 @@ export class ImageComponent implements OnInit {
 
   user = new User();
 
-  image = new FormControl("", [Validators.required]);
+  image = new FormControl('', [Validators.required]);
 
-  constructor(
-    private userService: UserService,
-    private zone: NgZone,
-  ) {
+  constructor(private userService: UserService, private zone: NgZone) {
     this.responses = [];
-    this.title = "";
+    this.title = '';
   }
 
   ngOnInit(): void {
@@ -53,8 +50,8 @@ export class ImageComponent implements OnInit {
       // XHR request headers
       headers: [
         {
-          name: "X-Requested-With",
-          value: "XMLHttpRequest",
+          name: 'X-Requested-With',
+          value: 'XMLHttpRequest',
         },
       ],
     };
@@ -62,22 +59,22 @@ export class ImageComponent implements OnInit {
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // Add Cloudinary's unsigned upload preset to the upload form
-      form.append("upload_preset", "s939zbnr");
+      form.append('upload_preset', 's939zbnr');
       // Add built-in and custom tags for displaying the uploaded photo in the list
-      let tags = "myphotoalbum";
+      let tags = 'myphotoalbum';
       if (this.title) {
-        form.append("context", `photo=${this.title}`);
+        form.append('context', `photo=${this.title}`);
         tags = `myphotoalbum,${this.title}`;
       }
       // Upload to a custom folder
       // Note that by default, when uploading via the API, folders are not automatically created in your Media Library.
       // In order to automatically create the folders based on the API requests,
       // please go to your account upload settings and set the 'Auto-create folders' option to enabled.
-      form.append("folder", "angular_sample");
+      form.append('folder', 'angular_sample');
       // Add custom tags
-      form.append("tags", tags);
+      form.append('tags', tags);
       // Add file to upload
-      form.append("file", fileItem);
+      form.append('file', fileItem);
 
       // Use default "withCredentials" value for CORS requests
       fileItem.withCredentials = false;
@@ -136,17 +133,16 @@ export class ImageComponent implements OnInit {
       });
   }
 
-
   getUrlFromResponse() {
     this.responses.forEach((response) => {
       let datas = this.getFileProperties(response.data);
       datas.forEach((data) => {
-        let dataSplitted = data.url.split(".");
+        let dataSplitted = data.url.split('.');
         if (
-          dataSplitted[dataSplitted.length - 1] == "png" ||
-          dataSplitted[dataSplitted.length - 1] == "jpeg" ||
-          dataSplitted[dataSplitted.length - 1] == "jpg" ||
-          dataSplitted[dataSplitted.length - 1] == "svg"
+          dataSplitted[dataSplitted.length - 1] == 'png' ||
+          dataSplitted[dataSplitted.length - 1] == 'jpeg' ||
+          dataSplitted[dataSplitted.length - 1] == 'jpg' ||
+          dataSplitted[dataSplitted.length - 1] == 'svg'
         ) {
           console.log(data.url);
           this.cover = data.url;
@@ -171,13 +167,13 @@ export class ImageComponent implements OnInit {
     return Object.keys(fileProperties).map((key) => ({
       key: key,
       value: fileProperties[key],
-      url: fileProperties["url"],
+      url: fileProperties['url'],
     }));
   }
 
   getErrorMessage() {
-    if (this.image.hasError("required")) {
-      return "You must enter a value";
+    if (this.image.hasError('required')) {
+      return 'You must enter a value';
     }
   }
 
@@ -187,10 +183,8 @@ export class ImageComponent implements OnInit {
     console.log(this.image.value);
 
     let userChanged = this.user;
-    userChanged.image = this.cover;;
-    this.userService.updateImage(userChanged).subscribe((_) => {
-    });
-
+    userChanged.image = this.cover;
+    this.userService.updateImage(userChanged).subscribe((_) => {});
   }
 
   /**
@@ -269,13 +263,12 @@ export class ImageComponent implements OnInit {
    */
   formatBytes(bytes, decimals) {
     if (bytes === 0) {
-      return "0 Bytes";
+      return '0 Bytes';
     }
     const k = 1024;
     const dm = decimals <= 0 ? 0 : decimals || 2;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
-
 }

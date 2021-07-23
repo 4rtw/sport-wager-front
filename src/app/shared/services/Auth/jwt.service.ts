@@ -17,7 +17,7 @@ export class JwtService {
     private localeStorage: LocalStorageService,
     private http: HttpClient,
     private cookieService: CookieService
-  ) { }
+  ) {}
 
   // should not be stored locally, security things
   private helper = new JwtHelperService();
@@ -94,7 +94,7 @@ export class JwtService {
    * Check if token is expired
    * */
   isTokenExpired(): boolean {
-    if (this.decodedToken ?.exp) {
+    if (this.decodedToken?.exp) {
       return this.decodedToken.exp * 1000 - Date.now() < 5000 || true;
     }
   }

@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   phone = new FormControl();
   email = new FormControl();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getUserLoggedIn().subscribe((data) => {
@@ -33,8 +33,8 @@ export class ProfileComponent implements OnInit {
     userChanged.firstname = this.firstname.value;
     userChanged.lastname = this.lastname.value;
     userChanged.phone = this.phone.value;
-    this.userService.updateUser(userChanged).subscribe((_) => { });
+    this.userService.updateUser(userChanged).subscribe((_) => {});
   }
 
-  submitPassword(): void { }
+  submitPassword(): void {}
 }

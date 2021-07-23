@@ -6,45 +6,64 @@
 /* Add your variable customizations of layout here */
 /* roboto-300 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: url("../fonts/roboto-v15-latin-300.eot");
+  src: url('../fonts/roboto-v15-latin-300.eot');
   /* IE9 Compat Modes */
-  src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/roboto-v15-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v15-latin-300.woff2") format("woff2"), url("../fonts/roboto-v15-latin-300.woff") format("woff"), url("../fonts/roboto-v15-latin-300.ttf") format("truetype"), url("../fonts/roboto-v15-latin-300.svg#Roboto") format("svg");
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url('../fonts/roboto-v15-latin-300.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/roboto-v15-latin-300.woff2') format('woff2'),
+    url('../fonts/roboto-v15-latin-300.woff') format('woff'),
+    url('../fonts/roboto-v15-latin-300.ttf') format('truetype'),
+    url('../fonts/roboto-v15-latin-300.svg#Roboto') format('svg');
   /* Legacy iOS */
 }
 /* roboto-regular - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/roboto-v15-latin-regular.eot");
+  src: url('../fonts/roboto-v15-latin-regular.eot');
   /* IE9 Compat Modes */
-  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v15-latin-regular.eot#iefix") format("embedded-opentype"), url("../fonts/roboto-v15-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v15-latin-regular.woff") format("woff"), url("../fonts/roboto-v15-latin-regular.ttf") format("truetype"), url("../fonts/roboto-v15-latin-regular.svg#Roboto") format("svg");
+  src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-v15-latin-regular.eot#iefix')
+      format('embedded-opentype'),
+    url('../fonts/roboto-v15-latin-regular.woff2') format('woff2'),
+    url('../fonts/roboto-v15-latin-regular.woff') format('woff'),
+    url('../fonts/roboto-v15-latin-regular.ttf') format('truetype'),
+    url('../fonts/roboto-v15-latin-regular.svg#Roboto') format('svg');
   /* Legacy iOS */
 }
 /* roboto-700 - latin */
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/roboto-v15-latin-700.eot");
+  src: url('../fonts/roboto-v15-latin-700.eot');
   /* IE9 Compat Modes */
-  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v15-latin-700.eot#iefix") format("embedded-opentype"), url("../fonts/roboto-v15-latin-700.woff2") format("woff2"), url("../fonts/roboto-v15-latin-700.woff") format("woff"), url("../fonts/roboto-v15-latin-700.ttf") format("truetype"), url("../fonts/roboto-v15-latin-700.svg#Roboto") format("svg");
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('../fonts/roboto-v15-latin-700.eot#iefix') format('embedded-opentype'),
+    url('../fonts/roboto-v15-latin-700.woff2') format('woff2'),
+    url('../fonts/roboto-v15-latin-700.woff') format('woff'),
+    url('../fonts/roboto-v15-latin-700.ttf') format('truetype'),
+    url('../fonts/roboto-v15-latin-700.svg#Roboto') format('svg');
   /* Legacy iOS */
 }
 @font-face {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/MaterialIcons-Regular.eot");
+  src: url('../fonts/MaterialIcons-Regular.eot');
   /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/MaterialIcons-Regular.woff2") format("woff2"), url("../fonts/MaterialIcons-Regular.woff") format("woff"), url("../fonts/MaterialIcons-Regular.ttf") format("truetype");
+  src: local('Material Icons'), local('MaterialIcons-Regular'),
+    url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),
+    url('../fonts/MaterialIcons-Regular.woff') format('woff'),
+    url('../fonts/MaterialIcons-Regular.ttf') format('truetype');
 }
 /* Utils */
 .clearfix:after {
-  content: " ";
+  content: ' ';
   display: block;
   clear: both;
 }
@@ -54,9 +73,12 @@
 }
 
 .card {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -188,32 +210,40 @@
 }
 
 .ui-shadow-1 {
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .ui-shadow-2 {
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .ui-shadow-3 {
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .ui-shadow-4 {
-  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .ui-shadow-5 {
-  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
@@ -344,19 +374,19 @@
 
 @keyframes colors {
   0% {
-    stroke: #4285F4;
+    stroke: #4285f4;
   }
   25% {
-    stroke: #DE3E35;
+    stroke: #de3e35;
   }
   50% {
-    stroke: #F7C223;
+    stroke: #f7c223;
   }
   75% {
-    stroke: #1B9A59;
+    stroke: #1b9a59;
   }
   100% {
-    stroke: #4285F4;
+    stroke: #4285f4;
   }
 }
 @keyframes dash {
@@ -427,28 +457,28 @@
   font-weight: bold;
 }
 .dashboard .colorbox.colorbox-1 {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 .dashboard .colorbox.colorbox-1 div:first-child {
-  background-color: #2E7D32;
+  background-color: #2e7d32;
 }
 .dashboard .colorbox.colorbox-2 {
-  background-color: #03A9F4;
+  background-color: #03a9f4;
 }
 .dashboard .colorbox.colorbox-2 div:first-child {
-  background-color: #0277BD;
+  background-color: #0277bd;
 }
 .dashboard .colorbox.colorbox-3 {
-  background-color: #673AB7;
+  background-color: #673ab7;
 }
 .dashboard .colorbox.colorbox-3 div:first-child {
-  background-color: #4527A0;
+  background-color: #4527a0;
 }
 .dashboard .colorbox.colorbox-4 {
   background-color: #009688;
 }
 .dashboard .colorbox.colorbox-4 div:first-child {
-  background-color: #00695C;
+  background-color: #00695c;
 }
 .dashboard .task-list {
   overflow: hidden;
@@ -559,7 +589,7 @@
 .dashboard .activity-list li .count {
   font-size: 24px;
   color: #ffffff;
-  background-color: #03A9F4;
+  background-color: #03a9f4;
   font-weight: bold;
   display: inline-block;
   padding: 5px;
@@ -610,13 +640,16 @@
   width: 100%;
 }
 .dashboard > div > .ui-panel {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 
 .layout-rightpanel .layout-rightpanel-header {
-  background: url("../images/dashboard/sidebar-image.jpg") no-repeat;
+  background: url('../images/dashboard/sidebar-image.jpg') no-repeat;
   background-size: cover;
   height: 118px;
   padding: 20px 14px;
@@ -624,7 +657,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.layout-rightpanel .layout-rightpanel-header .weather-day, .layout-rightpanel .layout-rightpanel-header .weather-date {
+.layout-rightpanel .layout-rightpanel-header .weather-day,
+.layout-rightpanel .layout-rightpanel-header .weather-date {
   color: #ffffff;
   left: 14px;
   font-size: 18px;
@@ -648,7 +682,10 @@
   text-align: center;
   margin-top: 28px;
 }
-.layout-rightpanel .layout-rightpanel-content .weather-today .weather-today-value {
+.layout-rightpanel
+  .layout-rightpanel-content
+  .weather-today
+  .weather-today-value {
   font-size: 36px;
   vertical-align: middle;
   margin-right: 14px;
@@ -666,7 +703,11 @@
   border-bottom: 1px solid #d8dae2;
   position: relative;
 }
-.layout-rightpanel .layout-rightpanel-content .weekly-weather li .weekly-weather-value {
+.layout-rightpanel
+  .layout-rightpanel-content
+  .weekly-weather
+  li
+  .weekly-weather-value {
   position: absolute;
   right: 40px;
 }
@@ -679,7 +720,7 @@
 
 .login-body {
   padding: 1px;
-  background: url("../images/login/login.png") top left no-repeat #f7f7f7;
+  background: url('../images/login/login.png') top left no-repeat #f7f7f7;
   background-size: 100% auto;
   height: auto;
 }
@@ -705,7 +746,7 @@
   background-color: #996b5b;
 }
 .login-panel .ui-button.secondary:hover {
-  background-color: #558B2F;
+  background-color: #558b2f;
 }
 .login-panel .ui-button.secondary:focus {
   outline: 0 none;
@@ -723,7 +764,7 @@
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .login-body {
-    background: url("../images/login/login2x.png") top left no-repeat #f7f7f7;
+    background: url('../images/login/login2x.png') top left no-repeat #f7f7f7;
     background-size: 100% auto;
   }
 }
@@ -785,7 +826,7 @@
   border-radius: 3px;
 }
 .exception-body .ui-button:hover {
-  background-color: #558B2F;
+  background-color: #558b2f;
 }
 .exception-body.error-page .exception-type {
   background-color: #e62a10;
@@ -832,12 +873,13 @@
   border-radius: 3px;
 }
 .landing-wrapper .ui-button:hover {
-  background-color: #558B2F;
+  background-color: #558b2f;
 }
 .landing-wrapper #header {
   width: 100%;
   min-height: 400px;
-  background: url("../images/landing/landing-header.png") top left no-repeat #f7f7f7;
+  background: url('../images/landing/landing-header.png') top left no-repeat
+    #f7f7f7;
   background-size: 100% auto;
 }
 .landing-wrapper #header .header-top {
@@ -850,7 +892,7 @@
   vertical-align: middle;
   width: 200px;
   height: 30px;
-  background: url("../images/logo.png") top left no-repeat;
+  background: url('../images/logo.png') top left no-repeat;
 }
 .landing-wrapper #header .header-top #menu {
   float: right;
@@ -938,7 +980,7 @@
   color: #ffffff;
 }
 .landing-wrapper #promotion {
-  background: url("../images/landing/promotion.png") top left no-repeat;
+  background: url('../images/landing/promotion.png') top left no-repeat;
   background-size: 100% auto;
 }
 .landing-wrapper #promotion .ui-lg-8 {
@@ -1111,9 +1153,12 @@
     width: 225px;
     list-style: none;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
     -webkit-animation-duration: 0.5s;
     -moz-animation-duration: 0.5s;
     animation-duration: 0.5s;
@@ -1158,7 +1203,11 @@
     margin: 75px 0px 50px 0px;
     font-weight: 400;
   }
-  .landing-wrapper #features, .landing-wrapper #promotion, .landing-wrapper #pricing, .landing-wrapper #video, .landing-wrapper .footer .footer-content {
+  .landing-wrapper #features,
+  .landing-wrapper #promotion,
+  .landing-wrapper #pricing,
+  .landing-wrapper #video,
+  .landing-wrapper .footer .footer-content {
     width: 100%;
     padding-right: 30px;
     padding-left: 30px;
@@ -1192,7 +1241,7 @@
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .landing-wrapper .header .header-top .logo {
-    background: url("../images/logo2x.png") top left no-repeat;
+    background: url('../images/logo2x.png') top left no-repeat;
     background-size: 200px 30px;
   }
 }
@@ -1253,28 +1302,63 @@
 .help-wrapper .card.help-wrapper-card .help-content .card .main-accordion {
   background-color: #f3f5f7;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-header
+  > a {
   border: none;
   background-color: #fafafa;
   color: #212121;
   position: relative;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a .accordion-title {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-header
+  > a
+  .accordion-title {
   padding-left: 45px;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a .accordion-title h1 {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-header
+  > a
+  .accordion-title
+  h1 {
   margin: 0;
   margin-top: 8px;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a i {
-  color: #8BC34A;
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-header
+  > a
+  i {
+  color: #8bc34a;
   position: absolute;
   bottom: 28px;
   left: 4px;
   z-index: 1;
   font-size: 50px;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a .ui-accordion-toggle-icon {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-header
+  > a
+  .ui-accordion-toggle-icon {
   position: absolute;
   top: 50%;
   margin-top: -10px;
@@ -1282,12 +1366,26 @@
   right: 30px;
   left: auto;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content {
   border: none;
   box-shadow: none;
   background-color: #fafafa;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-header > a {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content
+  .questions
+  .sub-accordion
+  .ui-accordion-header
+  > a {
   border: none;
   background-color: #eaeaea;
   color: #212121;
@@ -1299,19 +1397,56 @@
   color: #212121;
   margin-bottom: 10px;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-header > a .ui-accordion-toggle-icon {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content
+  .questions
+  .sub-accordion
+  .ui-accordion-header
+  > a
+  .ui-accordion-toggle-icon {
   color: #212121;
   right: 15px;
   left: auto;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-header > a:hover {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content
+  .questions
+  .sub-accordion
+  .ui-accordion-header
+  > a:hover {
   background-color: #795548;
   color: #ffffff;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-header > a:hover .ui-accordion-toggle-icon {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content
+  .questions
+  .sub-accordion
+  .ui-accordion-header
+  > a:hover
+  .ui-accordion-toggle-icon {
   color: #ffffff;
 }
-.help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-content {
+.help-wrapper
+  .card.help-wrapper-card
+  .help-content
+  .card
+  .main-accordion
+  .ui-accordion-content
+  .questions
+  .sub-accordion
+  .ui-accordion-content {
   padding-bottom: 24px;
   line-height: 1.5;
 }
@@ -1337,10 +1472,27 @@
     margin: 10px;
     padding: 0px 5px;
   }
-  .help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-header > a .ui-accordion-toggle-icon {
+  .help-wrapper
+    .card.help-wrapper-card
+    .help-content
+    .card
+    .main-accordion
+    .ui-accordion-header
+    > a
+    .ui-accordion-toggle-icon {
     right: 5px;
   }
-  .help-wrapper .card.help-wrapper-card .help-content .card .main-accordion .ui-accordion-content .questions .sub-accordion .ui-accordion-header > a .ui-accordion-toggle-icon {
+  .help-wrapper
+    .card.help-wrapper-card
+    .help-content
+    .card
+    .main-accordion
+    .ui-accordion-content
+    .questions
+    .sub-accordion
+    .ui-accordion-header
+    > a
+    .ui-accordion-toggle-icon {
     right: 2px;
   }
 }
@@ -1361,7 +1513,8 @@
   margin-bottom: 42px;
   width: 100%;
 }
-.invoice-wrapper .card.invoice-table h2, .invoice-wrapper .card.invoice-table p {
+.invoice-wrapper .card.invoice-table h2,
+.invoice-wrapper .card.invoice-table p {
   margin: 0;
 }
 .invoice-wrapper .card.invoice-table .table-header {
@@ -1391,7 +1544,7 @@
   text-align: left;
 }
 .invoice-wrapper .card.invoice-table .total {
-  color: #8BC34A;
+  color: #8bc34a;
 }
 .invoice-wrapper .card.invoice-table.billto-table .table-header {
   text-align: left;
@@ -1444,7 +1597,7 @@
 }
 .wizard-body {
   height: 100vh;
-  background: url("../../layout/images/extensions/background@2x.jpg") center;
+  background: url('../../layout/images/extensions/background@2x.jpg') center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -1491,7 +1644,7 @@
   vertical-align: middle;
   width: 200px;
   height: 30px;
-  background: url("../../layout/images/logo.png") top left no-repeat;
+  background: url('../../layout/images/logo.png') top left no-repeat;
 }
 .wizard-body .wizard-wrapper .wizard-topbar .profile {
   display: -webkit-box;
@@ -1541,7 +1694,8 @@
 }
 .wizard-body .wizard-wrapper .wizard-content .wizard-card {
   background-color: #fafafa;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14);
   height: 550px;
   width: 54.33%;
   display: -webkit-box;
@@ -1564,31 +1718,70 @@
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
   position: relative;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab {
   background-color: #3f51b5;
   text-align: center;
   cursor: pointer;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab
+  i {
   width: 20px;
   opacity: 0.38;
   color: #ffffff;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab .title {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab
+  .title {
   color: #ffffff;
   opacity: 0.38;
   font-size: 16px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab.selected-tab {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab.selected-tab {
   transition-duration: 0.6s;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab.selected-tab i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab.selected-tab
+  i {
   opacity: 1;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab.selected-tab .title {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab.selected-tab
+  .title {
   opacity: 1;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-header .tab-bar {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-header
+  .tab-bar {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1603,17 +1796,31 @@
   overflow: auto;
   height: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content > .ui-g {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content
+  > .ui-g {
   height: 100%;
   width: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content h1 {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content
+  h1 {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
   margin: 0;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.active-content {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.active-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1621,158 +1828,427 @@
   -webkit-flex-grow: 1;
   flex-grow: 1;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-inputgroup {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-inputgroup {
   background-color: #f4f4f4;
   margin-top: 25px;
   padding-top: 20px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-inputgroup input {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-inputgroup
+  input {
   width: 100%;
   padding-bottom: 15px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-inputgroup i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-inputgroup
+  i {
   margin-bottom: 15px;
   margin-left: 4px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-dropdown {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-dropdown {
   background-color: #f4f4f4;
   margin-top: 25px;
   padding-top: 23px;
   width: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-dropdown .ui-dropdown-label {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-dropdown
+  .ui-dropdown-label {
   padding-bottom: 12px;
   padding-left: 10px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .ui-dropdown .ui-dropdown-trigger {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .ui-dropdown
+  .ui-dropdown-trigger {
   top: 22px;
   right: 10px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .calendar {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .calendar {
   margin-top: 14px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .calendar .ui-calendar {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .calendar
+  .ui-calendar {
   width: 100%;
   position: relative;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .calendar .ui-calendar input {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .calendar
+  .ui-calendar
+  input {
   padding-top: 32px;
   padding-bottom: 12px;
   padding-left: 15px;
   width: 100%;
   background-color: #f4f4f4;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .forms .calendar .ui-calendar button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .forms
+  .calendar
+  .ui-calendar
+  button {
   top: 20px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.register .continue-button.ui-button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.register
+  .continue-button.ui-button {
   width: 100%;
   margin-top: 25px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card {
   min-height: 400px;
   padding: 0;
   position: relative;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-header {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-header {
   color: #ffffff;
   font-size: 18px;
   padding: 15px 10px;
   background-color: #3f51b5;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-header h1 {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-header
+  h1 {
   color: #ffffff;
   font-size: 24px;
   display: inline;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-content {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-content {
   font-size: 14px;
   padding: 10px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-content i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-content
+  i {
   color: #3f51b5;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-content .card-row {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-content
+  .card-row {
   height: 40px;
   width: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-content .tier-button-wrapper {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-content
+  .tier-button-wrapper {
   position: absolute;
   bottom: 15px;
   right: 10px;
   left: 0px;
   width: auto;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card .card-content .tier-button-wrapper .tier-button.ui-button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card
+  .card-content
+  .tier-button-wrapper
+  .tier-button.ui-button {
   width: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro .card-header {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro
+  .card-header {
   background-color: #e91e63;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro .card-content i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro
+  .card-content
+  i {
   color: #e91e63;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro .card-content .tier-button.ui-button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro
+  .card-content
+  .tier-button.ui-button {
   background-color: #e91e63;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro-plus .card-header {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro-plus
+  .card-header {
   background-color: #607d8b;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro-plus .card-content i {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro-plus
+  .card-content
+  i {
   color: #607d8b;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.tier .card.pro-plus .card-content .tier-button.ui-button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.tier
+  .card.pro-plus
+  .card-content
+  .tier-button.ui-button {
   background-color: #607d8b;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment {
   padding: 0;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info {
   padding: 70px 35px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info .md-inputfield-box {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info
+  .md-inputfield-box {
   background-color: #f4f4f4;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info .md-inputfield-box input {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info
+  .md-inputfield-box
+  input {
   width: 100%;
   padding-bottom: 15px;
   background-color: transparent;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info .ui-chkbox-label {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info
+  .ui-chkbox-label {
   font-size: 14px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info #customPanel {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info
+  #customPanel {
   width: 100%;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .payment-info .check-info {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .payment-info
+  .check-info {
   margin-top: 10px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info {
   padding: 15px;
   background-color: #e0e0e0;
   border-left: solid 1px #bdbdbd;
   font-size: 14px;
   color: #757575;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .order-basic, .wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .order-pro, .wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .order-pro-plus, .wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .order-default {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .order-basic,
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .order-pro,
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .order-pro-plus,
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .order-default {
   display: none;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .selected-order {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .selected-order {
   display: block;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info h1 {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  h1 {
   margin-top: 15px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .price {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .price {
   font-weight: 700;
   text-align: right;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .total {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .total {
   border-top: 1px solid #bdbdbd;
   padding: 15px 0px;
   margin-top: 30px;
 }
-.wizard-body .wizard-wrapper .wizard-content .wizard-card .wizard-card-content.payment .order-info .buy-button.ui-button {
+.wizard-body
+  .wizard-wrapper
+  .wizard-content
+  .wizard-card
+  .wizard-card-content.payment
+  .order-info
+  .buy-button.ui-button {
   width: 100%;
   margin: 68px 0;
 }
@@ -1813,7 +2289,7 @@ html {
 }
 
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 1.5em;
   color: #212121;
@@ -1855,7 +2331,7 @@ body a {
   vertical-align: middle;
   width: 200px;
   height: 30px;
-  background: url("../images/logo2x.png") top left no-repeat;
+  background: url('../images/logo2x.png') top left no-repeat;
   background-size: 200px 30px;
 }
 .layout-container .topbar .topbar-left {
@@ -1884,7 +2360,7 @@ body a {
   position: relative;
   left: -16px;
   top: 3px;
-  background-color: #8BC34A;
+  background-color: #8bc34a;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -1892,8 +2368,10 @@ body a {
   -o-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
-  -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23),
+    0 3px 10px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23),
+    0 3px 10px rgba(0, 0, 0, 0.16);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 .layout-container .topbar .topbar-right #menu-button:hover {
@@ -1904,7 +2382,7 @@ body a {
   transform: scale(1.2);
 }
 .layout-container .topbar .topbar-right #menu-button i {
-  font-family: "Material Icons";
+  font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
   font-size: 1.5em;
@@ -1926,7 +2404,7 @@ body a {
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
-  font-feature-settings: "liga";
+  font-feature-settings: 'liga';
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -1934,9 +2412,10 @@ body a {
   font-size: 36px;
 }
 .layout-container .topbar .topbar-right #menu-button i:before {
-  content: "chevron_left";
+  content: 'chevron_left';
 }
-.layout-container .topbar .topbar-right #topbar-menu-button, .layout-container .topbar .topbar-right #rightpanel-menu-button {
+.layout-container .topbar .topbar-right #topbar-menu-button,
+.layout-container .topbar .topbar-right #rightpanel-menu-button {
   display: none;
   color: #ffffff;
   vertical-align: middle;
@@ -1948,7 +2427,8 @@ body a {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.layout-container .topbar .topbar-right #topbar-menu-button i, .layout-container .topbar .topbar-right #rightpanel-menu-button i {
+.layout-container .topbar .topbar-right #topbar-menu-button i,
+.layout-container .topbar .topbar-right #rightpanel-menu-button i {
   -moz-transition: color 0.3s;
   -o-transition: color 0.3s;
   -webkit-transition: color 0.3s;
@@ -1966,7 +2446,8 @@ body a {
   top: -10px;
   font-size: 16px;
   background-color: transparent;
-  background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, #b89588, #b89588);
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff),
+    linear-gradient(to bottom, #b89588, #b89588);
   border-width: 0;
   padding: 2px;
   color: #ffffff;
@@ -1974,11 +2455,23 @@ body a {
 .layout-container .topbar .topbar-right .topbar-items .search-item input:focus {
   outline: 0 none;
 }
-.layout-container .topbar .topbar-right .topbar-items .search-item input:focus ~ label {
+.layout-container
+  .topbar
+  .topbar-right
+  .topbar-items
+  .search-item
+  input:focus
+  ~ label {
   top: -5px;
   font-size: 12px;
 }
-.layout-container .topbar .topbar-right .topbar-items .search-item input.ui-state-filled ~ label {
+.layout-container
+  .topbar
+  .topbar-right
+  .topbar-items
+  .search-item
+  input.ui-state-filled
+  ~ label {
   display: none;
 }
 .layout-container .topbar .topbar-right .topbar-items .search-item label {
@@ -2007,7 +2500,7 @@ body a {
   width: 250px;
   height: 145px;
   text-align: center;
-  background: url("../images/profile-bg.png") top left no-repeat;
+  background: url('../images/profile-bg.png') top left no-repeat;
   background-size: 250px 145px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
@@ -2054,7 +2547,7 @@ body a {
   background-color: #424242;
 }
 .layout-container .layout-menu.layout-menu-dark .profile {
-  background-image: url("../images/profile-bg-dark.png");
+  background-image: url('../images/profile-bg-dark.png');
 }
 .layout-container .layout-menu.layout-menu-dark .profile .profile-name {
   color: #ffffff;
@@ -2074,27 +2567,58 @@ body a {
 .layout-container .layout-menu.layout-menu-dark ul.ultima-menu li a:hover {
   background-color: #676767;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink {
-  color: #8BC34A;
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li
+  a.active-menuitem-routerlink {
+  color: #8bc34a;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink i {
-  color: #8BC34A;
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li
+  a.active-menuitem-routerlink
+  i {
+  color: #8bc34a;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink:hover {
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li
+  a.active-menuitem-routerlink:hover {
   color: #ffffff;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink:hover > i {
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li
+  a.active-menuitem-routerlink:hover
+  > i {
   color: #ffffff;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li.active-menuitem > a {
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li.active-menuitem
+  > a {
   color: #ffffff;
-  background-color: #8BC34A;
+  background-color: #8bc34a;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li.active-menuitem > a.active-menuitem-routerlink {
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li.active-menuitem
+  > a.active-menuitem-routerlink {
   color: #ffffff;
-  background-color: #8BC34A;
+  background-color: #8bc34a;
 }
-.layout-container .layout-menu.layout-menu-dark ul.ultima-menu li.active-menuitem > a.active-menuitem-routerlink i {
+.layout-container
+  .layout-menu.layout-menu-dark
+  ul.ultima-menu
+  li.active-menuitem
+  > a.active-menuitem-routerlink
+  i {
   color: #212121;
 }
 .layout-container .layout-menu .menuitem-badge {
@@ -2106,7 +2630,7 @@ body a {
   height: 1em;
   margin-right: 0.5em;
   text-align: center;
-  background-color: #8BC34A;
+  background-color: #8bc34a;
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
@@ -2164,7 +2688,11 @@ body a {
 .layout-container.menu-layout-overlay.layout-menu-overlay-active .layout-mask {
   display: block;
 }
-.layout-container.menu-layout-overlay.layout-menu-overlay-active .topbar .topbar-right #menu-button i {
+.layout-container.menu-layout-overlay.layout-menu-overlay-active
+  .topbar
+  .topbar-right
+  #menu-button
+  i {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -2202,8 +2730,9 @@ body a {
   -moz-box-shadow: inset 0 -2px 4px 0 rgba(0, 0, 0, 0.14);
   min-height: 42px;
 }
-.layout-container .layout-breadcrumb:before, .layout-container .layout-breadcrumb:after {
-  content: "";
+.layout-container .layout-breadcrumb:before,
+.layout-container .layout-breadcrumb:after {
+  content: '';
   display: table;
 }
 .layout-container .layout-breadcrumb:after {
@@ -2359,15 +2888,15 @@ body a {
   padding-left: 6em;
 }
 .layout-container .ultima-menu li.red-badge > a .menuitem-badge {
-  background-color: #F44336;
+  background-color: #f44336;
   color: #ffffff;
 }
 .layout-container .ultima-menu li.purple-badge > a .menuitem-badge {
-  background-color: #4527A0;
+  background-color: #4527a0;
   color: #ffffff;
 }
 .layout-container .ultima-menu li.teal-badge > a .menuitem-badge {
-  background-color: #00695C;
+  background-color: #00695c;
   color: #ffffff;
 }
 .layout-container .footer {
@@ -2416,7 +2945,7 @@ body a {
 
 .ajax-loader {
   font-size: 2em;
-  color: #8BC34A;
+  color: #8bc34a;
 }
 
 @media (min-width: 1025px) {
@@ -2442,7 +2971,7 @@ body a {
     position: absolute;
     right: -5px;
     top: -5px;
-    background-color: #8BC34A;
+    background-color: #8bc34a;
     color: #ffffff;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -2474,9 +3003,12 @@ body a {
     display: none;
     width: 250px;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
     -webkit-animation-duration: 0.3s;
     -moz-animation-duration: 0.3s;
     animation-duration: 0.3s;
@@ -2495,17 +3027,23 @@ body a {
   .layout-container.menu-layout-static .layout-main {
     margin-left: 250px;
   }
-  .layout-container.menu-layout-static.layout-menu-static-inactive .topbar .topbar-right #menu-button i {
+  .layout-container.menu-layout-static.layout-menu-static-inactive
+    .topbar
+    .topbar-right
+    #menu-button
+    i {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
   }
-  .layout-container.menu-layout-static.layout-menu-static-inactive .layout-menu {
+  .layout-container.menu-layout-static.layout-menu-static-inactive
+    .layout-menu {
     margin-left: -250px;
   }
-  .layout-container.menu-layout-static.layout-menu-static-inactive .layout-main {
+  .layout-container.menu-layout-static.layout-menu-static-inactive
+    .layout-main {
     margin-left: 0px;
   }
   .layout-container.menu-layout-static .layout-mask {
@@ -2539,7 +3077,9 @@ body a {
   .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu {
     width: 100%;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu.ultima-main-menu {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu.ultima-main-menu {
     margin-top: 0;
     padding-bottom: 0;
   }
@@ -2547,117 +3087,289 @@ body a {
     float: left;
     position: relative;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a {
     padding: 0.5em 1em;
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a
+    i {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a:hover {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a:hover {
     background-color: #e8e8e8;
     color: #212121;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a:hover i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a:hover
+    i {
     color: #212121;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a.active-menuitem-routerlink {
-    color: #8BC34A;
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a.active-menuitem-routerlink {
+    color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a.active-menuitem-routerlink > i {
-    color: #8BC34A;
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a.active-menuitem-routerlink
+    > i {
+    color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a.active-menuitem-routerlink:hover {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a.active-menuitem-routerlink:hover {
     color: #212121;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > a.active-menuitem-routerlink:hover i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > a.active-menuitem-routerlink:hover
+    i {
     color: #212121;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul {
     position: absolute;
     top: 41px;
     left: 0px;
     width: 250px;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    a {
     padding: 10px 16px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul {
     position: static;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul
+    li
+    a {
     padding-left: 32px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    li
+    a {
     padding-left: 48px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul ul ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    li
+    a {
     padding-left: 64px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul ul ul ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    ul
+    li
+    a {
     padding-left: 80px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li ul ul ul ul ul li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    ul
+    ul
+    li
+    a {
     padding-left: 96px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li.active-menuitem > a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li.active-menuitem
+    > a {
     color: #795548;
     background-color: #e8e8e8;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li.active-menuitem > ul {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li.active-menuitem
+    > ul {
     display: block;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li.active-menuitem > a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li.active-menuitem
+    > a {
     color: #ffffff;
-    background-color: #8BC34A;
+    background-color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li.active-menuitem > a i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li.active-menuitem
+    > a
+    i {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li.active-menuitem > ul {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li.active-menuitem
+    > ul {
     display: block;
   }
   .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark {
     background-color: #424242;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a:hover {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a:hover {
     background-color: #676767;
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a:hover i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a:hover
+    i {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink {
-    color: #8BC34A;
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a.active-menuitem-routerlink {
+    color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink i {
-    color: #8BC34A;
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a.active-menuitem-routerlink
+    i {
+    color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink:hover {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a.active-menuitem-routerlink:hover {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li a.active-menuitem-routerlink:hover i {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    a.active-menuitem-routerlink:hover
+    i {
     color: #ffffff;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li.active-menuitem > a {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li.active-menuitem
+    > a {
     color: #ffffff;
-    background-color: #8BC34A;
+    background-color: #8bc34a;
   }
-  .layout-container.menu-layout-horizontal .layout-menu.layout-menu-dark ul.ultima-menu li ul {
+  .layout-container.menu-layout-horizontal
+    .layout-menu.layout-menu-dark
+    ul.ultima-menu
+    li
+    ul {
     background-color: #424242;
   }
   .layout-container.menu-layout-horizontal .layout-menu .menuitem-badge {
     left: 32px;
     top: 7px;
   }
-  .layout-container.menu-layout-horizontal .layout-menu .active-menuitem .menuitem-badge {
+  .layout-container.menu-layout-horizontal
+    .layout-menu
+    .active-menuitem
+    .menuitem-badge {
     background-color: #ffffff;
     color: #212121;
   }
@@ -2696,7 +3408,8 @@ body a {
     width: 45px;
     height: 45px;
   }
-  .layout-container.menu-layout-slim .layout-menu .profile > a .profile-name, .layout-container.menu-layout-slim .layout-menu .profile > a i {
+  .layout-container.menu-layout-slim .layout-menu .profile > a .profile-name,
+  .layout-container.menu-layout-slim .layout-menu .profile > a i {
     display: none;
   }
   .layout-container.menu-layout-slim .layout-menu .ultima-menu {
@@ -2713,14 +3426,30 @@ body a {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > a i:first-child {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > a
+    i:first-child {
     font-size: 1.75em;
     margin-right: 0;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > a span, .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > a .submenu-icon {
+  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > a span,
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > a
+    .submenu-icon {
     display: none;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > a:hover + .layout-menu-tooltip {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > a:hover
+    + .layout-menu-tooltip {
     display: block;
   }
   .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul {
@@ -2737,25 +3466,84 @@ body a {
     padding: 0.5em 1em 0.5em 2em;
     padding-left: 16px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul li ul li a {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > ul
+    li
+    ul
+    li
+    a {
     padding-left: 32px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul li ul ul li a {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    li
+    a {
     padding-left: 48px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul li ul ul ul li a {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    li
+    a {
     padding-left: 64px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul li ul ul ul ul li a {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    ul
+    li
+    a {
     padding: 80px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li > ul li ul ul ul ul ul li a {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li
+    > ul
+    li
+    ul
+    ul
+    ul
+    ul
+    ul
+    li
+    a {
     padding: 96px;
   }
-  .layout-container.menu-layout-slim .layout-menu .ultima-menu > li.active-menuitem > a:hover + .layout-menu-tooltip {
+  .layout-container.menu-layout-slim
+    .layout-menu
+    .ultima-menu
+    > li.active-menuitem
+    > a:hover
+    + .layout-menu-tooltip {
     display: none;
   }
-  .layout-container.menu-layout-slim .layout-menu.layout-menu-dark .ultima-menu > li > ul {
+  .layout-container.menu-layout-slim
+    .layout-menu.layout-menu-dark
+    .ultima-menu
+    > li
+    > ul {
     background-color: #424242;
   }
   .layout-container.menu-layout-slim .layout-main {
@@ -2786,7 +3574,11 @@ body a {
   .layout-container.menu-layout-static.layout-menu-static-active .topbar {
     z-index: 999999998;
   }
-  .layout-container.menu-layout-static.layout-menu-static-active .topbar .topbar-right #menu-button i {
+  .layout-container.menu-layout-static.layout-menu-static-active
+    .topbar
+    .topbar-right
+    #menu-button
+    i {
     -webkit-transform: rotate(0);
     -moz-transform: rotate(0);
     -o-transform: rotate(0);
@@ -2809,9 +3601,12 @@ body a {
     width: 275px;
     display: none;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 8px 17px 0 rgba(0, 0, 0, 0.2);
     -webkit-animation-duration: 0.3s;
     -moz-animation-duration: 0.3s;
     animation-duration: 0.3s;
@@ -2837,7 +3632,13 @@ body a {
   .layout-container .topbar .topbar-right .topbar-items > li > a:hover {
     background-color: #e8e8e8;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li > a .topbar-item-name {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li
+    > a
+    .topbar-item-name {
     display: inline-block;
     vertical-align: middle;
   }
@@ -2845,7 +3646,7 @@ body a {
     position: absolute;
     left: 30px;
     top: 10px;
-    background-color: #8BC34A;
+    background-color: #8bc34a;
     color: #ffffff;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -2858,21 +3659,41 @@ body a {
   .layout-container .topbar .topbar-right .topbar-items > li > ul {
     display: none;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li > ul li a span, .layout-container .topbar .topbar-right .topbar-items > li > ul li a img, .layout-container .topbar .topbar-right .topbar-items > li > ul li a i {
+  .layout-container .topbar .topbar-right .topbar-items > li > ul li a span,
+  .layout-container .topbar .topbar-right .topbar-items > li > ul li a img,
+  .layout-container .topbar .topbar-right .topbar-items > li > ul li a i {
     display: inline-block;
     vertical-align: middle;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.active-top-menu > a {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.active-top-menu
+    > a {
     color: #795548;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.active-top-menu > ul {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.active-top-menu
+    > ul {
     display: block;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.active-top-menu > ul li a {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.active-top-menu
+    > ul
+    li
+    a {
     padding-left: 32px;
   }
   .layout-container .topbar .topbar-right .topbar-items > li.search-item input {
-    background-image: linear-gradient(to bottom, #795548, #795548), linear-gradient(to bottom, #a1a0a0, #a1a0a0);
+    background-image: linear-gradient(to bottom, #795548, #795548),
+      linear-gradient(to bottom, #a1a0a0, #a1a0a0);
   }
   .layout-container .topbar .topbar-right .topbar-items > li.search-item {
     text-align: center;
@@ -2891,11 +3712,28 @@ body a {
     border-color: #bdbdbd;
     color: #212121;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.search-item input:focus {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.search-item
+    input:focus {
     border-color: #bdbdbd;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.search-item input:focus ~ label,
-.layout-container .topbar .topbar-right .topbar-items > li.search-item input.ui-state-filled ~ label {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.search-item
+    input:focus
+    ~ label,
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.search-item
+    input.ui-state-filled
+    ~ label {
     top: -20px;
     color: #795548;
   }
@@ -2908,12 +3746,17 @@ body a {
     right: 5px;
     top: -2px;
   }
-  .layout-container .topbar .topbar-right .topbar-items > li.profile-item .profile-image {
+  .layout-container
+    .topbar
+    .topbar-right
+    .topbar-items
+    > li.profile-item
+    .profile-image {
     display: inline-block;
     vertical-align: middle;
     width: 24px;
     height: 24px;
-    background: url("../images/avatar.png") top left no-repeat;
+    background: url('../images/avatar.png') top left no-repeat;
     background-size: 24px 24px;
     margin-right: 14px;
   }
@@ -2968,7 +3811,10 @@ body a {
 .layout-config.layout-config-active {
   transform: translate3d(0px, 0px, 0px);
 }
-.layout-config.layout-config-active .layout-config-content .layout-config-button i {
+.layout-config.layout-config-active
+  .layout-config-content
+  .layout-config-button
+  i {
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
@@ -3016,7 +3862,8 @@ body a {
   -o-transition: background-color 0.3s;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 12px 17px 2px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+    0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 12px 17px 2px rgba(0, 0, 0, 0.14);
 }
 .layout-config .layout-config-content .layout-config-button i {
   font-size: 32px;
@@ -3095,7 +3942,10 @@ body a {
   outline: none;
   cursor: pointer;
 }
-.layout-config .ui-tabview.ui-tabview-top > .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
+.layout-config
+  .ui-tabview.ui-tabview-top
+  > .ui-tabview-nav
+  li:not(.ui-state-active):not(.ui-state-disabled):hover {
   border-color: #b89588;
   background-color: #decec8;
   -moz-transition: background-color 0.3s;
@@ -3103,7 +3953,11 @@ body a {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.layout-config .ui-tabview.ui-tabview-top > .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover > a {
+.layout-config
+  .ui-tabview.ui-tabview-top
+  > .ui-tabview-nav
+  li:not(.ui-state-active):not(.ui-state-disabled):hover
+  > a {
   color: #1b1c1e;
 }
 .layout-config .ui-tabview.ui-tabview-top > .ui-tabview-nav li.ui-state-active {
@@ -3115,11 +3969,18 @@ body a {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.layout-config .ui-tabview.ui-tabview-top > .ui-tabview-nav li.ui-state-active > a {
+.layout-config
+  .ui-tabview.ui-tabview-top
+  > .ui-tabview-nav
+  li.ui-state-active
+  > a {
   color: #1b1c1e;
   cursor: pointer;
 }
-.layout-config .ui-tabview.ui-tabview-top > .ui-tabview-nav li.ui-state-active:hover {
+.layout-config
+  .ui-tabview.ui-tabview-top
+  > .ui-tabview-nav
+  li.ui-state-active:hover {
   background-color: #decec8;
   -moz-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
@@ -3206,7 +4067,11 @@ body a {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-.layout-config .ui-tabview .ui-tabview-panels a.layout-config-layout-option img {
+.layout-config
+  .ui-tabview
+  .ui-tabview-panels
+  a.layout-config-layout-option
+  img {
   height: 87px;
   width: 109px;
 }
@@ -3300,10 +4165,24 @@ body .layout-wrapper.layout-compact {
   font-size: 14px;
   line-height: 18px;
 }
-body .layout-wrapper.layout-compact .layout-container .ultima-menu li a i:last-child {
+body
+  .layout-wrapper.layout-compact
+  .layout-container
+  .ultima-menu
+  li
+  a
+  i:last-child {
   font-size: 18px;
 }
-body .layout-wrapper.layout-compact .layout-container .ultima-menu li ul li a span {
+body
+  .layout-wrapper.layout-compact
+  .layout-container
+  .ultima-menu
+  li
+  ul
+  li
+  a
+  span {
   font-size: 14px;
 }
 body .layout-wrapper.layout-compact .layout-container .layout-breadcrumb ul li {
@@ -3315,13 +4194,27 @@ body .layout-wrapper.layout-compact .ui-radiobutton .ui-radiobutton-box {
 }
 
 @media (min-width: 1025px) {
-  .layout-wrapper.layout-compact .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul {
+  .layout-wrapper.layout-compact
+    .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul {
     top: 35px;
   }
-  .layout-wrapper.layout-compact .layout-container.menu-layout-horizontal .layout-menu ul.ultima-menu > li > ul li span {
+  .layout-wrapper.layout-compact
+    .layout-container.menu-layout-horizontal
+    .layout-menu
+    ul.ultima-menu
+    > li
+    > ul
+    li
+    span {
     font-size: 14px;
   }
-  .layout-wrapper.layout-compact .layout-container.menu-layout-horizontal .layout-main {
+  .layout-wrapper.layout-compact
+    .layout-container.menu-layout-horizontal
+    .layout-main {
     padding-top: 110px;
   }
 }
