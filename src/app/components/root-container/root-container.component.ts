@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { JwtService } from '../../shared/services/Auth/jwt.service';
 import { AuthService } from '../../shared/services/Auth/auth.service';

@@ -35,6 +35,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       {
         label:'Accueil',
         icon:'pi pi-fw pi-home',
+        routerLink: ['/']
       },
       {
         label:'Mes paris',
@@ -51,10 +52,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
           {
             label:'Basketball',
             icon:'pi pi-fw pi-user-minus',
+            routerLink: ['/nba']
           },
           {
             label:'Football',
             icon:'pi pi-fw pi-users',
+            routerLink: ['/foot']
           }
         ]
       },

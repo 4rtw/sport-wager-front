@@ -1,0 +1,10 @@
+.page-container{
+    width: 1280px;
+    margin: auto;
+}
+
+.center{
+    margin: auto;
+    /* border: 3px solid green; */
+    padding: 10px;
+}

@@ -123,7 +123,7 @@ list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-r
 
 .p-menubar .p-submenu-list {
   padding: 0.25rem 0;
-  background: linear-gradient( 135deg, rgba(255, 225, 69, 0.95) 10%, rgba(245, 191, 75, 0.95) 100%);
+  background: linear-gradient( 135deg, rgba(255, 225, 69, 0.98) 10%, rgba(245, 191, 75, 0.98) 100%);
 }
 
 .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link{

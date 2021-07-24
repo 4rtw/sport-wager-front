@@ -35,6 +35,9 @@ export class CompetitionService {
               activeCompetitions.push(competition);
             }
           }
+          if (activeCompetitions.length === 0){
+            return competitions;
+          }
           return activeCompetitions;
         })
       );

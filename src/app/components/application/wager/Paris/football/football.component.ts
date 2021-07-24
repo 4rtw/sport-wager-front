@@ -32,7 +32,6 @@ export class FootballComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private footballService: MatchService,
     public customDate: CustomDate,
-    private betService: BetService
   ) {
     this.responsiveOptions = [
       {
@@ -63,6 +62,7 @@ export class FootballComponent implements OnInit {
     this.competitionService.getCompetitions().subscribe((x) => {
       this.competitions = x;
       this.loading = false;
+      console.log(this.competitions)
       this.activeCompetition = this.competitions[0];
       this.getMatches();
       this.changeDetector.detectChanges();
@@ -73,7 +73,7 @@ export class FootballComponent implements OnInit {
     this.loadingMatches = true;
     this.matches = [];
     this.footballService
-      .getMatches(this.activeCompetition.id, this.date)
+      .getMatches(this.activeCompetition?.id, this.date)
       .subscribe((x) => {
         this.matches = x;
         this.loadingMatches = false;
