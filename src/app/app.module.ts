@@ -80,6 +80,7 @@ import { FooterComponent } from './components/UI/footer/footer.component';
 import { GalleriaComponent } from './components/UI/galleria/galleria.component';
 import {GalleriaModule} from 'primeng/galleria';
 import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
+import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { FlipCardComponent } from './components/UI/flip-card/flip-card.component
     FooterComponent,
     GalleriaComponent,
     FlipCardComponent,
+    SkeletonLoadingComponent,
   ],
   imports: [
     AppRoutingModule,

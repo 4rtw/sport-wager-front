@@ -20,12 +20,7 @@
             <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
               <!-- Skeleton -->
               <div *ngIf="loading">
-                <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
-                <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
-                <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
-                <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
-                <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
-                <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <app-skeleton-loading></app-skeleton-loading>
               </div>
 
               <div *cdkVirtualFor="let match of matches">
