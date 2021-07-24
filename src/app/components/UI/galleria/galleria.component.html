@@ -1,0 +1,9 @@
+<div class="flex justify-content-center">
+    <p-galleria [(value)]=" images" style="width: 55%;" [containerStyle]="{'max-width': '100%'}" [numVisible]="5"
+        [circular]="true" [showThumbnails]="false" [showIndicators]="true" [changeItemOnIndicatorHover]="true"
+        [autoPlay]="true" [transitionInterval]="2000">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.previewImageSrc" style="width: 100%; display: block;height: 349px;border-radius: 15px;" />
+        </ng-template>
+    </p-galleria>
+</div>

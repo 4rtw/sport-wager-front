@@ -2,76 +2,30 @@
   <div class="p-grid p-flex-column">
     <div class="p-col">
       <div class="box">
+
         <p-panel header="Basketball">
           <ng-template pTemplate="header">
-            <button
-              pButton
-              pRipple
-              type="button"
-              icon="pi pi-angle-left"
-              (click)="clickPreviousOrNext('previous')"
-              class="p-button-rounded"
-            ></button>
-            <p-calendar
-              #calendar
-              [dateFormat]="'dd M yy'"
-              [showIcon]="true"
-              [(ngModel)]="date"
-              (onSelect)="onSelectedDate($event)"
-              inputId="basic"
-            ></p-calendar>
-            <button
-              pButton
-              pRipple
-              type="button"
-              icon="pi pi-angle-right"
-              (click)="clickPreviousOrNext('next')"
-              class="p-button-rounded"
-            ></button>
+            <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
+              class="p-button-rounded"></button>
+            <p-calendar #calendar [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date"
+              (onSelect)="onSelectedDate($event)" inputId="basic"></p-calendar>
+            <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')"
+              class="p-button-rounded"></button>
           </ng-template>
           <ng-template pTemplate="icons">
-            <i
-              class="pi pi-table p-mr-4 p-text-secondary"
-              pBadge
-              style="font-size: 2rem"
-              value="{{ matches.length }}"
-            ></i>
+            <i class="pi pi-table p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
+              value="{{ matches.length }}"></i>
           </ng-template>
           <ng-template pTemplate="list">
-            <cdk-virtual-scroll-viewport
-              [itemSize]="100"
-              class="example-viewport"
-            >
+            <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
               <!-- Skeleton -->
               <div *ngIf="loading">
-                <p-skeleton
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
-                <p-skeleton
-                  width="10rem"
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
-                <p-skeleton
-                  width="5rem"
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
-                <p-skeleton
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
-                <p-skeleton
-                  width="10rem"
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
-                <p-skeleton
-                  width="5rem"
-                  styleClass="p-mb-2"
-                  borderRadius="16px"
-                ></p-skeleton>
+                <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <p-skeleton styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <p-skeleton width="10rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
+                <p-skeleton width="5rem" styleClass="p-mb-2" borderRadius="16px"></p-skeleton>
               </div>
 
               <div *cdkVirtualFor="let match of matches">
@@ -79,11 +33,7 @@
                 <div class="p-d-flex p-jc-between">
                   <div class="p-fluid">
                     <div class="team-item p-d-block">
-                      <img
-                        alt="Image"
-                        src="assets/images/bracelet.jpg"
-                        class="team-img"
-                      />
+                      <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
                     </div>
                     <div class="p-d-block p-text-center p-mt-2">
                       {{ match.HomeTeam }}
@@ -91,13 +41,8 @@
                   </div>
                   <div class="p-text-center" style="width: 300px">
                     <div class="p-d-block p-text-bold">
-                      <span [class]="'product-badge'"
-                        >{{ customDate.getDateTime(match.DateTime, 'time') }} -
-                        <p-tag
-                          [rounded]="true"
-                          [severity]="getSeverity(match)"
-                          >{{ match.Status.toLowerCase() }}</p-tag
-                        >
+                      <span [class]="'product-badge'">{{ customDate.getDateTime(match.DateTime, 'time') }} -
+                        <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
                       </span>
                     </div>
                     <div class="p-d-block">
@@ -106,45 +51,24 @@
                       }}</span>
                     </div>
                     <div class="p-d-block p-m-2">
-                      <p-selectButton
-                        #match
-                        [disabled]="
+                      <p-selectButton #match [disabled]="
                           ['Final', 'Canceled', 'F/OT'].includes(match.Status)
-                        "
-                        uncheck="true"
-                        (onChange)="changeTest()"
-                        (onOptionClick)="onClick($event)"
-                        [options]="getMatchCotes(match)"
-                        optionLabel="name"
-                        optionValue="value"
-                      ></p-selectButton>
+                        " uncheck="true" (onChange)="changeTest()" (onOptionClick)="onClick($event)"
+                        [options]="getMatchCotes(match)" optionLabel="name" optionValue="value"></p-selectButton>
                     </div>
                     <div class="p-d-block">
                       {{ match.HomeTeamScore }} -
                       {{ match.AwayTeamScore }}
                     </div>
                     <div class="p-d-block" *ngIf="showAmount">
-                      <p-inputNumber
-                        [(ngModel)]="amount"
-                        [showButtons]="true"
-                        [step]="0.25"
-                        buttonLayout="horizontal"
-                        currency="EUR"
-                        decrementButtonClass="p-button-danger"
-                        decrementButtonIcon="pi pi-minus"
-                        incrementButtonClass="p-button-success"
-                        incrementButtonIcon="pi pi-plus"
-                        mode="currency"
-                      >
+                      <p-inputNumber [(ngModel)]="amount" [showButtons]="true" [step]="0.25" buttonLayout="horizontal"
+                        currency="EUR" decrementButtonClass="p-button-danger" decrementButtonIcon="pi pi-minus"
+                        incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" mode="currency">
                       </p-inputNumber>
                     </div>
                   </div>
                   <div class="team-item p-d-block">
-                    <img
-                      alt="Image"
-                      src="assets/images/bracelet.jpg"
-                      class="team-img"
-                    />
+                    <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
                     <div class="p-d-block p-text-center p-mt-2">
                       {{ match.AwayTeam }}
                     </div>
@@ -157,6 +81,8 @@
             </cdk-virtual-scroll-viewport>
           </ng-template>
         </p-panel>
+
+        
       </div>
     </div>
   </div>

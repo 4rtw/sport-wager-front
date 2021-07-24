@@ -77,6 +77,9 @@ import { MessageModule } from 'primeng/message';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BetPostComponent } from './components/application/wager/Paris/bet-post/bet-post.component';
 import { FooterComponent } from './components/UI/footer/footer.component';
+import { GalleriaComponent } from './components/UI/galleria/galleria.component';
+import {GalleriaModule} from 'primeng/galleria';
+
 
 @NgModule({
   declarations: [
@@ -101,6 +104,7 @@ import { FooterComponent } from './components/UI/footer/footer.component';
     RootContainerComponent,
     BetPostComponent,
     FooterComponent,
+    GalleriaComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -114,6 +118,7 @@ import { FooterComponent } from './components/UI/footer/footer.component';
     BadgeModule,
     CardModule,
     PanelModule,
+    GalleriaModule,
     DividerModule,
     VirtualScrollerModule,
     AvatarModule,

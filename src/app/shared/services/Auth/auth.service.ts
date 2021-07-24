@@ -17,7 +17,7 @@ export class AuthService {
     private http: HttpClient,
     private persistenceManager: LocalStorageService,
     private jwtService: JwtService
-  ) {}
+  ) { }
 
   login(
     email: string,
@@ -40,7 +40,7 @@ export class AuthService {
           };
           return statusMessage;
         }),
-        tap((x) => {
+        tap((x) => { 
           this.jwtService.setToken({
             access_token: x.access_token,
             refresh_token: x.refresh_token,
