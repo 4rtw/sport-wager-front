@@ -1,5 +1,5 @@
 /*********footer*******************/
-. kilimanjaro_area {
+.kilimanjaro_area {
     position: relative;
     z-index: 1;
 }
@@ -94,7 +94,7 @@ ul {
     color: rgba(255,255,255,.5);
     font-size: 13px;
 }
-top-15 {
+.top-15 {
     margin-top: 15px;
 }
 .foo_top_header_one .kilimanjaro_part > h5 {
@@ -169,7 +169,7 @@ p, ul li, ol li {
 .inline-style .social_links_area > a:hover {
     background-color: transparent;
     color: #27ae60;
-    border: 0px solid transparent;
+    border: 0 solid transparent;
 }
 .single_feature:hover .feature_text h4 {
     color: #27ae60;

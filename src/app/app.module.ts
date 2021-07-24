@@ -79,6 +79,7 @@ import { BetPostComponent } from './components/application/wager/Paris/bet-post/
 import { FooterComponent } from './components/UI/footer/footer.component';
 import { GalleriaComponent } from './components/UI/galleria/galleria.component';
 import {GalleriaModule} from 'primeng/galleria';
+import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import {GalleriaModule} from 'primeng/galleria';
     BetPostComponent,
     FooterComponent,
     GalleriaComponent,
+    FlipCardComponent,
   ],
   imports: [
     AppRoutingModule,
