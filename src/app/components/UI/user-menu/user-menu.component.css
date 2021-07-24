@@ -37,3 +37,14 @@
   margin-top: 0;
   font-size: 14px;
 }
+
+
+.user-menu span {
+  /* padding-left: 10px; */
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.menu {
+  padding: 0px !important;
+}

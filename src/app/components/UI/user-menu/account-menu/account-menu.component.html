@@ -1,47 +1,26 @@
-<div style="width: 270px; margin: auto">
-  <p-card
-    [style]="{ margin: 'auto', width: '260px' }"
-    header="{{ user.lastname }}"
-    styleClass="p-card-shadow"
-    subheader="{{ user.firstname }}"
-  >
-    <div class="p-d-flex p-jc-center p-grid">
+<div class="grid">
+  <div class="col">
+    <div class="col">
+      <h4 style="text-align: center">{{ user.firstname }}</h4>
+      <h5 style="text-align: center">{{ user.lastname }}</h5>
+    </div>
+    <div class="col">
       <img alt="Card" class="custom-avatar" src="{{ user.image }}" />
     </div>
-    <ng-template pTemplate="body">
-      <div class="p-d-flex p-mt-2 p-flex-column">
-        <button
-          (click)="goToProfile()"
-          class="p-button-rounded p-button-info p-mb-2"
-          icon="pi pi-user"
-          label="Voir le profile"
-          pButton
-          pRipple
-          type="button"
-        ></button>
-        <button
-          (click)="logout()"
-          *ngIf="showButtonLogoutAndNoLoader"
-          class="p-button-rounded p-button-danger p-button-outlined"
-          icon="pi pi-times"
-          label="Déconnexion"
-          pButton
-          pRipple
-          type="button"
-        ></button>
+    <div class="col">
+      <button style="width: 100%" (click)="goToProfile()" class="p-button-rounded p-button-info p-mb-2"
+        icon="pi pi-user" label="Voir le profil" pButton pRipple type="button"></button>
+    </div>
+    <div class="col" *ngIf="showButtonLogoutAndNoLoader">
+      <button style="width: 100%" (click)="logout()" class="p-button-rounded p-button-danger p-button-outlined"
+        icon="pi pi-times" label="Déconnexion" pButton pRipple type="button"></button>
+    </div>
 
-        <div *ngIf="!showButtonLogoutAndNoLoader" class="p-fluid p-jc-center">
-          <div style="width: fit-content; margin: auto">
-            <p-progressSpinner
-              [style]="{ width: '30px', height: '30px' }"
-              animationDuration=".5s"
-              fill="#EEEEEE"
-              strokeWidth="8"
-              styleClass="custom-spinner"
-            ></p-progressSpinner>
-          </div>
-        </div>
+    <div *ngIf="!showButtonLogoutAndNoLoader" style="width: 100%" class="col">
+      <div style="width: fit-content; margin: auto">
+        <p-progressSpinner [style]="{ width: '30px', height: '30px' }" animationDuration=".5s" fill="#EEEEEE"
+          strokeWidth="8" styleClass="custom-spinner"></p-progressSpinner>
       </div>
-    </ng-template>
-  </p-card>
+    </div>
+  </div>
 </div>
