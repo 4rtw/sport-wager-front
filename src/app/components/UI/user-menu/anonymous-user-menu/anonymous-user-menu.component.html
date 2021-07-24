@@ -1,94 +1,51 @@
 <p-toast position="bottom-left"></p-toast>
-<div class="container">
-  <div style="width: 280px">
-    <div class="p-text-center mat-h2">Connectez-vous</div>
-    <div class="p-d-block p-fluid p-mr-2 p-ml-2">
-      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-        <div class="p-mb-2 p-field">
-          <input
-            [formControl]="email"
-            aria-describedby="email-help"
-            class="{{
-              email.invalid && email.value != '' ? 'ng-invalid ng-dirty' : ''
-            }}"
-            id="email"
-            pInputText
-            placeholder="Adresse email"
-            required="required"
-            type="text"
-          />
-          <small
-            *ngIf="email.invalid && email.value != ''"
-            class="p-error"
-            id="email-help"
-          >
-            Email invalide
-          </small>
-        </div>
-        <div class="p-mb-2 p-field">
-          <p-password
-            [feedback]="false"
-            [formControl]="password"
-            [toggleMask]="true"
-            class="{{
-              password.invalid && password.value != ''
-                ? 'ng-invalid ng-dirty'
-                : ''
-            }}"
-            id="password"
-            placeholder="Mot de passe"
-            required="true"
-          ></p-password>
-          <small
-            *ngIf="password.invalid && password.value != ''"
-            class="p-error"
-            id="password-help"
-          >
-            Mot de passe invalide
-          </small>
-        </div>
 
-        <div *ngIf="showButtonAndNoSpinner" class="p-input-icon-left p-mb-2">
-          <p-button
-            [disabled]="loginForm.invalid"
-            icon="pi pi-sign-in"
-            iconPos="left"
-            label="Connexion"
-            type="submit"
-          ></p-button>
-        </div>
-
-        <div *ngIf="!showButtonAndNoSpinner" class="p-fluid p-jc-center">
-          <div style="width: fit-content; margin: auto">
-            <p-progressSpinner
-              [style]="{ width: '30px', height: '30px' }"
-              animationDuration=".5s"
-              fill="#EEEEEE"
-              strokeWidth="8"
-              styleClass="custom-spinner"
-            ></p-progressSpinner>
-          </div>
-        </div>
-      </form>
-
-      <span class="p-input-icon-left p-mb-2">
-        <p-button
-          (onClick)="navigateToRegister()"
-          label="Inscrivez vous ici"
-          styleClass="p-button-secondary"
-          type="button"
-        ></p-button>
-      </span>
-
-      <span class="p-input-icon-left p-mb-2">
-        <p-button
-          (onClick)="navigateToForgotPasword()"
-          label="Mot de passe oublié"
-          styleClass="p-button-link"
-          type="button"
-        ></p-button>
-      </span>
+<div class="grid">
+  <div class="col-12">
+    <div style="text-align: center">
+      <h5>Connectez-vous</h5>
     </div>
   </div>
-  <!-- </p-card> -->
+  <div class="col">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="col">
+        <input [formControl]="email" style="width:100%" aria-describedby="email-help" class="{{
+          email.invalid && email.value != '' ? 'ng-invalid ng-dirty' : ''
+        }}" id="email" pInputText placeholder="Adresse email" required="required" type="text" />
+        <small *ngIf="email.invalid && email.value != ''" class="p-error" id="email-help">
+          Email invalid
+        </small>
+      </div>
+      <div class="col">
+        <p-password [feedback]="false" [formControl]="password" [toggleMask]="true" class="{{
+          password.invalid && password.value != ''
+            ? 'ng-invalid ng-dirty'
+            : ''
+        }}" id="password" placeholder="Mot de passe" required="true"></p-password>
+        <small *ngIf="password.invalid && password.value != ''" class="p-error" id="password-help">
+          Password invalid
+        </small>
+      </div>
+
+      <div *ngIf="showButtonAndNoSpinner" class="col">
+        <p-button [disabled]="loginForm.invalid" icon="pi pi-sign-in" iconPos="left" label="Connexion" type="submit">
+        </p-button>
+      </div>
+
+      <div *ngIf="!showButtonAndNoSpinner" style="width:100%" class="col">
+        <div style="width: fit-content; margin: auto">
+          <p-progressSpinner [style]="{ width: '30px', height: '30px' }" animationDuration=".5s" fill="#EEEEEE"
+            strokeWidth="8" styleClass="custom-spinner"></p-progressSpinner>
+        </div>
+      </div>
+    </form>
+    <div class="col">
+      <p-button (onClick)="navigateToRegister()" label="Inscrivez vous ici" styleClass="p-button-secondary"
+        type="button"></p-button>
+    </div>
+    <div class="col" style="width:100%">
+      <p-button (onClick)="navigateToForgotPasword()" label="Mot de passe oublié" styleClass="p-button-link"
+        type="button"></p-button>
+    </div>
+  </div>
 </div>

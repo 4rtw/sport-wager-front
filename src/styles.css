@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~primeng/resources/primeng.min.css';
+
 html,
 body {
   height: 100%;
@@ -8,6 +9,7 @@ body {
 body {
   margin: 0;
 }
+
 ::ng-deep div,
 h4,
 h2,
@@ -17,12 +19,13 @@ h2,
 p {
   font-family: system-ui, serif;
 }
+
 body .dashboardDateFilter {
   width: 100%;
   margin-top: 15px;
 }
 
-body .dashboardDateFilter > input {
+body .dashboardDateFilter>input {
   width: 100%;
 }
 
@@ -86,20 +89,22 @@ a[_primary-color]:hover {
 }
 
 /* p-menubar */
-.p-menubar{
+.p-menubar {
   height: 150px;
-  background: linear-gradient( 135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;
+  background: linear-gradient(135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;
   background-size: cover;
   margin: 0;
 }
 
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover,
-list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled),
-list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover{
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link:not(.p-disabled):hover,
+list>.p-menuitem.p-menuitem-active>.p-menuitem-link,
+.p-menubar .p-menubar-root-list>.p-menuitem.p-menuitem-active>.p-menuitem-link:not(.p-disabled),
+list>.p-menuitem.p-menuitem-active>.p-menuitem-link,
+.p-menubar .p-menubar-root-list>.p-menuitem.p-menuitem-active>.p-menuitem-link:not(.p-disabled):hover {
   background: transparent;
 }
 
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):after{
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link:not(.p-disabled):after {
   content: '';
   position: absolute;
   left: 0;
@@ -111,11 +116,11 @@ list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-r
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: scale(0,1);
-  transform: scale(0,1);
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
 }
 
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover:after{
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link:not(.p-disabled):hover:after {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -123,13 +128,30 @@ list > .p-menuitem.p-menuitem-active > .p-menuitem-link, .p-menubar .p-menubar-r
 
 .p-menubar .p-submenu-list {
   padding: 0.25rem 0;
-  background: linear-gradient( 135deg, rgba(255, 225, 69, 0.95) 10%, rgba(245, 191, 75, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(255, 225, 69, 0.95) 10%, rgba(245, 191, 75, 0.95) 100%);
 }
 
-.p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link{
+.p-menubar .p-menuitem.p-menuitem-active>.p-menuitem-link {
   background: transparent;
 }
 
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link{
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link {
   font-size: larger;
 }
+
+p-password .p-password {
+  width: 100%;
+}
+
+p-password .p-password input {
+  width: 100%;
+}
+
+p-button {
+  width: 100%;
+}
+
+p-button button {
+  width: 100%;
+}
+

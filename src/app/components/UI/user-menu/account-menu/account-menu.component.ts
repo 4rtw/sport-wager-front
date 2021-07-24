@@ -19,7 +19,7 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userSub = this.userService.getUserLoggedIn().subscribe(
