@@ -1,83 +1,63 @@
 <div class="box">
-  <div class="p-grid p-flex-column">
-    <div class="p-col">
+  <div class="grid p-flex-column">
+    <div class="col">
       <div class="box">
 
-        <p-panel header="Basketball">
-          <ng-template pTemplate="header">
-            <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
-              class="p-button-rounded"></button>
-            <p-calendar #calendar [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date"
-              (onSelect)="onSelectedDate($event)" inputId="basic"></p-calendar>
-            <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')"
-              class="p-button-rounded"></button>
-          </ng-template>
-          <ng-template pTemplate="icons">
-            <i class="pi pi-table p-mr-4 p-text-secondary" pBadge style="font-size: 2rem"
-              value="{{ matches.length }}"></i>
-          </ng-template>
-          <ng-template pTemplate="list">
-            <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
-              <!-- Skeleton -->
-              <div *ngIf="loading">
-                <app-skeleton-loading></app-skeleton-loading>
-              </div>
+        <div class="flex justify-content-around mb-4">
+          <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
+                  class="p-button-rounded"></button>
+          <p-calendar #calendar [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date"
+                      (onSelect)="onSelectedDate($event)" inputId="basic"></p-calendar>
+          <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')"
+                  class="p-button-rounded"></button>
+        </div>
 
-              <div *cdkVirtualFor="let match of matches">
-                <!-- eto -->
-                <div class="p-d-flex p-jc-between">
-                  <div class="p-fluid">
-                    <div class="team-item p-d-block">
-                      <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                    </div>
-                    <div class="p-d-block p-text-center p-mt-2">
-                      {{ match.HomeTeam }}
-                    </div>
+        <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
+          <!-- Skeleton -->
+          <div *ngIf="loading">
+            <app-skeleton-loading></app-skeleton-loading>
+          </div>
+
+          <div *cdkVirtualFor="let match of matches">
+            <div class="mb-2 custom-card">
+              <div class="grid justify-content-center mt-2">
+                <div class="col">
+                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+                  <div class="mt-3 flex justify-content-center">{{ match.HomeTeam }}</div>
+                </div>
+
+                <div class="col">
+                  <div class="grid flex justify-content-center">
+                    <span>{{ customDate.getDateTime(match.DateTime, 'time') }}</span>
                   </div>
-                  <div class="p-text-center" style="width: 300px">
-                    <div class="p-d-block p-text-bold">
-                      <span [class]="'product-badge'">{{ customDate.getDateTime(match.DateTime, 'time') }} -
-                        <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
-                      </span>
-                    </div>
-                    <div class="p-d-block">
-                      <span [class]="'product-badge'">{{
-                        customDate.getDateTime(match.Day, 'date')
-                      }}</span>
-                    </div>
-                    <div class="p-d-block p-m-2">
-                      <p-selectButton #match [disabled]="
-                          ['Final', 'Canceled', 'F/OT'].includes(match.Status)
-                        " uncheck="true" (onChange)="changeTest()" (onOptionClick)="onClick($event)"
-                        [options]="getMatchCotes(match)" optionLabel="name" optionValue="value"></p-selectButton>
-                    </div>
-                    <div class="p-d-block">
-                      {{ match.HomeTeamScore }} -
-                      {{ match.AwayTeamScore }}
-                    </div>
-                    <div class="p-d-block" *ngIf="showAmount">
-                      <p-inputNumber [(ngModel)]="amount" [showButtons]="true" [step]="0.25" buttonLayout="horizontal"
-                        currency="EUR" decrementButtonClass="p-button-danger" decrementButtonIcon="pi pi-minus"
-                        incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" mode="currency">
-                      </p-inputNumber>
-                    </div>
+                  <div class="block flex justify-content-center">
+                    <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
                   </div>
-                  <div class="team-item p-d-block">
-                    <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                    <div class="p-d-block p-text-center p-mt-2">
-                      {{ match.AwayTeam }}
-                    </div>
+                  <div class="grid flex justify-content-center mt-2">
+                        <span [class]="'product-badge'">{{
+                          customDate.getDateTime(match.Day, 'date')
+                          }}</span>
+                  </div>
+                  <div class="flex justify-content-center">
+                    {{match.HomeTeamScore}} - {{match.AwayTeamScore}}
                   </div>
                 </div>
-                <p-divider></p-divider>
+
+                <div class="col">
+                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+                  <div class="mt-3 flex justify-content-center">{{ match.AwayTeam }}</div>
+                </div>
               </div>
+              <div class="grid justify-content-center mt-2">
+                <p-selectButton #match [disabled]="!match.IsBettingClosed" uncheck="true" (onChange)="changeTest()" (onOptionClick)="onClick($event)"
+                                [options]="getMatchCotes(match)" optionLabel="name" optionValue="value"></p-selectButton>
+              </div>
+            </div>
+          </div>
 
-              <!-- fin eto -->
-            </cdk-virtual-scroll-viewport>
-          </ng-template>
-        </p-panel>
+          <!-- fin eto -->
+        </cdk-virtual-scroll-viewport>
 
-        
       </div>
     </div>
   </div>

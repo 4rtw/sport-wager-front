@@ -156,3 +156,10 @@ p-button {
 p-button button {
   width: 100%;
 }
+
+/*p-panel*/
+.p-panel .p-panel-content{
+  background: transparent;
+  border: none;
+  padding: 0;
+}

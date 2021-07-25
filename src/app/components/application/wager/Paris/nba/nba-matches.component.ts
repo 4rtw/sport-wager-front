@@ -3,7 +3,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ViewChild,
+  ViewChild, ViewEncapsulation,
 } from '@angular/core';
 import { NbaService } from '../../../../../shared/services/Basketball/nba.service';
 import { NbaGame } from '../../../../../shared/model/Basket/nba-game';

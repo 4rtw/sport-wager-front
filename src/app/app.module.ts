@@ -82,6 +82,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
 import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/UI/warning/warning.component';
+import { NavigationsComponent } from './components/UI/navigations/navigations.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { WarningComponent } from './components/UI/warning/warning.component';
     FlipCardComponent,
     SkeletonLoadingComponent,
     WarningComponent,
+    NavigationsComponent,
   ],
   imports: [
     AppRoutingModule,

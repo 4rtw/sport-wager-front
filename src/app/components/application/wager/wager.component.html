@@ -1,21 +1,12 @@
 <div class="card">
-
-  <div class="grid" *ngIf="user.id === 0">
+  <div class="grid">
     <div class="col">
-      <router-outlet></router-outlet>
+      <app-navigations></app-navigations>
     </div>
     <div class="col">
       <router-outlet></router-outlet>
     </div>
-  </div>
-  <div class="grid" *ngIf="user.id !== 0">
-    <div class="col">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="col">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="col">
+    <div class="col" *ngIf="user.id !== 0">
       <app-panier></app-panier>
     </div>
   </div>

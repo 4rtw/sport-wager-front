@@ -1,29 +1,22 @@
-.status-final {
-  color: #0a4438;
-}
-
 .example-viewport {
   height: 800px;
-  width: 100%;
-}
-
-.example-item {
-  height: 50px;
-}
-
-.center-items {
   margin: auto;
-}
-
-.team-item {
-  display: flex;
-  align-items: center;
-  width: 150px;
-  flex-wrap: nowrap;
+  padding-right: 5px;
 }
 
 .team-img {
   margin: auto;
   width: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar{
+  display: none;
+}
+
+.custom-card{
+  border-radius: 5px;
+  padding: 5px;
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(5px);
 }
