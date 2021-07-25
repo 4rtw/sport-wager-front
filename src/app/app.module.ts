@@ -53,7 +53,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { CalendarModule } from 'primeng/calendar';
 import { ProfileComponent } from './components/application/userSpace/LoggedUser/user-container/profile/profile.component';
 import { PanierComponent } from './components/application/wager/panier/panier.component';
-import { VideoComponent } from './components/application/wager/panier/video/video.component';
+import { VideoComponent } from './components/UI/video/video.component';
 import { UserContainerComponent } from './components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { ImageComponent } from './components/application/userSpace/LoggedUser/user-container/image/image.component';
 import { FileUploadModule } from 'ng2-file-upload';

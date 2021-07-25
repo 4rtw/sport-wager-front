@@ -18,6 +18,7 @@ export class PanierComponent implements OnInit, OnDestroy {
   matches: NbaGame[] = [];
   sub: Subscription[] = [];
   total = 0;
+  loading = true;
 
   constructor(
     private betService: BetService,
@@ -44,10 +45,12 @@ export class PanierComponent implements OnInit, OnDestroy {
           this.sub.push(
             this.betService.getMyBetList().subscribe((response) => {
               for (let bet of response) {
-                if (!bet.collected) {
+                if (!bet.collected && bet.sport_category === "nba") {
                   this.myBet.push(bet);
                 }
               }
+              console.log(this.myBet)
+              this.loading = !this.loading;
               this.getMatches();
               this.setTotalValue();
             })

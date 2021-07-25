@@ -3,7 +3,7 @@
     <div class="col">
       <div class="box">
 
-        <div class="flex justify-content-around mb-4">
+        <div style="border-radius: 5px; padding: 5px; background: rgba(255,255,255,0.5);" class="flex justify-content-around mb-2">
           <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
                   class="p-button-rounded"></button>
           <p-calendar #calendar [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date"
@@ -13,31 +13,38 @@
         </div>
 
         <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
+          <div class="h2 text-center custom-card">Basketball</div>
+
           <!-- Skeleton -->
           <div *ngIf="loading">
             <app-skeleton-loading></app-skeleton-loading>
           </div>
 
+          <div *ngIf="! loading && matches.length === 0" class="custom-card text-center">
+            Il n'y a aucun match pour le jour, essayez une autre date.
+          </div>
           <div *cdkVirtualFor="let match of matches">
             <div class="mb-2 custom-card">
               <div class="grid justify-content-center mt-2">
-                <div class="col">
-                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                  <div class="mt-3 flex justify-content-center">{{ match.HomeTeam }}</div>
+                <div class="col flex justify-content-center">
+                  <span>{{ customDate.getDateTime(match.DateTime, 'time') }}</span>
                 </div>
-
-                <div class="col">
-                  <div class="grid flex justify-content-center">
-                    <span>{{ customDate.getDateTime(match.DateTime, 'time') }}</span>
-                  </div>
-                  <div class="block flex justify-content-center">
-                    <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
-                  </div>
-                  <div class="grid flex justify-content-center mt-2">
+                <div class="col flex justify-content-center">
+                  <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
+                </div>
+                <div class="col flex justify-content-center">
                         <span [class]="'product-badge'">{{
                           customDate.getDateTime(match.Day, 'date')
                           }}</span>
-                  </div>
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid justify-content-center">
+                <div class="col">
+                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+                </div>
+
+                <div class="col">
                   <div class="flex justify-content-center">
                     {{match.HomeTeamScore}} - {{match.AwayTeamScore}}
                   </div>
@@ -45,12 +52,13 @@
 
                 <div class="col">
                   <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                  <div class="mt-3 flex justify-content-center">{{ match.AwayTeam }}</div>
                 </div>
               </div>
-              <div class="grid justify-content-center mt-2">
+              <div class="grid flex justify-content-evenly mt-1">
+                <div class="flex align-items-center">{{ match.HomeTeam }}</div>
                 <p-selectButton #match [disabled]="!match.IsBettingClosed" uncheck="true" (onChange)="changeTest()" (onOptionClick)="onClick($event)"
                                 [options]="getMatchCotes(match)" optionLabel="name" optionValue="value"></p-selectButton>
+                <div class="flex align-items-center">{{ match.AwayTeam }}</div>
               </div>
             </div>
           </div>

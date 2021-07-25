@@ -2,100 +2,72 @@
   <div class="p-grid p-flex-column">
     <div class="p-col">
       <div class="box">
-        <p-panel header="Panier">
-          <ng-template pTemplate="icons">
-            <i
-              class="pi pi-bell p-mr-4 p-text-secondary"
-              pBadge
-              style="font-size: 2rem"
-              value="{{ myBet.length }}"
-            ></i>
-          </ng-template>
-          <p-scrollPanel [style]="{ width: '100%', height: '450px' }">
-            <!-- averina -->
-            <div *ngFor="let bet of myBet" class="product-item">
-              <div class="p-d-flex p-jc-between">
-                <div class="p-d-flex p-flex-column">
-                  <div class="p-mb-2">
-                    <img
-                      src="assets/images/bracelet.jpg"
-                      [alt]=""
-                      class="product-image"
-                    />
-                  </div>
-                  <div class="p-mb-2">
-                    <div class="box" style="text-align: 'center'">
-                      <span
-                        class="{{
-                          bet.bet_type?.id == '1' ? 'p-text-bold' : ''
-                        }}"
-                        >{{ getTeams(bet)?.HomeTeam }}</span
-                      >
-                    </div>
-                  </div>
-                </div>
 
-                <div class="p-text-center">
-                  <div class="p-d-block p-text-bold">
-                    <span [class]="'product-badge'">
-                      <p-tag [rounded]="true"
-                        >{{ customDate.getDateTime(bet.creation_date, 'time') }}
-                        -
-                        {{
-                          customDate.getDateTime(bet.creation_date, 'date')
-                        }}</p-tag
-                      >
-                    </span>
-                  </div>
+        <p-scrollPanel [style]="{ width: '100%', height: '800px' }">
+          <div class="h2 text-center custom-card">Mes paris</div>
 
-                  <div class="p-d-block">
-                    Bet : {{ bet.amount_of_bets }} - Cote :
-                    {{ bet.multiplicator }}
-                  </div>
+          <!-- Skeleton -->
+          <div *ngIf="loading">
+            <app-skeleton-loading></app-skeleton-loading>
+          </div>
 
-                  <div class="p-d-block p-text-bold">
-                    <span [class]="'product-badge'">
-                      Gain potentiel:
-                      <p-tag [rounded]="true" [severity]="'success'">
-                        {{ bet.amount_of_bets * bet.multiplicator }}</p-tag
-                      >
-                    </span>
-                  </div>
-                </div>
+          <div *ngFor="let bet of myBet" class="product-item">
 
-                <div class="p-d-flex p-flex-column">
-                  <div class="p-mb-2">
-                    <img
-                      src="assets/images/bracelet.jpg"
-                      [alt]=""
-                      class="product-image"
-                    />
-                  </div>
-                  <div class="p-mb-2">
-                    <div class="box" style="text-align: 'center'">
-                      <span
-                        class="{{
-                          bet.bet_type?.id == '2' ? 'p-text-bold' : ''
-                        }}"
-                        >{{ getTeams(bet)?.AwayTeam }}</span
-                      >
-                    </div>
-                  </div>
+            <div class="mb-2 custom-card">
+              <div class="grid justify-content-center mt-2">
+                <div class="col flex justify-content-center">
+                  <span>{{
+                    customDate.getDateTime(bet.creation_date, 'date')
+                    }} - {{ customDate.getDateTime(bet.creation_date, 'time') }}</span>
                 </div>
               </div>
               <p-divider></p-divider>
-              <!-- fin averina -->
-            </div>
-          </p-scrollPanel>
+              <div class="grid justify-content-center">
+                <div class="col">
+                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+                  <div class="block mt-2 text-center">{{ getTeams(bet).HomeTeam }}</div>
+                </div>
 
-          <p-card [style]="{ background: '#FFEEDB' }">
+                <div class="col">
+                  <div class="flex justify-content-center">
+                  </div>
+                </div>
+
+                <div class="col">
+                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+                  <div class="block mt-2 text-center">{{ getTeams(bet).AwayTeam }}</div>
+                </div>
+              </div>
+              <div class="grid mt-1">
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class=" col flex justify-content-center">
+                  <p-tag>
+                    {{bet.bet_type.description}}
+                  </p-tag>
+                </div>
+                <div class="col flex justify-content-center">
+                  <p-tag>
+                    Odds: {{bet.multiplicator}}
+                  </p-tag>
+                </div>
+                <div class="col flex justify-content-center">
+                  <p-tag>
+                    BET: {{bet.amount_of_bets}}
+                  </p-tag>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-scrollPanel>
+
+          <!-- p-card [style]="{ background: '#FFEEDB' }">
             <div class="p-d-flex p-jc-evenly">
               <h4>Mise totale</h4>
               <h4>{{ total }}</h4>
             </div>
-          </p-card>
-        </p-panel>
-        <app-video></app-video>
+          </p-card -->
       </div>
     </div>
   </div>

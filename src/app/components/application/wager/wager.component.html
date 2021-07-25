@@ -6,8 +6,9 @@
     <div class="col">
       <router-outlet></router-outlet>
     </div>
-    <div class="col" *ngIf="user.id !== 0">
-      <app-panier></app-panier>
+    <div class="col">
+      <app-panier *ngIf="user.id !== 0"></app-panier>
+      <app-video></app-video>
     </div>
   </div>
 </div>

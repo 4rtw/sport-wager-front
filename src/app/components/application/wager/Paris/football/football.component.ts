@@ -5,7 +5,6 @@ import { FootballGames } from '../../../../../shared/model/Foot/foot';
 import { MatchService } from '../../../../../shared/services/Football/match.service';
 import { Calendar } from 'primeng/calendar';
 import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
-import { BetService } from 'src/app/shared/services/bet-service/bet.service';
 import { Bet } from 'src/app/shared/model/Bet/Bet';
 
 @Component({
