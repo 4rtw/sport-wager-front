@@ -35,11 +35,17 @@ const routes: Routes = [
         path: 'set-password',
         component: ResetPasswordFinalStepComponent,
       },
+    ],
+  },
+  {
+    path: 'account',
+    component: RootContainerComponent,
+    children:[
       {
         path: 'profile',
         component: UserContainerComponent,
-      },
-    ],
+      }
+    ]
   },
   {
     path: '',

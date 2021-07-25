@@ -3,6 +3,7 @@
     <div class="col">
       <div class="box">
 
+        <div class="h2 text-center custom-card">Basketball</div>
         <div style="border-radius: 5px; padding: 5px; background: rgba(255,255,255,0.5);" class="flex justify-content-around mb-2">
           <button pButton pRipple type="button" icon="pi pi-angle-left" (click)="clickPreviousOrNext('previous')"
                   class="p-button-rounded"></button>
@@ -11,9 +12,7 @@
           <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')"
                   class="p-button-rounded"></button>
         </div>
-
         <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
-          <div class="h2 text-center custom-card">Basketball</div>
 
           <!-- Skeleton -->
           <div *ngIf="loading">
