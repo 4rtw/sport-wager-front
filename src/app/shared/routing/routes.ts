@@ -10,10 +10,13 @@ import { NbaMatchesComponent } from '../../components/application/wager/Paris/nb
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { FootballComponent } from '../../components/application/wager/Paris/football/football.component';
 import { RootContainerComponent } from '../../components/root-container/root-container.component';
+import { StatisticComponent } from '../../components/application/wager/statistic/statistic.component';
+import { CountryListComponent } from '../../components/application/wager/statistic/country-list/country-list.component';
 
 const routes: Routes = [
   {
     path: 'account',
+    component: RootContainerComponent,
     children: [
       {
         path: 'register',
@@ -65,10 +68,28 @@ const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: '',
+    component: RootContainerComponent,
+    children: [
+      {
+        path: 'statistic',
+        component: StatisticComponent,
+        children: [
+          {
+            path: 'country-list',
+            component: CountryListComponent,
+          },
+        ],
+      },
+    ],
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

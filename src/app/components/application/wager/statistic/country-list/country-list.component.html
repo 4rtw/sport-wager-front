@@ -1,0 +1,16 @@
+<p-orderList [value]="products" [listStyle]="{'max-height':'50rem'}" header="List of Products" filterBy="name"
+    filterPlaceholder="Filter by name" [dragdrop]="true">
+    <ng-template let-product pTemplate="item">
+        <div class="product-item">
+            <div class="image-container">
+                <img src="../../../../../../assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name"
+                    class="product-image" />
+            </div>
+            <div class="product-list-detail">
+                <h5 class="p-mb-2">{{product.name}}</h5>
+            </div>
+
+        </div>
+        <p-divider></p-divider>
+    </ng-template>
+</p-orderList>

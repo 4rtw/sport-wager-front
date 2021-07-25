@@ -78,12 +78,15 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BetPostComponent } from './components/application/wager/Paris/bet-post/bet-post.component';
 import { FooterComponent } from './components/UI/footer/footer.component';
 import { GalleriaComponent } from './components/UI/galleria/galleria.component';
-import {GalleriaModule} from 'primeng/galleria';
+import { GalleriaModule } from 'primeng/galleria';
 import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
 import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/UI/warning/warning.component';
 import { NavigationsComponent } from './components/UI/navigations/navigations.component';
-
+import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
+import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
+import { OrderListModule } from 'primeng/orderlist';
+import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +115,9 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
     SkeletonLoadingComponent,
     WarningComponent,
     NavigationsComponent,
+    StatisticComponent,
+    CountryListComponent,
+    CompetitionListComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -139,6 +145,7 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
     MatToolbarModule,
     MatRippleModule,
     BrowserModule,
+    OrderListModule,
     HttpClientModule,
     MenuModule,
     MenubarModule,
@@ -168,7 +175,7 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
     CookieModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: localStorage.getItem('token')?.toString || null,
+        tokenGetter: localStorage.getItem('token') ?.toString || null,
         allowedDomains: ['*'],
         disallowedRoutes: [''],
       },
@@ -187,4 +194,4 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
