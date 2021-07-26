@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompetitionService } from '../../../../../shared/services/Football/competition.service';
+import { Competitions } from '../../../../../shared/model/Foot/competitions';
 
 export interface Product {
   id?: string;
@@ -143,10 +145,16 @@ export class CountryListComponent implements OnInit {
     }
   ];
 
-  constructor(/*private productService: ProductService*/) { }
+  competitions: Competitions[];
+
+  constructor(private competitionService: CompetitionService) { }
 
   ngOnInit() {
-    //this.productService.getProductsSmall().then(cars => this.products = cars);
+    this.competitionService.getCompetitions().subscribe((competitions) => {
+      // console.log("-----");
+      this.competitions = competitions;
+      //console.log(this.competitions);
+    });
   }
 
 }

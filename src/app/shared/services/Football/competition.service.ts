@@ -11,7 +11,7 @@ import { map, tap } from 'rxjs/operators';
 export class CompetitionService {
   private uri = config.herokuurl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCompetitions(): Observable<Competitions[]> {
     return this.http
@@ -28,14 +28,14 @@ export class CompetitionService {
           for (const competition of competitions) {
             if (
               new Date(competition.currentSeason.startDate).getTime() <
-                new Date(new Date().toUTCString()).getTime() &&
+              new Date(new Date().toUTCString()).getTime() &&
               new Date(competition.currentSeason.endDate).getTime() >
-                new Date(new Date().toUTCString()).getTime()
+              new Date(new Date().toUTCString()).getTime()
             ) {
               activeCompetitions.push(competition);
             }
           }
-          if (activeCompetitions.length === 0){
+          if (activeCompetitions.length === 0) {
             return competitions;
           }
           return activeCompetitions;

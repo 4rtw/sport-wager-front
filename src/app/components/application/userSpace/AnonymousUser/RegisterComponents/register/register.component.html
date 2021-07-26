@@ -4,144 +4,68 @@
       <div #logo class="logo p-mb-3">
         <img alt="Logo" src="/assets/images/logo.png" />
       </div>
-      <form
-        ngForm
-        #formRegister
-        [formGroup]="registerForm"
-        (submit)="formRegister.reset()"
-      >
+      <form ngForm #formRegister [formGroup]="registerForm" (submit)="formRegister.reset()">
         <div class="p-fluid p-formgrid p-grid">
           <mat-form-field appearance="fill" class="p-col-12">
             <mat-label style="color: #aa8f66">Entrer votre nom</mat-label>
-            <input
-              matInput
-              placeholder="Doe"
-              formControlName="lastname"
-              required
-              autocomplete=""
-            />
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.lastname.invalid"
-              >{{ getErrorMessage(registerForm.controls.lastname) }}</mat-error
-            >
+            <input matInput placeholder="Doe" formControlName="lastname" required autocomplete="" />
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.lastname.invalid">
+              {{ getErrorMessage(registerForm.controls.lastname) }}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="p-col-12">
             <mat-label style="color: #aa8f66">Entrer votre prénom</mat-label>
-            <input
-              matInput
-              placeholder="Pat"
-              formControlName="firstname"
-              required
-              autocomplete=""
-            />
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.firstname.invalid"
-              >{{ getErrorMessage(registerForm.controls.firstname) }}</mat-error
-            >
+            <input matInput placeholder="Pat" formControlName="firstname" required autocomplete="" />
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.firstname.invalid">
+              {{ getErrorMessage(registerForm.controls.firstname) }}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="p-col-12">
             <mat-label style="color: #aa8f66">Entrer votre email</mat-label>
-            <input
-              matInput
-              placeholder="pat@example.com"
-              formControlName="email"
-              required
-              autocomplete=""
-            />
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.email.invalid"
-              >{{ getErrorMessage(registerForm.controls.email) }}</mat-error
-            >
+            <input matInput placeholder="pat@example.com" formControlName="email" required autocomplete="" />
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.email.invalid">
+              {{ getErrorMessage(registerForm.controls.email) }}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="p-col-12">
-            <mat-label style="color: #aa8f66"
-              >Entrer votre mot de passe</mat-label
-            >
-            <input
-              matInput
-              [type]="hide ? 'password' : 'text'"
-              formControlName="password"
-              required
-              autocomplete=""
-            />
+            <mat-label style="color: #aa8f66">Entrer votre mot de passe</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required autocomplete="" />
 
             <!-- Password visible-->
-            <button
-              mat-icon-button
-              matSuffix
-              type="button"
-              (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-            >
+            <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
               <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
             <!-- end password visible -->
 
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.password.invalid"
-              >{{ getErrorMessage(registerForm.controls.password) }}</mat-error
-            >
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.password.invalid">
+              {{ getErrorMessage(registerForm.controls.password) }}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="p-col-12">
-            <mat-label style="color: #aa8f66"
-              >Confirmez votre mot de passe</mat-label
-            >
-            <input
-              matInput
-              [type]="hideConfirm ? 'password' : 'text'"
-              placeholder=""
-              formControlName="confirmPassword"
-              required
-              autocomplete=""
-            />
+            <mat-label style="color: #aa8f66">Confirmez votre mot de passe</mat-label>
+            <input matInput [type]="hideConfirm ? 'password' : 'text'" placeholder="" formControlName="confirmPassword"
+              required autocomplete="" />
 
             <!-- Password visible-->
-            <button
-              mat-icon-button
-              matSuffix
-              type="button"
-              (click)="hideConfirm = !hideConfirm"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hideConfirm"
-            >
+            <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
               <mat-icon>{{
                 hideConfirm ? 'visibility_off' : 'visibility'
               }}</mat-icon>
             </button>
             <!-- end password visible -->
 
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.confirmPassword.invalid"
-              >{{
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.confirmPassword.invalid">{{
                 getErrorMessage(registerForm.controls.confirmPassword)
-              }}</mat-error
-            >
+              }}</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="p-col-12">
             <mat-label style="color: #aa8f66">Entrer votre téléphone</mat-label>
-            <input
-              matInput
-              placeholder="+261xxxxxxx"
-              formControlName="phone"
-              required
-              autocomplete=""
-            />
-            <mat-error
-              style="color: #cf021b"
-              *ngIf="registerForm.controls.phone.invalid"
-              >{{ getErrorMessage(registerForm.controls.phone) }}</mat-error
-            >
+            <input matInput placeholder="+261xxxxxxx" formControlName="phone" required autocomplete="" />
+            <mat-error style="color: #cf021b" *ngIf="registerForm.controls.phone.invalid">
+              {{ getErrorMessage(registerForm.controls.phone) }}</mat-error>
           </mat-form-field>
 
           <div class="p-col-12 p-grid p-d-flex p-jc-evenly p-mt-2">
@@ -150,25 +74,15 @@
             </mat-error>
             <br />
             <br />
-            <button
-              mat-raised-button
-              class="p-col-5"
-              type="button"
-              routerLink="/"
-            >
+            <button mat-raised-button class="p-col-5" type="button" routerLink="/">
               <div class="submit-btn">
                 <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
                 <span>RETOUR</span>
               </div>
             </button>
 
-            <button
-              mat-raised-button
-              class="p-col-5"
-              type="submit"
-              [disabled]="!registerForm.valid"
-              (click)="onSubmit()"
-            >
+            <button mat-raised-button class="p-col-5" type="submit" [disabled]="!registerForm.valid"
+              (click)="onSubmit()">
               <div class="submit-btn">
                 <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
                 <span>INSCRIPTION</span>
