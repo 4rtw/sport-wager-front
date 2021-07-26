@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node app.js",
+    "start-gitpod": "npm i && ng serve",
     "start-dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
