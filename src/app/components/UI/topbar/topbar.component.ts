@@ -9,7 +9,7 @@ import { User } from '../../../shared/model/Users/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../shared/services/Users/user.service';
 import { Subscription } from 'rxjs';
-import { JwtService } from '../../../shared/services/Auth/jwt.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {MenuItem} from 'primeng/api';
 
 @Component({
@@ -18,6 +18,7 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./topbar.component.css'],
 })
 export class TopbarComponent implements OnInit, OnDestroy {
+  faCoffee = faCoffee
   items: MenuItem[];
   openedSidenav = true;
   user = new User();
@@ -47,7 +48,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
         items:[
           {
             label:'JO',
-            icon:'pi pi-fw pi-user-plus',
+            icon: faCoffee.iconName,
           },
           {
             label:'Basketball',

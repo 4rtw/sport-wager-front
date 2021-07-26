@@ -10,7 +10,7 @@ import { Bet } from 'src/app/shared/model/Bet/Bet';
 @Component({
   selector: 'app-football',
   templateUrl: './football.component.html',
-  styleUrls: ['./football.component.css'],
+  styleUrls: ['./football.component.scss'],
   providers: [CustomDate],
 })
 export class FootballComponent implements OnInit {
@@ -36,18 +36,18 @@ export class FootballComponent implements OnInit {
       {
         breakpoint: '1024px',
         numVisible: 3,
-        numScroll: 3,
+        numScroll: 3
       },
       {
         breakpoint: '768px',
         numVisible: 2,
-        numScroll: 2,
+        numScroll: 2
       },
       {
         breakpoint: '560px',
         numVisible: 1,
-        numScroll: 1,
-      },
+        numScroll: 1
+      }
     ];
   }
 

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/shared/services/Users/user.service';
 @Component({
   selector: 'app-wager',
   templateUrl: './wager.component.html',
-  styleUrls: ['./wager.component.css'],
+  styleUrls: ['./wager.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WagerComponent implements OnInit, OnDestroy {

@@ -23,8 +23,7 @@ export class CompetitionService {
         map((x: { data: Competitions[]; errors: string[] }) => {
           let competitions: Competitions[];
           const activeCompetitions: Competitions[] = [];
-          // @ts-ignore
-          competitions = x.data.data;
+          competitions = x.data;
           for (const competition of competitions) {
             if (
               new Date(competition.currentSeason.startDate).getTime() <

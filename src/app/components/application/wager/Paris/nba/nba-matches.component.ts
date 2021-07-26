@@ -16,7 +16,7 @@ import { BetPostComponent } from '../bet-post/bet-post.component';
 @Component({
   selector: 'app-nba-matches',
   templateUrl: './nba-matches.component.html',
-  styleUrls: ['../../wager.component.css', 'nba-matches.component.css'],
+  styleUrls: ['../../wager.component.scss', 'nba-matches.component.css'],
   providers: [CustomDate, DialogService],
 })
 export class NbaMatchesComponent implements OnInit, OnDestroy {

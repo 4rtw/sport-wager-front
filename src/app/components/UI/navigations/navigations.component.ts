@@ -15,11 +15,31 @@ export class NavigationsComponent implements OnInit {
   ngOnInit(): void {
     this.menuItems.push(
         {
-          label: "nba",
+          label: "Catégories",
+            items:[{
+              label: "Football",
+              routerLink: ['/foot']
+            },
+            {
+              label: "Basketball",
+              routerLink: ['/nba']
+            },
+              {
+                label: "JO"
+              }]
         },
         {
-         label: "foot"
+          label: "Mon compte",
+          items:[{
+            label: "Mon profile",
+            routerLink: ['/foot']
+          },
+            {
+              label: "Déconnexion",
+              routerLink: ['/nba']
+            }]
         }
-        )}
+        )
+  }
 
 }

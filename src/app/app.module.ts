@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './shared/routing/routes';
 import { AppComponent } from './app.component';
@@ -115,6 +116,7 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
   ],
   imports: [
     AppRoutingModule,
+    FontAwesomeModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

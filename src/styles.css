@@ -91,7 +91,7 @@ a[_primary-color]:hover {
 /* p-menubar */
 .p-menubar {
   height: 150px;
-  background: linear-gradient( 135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;
+  /*background: linear-gradient( 135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;*/
   background-size: cover;
   margin: 0;
 }
@@ -171,3 +171,5 @@ p-button button {
   background: rgba(255,255,255,0.5);
   backdrop-filter: blur(5px);
 }
+
+/* Virtual scroller */
