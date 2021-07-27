@@ -1,0 +1,18 @@
+<div class="carousel-container custom-card mb-2">
+    <p-carousel [value]="competitions" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+        <ng-template let-competition pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <a routerLink="football">
+                            <img src="{{competition.area.ensignUrl}}" [alt]="competition.name" class="product-image" />
+                        </a>
+                    </div>
+                    <div class="mb-1 mt-3">
+                        <h4>{{competition.name}}</h4>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

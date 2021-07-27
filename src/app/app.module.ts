@@ -84,6 +84,7 @@ import { FlipCardComponent } from './components/UI/flip-card/flip-card.component
 import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/UI/warning/warning.component';
 import { NavigationsComponent } from './components/UI/navigations/navigations.component';
+import { FootballCategoryComponent } from './components/UI/football-category/football-category.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { NavigationsComponent } from './components/UI/navigations/navigations.co
     SkeletonLoadingComponent,
     WarningComponent,
     NavigationsComponent,
+    FootballCategoryComponent,
   ],
   imports: [
     AppRoutingModule,

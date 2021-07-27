@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-navigations',
@@ -9,20 +10,22 @@ import {MenuItem} from 'primeng/api';
 export class NavigationsComponent implements OnInit {
 
   menuItems: MenuItem[] = []
+  checkedUrlFoot: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.checkRoutes();
     this.menuItems.push(
         {
           label: "Catégories",
             items:[{
               label: "Football",
-              routerLink: ['/foot']
+              routerLink: ['/foot'],
             },
             {
               label: "Basketball",
-              routerLink: ['/nba']
+              routerLink: ['/nba'],
             },
               {
                 label: "JO"
@@ -32,14 +35,25 @@ export class NavigationsComponent implements OnInit {
           label: "Mon compte",
           items:[{
             label: "Mon profile",
-            routerLink: ['/foot']
+            routerLink: ['/foot'],
           },
             {
               label: "Déconnexion",
-              routerLink: ['/nba']
+              routerLink: ['/nba'],
             }]
         }
         )
   }
 
+  checkRoutes(): void{
+    if(this.router.url.includes('foot') || this.router.url === '/'){
+      this.checkedUrlFoot = true;
+    }
+  }
+
+  reload(item): void{
+    this.router.navigate(item).then(()=> {
+      location.reload();
+    })
+  }
 }

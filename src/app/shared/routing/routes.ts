@@ -57,7 +57,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: NbaMatchesComponent,
+            component: FootballComponent,
           },
           {
             path: 'nba',
