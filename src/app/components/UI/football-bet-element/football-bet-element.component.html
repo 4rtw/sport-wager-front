@@ -1,0 +1,45 @@
+<div class="grid justify-content-center mt-2">
+    <div class="col flex justify-content-center">
+        <span>{{customDate.getDateTime(match.utcDate, 'time')}}</span>
+    </div>
+    <div class="col flex justify-content-center">
+        <p-tag>{{match.status}}</p-tag>
+    </div>
+    <div class="col flex justify-content-center">
+        <span>{{customDate.getDateTime(match.utcDate, 'date')}}</span>
+    </div>
+</div>
+<p-divider></p-divider>
+<div class="grid justify-content-center">
+    <div class="col" *ngIf="getHomeTeamDetails|async as homeDetails; else loading;">
+        <img alt="{{homeDetails.name}}" src="{{homeDetails.crestUrl}}" class="team-img"/>
+    </div>
+
+    <div class="col text-center">
+    </div>
+
+    <div class="col" *ngIf="getAwayTeamDetails|async as awayDetails; else loading">
+        <img alt="{{awayDetails.name}}" src="{{awayDetails.crestUrl}}" class="team-img" />
+    </div>
+
+    <ng-template #loading>
+        <app-skeleton-loading></app-skeleton-loading>
+    </ng-template>
+</div>
+<div class="grid text-center">
+    <div class="col-4">{{(getHomeTeamDetails|async)?.tla}}</div>
+    <div class="col-4"></div>
+    <div class="col-4">{{(getAwayTeamDetails|async)?.tla}}</div>
+</div>
+<p-divider></p-divider>
+<div class="grid">
+    <div class="col-4">
+        <p-button label="{{match.odds.homeWin}}"></p-button>
+    </div>
+    <div class="col-4">
+        <p-button label="{{match.odds.draw}}"></p-button>
+    </div>
+    <div class="col-4">
+        <p-button label="{{match.odds.awayWin}}"></p-button>
+    </div>
+</div>

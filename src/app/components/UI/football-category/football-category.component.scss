@@ -1,40 +1,13 @@
-.container{
+.flag {
+    height: 30px;
+    border-radius: 5px;
 }
 
-.content{
-    margin-bottom: 5px;
+a{
+    color: white;
 }
 
-.example-viewport-for-competitions {
-    height: 150px;
-    width: 100%;
-    margin: auto;
-    padding-right: 5px;
-    margin-bottom: 5px !important;
-}
-
-.example-viewport {
-    height: 750px;
-    width: 100%;
-    margin: auto;
-    padding-right: 5px;
-    background: transparent;
-}
-
-.product-item {
-.product-item-content {
-    border-radius: 3px;
-    margin: .3rem;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.product-image {
-    width: content-box;
-    height: 100px;
-}
-}
-
-.carousel-container{
-    border: #00a5bb solid 1px;
+a:hover{
+  text-decoration: none;
+    color: #0e2031;
 }

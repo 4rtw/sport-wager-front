@@ -85,6 +85,7 @@ import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skele
 import { WarningComponent } from './components/UI/warning/warning.component';
 import { NavigationsComponent } from './components/UI/navigations/navigations.component';
 import { FootballCategoryComponent } from './components/UI/football-category/football-category.component';
+import { FootballBetElementComponent } from './components/UI/football-bet-element/football-bet-element.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { FootballCategoryComponent } from './components/UI/football-category/foo
     WarningComponent,
     NavigationsComponent,
     FootballCategoryComponent,
+    FootballBetElementComponent,
   ],
   imports: [
     AppRoutingModule,

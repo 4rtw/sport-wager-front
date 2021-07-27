@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Competitions } from '../../model/Foot/competitions';
-import { HttpClient } from '@angular/common/http';
-import { config } from 'src/app/shared/config/variables';
-import { map, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Competitions} from '../../model/Foot/competitions';
+import {HttpClient} from '@angular/common/http';
+import {config} from 'src/app/shared/config/variables';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -25,14 +25,7 @@ export class CompetitionService {
           const activeCompetitions: Competitions[] = [];
           competitions = x.data;
           for (const competition of competitions) {
-            if (
-              new Date(competition.currentSeason.startDate).getTime() <
-                new Date(new Date().toUTCString()).getTime() &&
-              new Date(competition.currentSeason.endDate).getTime() >
-                new Date(new Date().toUTCString()).getTime()
-            ) {
               activeCompetitions.push(competition);
-            }
           }
           if (activeCompetitions.length === 0){
             return competitions;
@@ -40,5 +33,20 @@ export class CompetitionService {
           return activeCompetitions;
         })
       );
+  }
+
+  getCompetition(id): Observable<Competitions>{
+      if(id===0){
+          id=2002
+      }
+      return this.http.get<{
+          data: Competitions[];
+          errors: string[];
+      }>(this.uri + 'foot/active-competition')
+          .pipe(
+              map((x:{ data: Competitions[]; errors: string[] })=>{
+                  return x.data.find(element => element.id == id)}
+              )
+          );
   }
 }

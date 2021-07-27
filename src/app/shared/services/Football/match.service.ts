@@ -14,14 +14,14 @@ export class MatchService {
 
   constructor(private http: HttpClient) {}
 
-  getMatches(date: Date): Observable<FootballGames[]> {
+  getMatches(idCompet: number, date: Date): Observable<FootballGames[]> {
     const customDate = new CustomDate();
-    const id: string = "2002";
+    if(idCompet===0){idCompet=2002}
     const formatedDate: string = customDate.formatDate(date);
 
     return this.http
       .get<{ data: FootballGames[]; errors: string[] }>(
-        this.uri + 'foot/date/' + id + '/' + "2021-08-13"
+        this.uri + 'foot/date/' + idCompet + '/' + formatedDate
       )
       .pipe(
         map((x) => {

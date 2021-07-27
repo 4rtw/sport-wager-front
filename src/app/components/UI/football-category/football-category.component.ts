@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CompetitionService} from '../../../shared/services/Football/competition.service';
 import {Competitions} from '../../../shared/model/Foot/competitions';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-football-category',
@@ -9,12 +11,13 @@ import {Competitions} from '../../../shared/model/Foot/competitions';
 })
 export class FootballCategoryComponent implements OnInit {
 
-  competitions: Competitions[] = [];
+  competitions: Observable<Competitions[]>;
   loading = true;
-  activeCompetition: Competitions;
   responsiveOptions;
+  queryParams: Observable<any>;
 
-  constructor(private competitionService: CompetitionService, private changeDetector: ChangeDetectorRef) {
+
+  constructor(private competitionService: CompetitionService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -35,17 +38,13 @@ export class FootballCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCompetitions();
+    this.competitions = this.competitionService.getCompetitions()
+    this.queryParams = this.activatedRoute.queryParams;
   }
 
-  getCompetitions(): void {
-    this.competitionService.getCompetitions().subscribe((x) => {
-      this.competitions = x;
-      this.loading = false;
-      console.log(this.competitions)
-      this.activeCompetition = this.competitions[0];
-      this.changeDetector.detectChanges();
-    });
+  changeCompetition(id) {
+    this.router.navigate(['/football'], {queryParams:{competitionID:id}}).then(_=>{
+      location.reload();
+    })
   }
-
 }

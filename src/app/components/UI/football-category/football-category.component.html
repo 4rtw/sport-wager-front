@@ -1,18 +1,19 @@
-<div class="carousel-container custom-card mb-2">
-    <p-carousel [value]="competitions" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-        <ng-template let-competition pTemplate="item">
-            <div class="product-item">
-                <div class="product-item-content">
-                    <div class="p-mb-3">
-                        <a routerLink="football">
-                            <img src="{{competition.area.ensignUrl}}" [alt]="competition.name" class="product-image" />
-                        </a>
+    <div *ngIf="competitions|async as competitions; else loading" class="mb-2">
+        <div *ngFor="let competition of competitions" class="custom-card mb-2"  >
+            <a [routerLink]="['/foot']" [queryParams]="{competitionID:competition.id}" class="list"
+               style="{{(queryParams|async)?.competitionID===competition.id.toString(10) ? 'color:#0e2031;' : '' }}">
+                <div class="grid">
+                    <div class="col-2">
+                        <img src="{{competition.area.ensignUrl}}" class="flag"/>
                     </div>
-                    <div class="mb-1 mt-3">
-                        <h4>{{competition.name}}</h4>
+                    <div class="col flex align-items-center">
+                        {{competition.name}}
                     </div>
                 </div>
-            </div>
-        </ng-template>
-    </p-carousel>
-</div>
+            </a>
+        </div>
+    </div>
+
+    <ng-template #loading>
+        <app-skeleton-loading></app-skeleton-loading>
+    </ng-template>

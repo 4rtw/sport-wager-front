@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import { Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Competitions} from '../../../shared/model/Foot/competitions';
 
 @Component({
   selector: 'app-navigations',
@@ -12,7 +14,7 @@ export class NavigationsComponent implements OnInit {
   menuItems: MenuItem[] = []
   checkedUrlFoot: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.checkRoutes();

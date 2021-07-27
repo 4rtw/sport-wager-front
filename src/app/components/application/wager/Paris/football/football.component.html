@@ -10,19 +10,27 @@
                 class="p-button-rounded"></button>
     </div>
 
-    <div class="custom-card">
-        <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
-            <div *ngIf="loading">
-                <app-skeleton-loading></app-skeleton-loading>
-            </div>
+    <div class="custom-card mb-2">
+        <div *ngIf="activeCompetition|async as competition; else loading" class="text-center">
+            Début: {{customDate.getDateTime(convertToDate(competition.currentSeason.startDate), 'date')}} - Fin: {{customDate.getDateTime(convertToDate(competition.currentSeason.endDate), 'date')}}
+        </div>
+    </div>
 
-            <div *ngIf="! loading && matches.length === 0" class="custom-card text-center">
+    <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
+        <div *ngIf="matches|async as matches; else loading">
+            <div *ngIf="matches.length === 0" class="text-center custom-card">
                 Il n'y a aucun match pour le jour, essayez une autre date.
             </div>
 
-            <div *cdkVirtualFor="let match of matches" class="block content">
-                {{match.homeTeam.name}} - {{match.awayTeam.name}}
+            <div *cdkVirtualFor="let matche of matches" class="block content">
+                <div class="mb-2 custom-card">
+                    <app-football-bet-element [match]="matche"></app-football-bet-element>
+                </div>
             </div>
-        </cdk-virtual-scroll-viewport>
-    </div>
+        </div>
+    </cdk-virtual-scroll-viewport>
 </div>
+
+<ng-template #loading>
+    <app-skeleton-loading></app-skeleton-loading>
+</ng-template>

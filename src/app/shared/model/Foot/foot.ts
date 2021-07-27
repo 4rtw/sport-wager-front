@@ -30,6 +30,11 @@ export class FootballGames {
       awayTeam?: number;
     };
   };
+  odds: {
+    homeWin: number,
+    draw: number,
+    awayWin: number
+  };
   homeTeam: {
     _id: string;
     id: number;

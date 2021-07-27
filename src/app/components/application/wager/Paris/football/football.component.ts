@@ -1,11 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { CompetitionService } from '../../../../../shared/services/Football/competition.service';
-import { Competitions } from '../../../../../shared/model/Foot/competitions';
-import { FootballGames } from '../../../../../shared/model/Foot/foot';
-import { MatchService } from '../../../../../shared/services/Football/match.service';
-import { Calendar } from 'primeng/calendar';
-import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
-import { Bet } from 'src/app/shared/model/Bet/Bet';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Competitions} from '../../../../../shared/model/Foot/competitions';
+import {FootballGames} from '../../../../../shared/model/Foot/foot';
+import {MatchService} from '../../../../../shared/services/Football/match.service';
+import {Calendar} from 'primeng/calendar';
+import {CustomDate} from '../../../../../shared/services/Utils/DateOperator';
+import {Bet} from 'src/app/shared/model/Bet/Bet';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {CompetitionService} from '../../../../../shared/services/Football/competition.service';
 
 @Component({
   selector: 'app-football',
@@ -16,20 +18,21 @@ import { Bet } from 'src/app/shared/model/Bet/Bet';
 export class FootballComponent implements OnInit {
   date: Date = new Date();
   competitions: Competitions[];
-  matches: FootballGames[];
-  loading: boolean;
-  loadingMatches: boolean;
+  matches: Observable<FootballGames[]>;
+  loading: boolean = false;
   responsiveOptions;
   @ViewChild('calendar') calendar: Calendar;
+  idCompet: number = 0;
   bet: Bet = new Bet();
-  showAmount = false;
   amount = 0;
+  activeCompetition: Observable<Competitions>;
 
   constructor(
-    private competitionService: CompetitionService,
     private changeDetector: ChangeDetectorRef,
     private footballService: MatchService,
-    public customDate: CustomDate,
+    private activatedRoute: ActivatedRoute,
+    private competitionService: CompetitionService,
+    public customDate: CustomDate
   ) {
     this.responsiveOptions = [
       {
@@ -51,84 +54,33 @@ export class FootballComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.loadingMatches = true;
-    this.getCompetitions();
+    this.getCompetitionId();
   }
 
-  getCompetitions(): void {
-    this.competitionService.getCompetitions().subscribe((x) => {
-      this.competitions = x;
-      this.loading = false;
-      console.log(this.competitions)
-      this.getMatches();
-      this.changeDetector.detectChanges();
-    });
-  }
-
-  getMatches(): void {
-    this.loadingMatches = true;
-    this.matches = [];
-    this.footballService
-      .getMatches(this.date)
-      .subscribe((x) => {
-        this.matches = x;
-        this.loadingMatches = false;
-        //console.log(x);
-        this.calendar.updateInputfield();
-        this.changeDetector.detectChanges();
-      });
-  }
-
-  getSeverity(match: FootballGames): string {
-    switch (match.status) {
-      case 'FINISHED':
-        return 'primary';
-      case 'Canceled':
-        return 'danger';
-      case 'F/OT':
-        return 'info';
-      case 'SCHEDULED':
-        return 'success';
-      default:
-        return '';
-    }
+  getCompetitionId(): void {
+    this.activatedRoute.queryParams.subscribe(params=>{
+      params.competitionID ? this.idCompet = params.competitionID : this.idCompet = 0;
+      this.matches = this.footballService.getMatches(this.idCompet, this.date);
+      this.activeCompetition = this.competitionService.getCompetition(this.idCompet);
+    })
   }
 
   clickPreviousOrNext(sens: string): void {
     let sign: number;
     sens === 'next' ? (sign = 1) : (sign = -1);
     this.date.setDate(this.date.getDate() + sign);
-    this.getMatches();
+    this.calendar.updateInputfield();
+    this.matches = this.footballService.getMatches(this.idCompet, this.date);
   }
 
   onSelectedDate($event): void {
     this.date = $event;
-    this.getMatches();
+    this.calendar.updateInputfield();
+    this.matches = this.footballService.getMatches(this.idCompet, this.date);
   }
 
-  changeCompetition(competition: Competitions): void {
-    this.getMatches();
+  convertToDate(stringValue): Date{
+    return new Date(stringValue);
   }
-
-
-  /*
-   * TODO change to real value
-   * */
-  getMatchCotes(match: FootballGames): any {
-    return [
-      {
-        name: '2.30',
-        value: match.homeTeam.id,
-      },
-      {
-        name: '2.30',
-        value: match.awayTeam.id,
-      },
-      {
-        name: '2.30',
-        value: match.awayTeam.name,
-      },
-    ];
-  }
+  
 }
