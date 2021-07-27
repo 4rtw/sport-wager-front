@@ -19,7 +19,7 @@
             <app-skeleton-loading></app-skeleton-loading>
           </div>
 
-          <div *ngIf="! loading && matches.length === 0" class="custom-card text-center">
+          <div *ngIf="!loading && matches.length === 0" class="custom-card text-center">
             Il n'y a aucun match pour le jour, essayez une autre date.
           </div>
           <div *cdkVirtualFor="let match of matches">

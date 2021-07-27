@@ -1,3 +1,11 @@
+.example-viewport{
+  height: 800px;
+  width: 100%;
+  margin: auto;
+  padding-right: 5px;
+  margin-bottom: 5px !important;
+}
+
 .team-img {
   margin: auto;
   width: 100%;
