@@ -1,9 +1,9 @@
-.page-container{
-  background: url("src/assets/images/page-background.jpg") no-repeat fixed;
+.page-container {
+  background: url("../assets/images/page-background.jpg") no-repeat fixed;
   background-size: cover;
 }
 
-.content{
+.content {
   margin: auto;
   width: 50%;
   border: 3px solid green;

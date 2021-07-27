@@ -86,6 +86,10 @@ import { WarningComponent } from './components/UI/warning/warning.component';
 import { NavigationsComponent } from './components/UI/navigations/navigations.component';
 import { FootballCategoryComponent } from './components/UI/football-category/football-category.component';
 import { FootballBetElementComponent } from './components/UI/football-bet-element/football-bet-element.component';
+import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
+import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
+import { OrderListModule } from 'primeng/orderlist';
+import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +119,9 @@ import { FootballBetElementComponent } from './components/UI/football-bet-elemen
     SkeletonLoadingComponent,
     WarningComponent,
     NavigationsComponent,
+    StatisticComponent,
+    CountryListComponent,
+    CompetitionListComponent,
     FootballCategoryComponent,
     FootballBetElementComponent,
   ],
@@ -145,6 +152,7 @@ import { FootballBetElementComponent } from './components/UI/football-bet-elemen
     MatToolbarModule,
     MatRippleModule,
     BrowserModule,
+    OrderListModule,
     HttpClientModule,
     MenuModule,
     MenubarModule,

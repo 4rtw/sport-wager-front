@@ -9,8 +9,8 @@ import { User } from '../../../shared/model/Users/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../shared/services/Users/user.service';
 import { Subscription } from 'rxjs';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import {MenuItem} from 'primeng/api';
+import { JwtService } from '../../../shared/services/Auth/jwt.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-topbar',
@@ -18,7 +18,6 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./topbar.component.css'],
 })
 export class TopbarComponent implements OnInit, OnDestroy {
-  faCoffee = faCoffee
   items: MenuItem[];
   openedSidenav = true;
   user = new User();
@@ -34,41 +33,68 @@ export class TopbarComponent implements OnInit, OnDestroy {
   ) {
     this.items = [
       {
-        label:'Accueil',
-        icon:'pi pi-fw pi-home',
+        label: 'Accueil',
+        icon: 'pi pi-fw pi-home',
         routerLink: ['/']
       },
       {
-        label:'Mes paris',
-        icon:'pi pi-fw pi-money-bill',
+        label: 'Mes paris',
+        icon: 'pi pi-fw pi-money-bill',
       },
       {
-        label:'Catégories',
-        icon:'pi pi-fw pi-th-large',
-        items:[
+        label: 'Catégories',
+        icon: 'pi pi-fw pi-th-large',
+        items: [
           {
-            label:'JO',
-            icon: faCoffee.iconName,
+            label: 'JO',
+            icon: 'pi pi-fw pi-user-plus',
           },
           {
-            label:'Basketball',
-            icon:'pi pi-fw pi-user-minus',
+            label: 'Basketball',
+            icon: 'pi pi-fw pi-user-minus',
             routerLink: ['/nba']
           },
           {
-            label:'Football',
-            icon:'pi pi-fw pi-users',
+            label: 'Football',
+            icon: 'pi pi-fw pi-users',
             routerLink: ['/foot']
           }
         ]
       },
       {
-        label:'Statistiques',
-        icon:'pi pi-fw pi-percentage',
+        label: 'Statistiques',
+        icon: 'pi pi-fw pi-percentage',
+        items: [
+          {
+            label: 'Soccer',
+            icon: 'fas fa-futbol',
+            routerLink: ['/statistic/country-list']
+          },
+          {
+            label: 'Basketball',
+            icon: 'pi pi-fw pi-user-minus',
+            routerLink: ['/nba']
+          },
+          {
+            label: 'Tennis',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/foot']
+          },
+          {
+            label: 'Table Tennis',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/foot']
+          },
+          {
+            label: 'Volleyball',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/foot']
+          }
+        ]
       },
       {
-        label:'Résultats',
-        icon:'pi pi-fw pi-list'
+        label: 'Résultats',
+        icon: 'pi pi-fw pi-list'
       }
     ];
   }
