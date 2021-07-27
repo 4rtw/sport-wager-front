@@ -12,7 +12,17 @@
 
     <div class="custom-card">
         <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
-            <div class="block content">a</div>
+            <div *ngIf="loading">
+                <app-skeleton-loading></app-skeleton-loading>
+            </div>
+
+            <div *ngIf="! loading && matches.length === 0" class="custom-card text-center">
+                Il n'y a aucun match pour le jour, essayez une autre date.
+            </div>
+
+            <div *cdkVirtualFor="let match of matches" class="block content">
+                {{match.homeTeam.name}} - {{match.awayTeam.name}}
+            </div>
         </cdk-virtual-scroll-viewport>
     </div>
 </div>

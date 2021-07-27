@@ -14,7 +14,6 @@ import { Bet } from 'src/app/shared/model/Bet/Bet';
   providers: [CustomDate],
 })
 export class FootballComponent implements OnInit {
-  activeCompetition: Competitions;
   date: Date = new Date();
   competitions: Competitions[];
   matches: FootballGames[];
@@ -62,7 +61,6 @@ export class FootballComponent implements OnInit {
       this.competitions = x;
       this.loading = false;
       console.log(this.competitions)
-      this.activeCompetition = this.competitions[0];
       this.getMatches();
       this.changeDetector.detectChanges();
     });
@@ -72,7 +70,7 @@ export class FootballComponent implements OnInit {
     this.loadingMatches = true;
     this.matches = [];
     this.footballService
-      .getMatches(this.activeCompetition?.id, this.date)
+      .getMatches(this.date)
       .subscribe((x) => {
         this.matches = x;
         this.loadingMatches = false;
@@ -106,22 +104,13 @@ export class FootballComponent implements OnInit {
 
   onSelectedDate($event): void {
     this.date = $event;
-    console.log(this.activeCompetition.id);
     this.getMatches();
   }
 
   changeCompetition(competition: Competitions): void {
-    this.activeCompetition = competition;
     this.getMatches();
   }
 
-  onClick(match: FootballGames): void {
-    let bet: Bet = new Bet();
-    bet.match_id = match.id;
-    bet.sport_category = 'nba';
-    bet.amount_of_bets = 0;
-    this.showAmount = !this.showAmount;
-  }
 
   /*
    * TODO change to real value
