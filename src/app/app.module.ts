@@ -90,6 +90,7 @@ import { StatisticComponent } from './components/application/wager/statistic/sta
 import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
+import { FootballBetDialogComponent } from './components/UI/football-bet-dialog/football-bet-dialog.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { CompetitionListComponent } from './components/application/wager/statist
     CompetitionListComponent,
     FootballCategoryComponent,
     FootballBetElementComponent,
+    FootballBetDialogComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -38,6 +38,17 @@ export class BetService {
       );
   }
 
+  getBetType(id) {
+      return this.http
+          .get<{ data: BetType[]; errors: string[] }>(this.url + 'bet-types')
+          .pipe(
+              map((response) => {
+                  const betTypes = response.data;
+                  return betTypes.find(element => element.id === id);
+              })
+          );
+  }
+
   getMyBetList(): any {
     return this.http
       .get<{ data: Bet[]; errors: string[] }>(this.url + 'my-bets')

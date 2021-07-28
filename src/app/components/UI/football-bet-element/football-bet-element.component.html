@@ -34,12 +34,31 @@
 <p-divider></p-divider>
 <div class="grid">
     <div class="col-4">
-        <p-button label="{{match.odds.homeWin}}"></p-button>
+        <p-button [disabled]="(betting && choice?.id!=='1')" label="{{match.odds.homeWin}}" (click)="showDialog('1')"></p-button>
     </div>
     <div class="col-4">
-        <p-button label="{{match.odds.draw}}"></p-button>
+        <p-button [disabled]="(betting && choice?.id!=='X')" label="{{match.odds.draw}}" (click)="showDialog('X')"></p-button>
     </div>
     <div class="col-4">
-        <p-button label="{{match.odds.awayWin}}"></p-button>
+        <p-button [disabled]="(betting && choice?.id!=='2')" label="{{match.odds.awayWin}}" (click)="showDialog('2')"></p-button>
+    </div>
+</div>
+<p-divider *ngIf="betting"></p-divider>
+<div class="grid" *ngIf="betting">
+    <div>
+        <div class="col-12">Vous allez parier</div>
+        <div class="col"><span class="font-bold">Description: </span>{{choice?.description}}</div>
+        <div class="col" *ngIf="choice?.id==='1'">{{match.homeTeam.name}}</div>
+        <div class="col" *ngIf="choice?.id==='2'">{{match.awayTeam.name}}</div>
+        <div class="col" *ngIf="choice?.id==='X'">Match nul</div>
+    </div>
+
+    <div class="p-col-12  grid p-md-3">
+        <div class="col-9">
+            <p-inputNumber [(ngModel)]="betNumber" [showButtons]="true" id="betNumber" inputId="betNumber" mode="currency" currency="BET" [min]="0" [step]="0.5"></p-inputNumber>
+        </div>
+        <div class="col-3">
+            <p-button (click)="postBetting()">Parier</p-button>
+        </div>
     </div>
 </div>
