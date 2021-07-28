@@ -91,6 +91,10 @@ import { CountryListComponent } from './components/application/wager/statistic/c
 import { OrderListModule } from 'primeng/orderlist';
 import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
 import { FootballBetDialogComponent } from './components/UI/football-bet-dialog/football-bet-dialog.component';
+import { FootballPanierComponent } from './components/UI/football-panier/football-panier.component';
+import { NbaMatchesElementComponent } from './components/UI/nba-matches-element/nba-matches-element.component';
+import { NbaBetDialogComponent } from './components/UI/nba-bet-dialog/nba-bet-dialog.component';
+import { NbaSingleBetComponent } from './components/UI/nba-single-bet/nba-single-bet.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +130,10 @@ import { FootballBetDialogComponent } from './components/UI/football-bet-dialog/
     FootballCategoryComponent,
     FootballBetElementComponent,
     FootballBetDialogComponent,
+    FootballPanierComponent,
+    NbaMatchesElementComponent,
+    NbaBetDialogComponent,
+    NbaSingleBetComponent,
   ],
   imports: [
     AppRoutingModule,

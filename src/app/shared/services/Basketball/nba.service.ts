@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { config } from 'src/app/shared/config/variables';
+import {NbaGame} from '../../model/Basket/nba-game';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,16 @@ export class NbaService {
         // @ts-ignore
         return x.data.data;
       })
+    );
+  }
+
+  getMatch(id): Observable<NbaGame>{
+    return this.http.get(this.uri).pipe(
+        map(x=>{
+          // @ts-ignore
+          const response: NbaGame[] = x.data.data;
+          return response.find(element => element.GameID === id)
+        })
     );
   }
 }

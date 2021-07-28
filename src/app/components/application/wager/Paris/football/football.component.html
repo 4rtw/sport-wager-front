@@ -22,9 +22,9 @@
                 Il n'y a aucun match pour le jour, essayez une autre date.
             </div>
 
-            <div *cdkVirtualFor="let matche of matches" class="block content">
+            <div *cdkVirtualFor="let match of matches" class="block content">
                 <div class="mb-2 custom-card">
-                    <app-football-bet-element [match]="matche"></app-football-bet-element>
+                    <app-football-bet-element [match]="match"></app-football-bet-element>
                 </div>
             </div>
         </div>

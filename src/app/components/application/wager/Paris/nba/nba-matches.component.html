@@ -14,55 +14,22 @@
         </div>
         <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
 
-          <!-- Skeleton -->
-          <div *ngIf="loading">
-            <app-skeleton-loading></app-skeleton-loading>
-          </div>
+          <div *ngIf="(matches|async) as matches">
+            <div *ngIf="matches.length===0" class="custom-card text-center">
+              Il n'y a aucun match pour le jour, essayez une autre date.
+            </div>
 
-          <div *ngIf="!loading && matches.length === 0" class="custom-card text-center">
-            Il n'y a aucun match pour le jour, essayez une autre date.
-          </div>
-          <div *cdkVirtualFor="let match of matches">
-            <div class="mb-2 custom-card">
-              <div class="grid justify-content-center mt-2">
-                <div class="col flex justify-content-center">
-                  <span>{{ customDate.getDateTime(match.DateTime, 'time') }}</span>
-                </div>
-                <div class="col flex justify-content-center">
-                  <p-tag [rounded]="true" [severity]="getSeverity(match)">{{ match.Status.toLowerCase() }}</p-tag>
-                </div>
-                <div class="col flex justify-content-center">
-                        <span [class]="'product-badge'">{{
-                          customDate.getDateTime(match.Day, 'date')
-                          }}</span>
-                </div>
-              </div>
-              <p-divider></p-divider>
-              <div class="grid justify-content-center">
-                <div class="col">
-                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                </div>
-
-                <div class="col">
-                  <div class="flex justify-content-center">
-                    {{match.HomeTeamScore}} - {{match.AwayTeamScore}}
-                  </div>
-                </div>
-
-                <div class="col">
-                  <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
-                </div>
-              </div>
-              <div class="grid flex justify-content-evenly mt-1">
-                <div class="flex align-items-center">{{ match.HomeTeam }}</div>
-                <p-selectButton #match [disabled]="!match.IsBettingClosed" uncheck="true" (onChange)="changeTest()" (onOptionClick)="onClick($event)"
-                                [options]="getMatchCotes(match)" optionLabel="name" optionValue="value"></p-selectButton>
-                <div class="flex align-items-center">{{ match.AwayTeam }}</div>
+            <div *ngIf="matches; else loading">
+              <div *cdkVirtualFor="let customMatch of matches" class="custom-card mb-2">
+                <app-nba-matches-element [oneMatch]="customMatch"></app-nba-matches-element>
               </div>
             </div>
           </div>
 
-          <!-- fin eto -->
+          <ng-template #loading>
+            <app-skeleton-loading></app-skeleton-loading>
+          </ng-template>
+
         </cdk-virtual-scroll-viewport>
 
       </div>

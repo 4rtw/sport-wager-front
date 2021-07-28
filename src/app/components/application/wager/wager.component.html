@@ -7,7 +7,10 @@
       <router-outlet></router-outlet>
     </div>
     <div class="col-4">
-      <app-panier *ngIf="user.id !== 0"></app-panier>
+      <div *ngIf="(user|async)">
+        <app-panier *ngIf="currentRoute.url.includes('/nba')"></app-panier>
+        <app-football-panier *ngIf="(currentRoute.url.includes('/foot') || currentRoute.url === '/' || currentRoute.url.startsWith('/?'))"></app-football-panier>
+      </div>
       <app-video></app-video>
     </div>
   </div>

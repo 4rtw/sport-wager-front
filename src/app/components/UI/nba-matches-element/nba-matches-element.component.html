@@ -1,0 +1,65 @@
+<div class="mb-2">
+    <div class="grid justify-content-center mt-2">
+        <div class="col flex justify-content-center">
+            <span>{{ customDate.getDateTime(oneMatch?.DateTime, 'time') }}</span>
+        </div>
+        <div class="col flex justify-content-center">
+            <p-tag [rounded]="true" [severity]="getSeverity(oneMatch?.Status)">{{ oneMatch?.Status.toLowerCase() }}</p-tag>
+        </div>
+        <div class="col flex justify-content-center">
+                        <span [class]="'product-badge'">{{
+                            customDate.getDateTime(oneMatch?.Day, 'date')
+                            }}</span>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="grid justify-content-center">
+        <div class="col">
+            <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+        </div>
+
+        <div class="col">
+            <div class="flex justify-content-center">
+                {{oneMatch?.HomeTeamScore}} - {{oneMatch?.AwayTeamScore}}
+            </div>
+        </div>
+
+        <div class="col">
+            <img alt="Image" src="assets/images/bracelet.jpg" class="team-img" />
+        </div>
+    </div>
+    <div class="grid flex justify-content-between mt-1">
+        <div class="col-4 text-center">{{ oneMatch?.HomeTeam }}</div>
+        <div class="col-4 text-center">{{ oneMatch?.AwayTeam }}</div>
+    </div>
+    <div *ngIf="!pannier">
+        <div class="grid flex justify-content-between mt-1" *ngIf="oneMatch?.HomeTeamMoneyLine">
+            <div class="col-4">
+                <p-button [disabled]="!oneMatch.IsBettingClosed || (betting && choice?.id !== '1')" [label]="oneMatch?.HomeTeamMoneyLine?.toString(10)" (click)="showDialog('1')"></p-button>
+            </div>
+            <div class="col-4">
+                <p-button [disabled]="!oneMatch.IsBettingClosed || (betting && choice?.id !== '2')" [label]="oneMatch?.AwayTeamMoneyLine?.toString(10)" (click)="showDialog('2')"></p-button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <p-divider *ngIf="betting"></p-divider>
+    <div class="grid" *ngIf="(betting)">
+        <div>
+            <div class="col-12">Vous allez parier</div>
+            <div class="col"><span class="font-bold">Description: </span>{{choice?.description}}</div>
+            <div class="col" *ngIf="choice?.id==='1'">{{oneMatch.HomeTeam}}</div>
+            <div class="col" *ngIf="choice?.id==='2'">{{oneMatch.AwayTeam}}</div>
+        </div>
+
+        <div class="p-col-12  grid p-md-3">
+            <div class="col-9">
+                <p-inputNumber [(ngModel)]="betNumber" [showButtons]="true" id="betNumber" inputId="betNumber" mode="currency" currency="BET" [min]="0" [step]="0.5"></p-inputNumber>
+            </div>
+            <div class="col-3">
+                <p-button (click)="postBetting()">Parier</p-button>
+            </div>
+        </div>
+</div>

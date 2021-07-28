@@ -12,16 +12,14 @@ import {BetService} from '../../../shared/services/bet-service/bet.service';
 })
 export class FootballBetDialogComponent implements OnInit {
 
-  betTypeId: string;
   match: FootballGames;
   betType: Observable<BetType>;
 
-  constructor(public config: DynamicDialogConfig,public ref: DynamicDialogRef, private betService: BetService) { }
+  constructor(public config: DynamicDialogConfig, private betService: BetService) { }
 
   ngOnInit(): void {
-    this.betTypeId = this.config.data.bet;
     this.match = this.config.data.match;
-    this.betType = this.betService.getBetType(this.betTypeId);
+    this.betType = this.betService.getBetType(this.config.data.bet);
   }
 
 }

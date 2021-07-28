@@ -14,7 +14,6 @@ export class NavigationsComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.component);
     this.menuItems.push(
         {
           label: "Catégories",

@@ -1,41 +1,29 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {Observable} from 'rxjs';
 import { User } from 'src/app/shared/model/Users/user.model';
 import { UserService } from 'src/app/shared/services/Users/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wager',
   templateUrl: './wager.component.html',
   styleUrls: ['./wager.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WagerComponent implements OnInit, OnDestroy {
-  user: User = new User();
-  sub: Subscription[] = [];
+export class WagerComponent implements OnInit {
+  user: Observable<User>;
+  currentRoute: Router
 
   constructor(
     private userService: UserService,
-    private cd: ChangeDetectorRef
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.sub.push(
-      this.userService.getUserLoggedIn().subscribe((response) => {
-        this.user = response;
-        this.cd.detectChanges();
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    for (let item of this.sub) {
-      item.unsubscribe();
-    }
+    this.user = this.userService.getUserLoggedIn();
+    this.currentRoute=this.router;
+    console.log(this.currentRoute.url)
   }
 }
