@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {Competitions} from '../../../shared/model/Foot/competitions';
 
 @Component({
   selector: 'app-navigations',
@@ -12,12 +10,11 @@ import {Competitions} from '../../../shared/model/Foot/competitions';
 export class NavigationsComponent implements OnInit {
 
   menuItems: MenuItem[] = []
-  checkedUrlFoot: boolean = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.checkRoutes();
+    console.log(this.activatedRoute.component);
     this.menuItems.push(
         {
           label: "Catégories",
@@ -45,12 +42,6 @@ export class NavigationsComponent implements OnInit {
             }]
         }
         )
-  }
-
-  checkRoutes(): void{
-    if(this.router.url.includes('foot') || this.router.url === '/'){
-      this.checkedUrlFoot = true;
-    }
   }
 
   reload(item): void{
