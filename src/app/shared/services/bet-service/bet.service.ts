@@ -65,9 +65,15 @@ export class BetService {
       });
   }
 
-  getMyBetListFoot():any {
+  getMyBetListFoot(competitionID):any {
       return this.getMyBetList((data: Bet[])=>{
-        return data.filter(element => element.sport_category.includes('football'))
+        return data.filter(element => element.match_id!==10).filter(element => element.sport_category.includes('football'))
+      })
+  }
+
+  getMyBetListFootGeneral():any {
+      return this.getMyBetList((data: Bet[])=>{
+          return data.filter(element => element.match_id!==10).filter(element => element.sport_category.includes('football'))
       })
   }
 

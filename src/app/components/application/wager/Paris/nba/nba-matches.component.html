@@ -14,18 +14,23 @@
         </div>
         <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
 
-          <div *ngIf="(matches|async) as matches">
-            <div *ngIf="matches.length===0" class="custom-card text-center">
-              Il n'y a aucun match pour le jour, essayez une autre date.
-            </div>
+          <div *ngIf="(matches|async) as matches; else loading">
 
-            <div *ngIf="matches; else loading">
-              <div *cdkVirtualFor="let customMatch of matches" class="custom-card mb-2">
-                <app-nba-matches-element [oneMatch]="customMatch"></app-nba-matches-element>
+              <div *ngIf="matches; else loading">
+                <div *ngIf="matches.length!==0; else noMatches">
+                  <div *cdkVirtualFor="let customMatch of matches" class="custom-card mb-2">
+                    <app-nba-matches-element [oneMatch]="customMatch"></app-nba-matches-element>
+                  </div>
+                </div>
               </div>
-            </div>
+
           </div>
 
+          <ng-template #noMatches>
+            <div class="custom-card text-center">
+              Il n'y a aucun match pour le jour, essayez une autre date.
+            </div>
+          </ng-template>
           <ng-template #loading>
             <app-skeleton-loading></app-skeleton-loading>
           </ng-template>

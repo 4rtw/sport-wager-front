@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Competitions} from '../../../../../shared/model/Foot/competitions';
 import {FootballGames} from '../../../../../shared/model/Foot/foot';
 import {MatchService} from '../../../../../shared/services/Football/match.service';
@@ -6,7 +6,7 @@ import {Calendar} from 'primeng/calendar';
 import {CustomDate} from '../../../../../shared/services/Utils/DateOperator';
 import {Bet} from 'src/app/shared/model/Bet/Bet';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {CompetitionService} from '../../../../../shared/services/Football/competition.service';
 
 @Component({
@@ -15,7 +15,7 @@ import {CompetitionService} from '../../../../../shared/services/Football/compet
   styleUrls: ['./football.component.scss'],
   providers: [CustomDate],
 })
-export class FootballComponent implements OnInit {
+export class FootballComponent implements OnInit, OnDestroy {
   date: Date = new Date();
   competitions: Competitions[];
   matches: Observable<FootballGames[]>;
@@ -26,6 +26,7 @@ export class FootballComponent implements OnInit {
   bet: Bet = new Bet();
   amount = 0;
   activeCompetition: Observable<Competitions>;
+  sub: Subscription[];
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -53,16 +54,24 @@ export class FootballComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void {
+        for(const i of this.sub){
+          i.unsubscribe();
+        }
+    }
+
   ngOnInit(): void {
     this.getCompetitionId();
   }
 
   getCompetitionId(): void {
-    this.activatedRoute.queryParams.subscribe(params=>{
-      params.competitionID ? this.idCompet = params.competitionID : this.idCompet = 0;
-      this.matches = this.footballService.getMatches(this.idCompet, this.date);
-      this.activeCompetition = this.competitionService.getCompetition(this.idCompet);
-    })
+    this.sub.push(
+        this.activatedRoute.queryParams.subscribe(params=>{
+          params.competitionID ? this.idCompet = params.competitionID : this.idCompet = 0;
+          this.matches = this.footballService.getMatches(this.idCompet, this.date);
+          this.activeCompetition = this.competitionService.getCompetition(this.idCompet);
+        })
+    );
   }
 
   clickPreviousOrNext(sens: string): void {
@@ -82,5 +91,4 @@ export class FootballComponent implements OnInit {
   convertToDate(stringValue): Date{
     return new Date(stringValue);
   }
-  
 }

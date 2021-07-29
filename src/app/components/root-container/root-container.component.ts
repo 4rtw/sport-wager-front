@@ -77,10 +77,6 @@ export class RootContainerComponent implements OnInit, OnDestroy {
     this.sub.push(this.authService.logout().subscribe());
   }
 
-  toogleSidenav(data: boolean): void {
-    this.state = data;
-  }
-
   /*
    * met à jour le token chaque fois que la page est rendu
    * puis attend un délai de 60 avant de se réexecuter

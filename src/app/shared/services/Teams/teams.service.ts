@@ -13,8 +13,8 @@ export class TeamsService {
 
   constructor(private http: HttpClient) { }
 
-  getTeamDetails(id): Observable<Team>{
-    return this.http.get<{data: [Team], errors: [any]}>(this.uri + 'foot/teams/competition/' + '2002' + '/' + id).pipe(
+  getTeamDetails(competitionId,id): Observable<Team>{
+    return this.http.get<{data: [Team], errors: [any]}>(this.uri + 'foot/teams/competition/' + competitionId + '/' + id).pipe(
         map(x => {
           return x.data[0];
         })

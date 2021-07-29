@@ -23,8 +23,6 @@ export class NbaMatchesComponent implements OnInit {
   matches: Observable<NbaGame[]>;
   cote = 0;
   date = new Date();
-  loadig: boolean;
-
   @ViewChild('calendar') calendar: Calendar;
 
   constructor(

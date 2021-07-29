@@ -7,26 +7,35 @@ import { map } from 'rxjs/operators';
 import { CustomDate } from '../Utils/DateOperator';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class MatchService {
-  private uri = config.herokuurl;
+    private uri = config.herokuurl;
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getMatches(idCompet: number, date: Date): Observable<FootballGames[]> {
-    const customDate = new CustomDate();
-    if(idCompet===0){idCompet=2002}
-    const formatedDate: string = customDate.formatDate(date);
+    getMatches(idCompet: number, date: Date): Observable<FootballGames[]> {
+        const customDate = new CustomDate();
+        if(idCompet===0||!idCompet){idCompet=2002}
+        const formatedDate: string = customDate.formatDate(date);
 
-    return this.http
-      .get<{ data: FootballGames[]; errors: string[] }>(
-        this.uri + 'foot/date/' + idCompet + '/' + formatedDate
-      )
-      .pipe(
-        map((x) => {
-          return x.data;
-        })
-      );
-  }
+        return this.http
+            .get<{ data: FootballGames[]; errors: string[] }>(
+                this.uri + 'foot/date/' + idCompet + '/' + formatedDate
+            )
+            .pipe(
+                map((x) => {
+                    return x.data;
+                })
+            );
+    }
+
+    getMatche(idMatch, idCompet): Observable<FootballGames>{
+        if(!idCompet){
+            idCompet='2002';
+        }
+        return this.http.get<{ data: FootballGames[]; errors: string[] }>(this.uri+'foot/schedules/'+idCompet).pipe(map(x=>{
+            return x.data.find(element => element.id === idMatch);
+        }))
+    }
 }

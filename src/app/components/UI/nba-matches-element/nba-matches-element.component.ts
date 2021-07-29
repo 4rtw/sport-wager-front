@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {NbaGame} from '../../../shared/model/Basket/nba-game';
 import {CustomDate} from '../../../shared/services/Utils/DateOperator';
 import {DialogService} from 'primeng/dynamicdialog';
@@ -8,6 +8,7 @@ import {Bet} from '../../../shared/model/Bet/Bet';
 import {BetService} from '../../../shared/services/bet-service/bet.service';
 import {Router} from '@angular/router';
 import {NbaService} from '../../../shared/services/Basketball/nba.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-nba-matches-element',
@@ -15,18 +16,24 @@ import {NbaService} from '../../../shared/services/Basketball/nba.service';
   styleUrls: ['./nba-matches-element.component.css'],
   providers: [CustomDate, DialogService]
 })
-export class NbaMatchesElementComponent implements OnInit {
+export class NbaMatchesElementComponent implements OnInit, OnDestroy {
 
   @Input() oneMatch!: NbaGame;
   @Input() betting!: boolean;
   @Input() choice!: BetType;
   @Input() pannier!: boolean;
   betNumber: number
+  sub: Subscription[];
 
   constructor(private nbaService: NbaService, public customDate: CustomDate, private dialogService: DialogService, private betService: BetService, private route: Router) { }
 
+  ngOnDestroy(): void {
+        for(const i of this.sub){
+          i.unsubscribe();
+        }
+    }
+
   ngOnInit(): void {
-    console.log(this.pannier + "ez")
     }
 
   getSeverity(status: string): string {
@@ -91,8 +98,10 @@ export class NbaMatchesElementComponent implements OnInit {
     bet.amount_of_bets = this.betNumber;
     bet.multiplicator = multiplicator;
     bet.bet_type = this.choice;
-    this.betService.postNewBet(bet).subscribe(_ => {location.reload()}, _ => {
-      this.route.navigate(['/account/register']).then(_=>{location.reload()})
-    });
+    this.sub.push(
+        this.betService.postNewBet(bet).subscribe(_ => {location.reload()}, _ => {
+          this.route.navigate(['/account/register']).then(_=>{location.reload()})
+        })
+    );
   }
 }
