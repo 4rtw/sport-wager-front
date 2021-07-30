@@ -26,7 +26,7 @@ export class FootballComponent implements OnInit, OnDestroy {
   bet: Bet = new Bet();
   amount = 0;
   activeCompetition: Observable<Competitions>;
-  sub: Subscription[];
+  sub: Subscription[] = [];
 
   constructor(
     private changeDetector: ChangeDetectorRef,

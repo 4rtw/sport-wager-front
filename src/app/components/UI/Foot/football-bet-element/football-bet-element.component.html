@@ -1,4 +1,10 @@
 <div *ngIf="match" class="custom-card mb-2">
+    <div *ngIf="inPanier" class="grid flex justify-content-center">
+        <div class="col flex justify-content-center align-items-center mt-2">
+            <p-tag>{{customDate.getDateTime(choice?.creation_date, 'date')}}</p-tag>
+        </div>
+    </div>
+    <p-divider *ngIf="inPanier"></p-divider>
     <div class="grid justify-content-center mt-2">
         <div class="col flex justify-content-center">
             <span>{{customDate.getDateTime(match?.utcDate, 'time')}}</span>
@@ -10,7 +16,7 @@
             <span>{{customDate.getDateTime(match?.utcDate, 'date')}}</span>
         </div>
     </div>
-    <p-divider></p-divider>
+    <p-divider *ngIf="!inPanier"></p-divider>
     <div class="grid justify-content-center">
         <div class="col" *ngIf="getHomeTeamDetails|async as homeDetails; else loading;">
             <img alt="{{homeDetails?.name}}" src="{{homeDetails?.crestUrl}}" class="team-img"/>
@@ -32,7 +38,7 @@
         <div class="col-4"></div>
         <div class="col-4">{{(getAwayTeamDetails|async)?.tla}}</div>
     </div>
-    <p-divider></p-divider>
+    <p-divider *ngIf="!inPanier"></p-divider>
     <div class="grid">
         <div class="col-4">
             <p-button [disabled]="((inPanier && choice?.bet_type?.id!=='1') || (betting && choice?.bet_type?.id!=='1'))" label="{{match?.odds.homeWin}}" (click)="showDialog('1',match?.odds.homeWin)"></p-button>
@@ -46,7 +52,6 @@
     </div>
 
     <p-divider *ngIf="betting"></p-divider>
-
     <div class="grid" *ngIf="betting">
         <div>
             <div class="col-12">Vous allez parier</div>
@@ -63,6 +68,19 @@
             <div class="col-3">
                 <p-button (click)="postBetting()">Parier</p-button>
             </div>
+        </div>
+    </div>
+
+    <p-divider *ngIf="inPanier"></p-divider>
+    <div class="grid" *ngIf="inPanier">
+        <div class="col flex justify-content-center">
+            <p-tag>{{choice?.bet_type.description}}</p-tag>
+        </div>
+        <div class="col flex justify-content-center">
+            <p-tag>Odds: {{choice?.multiplicator}}</p-tag>
+        </div>
+        <div class="col flex justify-content-center">
+            <p-tag>{{choice?.amount_of_bets}} BET</p-tag>
         </div>
     </div>
 </div>

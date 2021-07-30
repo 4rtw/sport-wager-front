@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {CompetitionService} from '../../../shared/services/Football/competition.service';
-import {Competitions} from '../../../shared/model/Foot/competitions';
+import {CompetitionService} from '../../../../shared/services/Football/competition.service';
+import {Competitions} from '../../../../shared/model/Foot/competitions';
 import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 

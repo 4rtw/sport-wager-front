@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FootballGames} from '../../../shared/model/Foot/foot';
+import {FootballGames} from '../../../../shared/model/Foot/foot';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {BetType} from '../../../shared/model/Bet/BetType';
+import {BetType} from '../../../../shared/model/Bet/BetType';
 import {Observable, Subscription} from 'rxjs';
-import {BetService} from '../../../shared/services/bet-service/bet.service';
-import {Bet} from '../../../shared/model/Bet/Bet';
+import {BetService} from '../../../../shared/services/bet-service/bet.service';
+import {Bet} from '../../../../shared/model/Bet/Bet';
 
 @Component({
   selector: 'app-football-bet-dialog',

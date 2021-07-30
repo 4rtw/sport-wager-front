@@ -1,14 +1,14 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {CustomDate} from '../../../shared/services/Utils/DateOperator';
-import {MatchService} from '../../../shared/services/Football/match.service';
-import {FootballGames} from '../../../shared/model/Foot/foot';
-import {TeamsService} from '../../../shared/services/Teams/teams.service';
+import {CustomDate} from '../../../../shared/services/Utils/DateOperator';
+import {MatchService} from '../../../../shared/services/Football/match.service';
+import {FootballGames} from '../../../../shared/model/Foot/foot';
+import {TeamsService} from '../../../../shared/services/Teams/teams.service';
 import {Observable, Subscription} from 'rxjs';
-import {Team} from '../../../shared/model/Foot/team';
+import {Team} from '../../../../shared/model/Foot/team';
 import {DialogService} from 'primeng/dynamicdialog';
 import {FootballBetDialogComponent} from '../football-bet-dialog/football-bet-dialog.component';
-import {BetService} from '../../../shared/services/bet-service/bet.service';
-import {Bet} from '../../../shared/model/Bet/Bet';
+import {BetService} from '../../../../shared/services/bet-service/bet.service';
+import {Bet} from '../../../../shared/model/Bet/Bet';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
@@ -29,7 +29,7 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
   getHomeTeamDetails: Observable<Team>;
   getAwayTeamDetails: Observable<Team>;
   betNumber: number;
-  sub: Subscription[];
+  sub: Subscription[] = [];
 
   constructor(
       public customDate: CustomDate,
@@ -54,6 +54,9 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
             if(params.competitionID){
               this.competitionID=params.competitionID || '2002';
             }
+            else{
+              this.competitionID='2002';
+            }
           }
           this.setMatch();
         })
@@ -65,17 +68,17 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
       this.matchService.getMatche(this.matchID, this.competitionID).subscribe(
           x=>{
             this.match=x;
-            this.setTeams(this.competitionID);
+            this.setTeams();
           })
     }
     else{
-      this.setTeams(this.competitionID);
+      this.setTeams();
     }
   }
 
-    private setTeams(competitionId){
-      this.getHomeTeamDetails = this.teamService.getTeamDetails(competitionId,this.match?.homeTeam.id);
-      this.getAwayTeamDetails = this.teamService.getTeamDetails(competitionId,this.match?.awayTeam.id);
+    private setTeams(){
+      this.getHomeTeamDetails = this.teamService.getTeamDetails(this.competitionID,this.match?.homeTeam.id);
+      this.getAwayTeamDetails = this.teamService.getTeamDetails(this.competitionID,this.match?.awayTeam.id);
   }
 
   showDialog(betType, multiplicator): void{
@@ -94,6 +97,8 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
           data: {myBet,betType, match},
           header: 'Pariez sur votre équipe ou sur un match nul',
           width: '35%',
+          style: 'background: black',
+          contentStyle: 'background: black'
         });
       }
     }
@@ -101,24 +106,15 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
 
   postBetting() :void{
     if(!this.inPanier){
-      let multiplicator: number;
-      switch (this.choice.id) {
-        case '1':
-          multiplicator = this.match.odds.homeWin;
-          break;
-        case '2':
-          multiplicator = this.match.odds.awayWin;
-          break;
-        case 'X':
-          multiplicator = this.match.odds.draw
-          break;
-      }
+
       const bet = new Bet();
       bet.match_id = this.match.id;
       bet.sport_category = 'football';
       bet.amount_of_bets = this.betNumber;
-      bet.multiplicator = multiplicator;
+      bet.multiplicator = this.choice.multiplicator;
       bet.bet_type = this.choice.bet_type;
+      console.log(bet.multiplicator);
+
       this.sub.push(
           this.betService.postNewBet(bet).subscribe(_ => {location.reload()}, _ => {
             this.route.navigate(['/account/register']).then(_=>{location.reload()})

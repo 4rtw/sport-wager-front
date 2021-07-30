@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
   defineUser(): User {
     let user = new User();
     user = this.registerForm.value;
-    console.log(user);
     return user;
   }
 
@@ -58,7 +57,6 @@ export class RegisterComponent implements OnInit {
       if (response.errors.length == 1) {
         this.display = 'This account is already exists on your sport wager';
       } else {
-        console.log('res');
         // when successfull
         this.router
           .navigate(['/account/confirm-account'], {

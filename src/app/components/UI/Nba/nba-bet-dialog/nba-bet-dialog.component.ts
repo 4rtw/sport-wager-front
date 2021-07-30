@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogService, DynamicDialogConfig} from 'primeng/dynamicdialog';
-import {NbaGame} from '../../../shared/model/Basket/nba-game';
+import {NbaGame} from '../../../../shared/model/Basket/nba-game';
 import {Observable} from 'rxjs';
-import {BetType} from '../../../shared/model/Bet/BetType';
-import {BetService} from '../../../shared/services/bet-service/bet.service';
+import {BetType} from '../../../../shared/model/Bet/BetType';
+import {BetService} from '../../../../shared/services/bet-service/bet.service';
 
 @Component({
   selector: 'app-nba-bet-dialog',
@@ -21,7 +21,6 @@ export class NbaBetDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.match = this.config.data.match;
-    console.log(this.config.data.bet);
     this.betType = this.betService.getBetType(this.config.data.bet);
   }
 

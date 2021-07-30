@@ -82,11 +82,16 @@ export class RootContainerComponent implements OnInit, OnDestroy {
    * puis attend un délai de 60 avant de se réexecuter
    * */
   refreshToken(): void {
-    if (this.jwtService.getUser().user.id !== 0) {
-      this.silentRefresh = this.jwtService.refreshToken().subscribe();
+    try{
+      if (this.jwtService.getUser().user.id !== 0) {
+        this.silentRefresh = this.jwtService.refreshToken().subscribe();
+      }
+      setTimeout(() => {
+        this.refreshToken();
+      }, 60000);
     }
-    setTimeout(() => {
-      this.refreshToken();
-    }, 60000);
+    catch(e){
+      this.logout();
+    }
   }
 }

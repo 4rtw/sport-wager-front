@@ -41,7 +41,6 @@ export class ConfirmAccountComponent implements OnInit {
     });
 
     this.sub = this.activateRouter.queryParams.subscribe((params) => {
-      console.log(params);
       this.confirmationForm.controls.email.setValue(params.email);
       this.email = params.email;
       if (params.error === 'true') {
@@ -61,9 +60,6 @@ export class ConfirmAccountComponent implements OnInit {
       })
       .subscribe(
         (res) => {
-          // TODO handle error
-          console.log(res);
-          console.log(this.confirmationForm.controls.email.value);
           this.router
             .navigate(['/'], { queryParams: { activated: 'true' } })
             .then(() => {
@@ -71,7 +67,6 @@ export class ConfirmAccountComponent implements OnInit {
             });
         },
         (error) => {
-          console.log(error);
           this.router
             .navigate(['/account/confirm-account'], {
               queryParams: { error: 'true', email: this.email },

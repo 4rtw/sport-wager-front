@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {BetService} from '../../../shared/services/bet-service/bet.service';
+import {BetService} from '../../../../shared/services/bet-service/bet.service';
 import {Observable, Subscription} from 'rxjs';
-import {Bet} from '../../../shared/model/Bet/Bet';
+import {Bet} from '../../../../shared/model/Bet/Bet';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

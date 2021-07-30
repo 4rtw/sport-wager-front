@@ -8,7 +8,7 @@
                style="{{(queryParams|async)?.competitionID===competition.id.toString(10) ? 'color:#0e2031;' : ((!(queryParams|async)?.competitionID && competition.id===2002) ? 'color:#0e2031':'') }}">
                 <div class="grid">
                     <div class="col-2">
-                        <img src="{{competition.area.ensignUrl}}" class="flag"/>
+                        <img src="{{competition.area.ensignUrl}}" class="flag circle"/>
                     </div>
                     <div class="col flex align-items-center">
                         {{competition.name}}

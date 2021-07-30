@@ -1,13 +1,13 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {NbaGame} from '../../../shared/model/Basket/nba-game';
-import {CustomDate} from '../../../shared/services/Utils/DateOperator';
+import {NbaGame} from '../../../../shared/model/Basket/nba-game';
+import {CustomDate} from '../../../../shared/services/Utils/DateOperator';
 import {DialogService} from 'primeng/dynamicdialog';
 import {NbaBetDialogComponent} from '../nba-bet-dialog/nba-bet-dialog.component';
-import {BetType} from '../../../shared/model/Bet/BetType';
-import {Bet} from '../../../shared/model/Bet/Bet';
-import {BetService} from '../../../shared/services/bet-service/bet.service';
+import {BetType} from '../../../../shared/model/Bet/BetType';
+import {Bet} from '../../../../shared/model/Bet/Bet';
+import {BetService} from '../../../../shared/services/bet-service/bet.service';
 import {Router} from '@angular/router';
-import {NbaService} from '../../../shared/services/Basketball/nba.service';
+import {NbaService} from '../../../../shared/services/Basketball/nba.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ export class NbaMatchesElementComponent implements OnInit, OnDestroy {
   @Input() choice!: BetType;
   @Input() pannier!: boolean;
   betNumber: number
-  sub: Subscription[];
+  sub: Subscription[] = [];
 
   constructor(private nbaService: NbaService, public customDate: CustomDate, private dialogService: DialogService, private betService: BetService, private route: Router) { }
 

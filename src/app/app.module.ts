@@ -84,17 +84,17 @@ import { FlipCardComponent } from './components/UI/flip-card/flip-card.component
 import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/UI/warning/warning.component';
 import { NavigationsComponent } from './components/UI/navigations/navigations.component';
-import { FootballCategoryComponent } from './components/UI/football-category/football-category.component';
-import { FootballBetElementComponent } from './components/UI/football-bet-element/football-bet-element.component';
+import { FootballCategoryComponent } from './components/UI/Foot/football-category/football-category.component';
+import { FootballBetElementComponent } from './components/UI/Foot/football-bet-element/football-bet-element.component';
 import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
 import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
-import { FootballBetDialogComponent } from './components/UI/football-bet-dialog/football-bet-dialog.component';
-import { FootballPanierComponent } from './components/UI/football-panier/football-panier.component';
-import { NbaMatchesElementComponent } from './components/UI/nba-matches-element/nba-matches-element.component';
-import { NbaBetDialogComponent } from './components/UI/nba-bet-dialog/nba-bet-dialog.component';
-import { NbaSingleBetComponent } from './components/UI/nba-single-bet/nba-single-bet.component';
+import { FootballBetDialogComponent } from './components/UI/Foot/football-bet-dialog/football-bet-dialog.component';
+import { FootballPanierComponent } from './components/UI/Foot/football-panier/football-panier.component';
+import { NbaMatchesElementComponent } from './components/UI/Nba/nba-matches-element/nba-matches-element.component';
+import { NbaBetDialogComponent } from './components/UI/Nba/nba-bet-dialog/nba-bet-dialog.component';
+import { NbaSingleBetComponent } from './components/UI/Nba/nba-single-bet/nba-single-bet.component';
 
 @NgModule({
   declarations: [

@@ -36,7 +36,6 @@ export class ImageComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserLoggedIn().subscribe((data) => {
       this.user = data;
-      console.log(this.user);
     });
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
@@ -86,7 +85,6 @@ export class ImageComponent implements OnInit {
       // Run the update in a custom zone since for some reason change detection isn't performed
       // as part of the XHR request to upload the files.
       // Running in a custom zone forces change detection
-      console.log(this.image.value);
       this.zone.run(() => {
         // Update an existing entry if it's upload hasn't completed yet
 
@@ -144,7 +142,6 @@ export class ImageComponent implements OnInit {
           dataSplitted[dataSplitted.length - 1] == 'jpg' ||
           dataSplitted[dataSplitted.length - 1] == 'svg'
         ) {
-          console.log(data.url);
           this.cover = data.url;
         } else this.image.setValue(data.url);
       });
@@ -179,8 +176,6 @@ export class ImageComponent implements OnInit {
 
   updateImage() {
     if (this.image.value) return;
-
-    console.log(this.image.value);
 
     let userChanged = this.user;
     userChanged.image = this.cover;
@@ -218,7 +213,6 @@ export class ImageComponent implements OnInit {
     };
 
     this.userService.deleteUserImage(body).subscribe((response) => {
-      console.log(`Deleted image - ${data.public_id} ${response.result}`);
       // Remove deleted item for responses
       this.responses.splice(index, 1);
     });

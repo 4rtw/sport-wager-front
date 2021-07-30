@@ -30,7 +30,6 @@ export class BetPostComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.config.data.bet);
     this.getMatchesDetails();
   }
 

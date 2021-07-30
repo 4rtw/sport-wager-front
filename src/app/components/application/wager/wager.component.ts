@@ -24,6 +24,5 @@ export class WagerComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUserLoggedIn();
     this.currentRoute=this.router;
-    console.log(this.currentRoute.url)
   }
 }

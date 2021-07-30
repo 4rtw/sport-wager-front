@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Bet} from '../../../shared/model/Bet/Bet';
-import {NbaGame} from '../../../shared/model/Basket/nba-game';
+import {Bet} from '../../../../shared/model/Bet/Bet';
+import {NbaGame} from '../../../../shared/model/Basket/nba-game';
 import {Observable} from 'rxjs';
-import {NbaService} from '../../../shared/services/Basketball/nba.service';
+import {NbaService} from '../../../../shared/services/Basketball/nba.service';
 
 @Component({
   selector: 'app-nba-single-bet',
