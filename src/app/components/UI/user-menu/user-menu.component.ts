@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { JwtService } from 'src/app/shared/services/Auth/jwt.service';
 import { User } from '../../../shared/model/Users/user.model';
 import { MenuItem } from 'primeng/api';
-import { Subscription } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import { UserService } from '../../../shared/services/Users/user.service';
 
 @Component({
@@ -11,28 +11,14 @@ import { UserService } from '../../../shared/services/Users/user.service';
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.css'],
 })
-export class UserMenuComponent implements OnInit, OnDestroy {
-  user = new User();
-  hasImage = true;
-  items: MenuItem[];
-  userSub: Subscription;
+export class UserMenuComponent implements OnInit {
+  user: Observable<User>;
 
   defaultImage;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userSub = this.userService.getUserLoggedIn().subscribe(
-      (data) => {
-        this.user = data;
-      },
-      (_) => {
-        this.user = new User();
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.userSub.unsubscribe();
+    this.user = this.userService.getUserLoggedIn();
   }
 }

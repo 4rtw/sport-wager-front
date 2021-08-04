@@ -45,8 +45,7 @@ export class AuthService {
             access_token: x.access_token,
             refresh_token: x.refresh_token,
           });
-        }),
-        catchError(this.handleError<any>())
+        })
       );
   }
 

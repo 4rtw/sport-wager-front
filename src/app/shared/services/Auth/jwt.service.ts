@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { LocalStorageService } from '../Utils/local-storage.service';
-import { User } from '../../model/Users/user.model';
-import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { CookieService } from 'ngx-cookie';
+import {Injectable} from '@angular/core';
+import {LocalStorageService} from '../Utils/local-storage.service';
+import {User} from '../../model/Users/user.model';
+import {catchError, map, tap} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {CookieService} from 'ngx-cookie';
 import * as CryptoJS from 'crypto-js';
-import { config } from 'src/app/shared/config/variables';
+import {config} from 'src/app/shared/config/variables';
 
 @Injectable({
   providedIn: 'root',
@@ -86,8 +86,8 @@ export class JwtService {
   getUser(): { user: User; iat: number; exp: number } {
     const user = new User();
     return this.decodedToken
-      ? JwtService.mapUser(this.decodedToken)
-      : { user, iat: 0, exp: 0 };
+        ? JwtService.mapUser(this.decodedToken)
+        : {user, iat: 0, exp: 0};
   }
 
   /*

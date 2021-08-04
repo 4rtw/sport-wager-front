@@ -42,11 +42,11 @@ export class AnonymousUserMenuComponent implements OnInit, OnDestroy {
             this.router
               .navigate(['/'], { queryParams: { connection: 'success' } })
               .then(() => {
-                location.reload();
+                //location.reload();
               });
           }
         },
-        (_) => {
+        () => {
           this.messageService.add({
             severity: 'error',
             summary: 'Authentification',

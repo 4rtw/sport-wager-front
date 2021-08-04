@@ -1,17 +1,11 @@
 <div class="card">
   <div class="grid">
-    <div class="col-4">
-        <app-navigations></app-navigations>
-    </div>
-    <div class="col-4">
+    <div class="col">
       <router-outlet></router-outlet>
     </div>
-    <div class="col-4">
-      <div *ngIf="(user|async)">
+    <div *ngIf="(user|async)" class="col">
         <app-panier *ngIf="currentRoute.url.includes('/nba')"></app-panier>
-        <app-football-panier *ngIf="(currentRoute.url.includes('/foot') || currentRoute.url === '/' || currentRoute.url.startsWith('/?'))"></app-football-panier>
-      </div>
-      <app-video></app-video>
+      <!--app-video></app-video-->
     </div>
   </div>
 </div>

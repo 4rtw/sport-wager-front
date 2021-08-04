@@ -11,8 +11,25 @@ import { CustomDate } from '../Utils/DateOperator';
 })
 export class MatchService {
     private uri = config.herokuurl;
+    private uriAuto = config.herokuauto;
 
     constructor(private http: HttpClient) {}
+
+    getMatchesByRangeDate(idCompet: number, date: Date[]): Observable<FootballGames[]>{
+        if(idCompet===0){
+            idCompet=2002;
+        }
+        if(!date[1]){
+            date[1] = new Date();
+        }
+        const customStart = new CustomDate().formatDate(date[0]);
+        const customEnd = new CustomDate().formatDate(date[1]);
+        return this.http.get<{ data: FootballGames[]; errors: string[] }>(this.uri + 'foot/date/' + idCompet + '/'+ customStart +'/'+ customEnd).pipe(
+            map((x)=>{
+                return x.data;
+            })
+        )
+    }
 
     getMatches(idCompet: number, date: Date): Observable<FootballGames[]> {
         const customDate = new CustomDate();
@@ -34,8 +51,8 @@ export class MatchService {
         if(!idCompet){
             idCompet='2002';
         }
-        return this.http.get<{ data: FootballGames[]; errors: string[] }>(this.uri+'foot/schedules/'+idCompet).pipe(map(x=>{
-            return x.data.find(element => element.id === idMatch);
+        return this.http.get<{ data: FootballGames[]; info:{}; errors: string[] }>(this.uriAuto+'foot/specific_match/'+ idCompet + '/' + idMatch).pipe(map(x=>{
+            return x.data[0];
         }))
     }
 }

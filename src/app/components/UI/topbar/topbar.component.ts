@@ -1,15 +1,7 @@
 import {
   Component,
   OnInit,
-  EventEmitter,
-  Output,
-  OnDestroy,
 } from '@angular/core';
-import { User } from '../../../shared/model/Users/user.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../shared/services/Users/user.service';
-import { Subscription } from 'rxjs';
-import { JwtService } from '../../../shared/services/Auth/jwt.service';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -17,19 +9,13 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.css'],
 })
-export class TopbarComponent implements OnInit, OnDestroy {
+export class TopbarComponent implements OnInit {
   items: MenuItem[];
   openedSidenav = true;
-  user = new User();
-  userSub: Subscription;
 
   state = true;
-  @Output() sidenavState = new EventEmitter<boolean>();
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private userService: UserService,
   ) {
     this.items = [
       {
@@ -67,7 +53,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
         items: [
           {
             label: 'Soccer',
-            icon: 'fas fa-futbol',
+            icon: 'pi pi-fw pi-user-minus',
             routerLink: ['/statistic/country-list']
           },
           {
@@ -75,21 +61,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
             icon: 'pi pi-fw pi-user-minus',
             routerLink: ['/nba']
           },
-          {
-            label: 'Tennis',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/foot']
-          },
-          {
-            label: 'Table Tennis',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/foot']
-          },
-          {
-            label: 'Volleyball',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/foot']
-          }
         ]
       },
       {
@@ -100,21 +71,5 @@ export class TopbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getUser();
-  }
-
-  getUser(): void {
-    this.userSub = this.userService.getUserLoggedIn().subscribe((data) => {
-      this.user = data;
-    });
-  }
-
-  toogleSidenav(): void {
-    this.state = !this.state;
-    this.sidenavState.emit(this.state);
-  }
-
-  ngOnDestroy(): void {
-    this.userSub.unsubscribe();
   }
 }

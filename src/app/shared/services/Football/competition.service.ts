@@ -35,7 +35,7 @@ export class CompetitionService {
       );
   }
 
-  getCompetition(id): Observable<Competitions>{
+  getCompetition(id:number): Observable<Competitions>{
       if(id===0){
           id=2002
       }
@@ -47,6 +47,16 @@ export class CompetitionService {
               map((x:{ data: Competitions[]; errors: string[] })=>{
                   return x.data.find(element => element.id == id)}
               )
+          );
+  }
+
+  getCompetitionByArea(area: string): Observable<Competitions[]>{
+      return this.http.get<{
+          data: Competitions[];
+          errors: string[];
+      }>(this.uri + 'foot/all-competition/' + area)
+          .pipe(
+              map((x:{ data: Competitions[]; errors: string[] })=>{return x.data})
           );
   }
 }

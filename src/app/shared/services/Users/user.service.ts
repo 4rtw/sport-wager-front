@@ -21,19 +21,10 @@ export class UserService {
         .get<{ data: User[]; errors: string[] }>(this.uri + 'users/' + id)
         .pipe(
           map((userData) => {
-            if (userData.errors.length > 0) {
-              return new User();
-            } else {
               return userData.data[0];
-            }
           })
         );
-    } else
-      return new Observable<User>().pipe(
-        map((_) => {
-          return new User();
-        })
-      );
+    }
   }
 
   updateUser(user: User): Observable<any> {

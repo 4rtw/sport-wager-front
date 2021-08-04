@@ -1,17 +1,15 @@
 import {
-  ChangeDetectorRef,
   Component,
-  OnDestroy,
   OnInit,
-  ViewChild, ViewEncapsulation,
+  ViewChild,
 } from '@angular/core';
 import { NbaService } from '../../../../../shared/services/Basketball/nba.service';
 import { NbaGame } from '../../../../../shared/model/Basket/nba-game';
-import {Observable, Subscription} from 'rxjs';
+import {Observable,} from 'rxjs';
 import { Calendar } from 'primeng/calendar';
 import { CustomDate } from '../../../../../shared/services/Utils/DateOperator';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { BetPostComponent } from '../bet-post/bet-post.component';
+
 
 @Component({
   selector: 'app-nba-matches',

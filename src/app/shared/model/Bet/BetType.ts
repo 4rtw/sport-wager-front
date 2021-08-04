@@ -1,6 +1,5 @@
 export class BetType {
-  _id: string;
-  id: String;
+  id: string;
   description: String;
   bet_type: String;
 }

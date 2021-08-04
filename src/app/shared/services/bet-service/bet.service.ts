@@ -49,32 +49,14 @@ export class BetService {
           );
   }
 
-  private getMyBetList(callback): any{
+  getMyBetList(): any{
       return this.http
           .get<{ data: Bet[]; errors: string[] }>(this.url + 'my-bets')
           .pipe(
               map((response) => {
-                  return callback(response.data);
+                  return response.data;
               })
           );
-  }
-
-  getMyBetListNBA(): any {
-      return this.getMyBetList((data: Bet[])=>{
-          return data.filter(element => element.sport_category.includes('nba'))
-      });
-  }
-
-  getMyBetListFoot(competitionID):any {
-      return this.getMyBetList((data: Bet[])=>{
-        return data.filter(element => element.match_id!==10).filter(element => element.sport_category.includes('football'))
-      })
-  }
-
-  getMyBetListFootGeneral():any {
-      return this.getMyBetList((data: Bet[])=>{
-          return data.filter(element => element.match_id!==10).filter(element => element.sport_category.includes('football'))
-      })
   }
 
   postNewBet(bet: Bet) {

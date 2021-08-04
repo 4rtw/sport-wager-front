@@ -1,0 +1,23 @@
+<div *ngIf="(activeCompetitions|async) as items; else loading">
+    <ul class="custom-card menu">
+        <li><div class="h3 text-center mb-2">Compétitions</div></li>
+        <li *ngFor="let competition of items" class="mb-2 menuItem" pTooltip="Début: {{customDate.getDateTime(competition.currentSeason.startDate, 'date')}} {{'\n'}} Fin: {{customDate.getDateTime(competition.currentSeason.endDate, 'date')}}" tooltipPosition="bottom">
+            <a [routerLink]="['/wager/football']" [queryParams]="{competitionID:competition.id}">
+                <div class="grid flex align-items-center
+                        {{(activatedRoute.queryParams|async).competitionID === competition.id.toString(10)? 'active':''}}">
+                    <div class="col-2">
+                        <img src="{{competition.area.ensignUrl}}" class="flag circle"/>
+                    </div>
+                    <div class="col flex align-items-center">
+                        {{competition.name}}
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<ng-template #loading>
+    <app-loading-screen></app-loading-screen>
+    Loading ...
+</ng-template>

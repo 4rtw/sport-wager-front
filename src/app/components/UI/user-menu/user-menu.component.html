@@ -1,12 +1,12 @@
-<div [matMenuTriggerFor]="menu" class="user-menu p-ai-center">
-  <button class="p-button-rounded p-button-secondary" label="{{ user?.id != 0 ? user?.firstname + ' ' : 'Connexion ' }}"
-    pButton pRipple type="button"></button>
+<div [mat-menu-trigger-for]="connexionMenu">
+  <button *ngIf="!(user|async)" pButton pRipple type="button" class="p-button-rounded p-button-secondary" label="Connexion"></button>
+  <button *ngIf="(user|async) as loggedUser" pButton pRipple type="button" class="p-button-rounded p-button-secondary" label="{{loggedUser.firstname}}"></button>
 </div>
 
-<mat-menu #menu="matMenu" (click)="$event.stopPropagation()" overlapTrigger="false"
-  style="border: black solid">
+<mat-menu #connexionMenu overlapTrigger="false">
   <app-anonymous-user-menu (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
-    *ngIf="user?.id === 0"></app-anonymous-user-menu>
-  <app-account-menu (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" *ngIf="user?.id !== 0">
+                           *ngIf="!(user|async)"></app-anonymous-user-menu>
+  <app-account-menu (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" *ngIf="(user|async)">
   </app-account-menu>
+
 </mat-menu>

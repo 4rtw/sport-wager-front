@@ -1,0 +1,11 @@
+<div class="grid">
+    <div class="col">
+        <app-navigation-football></app-navigation-football>
+    </div>
+    <div class="col" style="z-index: 100">
+        <app-bet-football></app-bet-football>
+    </div>
+    <div class="col" style="z-index: 0">
+        <app-panier *ngIf="(user|async)"></app-panier>
+    </div>
+</div>
