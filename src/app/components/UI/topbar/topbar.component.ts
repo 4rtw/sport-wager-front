@@ -20,52 +20,39 @@ export class TopbarComponent implements OnInit {
     this.items = [
       {
         label: 'Accueil',
-        icon: 'pi pi-fw pi-home',
         routerLink: ['/']
       },
       {
         label: 'Mes paris',
-        icon: 'pi pi-fw pi-money-bill',
       },
       {
         label: 'Catégories',
-        icon: 'pi pi-fw pi-th-large',
         items: [
           {
-            label: 'JO',
-            icon: 'pi pi-fw pi-user-plus',
-          },
-          {
             label: 'Basketball',
-            icon: 'pi pi-fw pi-user-minus',
-            routerLink: ['/nba']
+            routerLink: ['/wager/basketball']
           },
           {
             label: 'Football',
-            icon: 'pi pi-fw pi-users',
-            routerLink: ['/foot']
+            routerLink: ['/wager/football']
           }
         ]
       },
       {
         label: 'Statistiques',
-        icon: 'pi pi-fw pi-percentage',
         items: [
           {
-            label: 'Soccer',
-            icon: 'pi pi-fw pi-user-minus',
-            routerLink: ['/statistic/country-list']
+            label: 'Basketball',
+            routerLink: ['/nba']
           },
           {
-            label: 'Basketball',
-            icon: 'pi pi-fw pi-user-minus',
-            routerLink: ['/nba']
+            label: 'Football',
+            routerLink: ['/statistic/country-list']
           },
         ]
       },
       {
         label: 'Résultats',
-        icon: 'pi pi-fw pi-list'
       }
     ];
   }
