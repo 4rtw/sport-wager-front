@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-12 p-1 bg-transparent">
-        <cdk-virtual-scroll-viewport [itemSize]="100" style="height: 500px">
+        <cdk-virtual-scroll-viewport [itemSize]="5" style="height: 500px">
             <div *ngIf="matches|async as matches; else loading;" >
                 <div *ngIf="matches.length === 0" class="text-center custom-card">
                     Il n'y a aucun match pour le jour, essayez une autre date.
@@ -36,13 +36,11 @@
                     <app-football-bet-element [match]="match"></app-football-bet-element>
                 </div>
             </div>
-
             <ng-template #loading>
                 <div class="grid">
                     <div *ngFor="let i of [1,2,3]" class="col-12"><p-skeleton width="100%" height="4rem" borderRadius="16px"></p-skeleton></div>
                 </div>
             </ng-template>
-
         </cdk-virtual-scroll-viewport>
     </div>
 </div>

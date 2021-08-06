@@ -6,6 +6,10 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
@@ -90,7 +94,7 @@ a[_primary-color]:hover {
 
 /* p-menubar */
 .p-menubar {
-  height: 150px;
+  height: 100px;
   /*background: linear-gradient( 135deg, rgba(255, 251, 0, 0.25) 10%, rgba(252, 161, 9, 0.48) 100%), url("assets/images/background-menu.jpg") fixed;*/
   background-size: cover;
   margin: 0;
@@ -172,5 +176,6 @@ p-button button {
   backdrop-filter: blur(5px);
 }
 
-/* Virtual scroller */
-
+.test{
+  border: #0e2031 1px solid;
+}

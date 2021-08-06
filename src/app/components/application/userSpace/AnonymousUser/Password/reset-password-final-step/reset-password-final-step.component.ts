@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Validator } from '../../../../../../shared/services/Utils/Validator';
+import {MustMatch} from '../../../../../../shared/services/Utils/must-match.validator';
 
 @Component({
   selector: 'app-reset-password-final-step',
@@ -14,38 +15,45 @@ import { Validator } from '../../../../../../shared/services/Utils/Validator';
   ],
 })
 export class ResetPasswordFinalStepComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
-  confirmPassword = new FormControl('', [Validators.required]);
-  hide = true;
-  hideConfirm = true;
   sub: Subscription;
   validator = new Validator();
+
+  form = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
+      },
+      {
+        validator: MustMatch('password', 'confirmPassword'),
+      }
+  );
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.sub = this.activatedRoute.queryParams.subscribe((params) => {
       // Defaults to 0 if no query param provided.
-      this.email.setValue(params.email);
+      this.form.controls.email.setValue(params.email);
     });
   }
 
   onSubmit(): void {
     this.authService
       .setResetedPassword({
-        email: this.email.value,
-        password: this.password.value,
+        email: this.form.controls.email.value,
+        password: this.form.controls.password.value,
       })
       .subscribe(
         (_) => {
           // TODO handle errors
           this.router
-            .navigate(['/'], { queryParams: { email: this.email.value } })
+            .navigate(['/account/register'], { queryParams: { email: this.form.controls.email.value } })
             .then(() => location.reload());
         },
         (_) => {}

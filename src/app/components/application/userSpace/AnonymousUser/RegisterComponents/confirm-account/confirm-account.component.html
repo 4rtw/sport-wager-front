@@ -1,75 +1,25 @@
-<div class="page p-d-flex p-jc-center p-ai-center">
-  <form
-    ngForm
-    #formConfirmation
-    [formGroup]="confirmationForm"
-    (submit)="formConfirmation.reset()"
-    class="container-inscription"
-  >
-    <p-card class="content">
-      <div #logo class="logo p-mb-3">
-        <img alt="Logo" src="assets/images/logo.png" />
-      </div>
+<div class="grid">
+  <div class="col flex justify-content-center">
+    <div class="container">
+      <form ngForm
+            [formGroup]="confirmationForm"
+            (submit)="onSubmit()">
+        <div class="h3">Confirmation du compte</div>
 
-      <div class="p-text-center" style="color: red">
-        {{ error }}
-      </div>
+        <div>Veuillez entrer le code d'activation que vous avez reçu par email.</div>
 
-      <div class="p-fluid p-formgrid p-grid">
-        <mat-form-field appearance="fill" class="p-col-12">
-          <mat-label style="color: #aa8f66">Confirmer pour</mat-label>
-          <input
-            matInput
-            placeholder="pat@exemple.com"
-            formControlName="email"
-            required
-            autocomplete=""
-          />
-          <mat-error
-            style="color: #cf021b"
-            *ngIf="confirmationForm.controls.email.invalid"
-            >{{ getErrorMessage(confirmationForm.controls.email) }}</mat-error
-          >
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="p-col-12">
-          <mat-label style="color: #aa8f66"
-            >Votre code de confirmation</mat-label
-          >
-          <input matInput formControlName="code" required autocomplete="" />
-          <mat-error
-            style="color: #cf021b"
-            *ngIf="confirmationForm.controls.code.invalid"
-            >{{ getErrorMessage(confirmationForm.controls.code) }}</mat-error
-          >
-        </mat-form-field>
-
-        <div class="p-col-12 p-grid p-d-flex p-jc-evenly p-mt-2">
-          <button
-            mat-raised-button
-            class="p-col-5"
-            type="button"
-            routerLink="/"
-          >
-            <div class="submit-btn">
-              <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
-              <span>RETOUR</span>
-            </div>
-          </button>
-          <button
-            mat-raised-button
-            class="p-col-5"
-            type="submit"
-            [disabled]="!confirmationForm.valid"
-            (click)="onSubmit()"
-          >
-            <div class="submit-btn">
-              <!-- <mat-spinner [diameter]="20" *ngIf="showLoader"></mat-spinner> -->
-              <span>CONFIRMER</span>
-            </div>
-          </button>
+        <input
+                placeholder="pat@exemple.com"
+                formControlName="email"
+                required
+                autocomplete=""
+        />
+        <input formControlName="code" required autocomplete="" />
+        <div class="p-text-center" style="color: red">
+          {{ error }}
         </div>
-      </div>
-    </p-card>
-  </form>
+        <button pButton [disabled]="!confirmationForm.valid">CONFIRMER LE COMPTE</button>
+      </form>
+    </div>
+  </div>
 </div>

@@ -12,7 +12,7 @@
           <button pButton pRipple type="button" icon="pi pi-angle-right" (click)="clickPreviousOrNext('next')"
                   class="p-button-rounded"></button>
         </div>
-        <cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport">
+        <cdk-virtual-scroll-viewport [itemSize]="5" class="example-viewport">
 
           <div *ngIf="(matches|async) as matches; else loading">
 

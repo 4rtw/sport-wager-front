@@ -75,7 +75,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxSmoothScrollModule } from '@boatzako/ngx-smooth-scroll';
 
 import {
   CloudinaryModule,
@@ -91,7 +91,6 @@ import {GalleriaModule} from 'primeng/galleria';
 import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
 import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/UI/warning/warning.component';
-import { NavigationsComponent } from './components/UI/navigations/navigations.component';
 import { FootballBetElementComponent } from './components/WagerComponents/football/football-bet-element/football-bet-element.component';
 import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
 import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
@@ -139,7 +138,6 @@ import {TooltipModule} from 'primeng/tooltip';
     FlipCardComponent,
     SkeletonLoadingComponent,
     WarningComponent,
-    NavigationsComponent,
     StatisticComponent,
     CountryListComponent,
     CompetitionListComponent,
@@ -157,7 +155,6 @@ import {TooltipModule} from 'primeng/tooltip';
   ],
     imports: [
         AppRoutingModule,
-        FontAwesomeModule,
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -206,6 +203,7 @@ import {TooltipModule} from 'primeng/tooltip';
         MessagesModule,
         AccordionModule,
         DynamicDialogModule,
+        NgxSmoothScrollModule,
         CloudinaryModule.forRoot({Cloudinary}, {
             cloud_name: 'dy528ddbe',
         } as CloudinaryConfiguration),
