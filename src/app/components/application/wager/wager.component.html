@@ -3,9 +3,5 @@
     <div class="col">
       <router-outlet></router-outlet>
     </div>
-    <div *ngIf="(user|async)" class="col">
-        <app-panier *ngIf="currentRoute.url.includes('/nba')"></app-panier>
-      <!--app-video></app-video-->
-    </div>
   </div>
 </div>

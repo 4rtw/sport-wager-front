@@ -20,6 +20,5 @@ export class NavigationFootballComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeCompetitions = this.competitionService.getCompetitions();
-    this.activatedRoute.queryParams.subscribe(x=>console.log(x))
   }
 }

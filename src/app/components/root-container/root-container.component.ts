@@ -14,6 +14,7 @@ export class RootContainerComponent implements OnInit, OnDestroy {
   searchString: string;
   state: boolean;
   openedSidenav = true;
+  show: boolean = true;
 
   sub: Subscription[] = [];
 
@@ -34,33 +35,44 @@ export class RootContainerComponent implements OnInit, OnDestroy {
     // silent refresh token every 30 sec
     this.refreshToken();
 
+    this.checkRoute();
+  }
+
+  checkRoute(): void{
     this.sub.push(
-      this.route.queryParams.subscribe((params) => {
-        if (params.connection === 'success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Authentification',
-            detail: 'Vous êtes maintenant connéctés',
-          });
-        }
+        this.route.url.subscribe(data=>{
+          if(data[0]?.path.includes('account')){
+            this.show = false;
+          }
+        })
+    )
 
-        if (params.logout === 'success') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Déconnection',
-            detail: 'Vous êtes maintenant déconnéctés',
-          });
-        }
+    this.sub.push(
+        this.route.queryParams.subscribe((params) => {
+          if (params.connection === 'success') {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Authentification',
+              detail: 'Vous êtes maintenant connéctés',
+            });
+          }
 
-        if (params.activated === 'true') {
-          // Todo Message service doesn't work
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Activation',
-            detail: 'Votre compte a été activé avec succès',
-          });
-        }
-      })
+          if (params.logout === 'success') {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Déconnection',
+              detail: 'Vous êtes maintenant déconnéctés',
+            });
+          }
+
+          if (params.activated === 'true') {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Activation',
+              detail: 'Votre compte a été activé avec succès',
+            });
+          }
+        })
     );
   }
 
@@ -74,7 +86,7 @@ export class RootContainerComponent implements OnInit, OnDestroy {
   }
 
   logout(): void {
-    this.sub.push(this.authService.logout().subscribe());
+    this.sub.push(this.authService.logout().subscribe(_=>{location.reload()}));
   }
 
   /*
