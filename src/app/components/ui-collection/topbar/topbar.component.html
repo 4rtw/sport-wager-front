@@ -6,7 +6,37 @@
   </ng-template>
   <ng-template pTemplate="end">
     <div class="mr-3" style="display: flex; flex-direction: row">
-      <app-user-menu></app-user-menu>
+      <div *ngIf="!(user | async); else userLoggedIn">
+        <button
+          routerLink="/register"
+          pButton
+          pRipple
+          type="button"
+          class="p-button-rounded p-button-secondary"
+          label="Connexion/Inscription"
+        ></button>
+      </div>
+      <ng-template #userLoggedIn>
+        <button
+          *ngIf="user | async as loggedUser"
+          routerLink="profile"
+          pButton
+          pRipple
+          type="button"
+          class="p-button-rounded p-button-secondary mr-4"
+          label="{{ loggedUser.firstname }}"
+        ></button>
+
+        <button
+          *ngIf="user | async as loggedUser"
+          (click)="logout()"
+          pButton
+          pRipple
+          type="button"
+          class="p-button-rounded p-button-danger"
+          label="Déconnexion"
+        ></button>
+      </ng-template>
     </div>
   </ng-template>
 </p-menubar>

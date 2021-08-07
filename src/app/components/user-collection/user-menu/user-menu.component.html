@@ -1,4 +1,0 @@
-<div>
-  <button *ngIf="!(user|async)" routerLink="/account/register" pButton pRipple type="button" class="p-button-rounded p-button-secondary" label="Connexion/Inscription"></button>
-  <button *ngIf="(user|async) as loggedUser" pButton pRipple type="button" class="p-button-rounded p-button-secondary" label="{{loggedUser.firstname}}"></button>
-</div>

@@ -1,24 +1,26 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input, NgZone, OnDestroy } from '@angular/core';
 import {
   FileUploader,
   FileUploaderOptions,
   ParsedResponseHeaders,
 } from 'ng2-file-upload';
 import { FormControl, Validators } from '@angular/forms';
-import { User } from '../../../../../../shared/model/Users/user.model';
-import { UserService } from '../../../../../../shared/services/Users/user.service';
+import { User } from '../../../shared/model/Users/user.model';
+import { UserService } from '../../../shared/services/Users/user.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.css'],
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent implements OnInit, OnDestroy {
   @Input()
   responses: Array<any>;
 
   public hasBaseDropZoneOver: boolean = false;
   public uploader: FileUploader;
   private title: string;
+  sub: Subscription[] = [];
 
   files: any[] = [];
 
@@ -32,11 +34,24 @@ export class ImageComponent implements OnInit {
     this.responses = [];
     this.title = '';
   }
+  ngOnDestroy(): void {
+    for (const sub of this.sub) {
+      sub.unsubscribe();
+    }
+  }
 
   ngOnInit(): void {
-    this.userService.getUserLoggedIn().subscribe((data) => {
-      this.user = data;
-    });
+    this.sub.push(
+      this.userService.getUserLoggedIn()?.subscribe(
+        (data) => {
+          this.user = data;
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+    );
+
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
       url: `https://api.cloudinary.com/v1_1/dy528ddbe/upload`,
@@ -179,7 +194,7 @@ export class ImageComponent implements OnInit {
 
     let userChanged = this.user;
     userChanged.image = this.cover;
-    this.userService.updateImage(userChanged).subscribe((_) => {});
+    this.sub.push(this.userService.updateImage(userChanged).subscribe());
   }
 
   /**
@@ -212,10 +227,12 @@ export class ImageComponent implements OnInit {
       token: data.delete_token,
     };
 
-    this.userService.deleteUserImage(body).subscribe((response) => {
-      // Remove deleted item for responses
-      this.responses.splice(index, 1);
-    });
+    this.sub.push(
+      this.userService.deleteUserImage(body).subscribe((_) => {
+        // Remove deleted item for responses
+        this.responses.splice(index, 1);
+      })
+    );
   };
 
   /**

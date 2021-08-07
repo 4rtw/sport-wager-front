@@ -1,140 +1,184 @@
 <div class="grid">
-    <div class="col">
-        <div class="container">
-            <div class="form-container sign-in-container">
-                <form (ngSubmit)="onSubmitLogin()"
-                      [formGroup]="loginForm"
-                >
-                    <h1>Se connecter</h1>
+  <div class="col">
+    <div class="container">
+      <div class="form-container sign-in-container">
+        <form (ngSubmit)="onSubmitLogin()" [formGroup]="loginForm">
+          <h1>Se connecter</h1>
 
-                    <input [formControl]="email"
-                           required
-                           type="email" placeholder="Email" />
+          <input
+            [formControl]="email"
+            required
+            type="email"
+            placeholder="Email"
+          />
 
-                    <input [formControl]="password"
-                           type="password" placeholder="Password" />
+          <input
+            [formControl]="password"
+            type="password"
+            placeholder="Password"
+          />
 
-                    <a routerLink="/account/reset-password">Mot de passe oublié</a>
+          <a routerLink="/reset-password">Mot de passe oublié</a>
 
-                    <p-progressSpinner *ngIf="!showButtonAndNoSpinner" [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
-                    <button
-                            pButton
-                            [disabled]="!loginForm.valid"
-                            *ngIf="showButtonAndNoSpinner" type="submit">Connexion</button>
-                </form>
-
-            </div>
-        </div>
+          <p-progressSpinner
+            *ngIf="!showButtonAndNoSpinner"
+            [style]="{ width: '50px', height: '50px' }"
+            styleClass="custom-spinner"
+            strokeWidth="8"
+            fill="#EEEEEE"
+            animationDuration=".5s"
+          ></p-progressSpinner>
+          <button
+            pButton
+            [disabled]="!loginForm.valid"
+            *ngIf="showButtonAndNoSpinner"
+            type="submit"
+          >
+            Connexion
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 
+  <div class="col">
+    <div class="container">
+      <div class="form-container sign-in-container">
+        <form (ngSubmit)="onSubmitRegister()" [formGroup]="registerForm">
+          <h1>S'inscrire</h1>
 
-    <div class="col">
-        <div class="container">
-            <div class="form-container sign-in-container">
-
-                <form
-                        (ngSubmit)="onSubmitRegister()"
-                        [formGroup]="registerForm">
-
-                    <h1>S'inscrire</h1>
-
-                    <div class="grid">
-                        <div class="col">
-                            <input
-                                    required
-                                    formControlName="lastname"
-                                    placeholder="Nom" />
-                            <mat-error
-                                    style="color: #cf021b"
-                                    *ngIf="registerForm.controls.lastname.dirty && registerForm.controls.lastname.invalid"
-                            >{{ getErrorMessage(registerForm.controls.lastname)}}</mat-error>
-                        </div>
-                        <div class="col">
-                            <input required
-                                   placeholder="Prénom"
-                                   formControlName="firstname"
-                            />
-                            <mat-error
-                                    style="color: #cf021b"
-                                    *ngIf="registerForm.controls.firstname.invalid && registerForm.controls.firstname.dirty"
-                            >{{ getErrorMessage(registerForm.controls.firstname)}}</mat-error>
-                        </div>
-                    </div>
-
-
-                    <div class="grid fill">
-                        <div class="col">
-                            <input required
-                                   formControlName="email"
-                                   placeholder="Email"
-                                   type="email"
-                            />
-                        </div>
-                        <mat-error
-                                class="col-12"
-                                style="color: #cf021b"
-                                *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.dirty"
-                        >{{ getErrorMessage(registerForm.controls.email) }}</mat-error>
-                    </div>
-
-                    <div class="grid">
-                        <div class="col">
-                            <input
-                                    formControlName="password"
-                                    required
-                                    type="password"
-                                    placeholder="Mot de passe"
-                                    autocomplete=""
-                            />
-                            <mat-error
-                                    style="color: #cf021b"
-                                    *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.dirty"
-                            >{{ getErrorMessage(registerForm.controls.password) }}</mat-error>
-                        </div>
-                        <div class="col">
-                            <input
-                                    placeholder="Confirmer le mot de passe"
-                                    formControlName="confirmPassword"
-                                    type="password"
-                                    required
-                                    autocomplete=""
-                            />
-                            <mat-error
-                                    style="color: #cf021b"
-                                    *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.dirty"
-                            >{{
-                                getErrorMessage(registerForm.controls.confirmPassword)
-                                }}</mat-error>
-                        </div>
-                    </div>
-
-                    <div class="grid fill">
-                        <div class="col">
-                            <input
-                                    matInput
-                                    placeholder="+261xxxxxxx"
-                                    formControlName="phone"
-                                    required
-                                    autocomplete=""
-                            />
-                            <mat-error
-                                    style="color: #cf021b"
-                                    *ngIf="registerForm.controls.phone.invalid && registerForm.controls.phone.dirty"
-                            >{{ getErrorMessage(registerForm.controls.phone) }}</mat-error>
-                        </div>
-                    </div>
-
-                    <p-progressSpinner *ngIf="!showButtonAndNoSpinner" [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
-                    <button
-                            pButton
-                            [disabled]="!registerForm.valid"
-                            *ngIf="showButtonAndNoSpinner"
-                            type="submit"
-                    >
-                        INSCRIPTION
-                    </button>
-                </form>
+          <div class="grid">
+            <div class="col">
+              <input required formControlName="lastname" placeholder="Nom" />
+              <mat-error
+                style="color: #cf021b"
+                *ngIf="
+                  registerForm.controls.lastname.dirty &&
+                  registerForm.controls.lastname.invalid
+                "
+                >{{
+                  getErrorMessage(registerForm.controls.lastname)
+                }}</mat-error
+              >
             </div>
-        </div>
+            <div class="col">
+              <input
+                required
+                placeholder="Prénom"
+                formControlName="firstname"
+              />
+              <mat-error
+                style="color: #cf021b"
+                *ngIf="
+                  registerForm.controls.firstname.invalid &&
+                  registerForm.controls.firstname.dirty
+                "
+                >{{
+                  getErrorMessage(registerForm.controls.firstname)
+                }}</mat-error
+              >
+            </div>
+          </div>
+
+          <div class="grid fill">
+            <div class="col">
+              <input
+                required
+                formControlName="email"
+                placeholder="Email"
+                type="email"
+              />
+            </div>
+            <mat-error
+              class="col-12"
+              style="color: #cf021b"
+              *ngIf="
+                registerForm.controls.email.invalid &&
+                registerForm.controls.email.dirty
+              "
+              >{{ getErrorMessage(registerForm.controls.email) }}</mat-error
+            >
+          </div>
+
+          <div class="grid">
+            <div class="col">
+              <input
+                formControlName="password"
+                required
+                type="password"
+                placeholder="Mot de passe"
+                autocomplete=""
+              />
+              <mat-error
+                style="color: #cf021b"
+                *ngIf="
+                  registerForm.controls.password.invalid &&
+                  registerForm.controls.password.dirty
+                "
+                >{{
+                  getErrorMessage(registerForm.controls.password)
+                }}</mat-error
+              >
+            </div>
+            <div class="col">
+              <input
+                placeholder="Confirmer le mot de passe"
+                formControlName="confirmPassword"
+                type="password"
+                required
+                autocomplete=""
+              />
+              <mat-error
+                style="color: #cf021b"
+                *ngIf="
+                  registerForm.controls.confirmPassword.invalid &&
+                  registerForm.controls.confirmPassword.dirty
+                "
+                >{{
+                  getErrorMessage(registerForm.controls.confirmPassword)
+                }}</mat-error
+              >
+            </div>
+          </div>
+
+          <div class="grid fill">
+            <div class="col">
+              <input
+                matInput
+                placeholder="+261xxxxxxx"
+                formControlName="phone"
+                required
+                autocomplete=""
+              />
+              <mat-error
+                style="color: #cf021b"
+                *ngIf="
+                  registerForm.controls.phone.invalid &&
+                  registerForm.controls.phone.dirty
+                "
+                >{{ getErrorMessage(registerForm.controls.phone) }}</mat-error
+              >
+            </div>
+          </div>
+
+          <p-progressSpinner
+            *ngIf="!showButtonAndNoSpinner"
+            [style]="{ width: '50px', height: '50px' }"
+            styleClass="custom-spinner"
+            strokeWidth="8"
+            fill="#EEEEEE"
+            animationDuration=".5s"
+          ></p-progressSpinner>
+          <button
+            pButton
+            [disabled]="!registerForm.valid"
+            *ngIf="showButtonAndNoSpinner"
+            type="submit"
+          >
+            INSCRIPTION
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

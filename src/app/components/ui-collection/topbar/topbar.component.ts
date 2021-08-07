@@ -1,8 +1,9 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/shared/model/Users/user.model';
+import { AuthService } from 'src/app/shared/services/Auth/auth.service';
+import { UserService } from 'src/app/shared/services/Users/user.service';
 
 @Component({
   selector: 'app-topbar',
@@ -10,17 +11,21 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./topbar.component.css'],
 })
 export class TopbarComponent implements OnInit {
+  user: Observable<User>;
+  defaultImage;
   items: MenuItem[];
   openedSidenav = true;
 
   state = true;
 
   constructor(
+    private userService: UserService,
+    private authService: AuthService
   ) {
     this.items = [
       {
         label: 'Accueil',
-        routerLink: ['/']
+        routerLink: ['/'],
       },
       {
         label: 'Mes paris',
@@ -30,33 +35,40 @@ export class TopbarComponent implements OnInit {
         items: [
           {
             label: 'Basketball',
-            routerLink: ['/wager/basketball']
+            routerLink: ['/wager/basketball'],
           },
           {
             label: 'Football',
-            routerLink: ['/wager/football']
-          }
-        ]
+            routerLink: ['/wager/football'],
+          },
+        ],
       },
       {
         label: 'Statistiques',
         items: [
           {
             label: 'Basketball',
-            routerLink: ['/nba']
+            routerLink: ['/nba'],
           },
           {
             label: 'Football',
-            routerLink: ['/statistic/country-list']
+            routerLink: ['/statistic/country-list'],
           },
-        ]
+        ],
       },
       {
         label: 'Résultats',
-      }
+      },
     ];
   }
 
   ngOnInit(): void {
+    this.user = this.userService.getUserLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout().subscribe((_) => {
+      location.reload();
+    });
   }
 }

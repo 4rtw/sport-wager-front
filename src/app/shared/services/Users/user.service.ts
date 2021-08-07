@@ -21,7 +21,7 @@ export class UserService {
         .get<{ data: User[]; errors: string[] }>(this.uri + 'users/' + id)
         .pipe(
           map((userData) => {
-              return userData.data[0];
+            return userData.data[0];
           })
         );
     }
@@ -48,5 +48,7 @@ export class UserService {
     return this.http.post(url, body);
   }
 
-  // TODO delete user
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(this.uri + 'users/' + id);
+  }
 }

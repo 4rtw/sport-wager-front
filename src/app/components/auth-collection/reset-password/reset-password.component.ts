@@ -38,7 +38,7 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.resetPassword(this.email.value).subscribe(
       (data) => {
         this.router
-          .navigate(['/account/verify-reset-code'], {
+          .navigate(['/verify-reset-code'], {
             queryParams: { email: this.email.value },
           })
           .then(() => {
@@ -48,7 +48,7 @@ export class ResetPasswordComponent implements OnInit {
       (error) => {
         console.log(error.error.errors);
         this.router
-          .navigate(['/account/reset-password'], {
+          .navigate(['/reset-password'], {
             queryParams: {
               error: error.error.errors[0],
               email: this.email.value,

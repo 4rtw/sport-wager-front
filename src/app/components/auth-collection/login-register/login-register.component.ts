@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {AuthService} from '../../../shared/services/Auth/auth.service';
-import {Router} from '@angular/router';
-import {MessageService} from 'primeng/api';
-import {Validator} from '../../../shared/services/Utils/Validator';
-import {MustMatch} from '../../../shared/services/Utils/must-match.validator';
-import {User} from '../../../shared/model/Users/user.model';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../../shared/services/Auth/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Validator } from '../../../shared/services/Utils/Validator';
+import { MustMatch } from '../../../shared/services/Utils/must-match.validator';
+import { User } from '../../../shared/model/Users/user.model';
 
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
-  styleUrls: ['./login-register.component.css']
+  styleUrls: ['./login-register.component.css'],
 })
 export class LoginRegisterComponent implements OnInit {
-
   email = new FormControl('', [Validators.email, Validators.required]);
   password = new FormControl('', [Validators.min(5), Validators.required]);
 
@@ -24,20 +28,18 @@ export class LoginRegisterComponent implements OnInit {
   });
 
   registerForm = this.formBuilder.group(
-      {
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        phone: ['', [Validators.required]],
-        password: ['', [Validators.required, Validators.minLength(5)]],
-        confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
-      },
-      {
-        validator: MustMatch('password', 'confirmPassword'),
-      }
+    {
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
+    },
+    {
+      validator: MustMatch('password', 'confirmPassword'),
+    }
   );
-
-
 
   loginSub = new Subscription();
   showButtonAndNoSpinner = true;
@@ -47,14 +49,13 @@ export class LoginRegisterComponent implements OnInit {
   display = 'Complete the form to enable inscription button';
 
   constructor(
-      private authService: AuthService,
-      private router: Router,
-      private messageService: MessageService,
-      private formBuilder: FormBuilder
-  ) { }
+    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   //For login
   onSubmitLogin(): void {
@@ -65,33 +66,32 @@ export class LoginRegisterComponent implements OnInit {
     this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
     if (!this.loginForm.invalid) {
       this.loginSub = this.authService.login(email, password).subscribe(
-          (next) => {
-            if (next.access_token) {
-              this.router
-                  .navigate(['/'], { queryParams: { connection: 'success' } })
-                  .then(() => {
-                    location.reload();
-                  });
-            }
-          },
-          (error) => {
-            if(error.message.includes('401')){
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Connexion échoué',
-                detail: 'Votre adresse et/ou votre mot de passe est érroné',
+        (next) => {
+          if (next.access_token) {
+            this.router
+              .navigate(['/'], { queryParams: { connection: 'success' } })
+              .then(() => {
+                location.reload();
               });
-            }
-            else {
-              this.messageService.add({
-                severity: 'error',
-                summary: error.name,
-                detail: error.message,
-              });
-            }
-
-            this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
           }
+        },
+        (error) => {
+          if (error.message.includes('401')) {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Connexion échoué',
+              detail: 'Votre adresse et/ou votre mot de passe est érroné',
+            });
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: error.name,
+              detail: error.message,
+            });
+          }
+
+          this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
+        }
       );
     } else {
       this.messageService.add({
@@ -104,7 +104,7 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   navigateToForgotPasword(): void {
-    this.router.navigate(['/account/reset-password']);
+    this.router.navigate(['/reset-password']);
   }
 
   registerUser(user): void {
@@ -114,10 +114,10 @@ export class LoginRegisterComponent implements OnInit {
       } else {
         // when successfull
         this.router
-            .navigate(['/account/confirm-account'], {
-              queryParams: { email: user.email },
-            })
-            .then(() => location.reload());
+          .navigate(['/confirm-account'], {
+            queryParams: { email: user.email },
+          })
+          .then(() => location.reload());
       }
     });
   }
@@ -132,9 +132,8 @@ export class LoginRegisterComponent implements OnInit {
     return user;
   }
 
-  onSubmitRegister(){
+  onSubmitRegister() {
     this.display = '';
     this.registerUser(this.defineUser());
   }
-
 }

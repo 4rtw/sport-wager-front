@@ -13,9 +13,7 @@ import { Validator } from '../../../shared/services/Utils/Validator';
 @Component({
   selector: 'app-confirm-account',
   templateUrl: './confirm-account.component.html',
-  styleUrls: [
-    './confirm-account.component.css',
-  ],
+  styleUrls: ['./confirm-account.component.css'],
 })
 export class ConfirmAccountComponent implements OnInit {
   confirmationForm: FormGroup;
@@ -60,14 +58,14 @@ export class ConfirmAccountComponent implements OnInit {
       .subscribe(
         (res) => {
           this.router
-            .navigate(['/'], { queryParams: { activated: 'true' } })
+            .navigate(['/register'], { queryParams: { activated: 'true' } })
             .then(() => {
               location.reload();
             });
         },
         (error) => {
           this.router
-            .navigate(['/account/confirm-account'], {
+            .navigate(['/confirm-account'], {
               queryParams: { error: 'true', email: this.email },
             })
             .then(() => location.reload());

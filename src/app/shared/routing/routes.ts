@@ -6,7 +6,7 @@ import { ResetPasswordComponent } from '../../components/auth-collection/reset-p
 import { VerifyResetCodeComponent } from '../../components/auth-collection/verify-reset-code/verify-reset-code.component';
 import { ResetPasswordFinalStepComponent } from '../../components/auth-collection/reset-password-final-step/reset-password-final-step.component';
 import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches.component';
-import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
+import { UserContainerComponent } from '../../components/user-collection/user-container/user-container.component';
 import { FootballComponent } from '../../components/bet-collection/football/football.component';
 import { LoginRegisterComponent } from '../../components/auth-collection/login-register/login-register.component';
 
@@ -32,13 +32,8 @@ const routes: Routes = [
     component: ResetPasswordFinalStepComponent,
   },
   {
-    path: 'account',
-    children: [
-      {
-        path: 'profile',
-        component: UserContainerComponent,
-      }
-    ]
+    path: 'profile',
+    component: UserContainerComponent,
   },
   {
     path: 'wager',
@@ -65,11 +60,8 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: FootballComponent,
     children: [
-      {
-        path: '',
-        component: FootballComponent,
-      },
       {
         path: 'nba',
         component: NbaMatchesComponent,
@@ -79,12 +71,11 @@ const routes: Routes = [
         component: FootballComponent,
       },
     ],
-  }
-
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
