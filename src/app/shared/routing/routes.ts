@@ -8,40 +8,32 @@ import { ResetPasswordFinalStepComponent } from '../../components/application/us
 import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches.component';
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { FootballComponent } from '../../components/WagerComponents/football/football.component';
-import { RootContainerComponent } from '../../components/root-container/root-container.component';
-import {LoginRegisterComponent} from '../../components/UI/login-register/login-register.component';
+import { LoginRegisterComponent } from '../../components/UI/login-register/login-register.component';
 
 const routes: Routes = [
   {
-    path: 'account',
-    component: RootContainerComponent,
-    children: [
-      {
-        path: 'register',
-        component: LoginRegisterComponent,
-      },
-      {
-        path: 'confirm-account',
-        component: ConfirmAccountComponent,
-      },
-      {
-        path: 'verify-reset-code',
-        component: VerifyResetCodeComponent,
-      },
-      {
-        path: 'reset-password',
-        component: ResetPasswordComponent,
-      },
-      {
-        path: 'set-password',
-        component: ResetPasswordFinalStepComponent,
-      },
-    ],
+    path: 'register',
+    component: LoginRegisterComponent,
+  },
+  {
+    path: 'confirm-account',
+    component: ConfirmAccountComponent,
+  },
+  {
+    path: 'verify-reset-code',
+    component: VerifyResetCodeComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'set-password',
+    component: ResetPasswordFinalStepComponent,
   },
   {
     path: 'account',
-    component: RootContainerComponent,
-    children:[
+    children: [
       {
         path: 'profile',
         component: UserContainerComponent,
@@ -50,7 +42,6 @@ const routes: Routes = [
   },
   {
     path: 'wager',
-    component: RootContainerComponent,
     children: [
       {
         path: '',
@@ -74,7 +65,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: RootContainerComponent,
     children: [
       {
         path: '',

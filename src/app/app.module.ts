@@ -75,7 +75,6 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
-import { NgxSmoothScrollModule } from '@boatzako/ngx-smooth-scroll';
 
 import {
   CloudinaryModule,
@@ -203,7 +202,6 @@ import {TooltipModule} from 'primeng/tooltip';
         MessagesModule,
         AccordionModule,
         DynamicDialogModule,
-        NgxSmoothScrollModule,
         CloudinaryModule.forRoot({Cloudinary}, {
             cloud_name: 'dy528ddbe',
         } as CloudinaryConfiguration),
