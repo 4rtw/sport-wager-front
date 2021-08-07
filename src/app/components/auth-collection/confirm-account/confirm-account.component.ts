@@ -5,17 +5,16 @@ import {
   FormGroup,
   FormBuilder,
 } from '@angular/forms';
-import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
+import { AuthService } from '../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Validator } from '../../../../../../shared/services/Utils/Validator';
+import { Validator } from '../../../shared/services/Utils/Validator';
 
 @Component({
   selector: 'app-confirm-account',
   templateUrl: './confirm-account.component.html',
   styleUrls: [
     './confirm-account.component.css',
-    '../../Password/style-password.css',
   ],
 })
 export class ConfirmAccountComponent implements OnInit {

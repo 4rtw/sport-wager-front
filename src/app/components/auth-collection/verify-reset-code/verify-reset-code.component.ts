@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
+import { AuthService } from '../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Validator } from '../../../../../../shared/services/Utils/Validator';
+import { Validator } from '../../../shared/services/Utils/Validator';
 
 @Component({
   selector: 'app-verify-reset-code',
   templateUrl: './verify-reset-code.component.html',
-  styleUrls: ['./verify-reset-code.component.css', '../style-password.css'],
+  styleUrls: ['./verify-reset-code.component.css'],
 })
 export class VerifyResetCodeComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);

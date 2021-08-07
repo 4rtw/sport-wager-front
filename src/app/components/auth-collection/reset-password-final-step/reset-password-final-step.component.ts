@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
+import { AuthService } from '../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Validator } from '../../../../../../shared/services/Utils/Validator';
-import {MustMatch} from '../../../../../../shared/services/Utils/must-match.validator';
+import { Validator } from '../../../shared/services/Utils/Validator';
+import {MustMatch} from '../../../shared/services/Utils/must-match.validator';
 
 @Component({
   selector: 'app-reset-password-final-step',
   templateUrl: './reset-password-final-step.component.html',
   styleUrls: [
     './reset-password-final-step.component.css',
-    '../style-password.css',
   ],
 })
 export class ResetPasswordFinalStepComponent implements OnInit {

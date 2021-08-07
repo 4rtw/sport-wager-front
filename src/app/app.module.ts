@@ -52,23 +52,21 @@ import { AppRoutingModule } from './shared/routing/routes';
 
 /*Components*/
 import { AppComponent } from './app.component';
-import { UserMenuComponent } from './components/UI/user-menu/user-menu.component';
+import { UserMenuComponent } from './components/user-collection/user-menu/user-menu.component';
 import { WagerComponent } from './components/application/wager/wager.component';
-import { RegisterComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/register/register.component';
-import { ConfirmAccountComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/confirm-account/confirm-account.component';
-import { ResetPasswordComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
-import { ResetPasswordFinalStepComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
-import { VerifyResetCodeComponent } from './components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
-import { TopbarComponent } from './components/UI/topbar/topbar.component';
-import { AccountMenuComponent } from './components/UI/user-menu/account-menu/account-menu.component';
-import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-user-menu/anonymous-user-menu.component';
+import { ConfirmAccountComponent } from './components/auth-collection/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from './components/auth-collection/reset-password/reset-password.component';
+import { ResetPasswordFinalStepComponent } from './components/auth-collection/reset-password-final-step/reset-password-final-step.component';
+import { VerifyResetCodeComponent } from './components/auth-collection/verify-reset-code/verify-reset-code.component';
+import { TopbarComponent } from './components/ui-collection/topbar/topbar.component';
+import { AccountMenuComponent } from './components/user-collection/user-menu/account-menu/account-menu.component';
+import { AnonymousUserMenuComponent } from './components/user-collection/user-menu/anonymous-user-menu/anonymous-user-menu.component';
 import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches.component';
 import { ProfileComponent } from './components/application/userSpace/LoggedUser/user-container/profile/profile.component';
-import { PanierComponent } from './components/WagerComponents/panier/panier.component';
-import { VideoComponent } from './components/UI/video/video.component';
+import { PanierComponent } from './components/bet-collection/panier/panier.component';
+import { VideoComponent } from './components/ui-collection/video/video.component';
 import { UserContainerComponent } from './components/application/userSpace/LoggedUser/user-container/user-container.component';
 import { ImageComponent } from './components/application/userSpace/LoggedUser/user-container/image/image.component';
-import { RootContainerComponent } from './components/root-container/root-container.component';
 
 /*Others*/
 import { FileUploadModule } from 'ng2-file-upload';
@@ -84,29 +82,29 @@ import { Cloudinary } from 'cloudinary-core';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { FooterComponent } from './components/UI/footer/footer.component';
-import { GalleriaComponent } from './components/UI/galleria/galleria.component';
+import { FooterComponent } from './components/ui-collection/footer/footer.component';
+import { GalleriaComponent } from './components/ui-collection/galleria/galleria.component';
 import {GalleriaModule} from 'primeng/galleria';
-import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
-import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
-import { WarningComponent } from './components/UI/warning/warning.component';
-import { FootballBetElementComponent } from './components/WagerComponents/football/football-bet-element/football-bet-element.component';
+import { FlipCardComponent } from './components/ui-collection/flip-card/flip-card.component';
+import { SkeletonLoadingComponent } from './components/ui-collection/skeleton-loading/skeleton-loading.component';
+import { WarningComponent } from './components/ui-collection/warning/warning.component';
+import { FootballBetElementComponent } from './components/bet-collection/football/football-bet-element/football-bet-element.component';
 import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
 import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
-import { NbaMatchesElementComponent } from './components/UI/Nba/nba-matches-element/nba-matches-element.component';
-import { NbaBetDialogComponent } from './components/UI/Nba/nba-bet-dialog/nba-bet-dialog.component';
-import { NbaSingleBetComponent } from './components/UI/Nba/nba-single-bet/nba-single-bet.component';
-import { LoginRegisterComponent } from './components/UI/login-register/login-register.component';
-import { BetFootballComponent } from './components/WagerComponents/football/bet-football/bet-football.component';
-import { BetNbaComponent } from './components/WagerComponents/basketball/bet-nba/bet-nba.component';
-import { NavigationNbaComponent } from './components/WagerComponents/basketball/navigation-nba/navigation-nba.component';
-import { NavigationFootballComponent } from './components/WagerComponents/football/navigation-football/navigation-football.component';
-import {FootballComponent} from './components/WagerComponents/football/football.component'
-import {BasketballComponent} from './components/WagerComponents/basketball/basketball.component'
+import { NbaMatchesElementComponent } from './components/bet-collection/Nba/nba-matches-element/nba-matches-element.component';
+import { NbaBetDialogComponent } from './components/bet-collection/Nba/nba-bet-dialog/nba-bet-dialog.component';
+import { NbaSingleBetComponent } from './components/bet-collection/Nba/nba-single-bet/nba-single-bet.component';
+import { LoginRegisterComponent } from './components/auth-collection/login-register/login-register.component';
+import { BetFootballComponent } from './components/bet-collection/football/bet-football/bet-football.component';
+import { BetNbaComponent } from './components/bet-collection/basketball/bet-nba/bet-nba.component';
+import { NavigationNbaComponent } from './components/bet-collection/basketball/navigation-nba/navigation-nba.component';
+import { NavigationFootballComponent } from './components/bet-collection/football/navigation-football/navigation-football.component';
+import {FootballComponent} from './components/bet-collection/football/football.component'
+import {BasketballComponent} from './components/bet-collection/basketball/basketball.component'
 import {SlideMenuModule} from 'primeng/slidemenu';
-import { LoadingScreenComponent } from './components/WagerComponents/UI/loading-screen/loading-screen.component';
+import { LoadingScreenComponent } from './components/ui-collection/loading-screen/loading-screen.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {KnobModule} from 'primeng/knob';
 import {TooltipModule} from 'primeng/tooltip';
@@ -116,7 +114,6 @@ import {TooltipModule} from 'primeng/tooltip';
     AppComponent,
     UserMenuComponent,
     WagerComponent,
-    RegisterComponent,
     ConfirmAccountComponent,
     ResetPasswordComponent,
     ResetPasswordFinalStepComponent,
@@ -131,7 +128,6 @@ import {TooltipModule} from 'primeng/tooltip';
     UserContainerComponent,
     ImageComponent,
     FootballComponent,
-    RootContainerComponent,
     FooterComponent,
     GalleriaComponent,
     FlipCardComponent,

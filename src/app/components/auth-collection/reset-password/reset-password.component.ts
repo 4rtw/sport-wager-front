@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../../../../shared/services/Auth/auth.service';
+import { AuthService } from '../../../shared/services/Auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Validator } from '../../../../../../shared/services/Utils/Validator';
+import { Validator } from '../../../shared/services/Utils/Validator';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css', '../style-password.css'],
+  styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);

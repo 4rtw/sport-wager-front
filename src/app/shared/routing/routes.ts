@@ -1,14 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
 import { WagerComponent } from '../../components/application/wager/wager.component';
 import { NgModule } from '@angular/core';
-import { ConfirmAccountComponent } from '../../components/application/userSpace/AnonymousUser/RegisterComponents/confirm-account/confirm-account.component';
-import { ResetPasswordComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
-import { VerifyResetCodeComponent } from '../../components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
-import { ResetPasswordFinalStepComponent } from '../../components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
+import { ConfirmAccountComponent } from '../../components/auth-collection/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from '../../components/auth-collection/reset-password/reset-password.component';
+import { VerifyResetCodeComponent } from '../../components/auth-collection/verify-reset-code/verify-reset-code.component';
+import { ResetPasswordFinalStepComponent } from '../../components/auth-collection/reset-password-final-step/reset-password-final-step.component';
 import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches.component';
 import { UserContainerComponent } from '../../components/application/userSpace/LoggedUser/user-container/user-container.component';
-import { FootballComponent } from '../../components/WagerComponents/football/football.component';
-import { LoginRegisterComponent } from '../../components/UI/login-register/login-register.component';
+import { FootballComponent } from '../../components/bet-collection/football/football.component';
+import { LoginRegisterComponent } from '../../components/auth-collection/login-register/login-register.component';
 
 const routes: Routes = [
   {
