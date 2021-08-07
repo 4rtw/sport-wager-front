@@ -5,10 +5,10 @@ import { ConfirmAccountComponent } from '../../components/auth-collection/confir
 import { ResetPasswordComponent } from '../../components/auth-collection/reset-password/reset-password.component';
 import { VerifyResetCodeComponent } from '../../components/auth-collection/verify-reset-code/verify-reset-code.component';
 import { ResetPasswordFinalStepComponent } from '../../components/auth-collection/reset-password-final-step/reset-password-final-step.component';
-import { NbaMatchesComponent } from '../../components/application/wager/Paris/nba/nba-matches.component';
 import { UserContainerComponent } from '../../components/user-collection/user-container/user-container.component';
 import { FootballComponent } from '../../components/bet-collection/football/football.component';
 import { LoginRegisterComponent } from '../../components/auth-collection/login-register/login-register.component';
+import { BasketballComponent } from 'src/app/components/bet-collection/basketball/basketball.component';
 
 const routes: Routes = [
   {
@@ -47,24 +47,29 @@ const routes: Routes = [
             component: FootballComponent,
           },
           {
-            path: 'nba',
-            component: NbaMatchesComponent,
-          },
-          {
             path: 'football',
             component: FootballComponent,
           },
+          { path: 'basketball', component: BasketballComponent },
         ],
       },
     ],
   },
+
+  {
+    path: 'basketball',
+    component: BasketballComponent,
+  },
   {
     path: '',
-    component: FootballComponent,
     children: [
       {
+        path: '',
+        component: FootballComponent,
+      },
+      {
         path: 'nba',
-        component: NbaMatchesComponent,
+        component: BasketballComponent,
       },
       {
         path: 'football',

@@ -58,7 +58,6 @@ import { ResetPasswordComponent } from './components/auth-collection/reset-passw
 import { ResetPasswordFinalStepComponent } from './components/auth-collection/reset-password-final-step/reset-password-final-step.component';
 import { VerifyResetCodeComponent } from './components/auth-collection/verify-reset-code/verify-reset-code.component';
 import { TopbarComponent } from './components/ui-collection/topbar/topbar.component';
-import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches.component';
 import { ProfileComponent } from './components/user-collection/profile/profile.component';
 import { PanierComponent } from './components/bet-collection/panier/panier.component';
 import { VideoComponent } from './components/ui-collection/video/video.component';
@@ -90,9 +89,6 @@ import { StatisticComponent } from './components/application/wager/statistic/sta
 import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
-import { NbaMatchesElementComponent } from './components/bet-collection/Nba/nba-matches-element/nba-matches-element.component';
-import { NbaBetDialogComponent } from './components/bet-collection/Nba/nba-bet-dialog/nba-bet-dialog.component';
-import { NbaSingleBetComponent } from './components/bet-collection/Nba/nba-single-bet/nba-single-bet.component';
 import { LoginRegisterComponent } from './components/auth-collection/login-register/login-register.component';
 import { BetFootballComponent } from './components/bet-collection/football/bet-football/bet-football.component';
 import { BetNbaComponent } from './components/bet-collection/basketball/bet-nba/bet-nba.component';
@@ -105,6 +101,7 @@ import { LoadingScreenComponent } from './components/ui-collection/loading-scree
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { KnobModule } from 'primeng/knob';
 import { TooltipModule } from 'primeng/tooltip';
+import { BasketballBetElementComponent } from './components/bet-collection/basketball/basketball-bet-element/basketball-bet-element.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +112,6 @@ import { TooltipModule } from 'primeng/tooltip';
     ResetPasswordFinalStepComponent,
     VerifyResetCodeComponent,
     TopbarComponent,
-    NbaMatchesComponent,
     ProfileComponent,
     PanierComponent,
     VideoComponent,
@@ -131,9 +127,6 @@ import { TooltipModule } from 'primeng/tooltip';
     CountryListComponent,
     CompetitionListComponent,
     FootballBetElementComponent,
-    NbaMatchesElementComponent,
-    NbaBetDialogComponent,
-    NbaSingleBetComponent,
     LoginRegisterComponent,
     BasketballComponent,
     BetFootballComponent,
@@ -141,6 +134,7 @@ import { TooltipModule } from 'primeng/tooltip';
     NavigationNbaComponent,
     NavigationFootballComponent,
     LoadingScreenComponent,
+    BasketballBetElementComponent,
   ],
   imports: [
     AppRoutingModule,

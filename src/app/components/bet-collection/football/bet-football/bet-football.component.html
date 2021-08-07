@@ -1,46 +1,65 @@
 <div class="custom-card grid flex justify-content-center">
+  <div class="col-12 h2 text-center">Matches</div>
 
-    <div class="col-12 h2 text-center">Matches</div>
-
-    <div class="col-12 flex justify-content-around mb-2">
-        <div *ngIf="range; else single">
-            <p-calendar selectionMode="range" #calendarRange [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="rangeDate"
-                        (onSelect)="getMatches()" inputId="basic"></p-calendar>
-        </div>
-        <ng-template #single>
-            <p-calendar #calendarSingle [disabledDates]="[date]" [dateFormat]="'dd M yy'" [showIcon]="true" [(ngModel)]="date"
-                        (onSelect)="getMatches()" inputId="basic"></p-calendar>
-        </ng-template>
+  <div class="col-12 flex justify-content-around mb-2">
+    <div *ngIf="range; else single">
+      <p-calendar
+        selectionMode="range"
+        #calendarRange
+        [dateFormat]="'dd M yy'"
+        [showIcon]="true"
+        [(ngModel)]="rangeDate"
+        (onSelect)="getMatches()"
+        inputId="basic"
+      ></p-calendar>
     </div>
+    <ng-template #single>
+      <p-calendar
+        #calendarSingle
+        [disabledDates]="[date]"
+        [dateFormat]="'dd M yy'"
+        [showIcon]="true"
+        [(ngModel)]="date"
+        (onSelect)="getMatches()"
+        inputId="basic"
+      ></p-calendar>
+    </ng-template>
+  </div>
 
-    <div class="col grid">
-        <div class="col">
-            Date
-        </div>
-        <div class="col">
-            <p-inputSwitch #inputSwitch (onChange)="getMatches()" [(ngModel)]="range"></p-inputSwitch>
-        </div>
-        <div class="col">
-            Période
-        </div>
+  <div class="col grid">
+    <div class="col">Date</div>
+    <div class="col">
+      <p-inputSwitch
+        #inputSwitch
+        (onChange)="getMatches()"
+        [(ngModel)]="range"
+      ></p-inputSwitch>
     </div>
+    <div class="col">Période</div>
+  </div>
 
-    <div class="col-12 p-1 bg-transparent">
-        <cdk-virtual-scroll-viewport [itemSize]="5" style="height: 500px">
-            <div *ngIf="matches|async as matches; else loading;" >
-                <div *ngIf="matches.length === 0" class="text-center custom-card">
-                    Il n'y a aucun match pour le jour, essayez une autre date.
-                </div>
+  <div class="col-12 p-1 bg-transparent">
+    <cdk-virtual-scroll-viewport [itemSize]="5" style="height: 500px">
+      <div *ngIf="matches | async as matches; else loading">
+        <div *ngIf="matches.length === 0" class="text-center custom-card">
+          Il n'y a aucun match pour le jour, essayez une autre date.
+        </div>
 
-                <div *cdkVirtualFor="let match of matches" class="block content">
-                    <app-football-bet-element [match]="match"></app-football-bet-element>
-                </div>
-            </div>
-            <ng-template #loading>
-                <div class="grid">
-                    <div *ngFor="let i of [1,2,3]" class="col-12"><p-skeleton width="100%" height="4rem" borderRadius="16px"></p-skeleton></div>
-                </div>
-            </ng-template>
-        </cdk-virtual-scroll-viewport>
-    </div>
+        <div *cdkVirtualFor="let match of matches" class="block content">
+          <app-football-bet-element [match]="match"></app-football-bet-element>
+        </div>
+      </div>
+      <ng-template #loading>
+        <div class="grid">
+          <div *ngFor="let i of [1, 2, 3]" class="col-12">
+            <p-skeleton
+              width="100%"
+              height="4rem"
+              borderRadius="16px"
+            ></p-skeleton>
+          </div>
+        </div>
+      </ng-template>
+    </cdk-virtual-scroll-viewport>
+  </div>
 </div>

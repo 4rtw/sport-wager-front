@@ -52,7 +52,7 @@ export class ResetPasswordFinalStepComponent implements OnInit {
         (_) => {
           // TODO handle errors
           this.router
-            .navigate(['/account/register'], { queryParams: { email: this.form.controls.email.value } })
+            .navigate(['/register'], { queryParams: { email: this.form.controls.email.value } })
             .then(() => location.reload());
         },
         (_) => {}

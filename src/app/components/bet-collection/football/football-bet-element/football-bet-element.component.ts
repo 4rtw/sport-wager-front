@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CustomDate } from '../../../../shared/services/Utils/DateOperator';
 import { MatchService } from '../../../../shared/services/Football/match.service';
 import { FootballGames } from '../../../../shared/model/Foot/foot';
@@ -36,7 +36,6 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
     public customDate: CustomDate,
     private matchService: MatchService,
     private teamService: TeamsService,
-    private dialogService: DialogService,
     private betService: BetService,
     private route: Router,
     private activatedRoute: ActivatedRoute
@@ -58,12 +57,12 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
             this.competitionID = '2002';
           }
         }
-        this.setMatch();
+        this.setTeams();
       })
     );
   }
 
-  setMatch(): void {
+  /*setMatch(): void {
     if (!this.match) {
       this.matchService
         .getMatche(this.match.id, this.competitionID)
@@ -74,7 +73,7 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
     } else {
       this.setTeams();
     }
-  }
+  }*/
 
   private setTeams() {
     this.getHomeTeamDetails = this.teamService.getTeamDetails(

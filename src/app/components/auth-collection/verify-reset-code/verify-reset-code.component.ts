@@ -43,7 +43,7 @@ export class VerifyResetCodeComponent implements OnInit {
       .subscribe(
         (_) => {
           this.router
-            .navigate(['/account/set-password'], {
+            .navigate(['/set-password'], {
               queryParams: { email: this.email.value },
             })
             .then(() => {
@@ -52,7 +52,7 @@ export class VerifyResetCodeComponent implements OnInit {
         },
         (_) => {
           this.router
-            .navigate(['/account/verify-reset-code'], {
+            .navigate(['/verify-reset-code'], {
               queryParams: { error: 'true', email: this.email.value },
             })
             .then(() => {

@@ -59,6 +59,9 @@ export class TopbarComponent implements OnInit {
       {
         label: 'Résultats',
       },
+      {
+        label: 'BET Points',
+      },
     ];
   }
 
