@@ -1,11 +1,23 @@
 .page-container {
-  background: url("../assets/images/page-background.jpg") no-repeat fixed;
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: url('../assets/images/page-background.jpg') fixed;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
 .content {
+  width: 1280px;
+  padding: 0;
+}
+
+.page-container .content {
   margin: auto;
-  width: 50%;
-  border: 3px solid green;
+}
+
+.center {
+  margin: auto;
   padding: 10px;
 }

@@ -1,0 +1,29 @@
+footer{
+    background: #87222a;
+}
+
+.container{
+    padding-top: 50px;
+}
+
+ul{
+    padding-left: 0;
+}
+
+li{
+    list-style: none;
+}
+
+.title{
+    color: white;
+}
+
+a{
+    color:white;
+}
+
+a:hover{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}

@@ -1,6 +1,23 @@
 <div class="page-container">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <router-outlet></router-outlet>
+  <app-warning></app-warning>
+  <app-topbar></app-topbar>
+  <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <div class="content">
+    <p-toast position="bottom-left"></p-toast>
+    <div class="center">
+      <!--app-galleria *ngIf="show"></app-galleria-->
+      <div class="mt-8">
+        <router-outlet></router-outlet>
+      </div>
+      <app-flip-card></app-flip-card>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
 </div>

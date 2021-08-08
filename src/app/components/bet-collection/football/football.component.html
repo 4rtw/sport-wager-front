@@ -1,0 +1,19 @@
+<div class="grid">
+  <div class="col">
+    <app-navigation-football></app-navigation-football>
+    <div *ngIf="user | async">
+      <app-galleria></app-galleria>
+      <app-video></app-video>
+    </div>
+  </div>
+  <div class="col" style="z-index: 100">
+    <app-bet-football></app-bet-football>
+  </div>
+  <div class="col" style="z-index: 0">
+    <app-panier *ngIf="user | async"></app-panier>
+    <div *ngIf="!(user | async)">
+      <app-galleria></app-galleria>
+      <app-video></app-video>
+    </div>
+  </div>
+</div>

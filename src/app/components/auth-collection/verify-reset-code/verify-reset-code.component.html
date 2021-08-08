@@ -1,0 +1,39 @@
+<div class="grid">
+  <div class="col flex justify-content-center">
+    <div class="container">
+      <form ngForm (submit)="onSubmit()">
+        <!--[formGroup]="confirmationForm"-->
+
+        <div class="h3">Vérification de l'adresse e-mail</div>
+        <div>Veuillez entrer le code que vous avez reçu par e-mail.</div>
+
+        <input
+                [formControl]="email"
+                disabled
+                autocomplete=""
+                placeholder="Pat@example.com"
+                required
+        />
+
+        <mat-error *ngIf="email.invalid && email.dirty" style="color: #cf021b">{{
+          getErrorMessage(email)
+          }}</mat-error>
+
+        <input
+                placeholder=""
+                [formControl]="code"
+                required
+                autocomplete=""
+        />
+        <mat-error style="color: #cf021b" *ngIf="code.invalid && code.dirty">{{
+          getErrorMessage(code)
+          }}</mat-error>
+
+        <div class="p-text-center" style="color: red">
+          {{ error }}
+        </div>
+        <button pButton [disabled]="!email.valid">Réinitialiser le mot de passe</button>
+      </form>
+    </div>
+  </div>
+</div>

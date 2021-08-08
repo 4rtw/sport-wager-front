@@ -52,30 +52,22 @@ import { AppRoutingModule } from './shared/routing/routes';
 
 /*Components*/
 import { AppComponent } from './app.component';
-import { UserMenuComponent } from './components/UI/user-menu/user-menu.component';
-import { WagerComponent } from './components/application/wager/wager.component';
-import { RegisterComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/register/register.component';
-import { ConfirmAccountComponent } from './components/application/userSpace/AnonymousUser/RegisterComponents/confirm-account/confirm-account.component';
-import { ResetPasswordComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password/reset-password.component';
-import { ResetPasswordFinalStepComponent } from './components/application/userSpace/AnonymousUser/Password/reset-password-final-step/reset-password-final-step.component';
-import { VerifyResetCodeComponent } from './components/application/userSpace/AnonymousUser/Password/verify-reset-code/verify-reset-code.component';
-import { TopbarComponent } from './components/UI/topbar/topbar.component';
-import { AccountMenuComponent } from './components/UI/user-menu/account-menu/account-menu.component';
-import { AnonymousUserMenuComponent } from './components/UI/user-menu/anonymous-user-menu/anonymous-user-menu.component';
-import { NbaMatchesComponent } from './components/application/wager/Paris/nba/nba-matches.component';
-import { ProfileComponent } from './components/application/userSpace/LoggedUser/user-container/profile/profile.component';
-import { PanierComponent } from './components/WagerComponents/panier/panier.component';
-import { VideoComponent } from './components/UI/video/video.component';
-import { UserContainerComponent } from './components/application/userSpace/LoggedUser/user-container/user-container.component';
-import { ImageComponent } from './components/application/userSpace/LoggedUser/user-container/image/image.component';
-import { RootContainerComponent } from './components/root-container/root-container.component';
+import { ConfirmAccountComponent } from './components/auth-collection/confirm-account/confirm-account.component';
+import { ResetPasswordComponent } from './components/auth-collection/reset-password/reset-password.component';
+import { ResetPasswordFinalStepComponent } from './components/auth-collection/reset-password-final-step/reset-password-final-step.component';
+import { VerifyResetCodeComponent } from './components/auth-collection/verify-reset-code/verify-reset-code.component';
+import { TopbarComponent } from './components/ui-collection/topbar/topbar.component';
+import { ProfileComponent } from './components/user-collection/profile/profile.component';
+import { PanierComponent } from './components/bet-collection/panier/panier.component';
+import { VideoComponent } from './components/ui-collection/video/video.component';
+import { UserContainerComponent } from './components/user-collection/user-container/user-container.component';
+import { ImageComponent } from './components/user-collection/image/image.component';
 
 /*Others*/
 import { FileUploadModule } from 'ng2-file-upload';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { CookieModule } from 'ngx-cookie';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {
   CloudinaryModule,
@@ -85,68 +77,54 @@ import { Cloudinary } from 'cloudinary-core';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { FooterComponent } from './components/UI/footer/footer.component';
-import { GalleriaComponent } from './components/UI/galleria/galleria.component';
-import {GalleriaModule} from 'primeng/galleria';
-import { FlipCardComponent } from './components/UI/flip-card/flip-card.component';
-import { SkeletonLoadingComponent } from './components/UI/skeleton-loading/skeleton-loading.component';
-import { WarningComponent } from './components/UI/warning/warning.component';
-import { NavigationsComponent } from './components/UI/navigations/navigations.component';
-import { FootballBetElementComponent } from './components/WagerComponents/football/football-bet-element/football-bet-element.component';
-import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
-import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
+import { FooterComponent } from './components/ui-collection/footer/footer.component';
+import { GalleriaComponent } from './components/ui-collection/galleria/galleria.component';
+import { GalleriaModule } from 'primeng/galleria';
+import { FlipCardComponent } from './components/ui-collection/flip-card/flip-card.component';
+import { SkeletonLoadingComponent } from './components/ui-collection/skeleton-loading/skeleton-loading.component';
+import { WarningComponent } from './components/ui-collection/warning/warning.component';
+import { FootballBetElementComponent } from './components/bet-collection/football/football-bet-element/football-bet-element.component';
+import { StatisticComponent } from './components/application/statistic/statistic.component';
+import { CountryListComponent } from './components/application/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
-import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
-import { NbaMatchesElementComponent } from './components/UI/Nba/nba-matches-element/nba-matches-element.component';
-import { NbaBetDialogComponent } from './components/UI/Nba/nba-bet-dialog/nba-bet-dialog.component';
-import { NbaSingleBetComponent } from './components/UI/Nba/nba-single-bet/nba-single-bet.component';
-import { LoginRegisterComponent } from './components/UI/login-register/login-register.component';
-import { BetFootballComponent } from './components/WagerComponents/football/bet-football/bet-football.component';
-import { BetNbaComponent } from './components/WagerComponents/basketball/bet-nba/bet-nba.component';
-import { NavigationNbaComponent } from './components/WagerComponents/basketball/navigation-nba/navigation-nba.component';
-import { NavigationFootballComponent } from './components/WagerComponents/football/navigation-football/navigation-football.component';
-import {FootballComponent} from './components/WagerComponents/football/football.component'
-import {BasketballComponent} from './components/WagerComponents/basketball/basketball.component'
-import {SlideMenuModule} from 'primeng/slidemenu';
-import { LoadingScreenComponent } from './components/WagerComponents/UI/loading-screen/loading-screen.component';
-import {InputSwitchModule} from 'primeng/inputswitch';
-import {KnobModule} from 'primeng/knob';
-import {TooltipModule} from 'primeng/tooltip';
+import { CompetitionListComponent } from './components/application/statistic/competition-list/competition-list.component';
+import { LoginRegisterComponent } from './components/auth-collection/login-register/login-register.component';
+import { BetFootballComponent } from './components/bet-collection/football/bet-football/bet-football.component';
+import { BetNbaComponent } from './components/bet-collection/basketball/bet-nba/bet-nba.component';
+import { NavigationNbaComponent } from './components/bet-collection/basketball/navigation-nba/navigation-nba.component';
+import { NavigationFootballComponent } from './components/bet-collection/football/navigation-football/navigation-football.component';
+import { FootballComponent } from './components/bet-collection/football/football.component';
+import { BasketballComponent } from './components/bet-collection/basketball/basketball.component';
+import { SlideMenuModule } from 'primeng/slidemenu';
+import { LoadingScreenComponent } from './components/ui-collection/loading-screen/loading-screen.component';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { KnobModule } from 'primeng/knob';
+import { TooltipModule } from 'primeng/tooltip';
+import { BasketballBetElementComponent } from './components/bet-collection/basketball/basketball-bet-element/basketball-bet-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserMenuComponent,
-    WagerComponent,
-    RegisterComponent,
     ConfirmAccountComponent,
     ResetPasswordComponent,
     ResetPasswordFinalStepComponent,
     VerifyResetCodeComponent,
     TopbarComponent,
-    AccountMenuComponent,
-    AnonymousUserMenuComponent,
-    NbaMatchesComponent,
     ProfileComponent,
     PanierComponent,
     VideoComponent,
     UserContainerComponent,
     ImageComponent,
     FootballComponent,
-    RootContainerComponent,
     FooterComponent,
     GalleriaComponent,
     FlipCardComponent,
     SkeletonLoadingComponent,
     WarningComponent,
-    NavigationsComponent,
     StatisticComponent,
     CountryListComponent,
     CompetitionListComponent,
     FootballBetElementComponent,
-    NbaMatchesElementComponent,
-    NbaBetDialogComponent,
-    NbaSingleBetComponent,
     LoginRegisterComponent,
     BasketballComponent,
     BetFootballComponent,
@@ -154,78 +132,78 @@ import {TooltipModule} from 'primeng/tooltip';
     NavigationNbaComponent,
     NavigationFootballComponent,
     LoadingScreenComponent,
+    BasketballBetElementComponent,
   ],
-    imports: [
-        AppRoutingModule,
-        FontAwesomeModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ButtonModule,
-        InputNumberModule,
-        PasswordModule,
-        ScrollPanelModule,
-        BadgeModule,
-        CardModule,
-        PanelModule,
-        GalleriaModule,
-        DividerModule,
-        VirtualScrollerModule,
-        AvatarModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatListModule,
-        MatCardModule,
-        MatMenuModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatRippleModule,
-        BrowserModule,
-        OrderListModule,
-        HttpClientModule,
-        MenuModule,
-        MenubarModule,
-        TieredMenuModule,
-        DropdownModule,
-        RippleModule,
-        InputTextModule,
-        MatButtonModule,
-        MatInputModule,
-        MatProgressSpinnerModule,
-        SelectButtonModule,
-        SplitButtonModule,
-        ToastModule,
-        ProgressSpinnerModule,
-        MatDialogModule,
-        TagModule,
-        SkeletonModule,
-        CalendarModule,
-        FileUploadModule,
-        MessageModule,
-        MessagesModule,
-        AccordionModule,
-        DynamicDialogModule,
-        CloudinaryModule.forRoot({Cloudinary}, {
-            cloud_name: 'dy528ddbe',
-        } as CloudinaryConfiguration),
-        CookieModule.forRoot(),
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: localStorage.getItem('token')?.toString || null,
-                allowedDomains: ['*'],
-                disallowedRoutes: [''],
-            },
-        }),
-        ToolbarModule,
-        OverlayPanelModule,
-        TableModule,
-        CarouselModule,
-        SlideMenuModule,
-        InputSwitchModule,
-        KnobModule,
-        TooltipModule,
-    ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ButtonModule,
+    InputNumberModule,
+    PasswordModule,
+    ScrollPanelModule,
+    BadgeModule,
+    CardModule,
+    PanelModule,
+    GalleriaModule,
+    DividerModule,
+    VirtualScrollerModule,
+    AvatarModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatRippleModule,
+    BrowserModule,
+    OrderListModule,
+    HttpClientModule,
+    MenuModule,
+    MenubarModule,
+    TieredMenuModule,
+    DropdownModule,
+    RippleModule,
+    InputTextModule,
+    MatButtonModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    SelectButtonModule,
+    SplitButtonModule,
+    ToastModule,
+    ProgressSpinnerModule,
+    MatDialogModule,
+    TagModule,
+    SkeletonModule,
+    CalendarModule,
+    FileUploadModule,
+    MessageModule,
+    MessagesModule,
+    AccordionModule,
+    DynamicDialogModule,
+    CloudinaryModule.forRoot({ Cloudinary }, {
+      cloud_name: 'dy528ddbe',
+    } as CloudinaryConfiguration),
+    CookieModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: localStorage.getItem('token')?.toString || null,
+        allowedDomains: ['*'],
+        disallowedRoutes: [''],
+      },
+    }),
+    ToolbarModule,
+    OverlayPanelModule,
+    TableModule,
+    CarouselModule,
+    SlideMenuModule,
+    InputSwitchModule,
+    KnobModule,
+    TooltipModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

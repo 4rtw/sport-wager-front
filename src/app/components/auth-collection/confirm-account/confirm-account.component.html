@@ -1,0 +1,25 @@
+<div class="grid">
+  <div class="col flex justify-content-center">
+    <div class="container">
+      <form ngForm
+            [formGroup]="confirmationForm"
+            (submit)="onSubmit()">
+        <div class="h3">Confirmation du compte</div>
+
+        <div>Veuillez entrer le code d'activation que vous avez reçu par email.</div>
+
+        <input
+                placeholder="pat@exemple.com"
+                formControlName="email"
+                required
+                autocomplete=""
+        />
+        <input formControlName="code" required autocomplete="" />
+        <div class="p-text-center" style="color: red">
+          {{ error }}
+        </div>
+        <button pButton [disabled]="!confirmationForm.valid">CONFIRMER LE COMPTE</button>
+      </form>
+    </div>
+  </div>
+</div>

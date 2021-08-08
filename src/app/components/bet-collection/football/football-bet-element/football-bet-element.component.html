@@ -1,0 +1,142 @@
+<div *ngIf="match" class="custom-card mb-2">
+  <div class="grid justify-content-center mt-2">
+    <div class="col flex justify-content-center">
+      <span>{{ customDate.getDateTime(match?.utcDate, 'time') }}</span>
+    </div>
+    <div class="col flex justify-content-center">
+      <div class="custom-tag">{{ match?.status }}</div>
+    </div>
+    <div class="col flex justify-content-center">
+      <span>{{ customDate.getDateTime(match?.utcDate, 'date') }}</span>
+    </div>
+  </div>
+
+  <div class="grid flex justify-content-center">
+    <div
+      class="col-4 flex align-items-center justify-content-start"
+      *ngIf="getHomeTeamDetails | async; else unknown"
+    >
+      <img
+        alt="{{ (getHomeTeamDetails | async)?.name }}"
+        src="{{ (getHomeTeamDetails | async)?.crestUrl }}"
+        class="team-img"
+      />
+    </div>
+    <div class="col-2 flex align-items-center justify-content-start">
+      {{ (getHomeTeamDetails | async)?.tla }}
+    </div>
+
+    <div class="col-2 flex align-items-center justify-content-start">
+      {{ (getAwayTeamDetails | async)?.tla }}
+    </div>
+    <div
+      class="col-4 flex align-items-center justify-content-start"
+      *ngIf="getAwayTeamDetails | async; else unknown"
+    >
+      <img
+        alt="{{ (getAwayTeamDetails | async)?.name }}"
+        src="{{ (getAwayTeamDetails | async)?.crestUrl }}"
+        class="team-img"
+      />
+    </div>
+    <div class="col-4"></div>
+    <div class="col-2">
+      <p-tag
+        pTooltip="{{ match.score.extraTime.homeTeam || 0 }} ({{
+          match.score.penalties.homeTeam || 0
+        }})"
+        tooltipPosition="left"
+        >{{ match.score.fulltime.homeTeam || 0 }}</p-tag
+      >
+    </div>
+    <div class="col-2">
+      <p-tag
+        pTooltip="{{ match.score.extraTime.awayTeam || 0 }} ({{
+          match.score.penalties.awayTeam || 0
+        }})"
+        tooltipPosition="right"
+        >{{ match.score.fulltime.awayTeam || 0 }}</p-tag
+      >
+    </div>
+    <div class="col-4"></div>
+
+    <ng-template #unknown>
+      <div class="grid">
+        <div class="col"><p-skeleton shape="circle"></p-skeleton></div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="grid mt-2" *ngIf="match?.odds?.homeWin; else notOpen">
+    <div class="col flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        class="p-fluid"
+        [disabled]="choiceDictionnary?.home"
+        label="{{ match?.odds.homeWin?.toFixed(2) }}"
+        (click)="clickOneOption('1', match?.odds.homeWin)"
+      ></button>
+    </div>
+    <div class="col flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        class="p-fluid"
+        [disabled]="choiceDictionnary?.draw"
+        label="{{ match?.odds.draw?.toFixed(2) }}"
+        (click)="clickOneOption('X', match?.odds.draw)"
+      ></button>
+    </div>
+    <div class="col flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        class="p-fluid"
+        [disabled]="choiceDictionnary?.away"
+        label="{{ match?.odds.awayWin?.toFixed(2) }}"
+        (click)="clickOneOption('2', match?.odds.awayWin)"
+      ></button>
+    </div>
+  </div>
+  <ng-template #notOpen>
+    <div class="text-center text-300 text-white bg-orange-400">
+      Les paris ne sont pas encore ouvertes
+    </div>
+  </ng-template>
+</div>
+
+<div class="col-12 custom-card mb-3" *ngIf="betting">
+  <div class="grid p-fluid">
+    <div class="col">
+      <p-inputNumber
+        placeholder="0.00"
+        [(ngModel)]="betNumber"
+        [showButtons]="true"
+        id="betNumber"
+        inputId="betNumber"
+        suffix=" BET"
+        [min]="0"
+        [step]="0.5"
+      ></p-inputNumber>
+    </div>
+
+    <div class="col">
+      <div class="flex justify-content-evenly">
+        <button
+          pButton
+          pRipple
+          icon="pi pi-check"
+          class="p-button-rounded"
+          (click)="postBetting()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-times"
+          class="p-button-rounded p-button-danger"
+          (click)="reset()"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

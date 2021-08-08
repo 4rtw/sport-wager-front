@@ -1,0 +1,94 @@
+<div *ngIf="match" class="custom-card mb-2">
+  <div class="grid justify-content-center mt-2">
+    <div class="col flex justify-content-center">
+      <span>{{ customDate.getDateTime(match?.DateTime, 'time') }}</span>
+    </div>
+    <div class="col flex justify-content-center">
+      <div class="custom-tag">{{ match?.Status }}</div>
+    </div>
+    <div class="col flex justify-content-center">
+      <span>{{ customDate.getDateTime(match?.Day, 'date') }}</span>
+    </div>
+  </div>
+
+  <div class="grid flex justify-content-center">
+    <div class="col text-center">
+      <p-tag *ngIf="match.HomeTeamScore">{{ match.HomeTeamScore }}</p-tag>
+      {{ match.HomeTeam }}
+    </div>
+
+    <div class="col text-center">
+      {{ match.AwayTeam }}
+      <p-tag *ngIf="match.AwayTeamScore">{{ match.AwayTeamScore }}</p-tag>
+    </div>
+
+    <ng-template #unknown>
+      <div class="grid">
+        <div class="col"><p-skeleton shape="circle"></p-skeleton></div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="grid mt-2" *ngIf="match?.odds?.homeWin; else notOpen">
+    <div class="col flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        class="p-fluid"
+        [disabled]="choiceDictionnary?.home"
+        label="{{ match?.HomeTeamMoneyLine?.toFixed(2) }}"
+        (click)="clickOneOption('1', match?.odds.homeWin)"
+      ></button>
+    </div>
+    <div class="col flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        class="p-fluid"
+        [disabled]="choiceDictionnary?.away"
+        label="{{ match?.AwayTeamMoneyLine?.toFixed(2) }}"
+        (click)="clickOneOption('2', match?.odds.awayWin)"
+      ></button>
+    </div>
+  </div>
+  <ng-template #notOpen>
+    <div class="text-center text-300 text-white bg-orange-400">
+      Les paris ne sont pas encore ouvertes
+    </div>
+  </ng-template>
+</div>
+
+<div class="col-12 custom-card mb-3" *ngIf="betting">
+  <div class="grid p-fluid">
+    <div class="col">
+      <p-inputNumber
+        placeholder="0.00"
+        [(ngModel)]="betNumber"
+        [showButtons]="true"
+        id="betNumber"
+        inputId="betNumber"
+        suffix=" BET"
+        [min]="0"
+        [step]="0.5"
+      ></p-inputNumber>
+    </div>
+
+    <div class="col">
+      <div class="flex justify-content-evenly">
+        <button
+          pButton
+          pRipple
+          icon="pi pi-check"
+          class="p-button-rounded"
+          (click)="postBetting()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-times"
+          class="p-button-rounded p-button-danger"
+          (click)="reset()"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
