@@ -2,20 +2,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatRippleModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDialogModule } from '@angular/material/dialog';
 
 /*Primeng*/
 import { TagModule } from 'primeng/tag';
@@ -107,6 +95,9 @@ import { MyBetsComponent } from './components/application/my-bets/my-bets.compon
 import { MatchListComponent } from './components/application/statistic/nba/match-list/match-list.component';
 import { FootballMatchesListComponent } from './components/application/statistic/football/football-matches-list/football-matches-list.component';
 import { NavigationFootballStatsComponent } from './components/application/statistic/football/navigation-football-stats/navigation-football-stats.component';
+import { ChartModule } from 'angular2-chartjs';
+import { NbaStatOneComponent } from './components/application/statistic/nba/nba-stat-one/nba-stat-one.component';
+import { NbaStatTwoComponent } from './components/application/statistic/nba/nba-stat-two/nba-stat-two.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +136,8 @@ import { NavigationFootballStatsComponent } from './components/application/stati
     MatchListComponent,
     FootballMatchesListComponent,
     NavigationFootballStatsComponent,
+    NbaStatOneComponent,
+    NbaStatTwoComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -163,14 +156,6 @@ import { NavigationFootballStatsComponent } from './components/application/stati
     VirtualScrollerModule,
     AvatarModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatRippleModule,
     BrowserModule,
     OrderListModule,
     HttpClientModule,
@@ -180,14 +165,10 @@ import { NavigationFootballStatsComponent } from './components/application/stati
     DropdownModule,
     RippleModule,
     InputTextModule,
-    MatButtonModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
     SelectButtonModule,
     SplitButtonModule,
     ToastModule,
     ProgressSpinnerModule,
-    MatDialogModule,
     TagModule,
     SkeletonModule,
     CalendarModule,
@@ -196,6 +177,7 @@ import { NavigationFootballStatsComponent } from './components/application/stati
     MessagesModule,
     AccordionModule,
     DynamicDialogModule,
+    ChartModule,
     CloudinaryModule.forRoot({Cloudinary}, {
       cloud_name: 'dy528ddbe',
     } as CloudinaryConfiguration),

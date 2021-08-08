@@ -1,21 +1,17 @@
-<div class="custom-card grid flex justify-content-center menu">
-    <div *ngIf="(matches)">
-        <div class="grid">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-        Nombre total de matches: <div>{{matches.length}}</div>
-        Scheduled : <div>{{scheduled}}</div>
-        Canceled: <div>{{canceled}}</div>
-        Final: <div>{{final}}</div>
-        Hightest Home: <div>{{hightestOddsHome.odds}} gameID: {{hightestOddsHome.gameID}}</div>
-        Hightest Away: <div>{{hightestOddsAway.odds}} gameID: {{hightestOddsAway.gameID}}</div>
-        Closed: <div>{{betting.closed}}</div>
-        Open: <div>{{betting.open}}</div>
+<div class="custom-card bg-white mb-4">
+    <chart type="horizontalBar" [data]="data"></chart>
+</div>
 
-        <div *ngFor="let participation of participationTable">
-            <div>{{participation.team}} {{participation.participation}}</div>
+
+<div class="grid mt-4">
+    <div class="col-6 mb-4">
+        <div class="custom-card bg-white mr-1">
+            <app-nba-stat-one [data]="dataOne"></app-nba-stat-one>
+        </div>
+    </div>
+    <div class="col-6 mb-4">
+        <div class="custom-card bg-white ml-1">
+            <app-nba-stat-two [data]="dataTwo"></app-nba-stat-two>
         </div>
     </div>
 </div>

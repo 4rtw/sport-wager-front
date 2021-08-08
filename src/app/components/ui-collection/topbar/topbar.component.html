@@ -6,7 +6,7 @@
   </ng-template>
   <ng-template pTemplate="end">
     <div class="mr-3" style="display: flex; flex-direction: row">
-      <div *ngIf="!(user | async); else userLoggedIn">
+      <div *ngIf="!(user|async); else userLoggedIn">
         <button
           routerLink="/register"
           pButton

@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NbaService} from '../../../../../shared/services/Basketball/nba.service';
 import {NbaGame} from '../../../../../shared/model/Basket/nba-game';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {colors} from '../../../../../shared/services/Utils/color-operator'
 
 @Component({
   selector: 'app-match-list',
@@ -11,8 +12,6 @@ import {Subscription} from 'rxjs/internal/Subscription';
 export class MatchListComponent implements OnInit, OnDestroy {
 
   matches: NbaGame[];
-  hightestOddsHome: {odds: number, gameID: number};
-  hightestOddsAway: {odds: number, gameID: number};
   scheduled: number = 0;
   final: number = 0;
   canceled: number = 0;
@@ -20,9 +19,13 @@ export class MatchListComponent implements OnInit, OnDestroy {
   teams: {participation: number, team: string}[] = [];
   participationTable: {team:string, participation: number}[] = [];
   getTeams: any[] = [];
+  data: any;
+  dataOne: any;
+  dataTwo: any;
   sub: Subscription;
 
-  constructor(private nbaMatchesService: NbaService) { }
+  constructor(private nbaMatchesService: NbaService) {
+  }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
@@ -31,46 +34,34 @@ export class MatchListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub = this.nbaMatchesService.getAllMatches().subscribe(data => {
       this.matches = data;
-      this.setOdds();
       this.setStatus();
       this.setOpenOrClosed();
       this.setTeamsParticipation();
+      this.setData();
+      this.setDataOne();
+      this.setDataTwo();
     });
   }
 
-  setOdds(): void{
-    this.setHighestHome();
-    this.setHighestAway();
-  }
+  setData(): void{
+    const teams: any[] = [];
+    const participations: any[] = [];
 
-  setHighestHome():void{
-    let odds: number = 0;
-    let matchID: number = 0
-    for(const match of this.matches){
-      if (match.HomeTeamMoneyLine>odds){
-        odds = match.HomeTeamMoneyLine;
-        matchID = match.GameID;
-      }
+    for(const item of this.participationTable){
+      teams.push(item.team);
+      participations.push(item.participation);
     }
-    this.hightestOddsHome = {
-      odds: odds,
-      gameID: matchID,
-    }
-  }
 
-  setHighestAway():void{
-    let odds: number = 0;
-    let matchID: number = 0
-    for(const match of this.matches){
-      if (match.AwayTeamMoneyLine>odds){
-        odds = match.AwayTeamMoneyLine;
-        matchID = match.GameID;
-      }
-    }
-    this.hightestOddsAway = {
-      odds: odds,
-      gameID: matchID,
-    }
+    this.data = {
+      labels: teams,
+      datasets: [
+        {
+          data: participations,
+          backgroundColor: colors(),
+          borderColor: colors(),
+        }
+      ]
+    };
   }
 
   setStatus(): void{
@@ -113,6 +104,31 @@ export class MatchListComponent implements OnInit, OnDestroy {
 
     for(const team of this.getTeams){
       this.participationTable.push({team: team, participation: participation[team].length})
+    }
+  }
+
+  setDataOne(): void{
+    const data : number[] = [this.scheduled, this.canceled, this.final];
+    this.dataOne = {
+      labels: ['Scheduled', 'Canceled', 'Final'],
+      datasets: [
+        {
+          data: data,
+          backgroundColor: colors(),
+        }
+      ]
+    }
+
+  }
+
+  setDataTwo(): void{
+    const data: number[] = [this.betting.closed, this.betting.open]
+    this.dataTwo = {
+      labels: ['closed bets', 'open bets'],
+      datasets: [{
+        data: data,
+        backgroundColor: colors(),
+      }]
     }
   }
 
