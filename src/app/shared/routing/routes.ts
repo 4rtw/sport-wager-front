@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { WagerComponent } from '../../components/application/wager/wager.component';
 import { NgModule } from '@angular/core';
 import { ConfirmAccountComponent } from '../../components/auth-collection/confirm-account/confirm-account.component';
 import { ResetPasswordComponent } from '../../components/auth-collection/reset-password/reset-password.component';
@@ -9,72 +8,58 @@ import { UserContainerComponent } from '../../components/user-collection/user-co
 import { FootballComponent } from '../../components/bet-collection/football/football.component';
 import { LoginRegisterComponent } from '../../components/auth-collection/login-register/login-register.component';
 import { BasketballComponent } from 'src/app/components/bet-collection/basketball/basketball.component';
+import { AuthGuard } from '../guard/auth-guard';
+import { AnonGuard } from '../guard/anon-guard';
 
 const routes: Routes = [
   {
     path: 'register',
     component: LoginRegisterComponent,
+    canActivate: [AnonGuard],
   },
   {
     path: 'confirm-account',
     component: ConfirmAccountComponent,
+    canActivate: [AnonGuard],
   },
   {
     path: 'verify-reset-code',
     component: VerifyResetCodeComponent,
+    canActivate: [AnonGuard],
   },
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
+    canActivate: [AnonGuard],
   },
   {
     path: 'set-password',
     component: ResetPasswordFinalStepComponent,
+    canActivate: [AnonGuard],
   },
   {
     path: 'profile',
     component: UserContainerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '',
+    redirectTo: '/wager/football',
+    pathMatch: 'full',
   },
   {
     path: 'wager',
     children: [
       {
         path: '',
-        component: WagerComponent,
-        children: [
-          {
-            path: '',
-            component: FootballComponent,
-          },
-          {
-            path: 'football',
-            component: FootballComponent,
-          },
-          { path: 'basketball', component: BasketballComponent },
-        ],
-      },
-    ],
-  },
-
-  {
-    path: 'basketball',
-    component: BasketballComponent,
-  },
-  {
-    path: '',
-    children: [
-      {
-        path: '',
-        component: FootballComponent,
-      },
-      {
-        path: 'nba',
-        component: BasketballComponent,
+        redirectTo: '/wager/football',
+        pathMatch: 'full',
       },
       {
         path: 'football',
         component: FootballComponent,
       },
+      { path: 'basketball', component: BasketballComponent },
     ],
   },
 ];

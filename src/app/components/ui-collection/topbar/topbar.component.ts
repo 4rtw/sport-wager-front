@@ -25,7 +25,7 @@ export class TopbarComponent implements OnInit {
     this.items = [
       {
         label: 'Accueil',
-        routerLink: ['/'],
+        routerLink: ['/wager/football'],
       },
       {
         label: 'Mes paris',

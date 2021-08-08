@@ -52,7 +52,6 @@ import { AppRoutingModule } from './shared/routing/routes';
 
 /*Components*/
 import { AppComponent } from './app.component';
-import { WagerComponent } from './components/application/wager/wager.component';
 import { ConfirmAccountComponent } from './components/auth-collection/confirm-account/confirm-account.component';
 import { ResetPasswordComponent } from './components/auth-collection/reset-password/reset-password.component';
 import { ResetPasswordFinalStepComponent } from './components/auth-collection/reset-password-final-step/reset-password-final-step.component';
@@ -85,10 +84,10 @@ import { FlipCardComponent } from './components/ui-collection/flip-card/flip-car
 import { SkeletonLoadingComponent } from './components/ui-collection/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/ui-collection/warning/warning.component';
 import { FootballBetElementComponent } from './components/bet-collection/football/football-bet-element/football-bet-element.component';
-import { StatisticComponent } from './components/application/wager/statistic/statistic.component';
-import { CountryListComponent } from './components/application/wager/statistic/country-list/country-list.component';
+import { StatisticComponent } from './components/application/statistic/statistic.component';
+import { CountryListComponent } from './components/application/statistic/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
-import { CompetitionListComponent } from './components/application/wager/statistic/competition-list/competition-list.component';
+import { CompetitionListComponent } from './components/application/statistic/competition-list/competition-list.component';
 import { LoginRegisterComponent } from './components/auth-collection/login-register/login-register.component';
 import { BetFootballComponent } from './components/bet-collection/football/bet-football/bet-football.component';
 import { BetNbaComponent } from './components/bet-collection/basketball/bet-nba/bet-nba.component';
@@ -106,7 +105,6 @@ import { BasketballBetElementComponent } from './components/bet-collection/baske
 @NgModule({
   declarations: [
     AppComponent,
-    WagerComponent,
     ConfirmAccountComponent,
     ResetPasswordComponent,
     ResetPasswordFinalStepComponent,

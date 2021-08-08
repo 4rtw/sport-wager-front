@@ -16,8 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   lastname = new FormControl();
   phone = new FormControl();
   email = new FormControl();
-  subLogout: Subscription;
-  subDelete: Subscription;
+  sub: Subscription[] = [];
 
   confirmation = 0;
 
@@ -48,18 +47,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
   removeAccount(): void {
     this.confirmation++;
     if (this.confirmation >= 7) {
-      this.subDelete = this.userService
-        .deleteUser(this.user.id.toString(10))
-        .subscribe((_) => {
-          this.subLogout = this.authService.logout().subscribe((_) => {
-            location.reload();
-          });
-        });
+      this.sub.push(
+        this.userService
+          .deleteUser(this.user.id.toString(10))
+          .subscribe((_) => {
+            this.sub.push(
+              this.authService.logout().subscribe((_) => {
+                location.reload();
+              })
+            );
+          })
+      );
     }
   }
 
   ngOnDestroy(): void {
-    this.subDelete.unsubscribe();
-    this.subLogout.unsubscribe();
+    for (const sub of this.sub) {
+      sub.unsubscribe();
+    }
   }
 }
