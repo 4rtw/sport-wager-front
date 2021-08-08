@@ -5,6 +5,7 @@ import { FootballGames } from '../../model/Foot/foot';
 import { config } from '../../config/variables';
 import { map } from 'rxjs/operators';
 import { CustomDate } from '../Utils/DateOperator';
+import {FootStat} from '../../model/Foot/FootStat'
 
 @Injectable({
     providedIn: 'root',
@@ -47,12 +48,9 @@ export class MatchService {
             );
     }
 
-    getMatche(idMatch, idCompet): Observable<FootballGames>{
-        if(!idCompet){
-            idCompet='2002';
-        }
-        return this.http.get<{ data: FootballGames[]; info:{}; errors: string[] }>(this.uriAuto+'foot/specific_match/'+ idCompet + '/' + idMatch).pipe(map(x=>{
-            return x.data[0];
-        }))
+    getStats(idCompet: number): Observable<FootStat[]>{
+        return this.http.get<{data: FootStat[], errors: any[]}>(this.uri+ 'foot/stats/competition/'+idCompet).pipe(
+            map(x => {return x.data})
+        )
     }
 }

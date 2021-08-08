@@ -84,10 +84,9 @@ import { FlipCardComponent } from './components/ui-collection/flip-card/flip-car
 import { SkeletonLoadingComponent } from './components/ui-collection/skeleton-loading/skeleton-loading.component';
 import { WarningComponent } from './components/ui-collection/warning/warning.component';
 import { FootballBetElementComponent } from './components/bet-collection/football/football-bet-element/football-bet-element.component';
-import { StatisticComponent } from './components/application/statistic/statistic.component';
-import { CountryListComponent } from './components/application/statistic/country-list/country-list.component';
+import { CountryListComponent } from './components/application/statistic/football/country-list/country-list.component';
 import { OrderListModule } from 'primeng/orderlist';
-import { CompetitionListComponent } from './components/application/statistic/competition-list/competition-list.component';
+import { CompetitionListComponent } from './components/application/statistic/football/competition-list/competition-list.component';
 import { LoginRegisterComponent } from './components/auth-collection/login-register/login-register.component';
 import { BetFootballComponent } from './components/bet-collection/football/bet-football/bet-football.component';
 import { BetNbaComponent } from './components/bet-collection/basketball/bet-nba/bet-nba.component';
@@ -96,11 +95,18 @@ import { NavigationFootballComponent } from './components/bet-collection/footbal
 import { FootballComponent } from './components/bet-collection/football/football.component';
 import { BasketballComponent } from './components/bet-collection/basketball/basketball.component';
 import { SlideMenuModule } from 'primeng/slidemenu';
-import { LoadingScreenComponent } from './components/ui-collection/loading-screen/loading-screen.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { KnobModule } from 'primeng/knob';
 import { TooltipModule } from 'primeng/tooltip';
 import { BasketballBetElementComponent } from './components/bet-collection/basketball/basketball-bet-element/basketball-bet-element.component';
+import { NbaStatsComponent } from './components/application/statistic/nba-stats/nba-stats.component';
+import { FootballStatsComponent } from './components/application/statistic/football-stats/football-stats.component';
+import { NbaResultsComponent } from './components/application/results/nba-results/nba-results.component';
+import { FootballResultsComponent } from './components/application/results/football-results/football-results.component';
+import { MyBetsComponent } from './components/application/my-bets/my-bets.component';
+import { MatchListComponent } from './components/application/statistic/nba/match-list/match-list.component';
+import { FootballMatchesListComponent } from './components/application/statistic/football/football-matches-list/football-matches-list.component';
+import { NavigationFootballStatsComponent } from './components/application/statistic/football/navigation-football-stats/navigation-football-stats.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +127,6 @@ import { BasketballBetElementComponent } from './components/bet-collection/baske
     FlipCardComponent,
     SkeletonLoadingComponent,
     WarningComponent,
-    StatisticComponent,
     CountryListComponent,
     CompetitionListComponent,
     FootballBetElementComponent,
@@ -131,8 +136,15 @@ import { BasketballBetElementComponent } from './components/bet-collection/baske
     BetNbaComponent,
     NavigationNbaComponent,
     NavigationFootballComponent,
-    LoadingScreenComponent,
     BasketballBetElementComponent,
+    NbaStatsComponent,
+    FootballStatsComponent,
+    NbaResultsComponent,
+    FootballResultsComponent,
+    MyBetsComponent,
+    MatchListComponent,
+    FootballMatchesListComponent,
+    NavigationFootballStatsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -184,7 +196,7 @@ import { BasketballBetElementComponent } from './components/bet-collection/baske
     MessagesModule,
     AccordionModule,
     DynamicDialogModule,
-    CloudinaryModule.forRoot({ Cloudinary }, {
+    CloudinaryModule.forRoot({Cloudinary}, {
       cloud_name: 'dy528ddbe',
     } as CloudinaryConfiguration),
     CookieModule.forRoot(),

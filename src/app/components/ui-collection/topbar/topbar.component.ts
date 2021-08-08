@@ -29,6 +29,7 @@ export class TopbarComponent implements OnInit {
       },
       {
         label: 'Mes paris',
+        routerLink: [''],
       },
       {
         label: 'Catégories',
@@ -48,19 +49,30 @@ export class TopbarComponent implements OnInit {
         items: [
           {
             label: 'Basketball',
-            routerLink: ['/nba'],
+            routerLink: ['/stats/basketball'],
           },
           {
             label: 'Football',
-            routerLink: ['/statistic/country-list'],
+            routerLink: ['/stats/football'],
           },
         ],
       },
       {
         label: 'Résultats',
+        items: [
+          {
+            label: 'Basketball',
+            routerLink: ['/results/basketball'],
+          },
+          {
+            label: 'Football',
+            routerLink: ['/results/basketball'],
+          }
+        ],
       },
       {
         label: 'BET Points',
+        routerLink: [''],
       },
     ];
   }

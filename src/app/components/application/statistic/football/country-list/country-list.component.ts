@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { CompetitionService } from '../../../../shared/services/Football/competition.service';
-import { Competitions } from '../../../../shared/model/Foot/competitions';
+import { CompetitionService } from '../../../../../shared/services/Football/competition.service';
+import { Competitions } from '../../../../../shared/model/Foot/competitions';
 import {Subscription} from 'rxjs';
 
 export interface Product {
@@ -18,7 +18,7 @@ export interface Product {
 @Component({
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
-  styleUrls: ['./country-list.component.css']
+  styleUrls: ['./country-list.component.scss']
 })
 
 export class CountryListComponent implements OnInit, OnDestroy {

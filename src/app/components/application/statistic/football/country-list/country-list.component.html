@@ -1,0 +1,14 @@
+<p-orderList [value]="competitions" [listStyle]="{'max-height':'50rem'}" header="Liste des pays" filterBy="name"
+    filterPlaceholder="Filter by name" [dragdrop]="true">
+    <ng-template let-competition pTemplate="item">
+            <div class="grid">
+                <div class="col-3">
+                    <img src="{{competition.area.ensignUrl}}" [alt]="competition.area.name" class="flag circle" />
+                </div>
+                <div class="col h5">{{competition.area.name}}</div>
+            </div>
+
+
+        <p-divider></p-divider>
+    </ng-template>
+</p-orderList>
