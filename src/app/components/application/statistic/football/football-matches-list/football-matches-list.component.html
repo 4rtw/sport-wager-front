@@ -1,0 +1,11 @@
+<div class="custom-card grid flex justify-content-center menu">
+    <div *ngIf="(statistics|async) as stats; else loading">
+        <div *ngFor="let stat of stats">
+            {{stat.team.name}}
+        </div>
+    </div>
+    <ng-template #loading>
+        <app-skeleton-loading></app-skeleton-loading>
+    </ng-template>
+</div>
+
