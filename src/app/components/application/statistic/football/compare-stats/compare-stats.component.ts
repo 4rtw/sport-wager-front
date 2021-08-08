@@ -8,7 +8,7 @@ import {ChartComponent} from 'angular2-chartjs';
 @Component({
   selector: 'app-compare-stats',
   templateUrl: './compare-stats.component.html',
-  styleUrls: ['./compare-stats.component.css']
+  styleUrls: ['./compare-stats.component.scss']
 })
 export class CompareStatsComponent implements OnInit {
 

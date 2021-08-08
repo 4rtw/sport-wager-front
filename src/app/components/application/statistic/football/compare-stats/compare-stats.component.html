@@ -1,7 +1,7 @@
 <div class="grid">
     <div class="col-12 mb-4">
         <p-multiSelect [options]="teams" [(ngModel)]="selectedTeams" defaultLabel="Choisissez une/des équipe(s)" optionLabel="team.name" selectedItemsLabel="{0} items selected" (onChange)="valueChanged()">
-            <ng-template let-option pTemplate="selectedItems">
+            <ng-template let-value pTemplate="selectedItems">
                 <div class="country-item country-item-value" *ngFor="let option of selectedTeams">
                     <div>{{option.team.name}}</div>
                 </div>
@@ -11,7 +11,7 @@
             </ng-template>
             <ng-template let-option pTemplate="item">
                 <div class="grid">
-                    <div class="col"><img src="{{option.team.crestUrl}}" class="flag circle" /></div>
+                    <div class="col"><img src="{{option.team.crestUrl}}" class="flag circle"  alt=""/></div>
                     <div class="col flex align-items-center"><div>{{option.team.name}}</div></div>
                 </div>
             </ng-template>
