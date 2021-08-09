@@ -47,3 +47,5 @@ Thumbs.db
 
 .prettierignore
 .prettierrc.json
+.idea/.gitignore
+.gitignore

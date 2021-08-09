@@ -11,5 +11,7 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/sport-wager/index.html'));
 });
 
+
+console.log("start listening")
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8081);
