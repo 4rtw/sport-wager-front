@@ -21,7 +21,7 @@
           <a routerLink="/reset-password">Mot de passe oublié</a>
 
           <p-progressSpinner
-            *ngIf="!showButtonAndNoSpinner"
+            *ngIf="!showButtonAndNoSpinnerLogin"
             [style]="{ width: '50px', height: '50px' }"
             styleClass="custom-spinner"
             strokeWidth="8"
@@ -31,7 +31,7 @@
           <button
             pButton
             [disabled]="!loginForm.valid"
-            *ngIf="showButtonAndNoSpinner"
+            *ngIf="showButtonAndNoSpinnerLogin"
             type="submit"
           >
             Connexion
@@ -161,8 +161,10 @@
             </div>
           </div>
 
+          <div>{{display}}</div>
+
           <p-progressSpinner
-            *ngIf="!showButtonAndNoSpinner"
+            *ngIf="!showButtonAndNoSpinnerRegister"
             [style]="{ width: '50px', height: '50px' }"
             styleClass="custom-spinner"
             strokeWidth="8"
@@ -172,7 +174,7 @@
           <button
             pButton
             [disabled]="!registerForm.valid"
-            *ngIf="showButtonAndNoSpinner"
+            *ngIf="showButtonAndNoSpinnerRegister"
             type="submit"
           >
             INSCRIPTION

@@ -41,8 +41,9 @@
   <div class="col-12 p-1 bg-transparent">
     <cdk-virtual-scroll-viewport [itemSize]="5" style="height: 500px">
       <div *ngIf="matches | async as matches; else loading">
-        <div *ngIf="matches.length === 0" class="text-center custom-card">
-          Il n'y a aucun match pour le jour, essayez une autre date.
+        <div *ngIf="matches.length < 1" class="text-center custom-card">
+          <div>Il n'y a aucun match pour le jour, essayez une autre date ou regardez la liste des matches ci-dessous.</div>
+          <div class="mt-4"><app-football-bet-all></app-football-bet-all></div>
         </div>
 
         <div *cdkVirtualFor="let match of matches" class="block content">

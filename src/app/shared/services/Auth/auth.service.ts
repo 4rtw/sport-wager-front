@@ -80,6 +80,7 @@ export class AuthService {
           'https://res.cloudinary.com/dy528ddbe/image/upload/v1624706965/o07qvrf7bfuljol0vbbg.png',
       })
       .pipe(
+          map(x=>{return x}),
         tap((_) => {
           console.log('User registered');
         })

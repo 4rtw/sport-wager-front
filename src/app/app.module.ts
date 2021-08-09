@@ -99,6 +99,8 @@ import { NbaStatTwoComponent } from './components/application/statistic/nba/nba-
 import { CompareStatsComponent } from './components/application/statistic/football/compare-stats/compare-stats.component';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { BetNbaAllComponent } from './components/bet-collection/basketball/bet-nba-all/bet-nba-all.component';
+import { FootballBetAllComponent } from './components/bet-collection/football/football-bet-all/football-bet-all.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +140,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     NbaStatOneComponent,
     NbaStatTwoComponent,
     CompareStatsComponent,
+    BetNbaAllComponent,
+    FootballBetAllComponent,
   ],
     imports: [
         AppRoutingModule,

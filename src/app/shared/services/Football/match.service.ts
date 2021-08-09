@@ -53,4 +53,18 @@ export class MatchService {
             map(x => {return x.data})
         )
     }
+
+    getAllMatches(idCompet: number): Observable<FootballGames[]> {
+        if(idCompet===0||!idCompet){idCompet=2002}
+
+        return this.http
+            .get<{ data: FootballGames[]; errors: string[] }>(
+                this.uri + 'foot/schedules/' + idCompet
+            )
+            .pipe(
+                map((x) => {
+                    return x.data;
+                })
+            );
+    }
 }
