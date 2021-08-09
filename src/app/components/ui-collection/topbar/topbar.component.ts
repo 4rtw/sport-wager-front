@@ -58,19 +58,6 @@ export class TopbarComponent implements OnInit {
         ],
       },
       {
-        label: 'Résultats',
-        items: [
-          {
-            label: 'Basketball',
-            routerLink: ['/results/basketball'],
-          },
-          {
-            label: 'Football',
-            routerLink: ['/results/basketball'],
-          }
-        ],
-      },
-      {
         label: 'BET Points',
         routerLink: [''],
       },

@@ -47,9 +47,13 @@
           <h3>Glissez l'image et déposez le ici.</h3>
         </div>
 
-        <button (click)="updateImage()" mat-raised-button>
-          Changer votre photo de profil
-        </button>
+        <div class="flex justify-content-center mt-3">
+          <button (click)="updateImage()" pButton pRipple>
+            Changer votre photo de profil
+          </button>
+        </div>
+
+
       </form>
       <div class="files-list">
         <div
