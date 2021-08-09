@@ -42,7 +42,8 @@ export class LoginRegisterComponent implements OnInit {
   );
 
   loginSub = new Subscription();
-  showButtonAndNoSpinner = true;
+  showButtonAndNoSpinnerLogin = true;
+  showButtonAndNoSpinnerRegister = true;
 
   hide = true;
   validator = new Validator();
@@ -63,7 +64,7 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   login(email, password): void {
-    this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
+    this.showButtonAndNoSpinnerLogin = !this.showButtonAndNoSpinnerLogin;
     if (!this.loginForm.invalid) {
       this.loginSub = this.authService.login(email, password).subscribe(
         (next) => {
@@ -90,7 +91,7 @@ export class LoginRegisterComponent implements OnInit {
             });
           }
 
-          this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
+          this.showButtonAndNoSpinnerLogin = !this.showButtonAndNoSpinnerLogin;
         }
       );
     } else {
@@ -99,26 +100,32 @@ export class LoginRegisterComponent implements OnInit {
         summary: 'Erreur rencontré dans le formulaire',
         detail: 'Verifiez vos entrées',
       });
-      this.showButtonAndNoSpinner = !this.showButtonAndNoSpinner;
+      this.showButtonAndNoSpinnerLogin = !this.showButtonAndNoSpinnerLogin;
     }
   }
 
-  navigateToForgotPasword(): void {
-    this.router.navigate(['/reset-password']);
-  }
-
   registerUser(user): void {
-    this.authService.register(user).subscribe((response) => {
-      if (response.errors.length == 1) {
-        this.display = 'This account is already exists on your sport wager';
-      } else {
+    this.showButtonAndNoSpinnerRegister = !this.showButtonAndNoSpinnerRegister;
+    this.authService.register(user).subscribe(
+        (response) => {
+
         // when successfull
+        this.showButtonAndNoSpinnerRegister = !this.showButtonAndNoSpinnerRegister;
         this.router
           .navigate(['/confirm-account'], {
             queryParams: { email: user.email },
           })
           .then(() => location.reload());
-      }
+        },
+        error => {
+          console.log(error.error.errors[0])
+          if (error.error.errors[0].includes('E11000')){
+            this.display = 'This account is already exists on your sport wager';
+            console.log(error)
+          }else {
+            this.display = error.errors
+          }
+          this.showButtonAndNoSpinnerRegister = !this.showButtonAndNoSpinnerRegister;
     });
   }
 

@@ -106,7 +106,10 @@ export class AppComponent implements OnInit, OnDestroy{
       }, 60000);
     }
     catch(e){
-      this.logout();
+      //this.logout();
+      console.log(e);
+      alert(e);
+      this.refreshToken()
     }
   }
 }
