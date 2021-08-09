@@ -15,13 +15,10 @@ import {CompetitionService} from '../../../shared/services/Football/competition.
 })
 export class PanierComponent implements OnInit {
   myBet: Observable<Bet[]>;
-  matches: Observable<NbaGame[]>;
-  total = 0;
   loading = true;
 
   constructor(
     private betService: BetService,
-    private competitionService: CompetitionService,
     public customDate: CustomDate
   ) {}
 

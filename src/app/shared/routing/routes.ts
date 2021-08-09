@@ -12,8 +12,6 @@ import { AuthGuard } from '../guard/auth-guard';
 import { AnonGuard } from '../guard/anon-guard';
 import {NbaStatsComponent} from '../../components/application/statistic/nba-stats/nba-stats.component';
 import {FootballStatsComponent} from '../../components/application/statistic/football-stats/football-stats.component';
-import {NbaResultsComponent} from '../../components/application/results/nba-results/nba-results.component';
-import {FootballResultsComponent} from '../../components/application/results/football-results/football-results.component';
 import {MyBetsComponent} from '../../components/application/my-bets/my-bets.component';
 
 const routes: Routes = [
@@ -75,16 +73,6 @@ const routes: Routes = [
     },{
       path: 'football',
       component: FootballStatsComponent,
-    }]
-  },
-  {
-    path:'results',
-    children:[{
-      path: 'basketball',
-      component: NbaResultsComponent
-    },{
-      path: 'football',
-      component: FootballResultsComponent,
     }]
   },
   {

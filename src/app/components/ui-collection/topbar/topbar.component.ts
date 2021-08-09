@@ -29,7 +29,7 @@ export class TopbarComponent implements OnInit {
       },
       {
         label: 'Mes paris',
-        routerLink: [''],
+        routerLink: ['/my-bets'],
       },
       {
         label: 'Catégories',

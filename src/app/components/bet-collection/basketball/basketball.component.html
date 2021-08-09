@@ -1,14 +1,8 @@
-<!--div class="grid">
-  <div class="col">
-    <app-navigation-nba></app-navigation-nba>
-  </div>
-  <div class="col">
-    <app-bet-nba></app-bet-nba>
-  </div>
-</div-->
-
 <div class="grid">
   <div class="col"><app-navigation-nba></app-navigation-nba></div>
   <div class="col" style="z-index: 999"><app-bet-nba></app-bet-nba></div>
-  <div class="col"><app-panier *ngIf="user | async"></app-panier></div>
+  <div class="col"><app-panier *ngIf="(user | async); else connected"></app-panier></div>
+  <ng-template #connected>
+    <app-video></app-video>
+  </ng-template>
 </div>

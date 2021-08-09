@@ -89,8 +89,6 @@ import { TooltipModule } from 'primeng/tooltip';
 import { BasketballBetElementComponent } from './components/bet-collection/basketball/basketball-bet-element/basketball-bet-element.component';
 import { NbaStatsComponent } from './components/application/statistic/nba-stats/nba-stats.component';
 import { FootballStatsComponent } from './components/application/statistic/football-stats/football-stats.component';
-import { NbaResultsComponent } from './components/application/results/nba-results/nba-results.component';
-import { FootballResultsComponent } from './components/application/results/football-results/football-results.component';
 import { MyBetsComponent } from './components/application/my-bets/my-bets.component';
 import { MatchListComponent } from './components/application/statistic/nba/match-list/match-list.component';
 import { FootballMatchesListComponent } from './components/application/statistic/football/football-matches-list/football-matches-list.component';
@@ -133,8 +131,6 @@ import {MultiSelectModule} from 'primeng/multiselect';
     BasketballBetElementComponent,
     NbaStatsComponent,
     FootballStatsComponent,
-    NbaResultsComponent,
-    FootballResultsComponent,
     MyBetsComponent,
     MatchListComponent,
     FootballMatchesListComponent,
