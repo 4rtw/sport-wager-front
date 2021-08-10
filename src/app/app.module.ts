@@ -101,6 +101,7 @@ import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { BetNbaAllComponent } from './components/bet-collection/basketball/bet-nba-all/bet-nba-all.component';
 import { FootballBetAllComponent } from './components/bet-collection/football/football-bet-all/football-bet-all.component';
+import { PanierCollectedComponent } from './components/bet-collection/panier-collected/panier-collected.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +143,7 @@ import { FootballBetAllComponent } from './components/bet-collection/football/fo
     CompareStatsComponent,
     BetNbaAllComponent,
     FootballBetAllComponent,
+    PanierCollectedComponent,
   ],
     imports: [
         AppRoutingModule,
