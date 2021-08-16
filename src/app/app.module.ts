@@ -103,6 +103,7 @@ import { BetNbaAllComponent } from './components/bet-collection/basketball/bet-n
 import { FootballBetAllComponent } from './components/bet-collection/football/football-bet-all/football-bet-all.component';
 import { PanierCollectedComponent } from './components/bet-collection/panier-collected/panier-collected.component';
 
+import { QRCodeModule } from 'angular2-qrcode';
 @NgModule({
   declarations: [
     AppComponent,
@@ -184,6 +185,7 @@ import { PanierCollectedComponent } from './components/bet-collection/panier-col
         AccordionModule,
         DynamicDialogModule,
         ChartModule,
+        QRCodeModule,
         CloudinaryModule.forRoot({Cloudinary}, {
             cloud_name: 'dy528ddbe',
         } as CloudinaryConfiguration),

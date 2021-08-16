@@ -21,6 +21,8 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
   competitionID!: string;
   @Input() match!: FootballGames;
   betting: boolean;
+  showQR = false;
+  qrValue;
 
   choice: BetType;
   choiceDictionnary: { home: boolean; draw: boolean; away: boolean };
@@ -56,24 +58,23 @@ export class FootballBetElementComponent implements OnInit, OnDestroy {
           } else {
             this.competitionID = '2002';
           }
+
+          const qr = {
+            matchID: this.match.id,
+            type: 'football',
+            competitionID: this.competitionID
+          }
+
+          this.qrValue = JSON.stringify(qr);
         }
         this.setTeams();
       })
     );
   }
 
-  /*setMatch(): void {
-    if (!this.match) {
-      this.matchService
-        .getMatche(this.match.id, this.competitionID)
-        .subscribe((x) => {
-          this.match = x;
-          this.setTeams();
-        });
-    } else {
-      this.setTeams();
-    }
-  }*/
+  toogleQR(){
+    this.showQR = !this.showQR;
+  }
 
   private setTeams() {
     this.getHomeTeamDetails = this.teamService.getTeamDetails(

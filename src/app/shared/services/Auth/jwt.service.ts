@@ -7,7 +7,6 @@ import { Observable, of } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie';
 import * as CryptoJS from 'crypto-js';
-import jwt_decode from 'jwt-decode';
 import { config } from 'src/app/shared/config/variables';
 
 @Injectable({
@@ -110,16 +109,24 @@ export class JwtService {
       // define variables
       const uri = config.herokuurl + 'token/refresh';
 
+      let mString = this.cookieService.get('refresh_orb') || '';
+      mString = CryptoJS.AES.decrypt(
+          this.cookieService.get('refresh_orb'),
+          '$^$&@@f$^$&érazdf$ut$&érazdf'
+      ).toString(CryptoJS.enc.Utf8);
+      try{
+        mString = mString.toString();
+      }catch (e) {
+        mString = '';
+      }
+
       return this.http
         .post<{
           data: { access_token: string }[];
           errors: string[];
         }>(uri, {
           email: this.getUser().user.email,
-          refresh_token: CryptoJS.AES.decrypt(
-            this.cookieService.get('refresh_orb'),
-            '$^$&@@f$^$&érazdf$ut$&érazdf'
-          ).toString(CryptoJS.enc.Utf8),
+          refresh_token: mString,
         })
         .pipe(
           map((response) => {
