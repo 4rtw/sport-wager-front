@@ -17,10 +17,10 @@
 
   <div class="col-12 p-1 bg-transparent">
     <cdk-virtual-scroll-viewport [itemSize]="5" style="height: 500px">
-      <div *ngIf="matches | async as matches; else loading">
-        <div *ngIf="matches.length < 1" class="text-center custom-card">
+      <div *ngIf="matches | async as mMatches; else loading">
+        <div *ngIf="mMatches.length < 1" class="text-center custom-card">
           <div>Il n'y a aucun match pour le jour, essayez une autre date ou regardez la liste des matches ci-dessous.</div>
-          <div class="mt-4"><app-bet-nba-all></app-bet-nba-all></div>
+          <!--div class="mt-4"><app-bet-nba-all></app-bet-nba-all></div-->
         </div>
 
         <div *cdkVirtualFor="let match of matches" class="block content">
